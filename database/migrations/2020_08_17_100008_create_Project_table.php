@@ -12,7 +12,7 @@ class CreateProjectTable extends Migration
 
                $table->increments('ProjectId');
                $table->string('Title');
-               $table->string('slug');
+               $table->string('Slug');
                $table->text('Location');
                $table->text('Investor');
                $table->unsignedInteger('NumberOfBlock');

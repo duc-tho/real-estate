@@ -9,4 +9,5 @@ class Setting extends Model
     protected $table ='Setting';
     protected $primaryKey = 'SettingId';
     protected $guarded = [];
+    protected $fillable = ['Name', 'Value'];
 }
