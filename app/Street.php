@@ -9,4 +9,6 @@ class Street extends Model
     protected $table ='Street';
     protected $primaryKey = 'StreetId';
     protected $guarded = [];
+
+    
 }
