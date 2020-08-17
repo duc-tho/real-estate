@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateStreetTable extends Migration
+{
+     public function up()
+     {
+          Schema::create('Street', function (Blueprint $table) {
+
+               $table->increments('StreetId');
+               $table->unsignedInteger('AreaId');
+               $table->string('Name');
+               $table->timestamps();
+               $table->tinyInteger('Status')->default('1');
+
+               $table->foreign('AreaId')->references('AreaId')->on('Area')->onDelete('cascade');
+
+          });
+     }
+
+     public function down()
+     {
+               Schema::dropIfExists('Street');
+     }
+}
