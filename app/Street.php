@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Street extends Model
 {
-    protected $table ='Street';
-    protected $primaryKey = 'StreetId';
-    protected $guarded = [];
-    
-    protected $fillable = ['AreaId', 'Name', 'Status'];
+     protected $table = 'Street';
+     protected $primaryKey = 'StreetId';
+     protected $guarded = [];
 
-    public function posts()
+     protected $fillable = ['AreaId', 'Name', 'Status', 'Slug'];
+
+     public function posts()
      {
-         return $this->hasMany('App\Post', 'StreetId', 'StreetId');
+          return $this->hasMany('App\Post', 'StreetId', 'StreetId');
      }
-   
 }
-
