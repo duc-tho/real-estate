@@ -246,7 +246,7 @@ Route::prefix('admin')->group(function () {
 
 
 Route::group(['prefix' => 'register'], function () {
-     // Route::get('/', 'RegisterController@index')->name('registerView');
+     Route::get('/', 'RegisterController@index')->name('registerView');
 
-     // Route::post('/', 'RegisterController@register')->name('register');
+     Route::post('/', 'RegisterController@register')->name('register');
 });
