@@ -30,7 +30,6 @@ class Post extends Model
           'Status',
           'Slug'
      ];
-
      public function Category()
      {
           return $this->hasMany('App\Category', 'CategoryId', 'CategoryId');
@@ -40,7 +39,6 @@ class Post extends Model
      {
           return $this->hasMany('App\Project', 'ProjectId', 'ProjectId');
      }
-
      public function User()
      {
           return $this->hasOne('App\User', 'UserId', 'UserId');
