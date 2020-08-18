@@ -1,0 +1,79 @@
+/**
+ *
+ * /home
+ *
+ * /project          Method: GET    --> Lấy giao dien, danh sach project  --> ProjectController@index
+ * /project/{id}     Method: GET    --> Chi tiết dự án                    --> ProjectController@detailProject
+ *
+ * /post                                    Method: GET     --> Lấy giao dien, danh sach BDS      --> PostController@index
+ * /post/{id}                               Method: GET     --> Chi tiết bất động sản             --> PostController@detailPost
+ * /post/category                           Method: GET     --> Bất động sản theo loại            --> PostController@categoryPost
+ * /post/project                            Method: GET     --> Bất động sản theo dự án           --> PostController@projectPost
+ * /post/city/{id}                          Method: GET     --> Bất động sản theo thành phố       --> PostController@cityPost
+ * /post/city/district/{id}                 Method: GET     --> Bất động sản theo quận            --> PostController@cityDistrictPost
+ * /post/city/district/area/{id}            Method: GET     --> Bất động sản theo quận            --> PostController@cityDistrictAreaPost
+ * /post/city/district/area/street/{id}     Method: GET     --> Bất động sản theo đường           --> PostController@cityDistrictAreaStreetPost
+ *
+ * /user                                   Method: GET     --> Lấy giao dien user     --> UserController@index
+ *
+ * /auth/login           Method: GET        --> Lấy giao dien trang login --> AuthController@login
+ * /auth/authenticate    Method: POST       --> Xử lý Login               --> AuthController@authenticate
+ * /auth/logout          Method: POST       --> Xử lý Logout              --> AuthController@logout
+ *
+ * /register            Method: GET     --> Lấy giao dien trang register  --> RegisterController@getRegister
+ * /register            Method: POST    --> Xử Lý register                --> RegisterController@postRegister
+ *
+ * /admin           Method: GET    --> Dashboard
+ *
+ * /admin/post                Method: GET    --> Lấy danh sách Post             --> AdminPostController@index
+ * /admin/post/add            Method: POST   --> Thêm                           --> AdminPostController@postAdd
+ * /admin/post/edit/{id}      Method: GET    --> Lấy thông tin sản phẩm để sửa  --> AdminPostController@getEdit
+ * /admin/post/edit/{id}      Method: PUT    --> Sửa                            --> AdminPostController@putEdit
+ * /admin/post/delete/{id}    Method: DELETE --> Xóa                            --> AdminPostController@delete
+ *
+ * /admin/project               Method: GET    --> Lấy danh sách project --> AdminProjectController@index
+ * /admin/project/add           Method: POST   --> Thêm                  --> AdminProjectController@postAdd
+ * /admin/project/edit/{id}     Method: GET    --> Lấy info project      --> AdminProjectController@getEdit
+ * /admin/project/edit/{id}     Method: PUT    --> Sửa                   --> AdminProjectController@putEdit
+ * /admin/project/delete/{id}   Method: DELETE --> Xóa                   --> AdminProjectController@delete
+ *
+ * /admin/category               Method: GET      --> Lấy danh sách Category         --> AdminCategoryController@index
+ * /admin/category/add           Method: POST     --> Thêm                           --> AdminPCategoryController@postAdd
+ * /admin/category/edit{id}      Method: PUT      --> Lấy thông tin sản phẩm đê sửa  --> AdminCategoryController@getEdit
+ * /admin/category/edit{id}      Method: PUT      --> Sửa                            --> AdminCatogoryController@putEdit
+ * /admin/categorydelete{id}     Method: DELETE   --> xóa category theo id           --> AdminCategoryController@delete
+ *
+ * /admin/city                Method: GET    --> Lấy danh sách City             --> AdminCityController@index
+ * /admin/city/add            Method: POST   --> Thêm                           --> AdminCityController@postAdd
+ * /admin/city/edit/{id}      Method: GET    --> Lấy thông tin city để sửa      --> AdminCityController@getEdit
+ * /admin/city/edit/{id}      Method: PUT    --> Sửa                            --> AdminCityController@putEdit
+ * /admin/city/delete/{id}    Method: DELETE --> Xóa                            --> AdminCityController@delete
+ *
+ *
+ * /admin/district               Method: GET    --> Lấy danh sách district --> AdminDistrictController@index
+ * /admin/district/add           Method: POST   --> Thêm                   --> AdminDistrictController@postAdd
+ * /admin/district/edit/{id}     Method: GET    --> Lấy info district      --> AdminDistrictController@getEdit
+ * /admin/district/edit/{id}     Method: PUT    --> Sửa                    --> AdminDistrictController@putEdit
+ * /admin/district/delete/{id}   Method: DELETE --> Xóa                    --> AdminDistrictController@delete
+ *
+ *
+ * /admin/area                Method: GET      --> Lấy danh sách Area                  --> AdminAreaController@index
+ * /admin/area/add            Method: POST     --> Thêm                               --> AdminAreaController@postAdd
+ * /admin/area/edit/{id}      Method: PUT      --> Lấy thông tin are đê sửa      --> AdminAreaController@getEdit
+ * /admin/area/edit/{id}      Method: PUT      --> Sửa                                --> AdminAreaController@putEdit
+ * /admin/area/delete/{id}    Method: DELETE   --> xóa Area theo id                   --> AdminAreaController@delete
+ *
+ *
+ * /admin/street               Method: GET    --> Lấy danh sách street   --> AdminStreetController@index
+ * /admin/street/add           Method: POST   --> Thêm                   --> AdminStreetController@postAdd
+ * /admin/street/edit/{id}     Method: GET    --> Lấy info street        --> AdminStreetController@getEdit
+ * /admin/street/edit/{id}     Method: PUT    --> Sửa                    --> AdminStreetController@putEdit
+ * /admin/street/delete/{id}   Method: DELETE --> Xóa                    --> AdminStreetController@delete
+ *
+ * /admin/user               Method: GET    --> Lấy danh sách user     --> AdminUserController@index
+ * /admin/user/add           Method: POST   --> Thêm                   --> AdminUserController@postAdd
+ * /admin/user/edit/{id}     Method: GET    --> Lấy info user          --> AdminUserController@getEdit
+ * /admin/user/edit/{id}     Method: PUT    --> Sửa                    --> AdminUserController@putEdit
+ * /admin/user/delete/{id}   Method: DELETE --> Xóa                    --> AdminUserController@delete
+ *
+ */

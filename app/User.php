@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-     protected $table ='User';
+     protected $table = 'User';
      protected $primaryKey = 'UserId';
      protected $guarded = [];
      protected $fillable = [
@@ -29,9 +29,8 @@ class User extends Model
           'Status',
           'Type'
      ];
-
      public function posts()
      {
-         return $this->hasMany('App\Post', 'UserId', 'UserId');
+          return $this->hasMany('App\Post', 'UserId', 'UserId');
      }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-     protected $table ='Project';
+     protected $table = 'Project';
      protected $primaryKey = 'ProjectId';
      protected $guarded = [];
      protected $fillable = [
@@ -24,11 +24,12 @@ class Project extends Model
           'Price',
           'Description',
           'Image',
-          'Status'
+          'Status',
+          'Slug'
      ];
 
      public function posts()
      {
-         return $this->hasMany('App\Post', 'ProjectId', 'ProjectId');
+          return $this->hasMany('App\Post', 'ProjectId', 'ProjectId');
      }
 }
