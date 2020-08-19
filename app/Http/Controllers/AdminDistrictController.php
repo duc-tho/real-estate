@@ -8,7 +8,7 @@ class AdminDistrictController extends Controller
 {
     public function index()
     {
-        return 'district';
+        return view('admin.district');
         
     }
 

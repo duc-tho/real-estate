@@ -8,7 +8,7 @@ class AdminStreetController extends Controller
 {
     public function index()
     {
-        return 'street';
+        return view('admin.street');
         
     }
 

@@ -8,7 +8,7 @@ class AdminCityController extends Controller
 {
     public function index()
     {
-        return "Admin City";
+        return view('admin.city');
     }
 
     public function postAdd()

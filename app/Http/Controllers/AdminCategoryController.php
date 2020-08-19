@@ -8,7 +8,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        return "Admin Category";
+        return view('admin.category');
     }
 
     public function postAdd()

@@ -8,7 +8,7 @@ class AdminProjectController extends Controller
 {
     public function index()
     {
-        return "Admin Project";
+        return view('admin.project');
     }
 
     public function postAdd()

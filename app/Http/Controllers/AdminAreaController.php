@@ -8,7 +8,7 @@ class AdminAreaController extends Controller
 {
     public function index()
     {
-        return 'area';
+        return view('admin.area');
         
     }
 
