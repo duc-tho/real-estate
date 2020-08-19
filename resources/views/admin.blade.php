@@ -3,7 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-     <h5 class="font-weight-bold">@yield('title')</h5>
+     <h1>
+          <h5 style="color: #333">@yield('title')</h5>
+     </h1>
 @stop
 
 @section('content')
