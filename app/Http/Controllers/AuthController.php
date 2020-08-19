@@ -8,7 +8,7 @@ class AuthController extends Controller
 {
      public function login()
      {
-          return 'login';
+          return view('auth/login');
      }
 
      public function authenticate()
