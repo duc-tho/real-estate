@@ -6,17 +6,13 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function index()
-    {
-        return 'registerView';
-        
-    }
+     public function index()
+     {
+          return view('auth/register');
+     }
 
-    public function register()
-    {
-        return 'register';
-
-    }
-
-    
+     public function register()
+     {
+          return 'register';
+     }
 }
