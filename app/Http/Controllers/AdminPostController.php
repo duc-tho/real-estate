@@ -8,7 +8,7 @@ class AdminPostController extends Controller
 {
      public function index()
      {
-          return "Admin Post";
+          return view('admin.post');
      }
 
      public function postAdd()

@@ -3,17 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+     <h5 class="font-weight-bold">@yield('title')</h5>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-@stop
-
-{{-- @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop --}}
-
-@section('js')
-    <script> console.log('Hi!'); </script>
+     <div class="w-100 rounded mt-4 p-3" style="background: #fff; box-shadow: 0 3px 13px -10px #000;">
+          @yield('mainContent')
+     </div>
 @stop
