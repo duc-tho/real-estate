@@ -8,12 +8,12 @@ class AdminPostController extends Controller
 {
     public function index()
     {
-        return view("Admin Post");
+        return "Admin Post";
     }
 
     public function postAdd()
     {
-        return view("Post Add Post");
+        return "Post Add Post";
     }
 
     public function getEdit()
