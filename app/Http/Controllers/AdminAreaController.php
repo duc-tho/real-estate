@@ -6,34 +6,34 @@ use Illuminate\Http\Request;
 
 class AdminAreaController extends Controller
 {
-    public function index()
-    {
-        return view('admin.area');
-        
-    }
+     public function index()
+     {
+          return view('admin.admin', ['page' => 'area']);
+     }
 
-    public function getAdd()
-    {
-        return 'getAddarea';
+     public function getAdd()
+     {
+          return 'getAddarea';
+     }
 
-    }
+     public function postAdd()
+     {
+          return 'postAddarea';
+     }
 
-    public function postAdd(){
-        return 'postAddarea';
-    }
+     public function getEdit()
+     {
 
-    public function getEdit(){
- 
-        return 'getEditarea';
+          return 'getEditarea';
+     }
 
-    }
+     public function putEdit()
+     {
+          return 'putEditarea';
+     }
 
-    public function putEdit(){
-        return 'putEditarea';
-
-    }
-
-    public function delete(){
-        return 'deletearea';
-    }
+     public function delete()
+     {
+          return 'deletearea';
+     }
 }

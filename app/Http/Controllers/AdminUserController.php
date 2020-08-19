@@ -6,34 +6,34 @@ use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
 {
-    public function index()
-    {
-        return view('admin.user');
-        
-    }
+     public function index()
+     {
+          return view('admin.admin', ['page' => 'user']);
+     }
 
-    public function getAdd()
-    {
-        return 'GetAdduser';
+     public function getAdd()
+     {
+          return 'GetAdduser';
+     }
 
-    }
+     public function postAdd()
+     {
+          return 'PostAdduser';
+     }
 
-    public function postAdd(){
-        return 'PostAdduser';
-    }
+     public function getEdit()
+     {
 
-    public function getEdit(){
- 
-        return 'getEdituser';
+          return 'getEdituser';
+     }
 
-    }
+     public function putEdit()
+     {
+          return 'putEdituser';
+     }
 
-    public function putEdit(){
-        return 'putEdituser';
-
-    }
-
-    public function delete(){
-        return 'deleteuser';
-    }
+     public function delete()
+     {
+          return 'deleteuser';
+     }
 }

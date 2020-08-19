@@ -6,34 +6,34 @@ use Illuminate\Http\Request;
 
 class AdminStreetController extends Controller
 {
-    public function index()
-    {
-        return view('admin.street');
-        
-    }
+     public function index()
+     {
+          return view('admin.admin', ['page' => 'street']);
+     }
 
-    public function getAdd()
-    {
-        return 'getAddstreet';
+     public function getAdd()
+     {
+          return 'getAddstreet';
+     }
 
-    }
+     public function postAdd()
+     {
+          return 'postAddstreet';
+     }
 
-    public function postAdd(){
-        return 'postAddstreet';
-    }
+     public function getEdit()
+     {
 
-    public function getEdit(){
- 
-        return 'getEditstreet';
+          return 'getEditstreet';
+     }
 
-    }
+     public function putEdit()
+     {
+          return 'putEditstreet';
+     }
 
-    public function putEdit(){
-        return 'putEditstreet';
-
-    }
-
-    public function delete(){
-        return 'deletestreet';
-    }
+     public function delete()
+     {
+          return 'deletestreet';
+     }
 }

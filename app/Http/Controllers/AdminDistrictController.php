@@ -6,34 +6,34 @@ use Illuminate\Http\Request;
 
 class AdminDistrictController extends Controller
 {
-    public function index()
-    {
-        return view('admin.district');
-        
-    }
+     public function index()
+     {
+          return view('admin.admin', ['page' => 'district']);
+     }
 
-    public function getAdd()
-    {
-        return 'getAdddistrict';
+     public function getAdd()
+     {
+          return 'getAdddistrict';
+     }
 
-    }
+     public function postAdd()
+     {
+          return 'postAdddistrict';
+     }
 
-    public function postAdd(){
-        return 'postAdddistrict';
-    }
+     public function getEdit()
+     {
 
-    public function getEdit(){
- 
-        return 'getEditdistrict';
+          return 'getEditdistrict';
+     }
 
-    }
+     public function putEdit()
+     {
+          return 'putEditdistrict';
+     }
 
-    public function putEdit(){
-        return 'putEditdistrict';
-
-    }
-
-    public function delete(){
-        return 'deletedistrict';
-    }
+     public function delete()
+     {
+          return 'deletedistrict';
+     }
 }

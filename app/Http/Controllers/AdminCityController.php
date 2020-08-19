@@ -6,28 +6,28 @@ use Illuminate\Http\Request;
 
 class AdminCityController extends Controller
 {
-    public function index()
-    {
-        return view('admin.city');
-    }
+     public function index()
+     {
+          return view('admin.admin', ['page' => 'city']);
+     }
 
-    public function postAdd()
-    {
-        return "Post Add City";
-    }
+     public function postAdd()
+     {
+          return "Post Add City";
+     }
 
-    public function getEdit()
-    {
-        return "Get Edit City";
-    }
+     public function getEdit()
+     {
+          return "Get Edit City";
+     }
 
-    public function putEdit()
-    {
-        return "Put Edit City";
-    }
+     public function putEdit()
+     {
+          return "Put Edit City";
+     }
 
-    public function delete()
-    {
-        return "Delete City";
-    }
+     public function delete()
+     {
+          return "Delete City";
+     }
 }
