@@ -4,16 +4,16 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="shortcut icon" href="{{ asset('image/src/Logo.png') }}" type="image/x-icon">
+     <link rel="shortcut icon" href="{{ asset('dist/img/AdminLTELogo.png') }}" type="image/x-icon">
      <title>BDS - @yield('title')</title>
-     @include('components.head-import')
      @yield('head-import')
+     @include('components.head-import')
 </head>
 
-<body class="sidebar-mini layout-fixed">
+<body class="sidebar-mini layout-fixed pace-success">
      @yield('main')
-     @yield('js-import')
      @include('components.js-import')
+     @yield('js-import')
 </body>
 
 </html>

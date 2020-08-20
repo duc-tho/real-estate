@@ -28,8 +28,10 @@ class Post extends Model
           'Description',
           'Price',
           'Status',
-          'Slug'
+          'Slug',
+          'Type'
      ];
+
      public function Category()
      {
           return $this->hasMany('App\Category', 'CategoryId', 'CategoryId');

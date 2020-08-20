@@ -10,4 +10,3 @@
 <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 {{-- Dist --}}
-<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
