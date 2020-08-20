@@ -11,6 +11,11 @@ class AdminCityController extends Controller
           return view('admin.admin', ['page' => 'city']);
      }
 
+     public function getAdd()
+     {
+          return view('admin.admin', ['page' => 'city_detail']);
+     }
+
      public function postAdd()
      {
           return "Post Add City";
@@ -18,7 +23,7 @@ class AdminCityController extends Controller
 
      public function getEdit()
      {
-          return "Get Edit City";
+          return view('admin.admin', ['page' => 'city_detail']);
      }
 
      public function putEdit()
