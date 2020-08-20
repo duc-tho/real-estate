@@ -80,7 +80,7 @@ Route::prefix('admin')->group(function () {
 
           Route::post('/add', 'AdminPostController@postAdd')->name('adminPostPostAdd');
 
-          Route::get('/edit/{id}/', 'AdminPostController@getEdit')
+          Route::get('/edit', 'AdminPostController@getEdit')
                ->name('adminPostGetEdit')
                ->where(['id' => '[0-9]+']);
 
@@ -102,7 +102,7 @@ Route::prefix('admin')->group(function () {
 
           Route::post('/add', 'AdminProjectController@postAdd')->name('adminProjectPostAdd');
 
-          Route::get('/edit/{id}/', 'AdminProjectController@getEdit')
+          Route::get('/edit', 'AdminProjectController@getEdit')
                ->name('adminProjectGetEdit')
                ->where(['id' => '[0-9]+']);
 
@@ -146,7 +146,7 @@ Route::prefix('admin')->group(function () {
 
           Route::post('/add', 'AdminCityController@postAdd')->name('adminCityPostAdd');
 
-          Route::get('/edit/{id}', 'AdminCityController@getEdit')
+          Route::get('/edit', 'AdminCityController@getEdit')
                ->name('adminCityGetEdit')
                ->where(['id' => '[0-9]+']);
 
@@ -230,7 +230,7 @@ Route::prefix('admin')->group(function () {
 
           Route::post('/add', 'AdminUserController@postAdd')->name('adminUserPostAdd');
 
-          Route::get('/edit/{id}', 'AdminUserController@getEdit')
+          Route::get('/edit', 'AdminUserController@getEdit')
                ->name('adminUserGetEdit')
                ->where(['id' => '[0-9]+']);
 
