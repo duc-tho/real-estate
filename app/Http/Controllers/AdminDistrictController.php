@@ -8,12 +8,12 @@ class AdminDistrictController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'district']);
+          return view('admin.admin', ['page' => 'indexdistrict']);
      }
 
      public function getAdd()
      {
-          return 'getAdddistrict';
+          return view('admin.admin', ['page' => 'detaildistrict']);
      }
 
      public function postAdd()
@@ -23,8 +23,7 @@ class AdminDistrictController extends Controller
 
      public function getEdit()
      {
-
-          return 'getEditdistrict';
+          return view('admin.admin', ['page' => 'detaileditdistrict']);
      }
 
      public function putEdit()
