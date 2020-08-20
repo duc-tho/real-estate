@@ -4,40 +4,40 @@
           <!-- small box -->
           <div class="small-box bg-info">
                <div class="inner">
-                    <h3>150</h3>
+                    <h3>15</h3>
 
-                    <p>New Orders</p>
+                    <p>Dự Án</p>
                </div>
                <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="ion ion-briefcase"></i>
                </div>
-               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+               <a href="{{ route('adminProject') }}" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
      </div>
      <div class="col-lg-3 col-6">
           <div class="small-box bg-success">
                <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>53</h3>
 
-                    <p>Bounce Rate</p>
+                    <p>Bất Động Sản</p>
                </div>
                <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                </div>
-               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+               <a href="{{ route('adminPost') }}" class="small-box-footer">Chi Tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
      </div>
      <div class="col-lg-3 col-6">
-          <div class="small-box bg-warning">
+          <div class="small-box bg-secondary">
                <div class="inner">
                     <h3>44</h3>
 
-                    <p>User Registrations</p>
+                    <p>Người Dùng</p>
                </div>
                <div class="icon">
                     <i class="ion ion-person-add"></i>
                </div>
-               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+               <a href="{{ route('adminUser') }}" class="small-box-footer">Chi Tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
      </div>
      <div class="col-lg-3 col-6">
@@ -45,12 +45,12 @@
                <div class="inner">
                     <h3>65</h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Danh Mục</p>
                </div>
                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="ion ion-pie-copy"></i>
                </div>
-               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+               <a href="{{ route('adminCategory') }}" class="small-box-footer">Chi Tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
      </div>
 </div>

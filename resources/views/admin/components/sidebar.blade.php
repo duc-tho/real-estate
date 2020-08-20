@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="index3.html" class="brand-link">
-          <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Admin Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">BDS Admin</span>
      </a>
 
@@ -22,34 +22,34 @@
                     <li class="nav-header">Quản Lý</li>
                     <li class="nav-item">
                          <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-copy"></i>
+                              <i class="nav-icon fas fa-map-signs"></i>
                               <p>
                                    Khu Vực
-                                   <i class="fas fa-angle-left right"></i>
+                                   <i class="fas fa-chevron-circle-right right"></i>
                               </p>
                          </a>
                          <ul class="nav nav-treeview">
                               <li class="nav-item">
                                    <a href="{{ route('adminCity') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Thành Phố</p>
                                    </a>
                               </li>
                               <li class="nav-item">
                                    <a href="{{ route('adminDistrict') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Quận / Huyện</p>
                                    </a>
                               </li>
                               <li class="nav-item">
                                    <a href="{{ route('adminArea') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Phường / Xã</p>
                                    </a>
                               </li>
                               <li class="nav-item">
                                    <a href="{{ route('adminStreet') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Đường</p>
                                    </a>
                               </li>
@@ -57,7 +57,7 @@
                     </li>
                     <li class="nav-item">
                          <a href="{{ route('adminCategory') }}" class="nav-link">
-                              <i class="nav-icon fas fa-chart-pie"></i>
+                              <i class="nav-icon fas fa-stream"></i>
                               <p>
                                    Danh mục
                               </p>
@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item">
                          <a href="{{ route('adminPost') }}" class="nav-link">
-                              <i class="nav-icon fas fa-chart-pie"></i>
+                              <i class="nav-icon fas fa-hotel"></i>
                               <p>
                                    Bất Động Sản
                               </p>
@@ -73,7 +73,7 @@
                     </li>
                     <li class="nav-item">
                          <a href="{{ route('adminProject') }}" class="nav-link">
-                              <i class="nav-icon fas fa-chart-pie"></i>
+                              <i class="nav-icon fas fa-project-diagram"></i>
                               <p>
                                    Dự Án
                               </p>
@@ -81,7 +81,7 @@
                     </li>
                     <li class="nav-item">
                          <a href="{{ route('adminUser') }}" class="nav-link">
-                              <i class="nav-icon fas fa-chart-pie"></i>
+                              <i class="nav-icon fas fa-user-friends"></i>
                               <p>
                                    Người Dùng
                               </p>
