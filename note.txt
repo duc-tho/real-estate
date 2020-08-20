@@ -2,7 +2,7 @@
  *
  * /home
  *
- * /project          Method: GET    --> Lấy giao dien, danh sach project  --> ProjectController@index
+ * /project          Method: GET    --> Lấy giao dien, danh sach project  --> ProjecxtController@index
  * /project/{id}     Method: GET    --> Chi tiết dự án                    --> ProjectController@detailProject
  *
  * /post                                    Method: GET     --> Lấy giao dien, danh sach BDS      --> PostController@index

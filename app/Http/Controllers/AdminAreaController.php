@@ -8,12 +8,12 @@ class AdminAreaController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'area']);
+          return view('admin.admin', ['page' => 'indexarea']);
      }
 
      public function getAdd()
      {
-          return 'getAddarea';
+          return view('admin.admin', ['page' => 'detailarea']);
      }
 
      public function postAdd()
@@ -23,8 +23,7 @@ class AdminAreaController extends Controller
 
      public function getEdit()
      {
-
-          return 'getEditarea';
+          return view('admin.admin', ['page' => 'detaileditarea']);
      }
 
      public function putEdit()

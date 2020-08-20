@@ -8,7 +8,12 @@ class AdminCategoryController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'category']);
+          return view('admin.admin', ['page' => 'indexcategory']);
+     }
+
+     public function getAdd()
+     {
+          return view('admin.admin', ['page' => 'detailcategory']);
      }
 
      public function postAdd()
@@ -18,12 +23,12 @@ class AdminCategoryController extends Controller
 
      public function getEdit()
      {
-          return "Get Edit Category";
+          return view('admin.admin', ['page' => 'detaileditcategory']);
      }
 
      public function putEdit()
      {
-          return "Put Edit Category";
+          return 'put edit';
      }
 
      public function delete()

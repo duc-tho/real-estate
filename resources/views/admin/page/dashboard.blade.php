@@ -18,7 +18,6 @@
           <div class="small-box bg-success">
                <div class="inner">
                     <h3>53</h3>
-
                     <p>Bất Động Sản</p>
                </div>
                <div class="icon">

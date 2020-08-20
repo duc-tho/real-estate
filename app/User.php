@@ -29,6 +29,7 @@ class User extends Model
           'Status',
           'Type'
      ];
+
      public function posts()
      {
           return $this->hasMany('App\Post', 'UserId', 'UserId');
