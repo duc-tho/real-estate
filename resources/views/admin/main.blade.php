@@ -12,14 +12,11 @@
                @switch($page ?? '')
 
                {{-- Start Case Area --}}
-               @case('indexarea')
-               @include('admin.page.area.indexarea')
+               @case('area.index')
+               @include('admin.page.area.index')
                @break
-               @case('detailarea')
-               @include('admin.page.area.detailarea')
-               @break
-               @case('detaileditarea')
-               @include('admin.page.area.editarea')
+               @case('area.detail')
+               @include('admin.page.area.detail')
                @break
                {{-- End Case Area --}}
 
