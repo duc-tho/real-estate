@@ -1,11 +1,14 @@
 <div class="container">
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <h1>Chi Tiết Dự Án</h1>
         </div>
     </div>
-    <div class="row">
-        <form action={{ route('adminProjectPostAdd') }} method="post">
+    <div class="row"> --}}
+        
+    <a class="btn btn-primary" href="#">Lưu</a>
+    <a href="{{route('adminProject')}}" class="btn btn-danger">Hủy bỏ</a>
+        {{-- <form action={{ route('adminProjectPostAdd') }} method="post">
                 <div class="form-group">
                     <label for="name">Tên Dự Án</label>
                     <input type="text" class="form-control" name="name">
@@ -55,6 +58,6 @@
             <button type="submit" class="btn btn-primary">Save</button>
             {{ csrf_field() }}
           </form>
-          
-    </div>
+           --}}
+    {{-- </div> --}}
 </div>

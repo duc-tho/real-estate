@@ -13,7 +13,7 @@ class AdminPostController extends Controller
 
      public function getAdd()
      {
-          return view('admin.admin', ['page' => 'post_detail']);
+          return view('admin.admin', ['page' => 'post.detail']);
      }
 
      public function postAdd()
@@ -23,7 +23,7 @@ class AdminPostController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin', ['page' => 'post_detail']);
+          return view('admin.admin', ['page' => 'post.detail']);
      }
 
      public function putEdit()

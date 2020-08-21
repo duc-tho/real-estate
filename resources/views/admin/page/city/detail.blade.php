@@ -1,1 +1,2 @@
-<h1>Thêm/ Sửa Thành Phố</h1>
+<a class="btn btn-primary" href="#">Lưu</a>
+<a href="{{route('adminCity')}}" class="btn btn-danger">Hủy bỏ</a>

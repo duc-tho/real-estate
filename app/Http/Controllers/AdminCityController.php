@@ -13,7 +13,7 @@ class AdminCityController extends Controller
 
      public function getAdd()
      {
-          return view('admin.admin', ['page' => 'city_detail']);
+          return view('admin.admin', ['page' => 'city.detail']);
      }
 
      public function postAdd()
@@ -23,7 +23,7 @@ class AdminCityController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin', ['page' => 'city_detail']);
+          return view('admin.admin', ['page' => 'city.detail']);
      }
 
      public function putEdit()
