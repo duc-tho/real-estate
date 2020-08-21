@@ -14,7 +14,7 @@ class AdminProjectController extends Controller
      {
           return view('admin.admin', [
                'page' => 'project',
-               'page_title'=>'Quản Lý Dự Án',
+               'page_title' => 'Quản Lý Dự Án'
           ]);
      }
 

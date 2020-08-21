@@ -15,50 +15,38 @@
                @break
 
                {{-- Start Case Area --}}
-               @case('indexarea')
-               @include('admin.page.area.indexarea')
+               @case('area.index')
+               @include('admin.page.area.index')
                @break
-               @case('detailarea')
-               @include('admin.page.area.detailarea')
-               @break
-               @case('detaileditarea')
-               @include('admin.page.area.editarea')
+               @case('area.detail')
+               @include('admin.page.area.detail')
                @break
                {{-- End Case Area --}}
 
                {{-- Start Case District --}}
-               @case('indexdistrict')
-               @include('admin.page.district.indexdistrict')
+               @case('district.index')
+               @include('admin.page.district.index')
                @break
-               @case('detaildistrict')
-               @include('admin.page.district.detaildistrict')
-               @break
-               @case('detaileditdistrict')
-               @include('admin.page.district.editdistrict')
+               @case('district.detail')
+               @include('admin.page.district.detail')
                @break
                {{-- End Case District --}}
 
                {{-- Start Case street --}}
-               @case('indexstreet')
-               @include('admin.page.street.indexstreet')
+               @case('street.index')
+               @include('admin.page.street.index')
                @break
-               @case('detailstreet')
-               @include('admin.page.street.detailstreet')
-               @break
-               @case('detaileditstreet')
-               @include('admin.page.street.editstreet')
+               @case('street.detail')
+               @include('admin.page.street.detail')
                @break
                {{-- End Case street --}}
 
                {{-- Start Case Category --}}
-               @case('indexcategory')
+               @case('category.index')
                @include('admin.page.category.index')
                @break
-               @case('detailcategory')
-               @include('admin.page.category.detailcategory')
-               @break
-               @case('detaileditcategory')
-               @include('admin.page.category.editcategory')
+               @case('category.detail')
+               @include('admin.page.category.detail')
                @break
                {{-- End Case Category --}}
 

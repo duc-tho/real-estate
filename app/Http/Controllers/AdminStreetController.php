@@ -8,12 +8,18 @@ class AdminStreetController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'indexstreet']);
+          return view('admin.admin', [
+               'page' => 'street.index',
+               'page_title' => 'Quản Lý Đường'
+          ]);
      }
 
      public function getAdd()
      {
-          return view('admin.admin',['page'=>'detailstreet']);
+          return view('admin.admin',[
+               'page'=>'street.detail',
+               'page_title' => 'Chi Tiết Đường'
+          ]);
      }
 
      public function postAdd()
@@ -23,7 +29,10 @@ class AdminStreetController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin',['page'=>'detaileditstreet']);
+          return view('admin.admin',[
+               'page'=>'street.detail',
+               'page_title' => 'Chi Tiết Đường'
+          ]);
      }
 
      public function putEdit()

@@ -8,12 +8,18 @@ class AdminAreaController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'indexarea']);
+          return view('admin.admin', [
+               'page' => 'area.index',
+               'page_title' => 'Quản Lý Phường / Xã'
+          ]);
      }
 
      public function getAdd()
      {
-          return view('admin.admin', ['page' => 'detailarea']);
+          return view('admin.admin', [
+               'page' => 'area.detail',
+               'page_title' => 'Chi Tiết Phường / Xã'
+          ]);
      }
 
      public function postAdd()
@@ -23,7 +29,10 @@ class AdminAreaController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin', ['page' => 'detaileditarea']);
+          return view('admin.admin', [
+               'page' => 'area.detail',
+               'page_title' => 'Chi Tiết Phường / Xã'
+          ]);
      }
 
      public function putEdit()
