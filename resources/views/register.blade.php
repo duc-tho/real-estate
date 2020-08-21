@@ -77,7 +77,7 @@
                                         </div>
 
                                         <div class="col-lg-12">
-                                             <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span> Đăng Nhập</span></button>
+                                             <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span> Đăng Ký</span></button>
                                         </div>
                                    </div>
                               </form>
