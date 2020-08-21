@@ -20,7 +20,7 @@ class AdminProjectController extends Controller
 
      public function getAdd()
      {
-          return view('admin.admin', ['page' => 'project_detail']);
+          return view('admin.admin', ['page' => 'project.detail']);
      }
 
      public function postAdd(Request $req)
@@ -45,7 +45,7 @@ class AdminProjectController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin', ['page' => 'project_detail']);
+          return view('admin.admin', ['page' => 'project.detail']);
      }
 
      public function putEdit()

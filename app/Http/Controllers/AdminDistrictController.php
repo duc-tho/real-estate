@@ -8,12 +8,18 @@ class AdminDistrictController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'indexdistrict']);
+          return view('admin.admin', [
+               'page' => 'district.index',
+               'page_title' => 'Quản Lý Quận / Huyện'
+          ]);
      }
 
      public function getAdd()
      {
-          return view('admin.admin', ['page' => 'detaildistrict']);
+          return view('admin.admin', [
+               'page' => 'district.detail',
+               'page_title' => 'Chi Tiết Quận / Huyện'
+          ]);
      }
 
      public function postAdd()
@@ -23,7 +29,10 @@ class AdminDistrictController extends Controller
 
      public function getEdit()
      {
-          return view('admin.admin', ['page' => 'detaileditdistrict']);
+          return view('admin.admin', [
+               'page' => 'district.detail',
+               'page_title' => 'Chi Tiết Quận / Huyện'
+          ]);
      }
 
      public function putEdit()

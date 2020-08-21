@@ -31,8 +31,6 @@ class RegisterController extends Controller
                     'Gender' => 'required',
                     'Username' => 'required',
                ]);
-
-
                return redirect()->route('registerView')->withInput();
           }
 
@@ -46,7 +44,6 @@ class RegisterController extends Controller
           } catch (\Throwable $th) {
                return redirect()->route('registerView')->withInput()->with(['msg' => 'Email đã tồn tại']);
           }
-
           return redirect()->route('login')->with(['msg' => 'Đăng Ký Thành Công!']);
      }
 }
