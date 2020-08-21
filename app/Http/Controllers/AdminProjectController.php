@@ -12,7 +12,10 @@ class AdminProjectController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'project']);
+          return view('admin.admin', [
+               'page' => 'project',
+               'page_title'=>'Quản Lý Dự Án',
+          ]);
      }
 
      public function getAdd()

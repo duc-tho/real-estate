@@ -3,21 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-     public function login()
+     public function authenticate(Request $req)
      {
-          return view('auth/login');
+          if (Auth::attempt(['email' => $req->input('Email'), 'password' => $req->input('Password')])) {
+               return redirect()->route('home');
+          } else {
+               return redirect()->route('login')->withInput()->with(['errMsg' => 'Sai tên tài khoản hoặc mật khẩu!']);
+          }
      }
 
-     public function authenticate()
+     public function login()
      {
-          return 'authenticate';
+          return view('login');
      }
 
      public function logout()
      {
-          return 'logout';
+          Auth::logout();
+          return redirect()->route('home');
      }
 }

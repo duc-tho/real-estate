@@ -1,36 +1,41 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+
+class User extends Authenticatable
 {
+     use Notifiable;
+
      protected $table = 'User';
      protected $primaryKey = 'UserId';
      protected $guarded = [];
      protected $fillable = [
-          'StreetId',
-          'UserId',
-          'CategoryId',
-          'ProjectId',
-          'Title',
-          'ApartmentNumber',
-          'Street',
-          'Direction',
-          'Bedroom',
-          'Bathroom',
-          'Width',
-          'Length',
-          'Floor',
-          'Image',
-          'Description',
-          'Price',
-          'Status',
-          'Type'
+          'RoleId',
+          'Email',
+          'PhoneNumber',
+          'FirstName',
+          'LastName',
+          'Gender',
+          'Birthday',
+          'Username',
+          'Password',
+          'ProfileImage',
+          'Status'
      ];
+
      public function posts()
      {
           return $this->hasMany('App\Post', 'UserId', 'UserId');
+     }
+
+
+     public function getAuthPassword()
+     {
+          return $this->Password;
      }
 }
