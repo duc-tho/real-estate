@@ -150,7 +150,7 @@ Route::prefix('admin')->group(function () {
                ->name('adminCityGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminCityController@putEdit')
+          Route::put('/edit', 'AdminCityController@putEdit')
                ->name('adminCityPutEdit')
                ->where(['id' => '[0-9]+']);
 

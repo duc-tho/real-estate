@@ -1,3 +1,2 @@
-<div>
-     <h1>Thêm Người Dùng</h1>
-</div>
+<a class="btn btn-primary" href="#">Lưu</a>
+<a href="{{route('adminUser')}}" class="btn btn-danger">Hủy bỏ</a>

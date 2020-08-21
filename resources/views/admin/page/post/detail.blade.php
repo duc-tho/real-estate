@@ -1,1 +1,2 @@
-<h1>Thêm/ Sửa Bài Đăng</h1>
+<a class="btn btn-primary" href="#">Lưu</a>
+<a href="{{route('adminPost')}}" class="btn btn-danger">Hủy bỏ</a>

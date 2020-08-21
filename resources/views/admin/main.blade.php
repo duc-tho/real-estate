@@ -10,9 +10,6 @@
      <section class="content">
           <div class="container-fluid">
                @switch($page ?? '')
-               @case('city')
-               @include('admin.page.city')
-               @break
 
                {{-- Start Case Area --}}
                @case('area.index')
@@ -51,54 +48,42 @@
                {{-- End Case Category --}}
 
                @case('post')
-               @include('admin.page.post')
-               @break
-
-               @case('project')
-               @include('admin.page.project')
-               @break
-
-               @case('user')
-               @include('admin.page.user')
-               @break
-               @include('admin.page.dashboard')
-               @case('city')
-               @include('admin.page.city.index')
-               @break
-               @case('city_detail')
-               @include('admin.page.city.detail')
-               @break
-               @case('area')
-               @include('admin.page.area')
-               @break
-               @case('district')
-               @include('admin.page.district')
-               @break
-               @case('street')
-               @include('admin.page.street')
-               @break
-               @case('category')
-               @include('admin.page.category')
-               @break
-               @case('post')
                @include('admin.page.post.index')
-               @break
-               @case('post_detail')
-               @include('admin.page.post.detail')
                @break
                @case('project')
                @include('admin.page.project.index')
                @break
-               @case('project_detail')
+
+               {{-- start city --}}
+               @case('city')
+               @include('admin.page.city.index')
+               @break
+               @case('city.detail')
+               @include('admin.page.city.detail')
+               @break
+               {{-- start post --}}
+               @case('post')
+               @include('admin.page.post.index')
+               @break
+               @case('post.detail')
+               @include('admin.page.post.detail')
+               @break
+               {{-- start project --}}
+               @case('project')
+               @include('admin.page.project.index')
+               @break
+               @case('project.detail')
                @include('admin.page.project.detail')
                @break
+               {{-- start user --}}
                @case('user')
                @include('admin.page.user.index')
                @break
-               @case('user_detail')
+               @case('user.detail')
                @include('admin.page.user.detail')
                @break
                @default
+
                @include('admin.page.dashboard')
                @endswitch
           </div>
