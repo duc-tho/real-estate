@@ -60,13 +60,26 @@ class AdminCategoryController extends Controller
           ]);
      }
 
-     public function putEdit()
+     public function putEdit(Request $req, $id)
      {
-          return 'put edit';
+          if (!$req->filled(['Name', 'Slug', 'ParentId'])) {
+               return redirect()->route('adminCategorysGetEdit', ['id' => $id])->withInput()->with([
+                    'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
+               ]);
+          }
+
+          $categorys = Category::find($id);
+          $categorys->Name = $req->input('Name');
+          $categorys->Slug = $req->input('Slug');
+          $categorys->ParentId = $req->input('ParentId');
+          $categorys->save();
+
+          return redirect()->route("adminCategory");
      }
 
-     public function delete()
+     public function delete($id)
      {
-          return "Delete Category";
+          Category::destroy($id);
+          return redirect()->route("adminCategory");
      }
 }

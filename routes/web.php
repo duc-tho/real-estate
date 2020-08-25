@@ -128,7 +128,7 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
                ->name('adminCategoryGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit', 'AdminCategoryController@putEdit')
+          Route::put('/edit/{id}', 'AdminCategoryController@putEdit')
                ->name('adminCategoryPutEdit')
                ->where(['id' => '[0-9]+']);
 

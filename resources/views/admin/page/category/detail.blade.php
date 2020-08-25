@@ -1,4 +1,4 @@
-<form action="{{ Request::is('admin/category/add') ? route('adminCategoryPostAdd') : route('adminCategoryPutEdit') }}" method="post">
+<form action="{{ Request::is('admin/category/add') ? route('adminCategoryPostAdd') : route('adminCategoryPutEdit', $data['category_info']->CategoryId) }}" method="post">
      @csrf
 
      @if (Request::is('admin/category/add'))
@@ -9,8 +9,8 @@
 
      <div class="card">
           <div class="card-header">
-               <input class="btn btn-success" type="submit" value="Lưu">
-               <a href="{{route('adminCategory')}}" class="btn btn-danger">Hủy bỏ</a>
+               <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Lưu</button>
+               <a href="{{route('adminCategory')}}" class="btn btn-danger"><i class="fas fa-window-close"></i> Hủy bỏ</a>
           </div>
           <div class="card-body">
                <div class="form-group d-flex">
@@ -20,6 +20,9 @@
                               <option value="0">Không thuộc danh mục nào</option>
                               @isset($data['category_list'])
                               @foreach ($data['category_list'] as $item)
+                              @if ($item->CategoryId === ($data['category_info']->CategoryId ?? ''))
+                              @continue
+                              @endif
                               <option value="{{ $item->CategoryId }}" {{ $item->CategoryId === ($data['category_info']->ParentId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
                               @endforeach
                               @endisset
@@ -45,8 +48,6 @@
 <script>
      let name = document.getElementById('Name');
      let slug = document.getElementById('Slug');
-     let convertToSlug = () => slug.value = name.value.trim().replace(/\s+/g, '-');
-
-     convertToSlug();
-     name.addEventListener('input', convertToSlug);
+     slug.value = convertToSlug(name.value);
+     name.addEventListener('input', () => slug.value = convertToSlug(name.value));
 </script>
