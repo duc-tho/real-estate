@@ -20,38 +20,16 @@
                     </tr>
                </thead>
                <tbody>
+                    @foreach ($data['street_list'] as $item)
                     <tr>
-                         <td>1</td>
-                         <td>Chung cư</td>
-                         <td>Hồ Chí Minh</td>
-                         <td>Kiên</td>
-                         <td>2</td>
-                         <td>10</td>
-                         <td>15</td>
-                         <td>img</td>
-                         <td>pen housse</td>
-                         <td>10000</td>
+                         <td>{{ $item->StreetId }}</td>
+                         <td>{{ $item->Name }}</td>
                          <td>
-                              <a href="{{route('adminPostGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminPostDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <a href="{{ route('adminCategoryGetEdit', $item->CategoryId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{ route('adminCategoryDelete', $item->CategoryId) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
                          </td>
                     </tr>
-                    <tr>
-                         <td>2</td>
-                         <td>fsasa</td>
-                         <td>adadas</td>
-                         <td>ádas</td>
-                         <td>adsad</td>
-                         <td>ádsadasd</td>
-                         <td>đấád</td>
-                         <td>adssadsa</td>
-                         <td>đâsđ</td>
-                         <td>đasad</td>
-                         <td>
-                              <a href="{{route('adminProjectGetEdit', 2)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminProjectDelete', 2)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
-                         </td>
-                    </tr>
+                    @endforeach
                </tbody>
                <tfoot>
                     <tr>
