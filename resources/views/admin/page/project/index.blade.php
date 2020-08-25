@@ -1,81 +1,93 @@
-<div class="container">
-     <div class="row">
-          <div class="col-12">
-               <h1 class="text-primary"><span class="badge badge-primary">Danh Sách Dự Án</span></h1>
-          </div>
+<div class="card">
+     <div class="card-header">
+          <a href="{{route('adminProjectGetAdd')}}" class="btn btn-primary">Thêm Bài Đắng</a>
      </div>
-     {{-- <div class="row">
-        <div class="col-6">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  Địa Chỉ
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  Chủ Đầu Tư
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                    <a class="dropdown-item" href="#">Thành Phố 1</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-     <div class="row">
-          <div class="col-12">
-               <table class="table">
-                    <thead class="thead">
-                         <tr>
-                              <th>Tên Dự Án</th>
-                              <th>Chủ Đầu Tư</th>
-                              <th>Địa Chỉ</th>
-                              <th>Số Tòa</th>
-                              <th>Số Tầng</th>
-                              <th>Ảnh</th>
-                              <th>Năm Xây Dựng</th>
-                              <th>Mô tả</th>
-                              <th></th>
-                              <th></th>
-                         </tr>
-                    </thead>
-                    <tbody>
-                         <tr class="table-primary">
-                              <td>12356</td>
-                              <td>1234</td>
-                              <td>12345</td>
-                              <td>12345</td>
-                              <td>12345</td>
-                              <td>12345</td>
-                              <td>12345</td>
-                              <td>12345</td>
-                              <td>
-                                   <button type="button" class="btn btn-primary btn-sm">Sửa</button>
-                              </td>
-                              <td>
-                                   <button type="button" class="btn btn-primary btn-sm">Xóa</button>
-                              </td>
-                         </tr>
-                    </tbody>
-               </table>
-               <div class="row">
-                    <div class="col-6">
-                         <a href={{ route('adminProjectGetAdd') }}>
-                              <button type="button" class="btn btn-primary btn-lg">Thêm Dự Án</button>
-                         </a>
-                         <a href={{ route('adminProjectGetEdit', 2) }}>
-                              <button type="button" class="btn btn-primary btn-lg">Sửa</button>
-                         </a>
-                    </div>
-               </div>
-          </div>
+     <div class="card-body">
+          <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+               <thead>
+                    <tr>
+                         <th>Mã Dự Án</th>
+                         <th>Tên</th>
+                         <th>Địa Chỉ</th>
+                         <th>Chủ Đâu Tư</th>
+                         <th>Số Block</th>
+                         <th>Số Floor</th>
+                         <th>Năm Xây Dựng</th>
+                         <th>Ảnh</th>
+                         <th>Mô tả</th>
+                         <th>Giá</th>
+                         <th></th>
+                    </tr>
+               </thead>
+               <tbody>
+                    <tr>
+                         <td>1</td>
+                         <td>Chung cư</td>
+                         <td>Hồ Chí Minh</td>
+                         <td>Kiên</td>
+                         <td>2</td>
+                         <td>10</td>
+                         <td>15</td>
+                         <td>img</td>
+                         <td>pen housse</td>
+                         <td>10000</td>
+                         <td>
+                              <a href="{{route('adminPostGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{route('adminPostDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                         </td>
+                    </tr>
+                    <tr>
+                         <td>2</td>
+                         <td>fsasa</td>
+                         <td>adadas</td>
+                         <td>ádas</td>
+                         <td>adsad</td>
+                         <td>ádsadasd</td>
+                         <td>đấád</td>
+                         <td>adssadsa</td>
+                         <td>đâsđ</td>
+                         <td>đasad</td>
+                         <td>
+                              <a href="{{route('adminProjectGetEdit', 2)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{route('adminProjectDelete', 2)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                         </td>
+                    </tr>
+               </tbody>
+               <tfoot>
+                    <tr>
+                         <th>Mã Dự Án</th>
+                         <th>Tên</th>
+                         <th>Địa Chỉ</th>
+                         <th>Chủ Đâu Tư</th>
+                         <th>Số Block</th>
+                         <th>Số Floor</th>
+                         <th>Năm Xây Dựng</th>
+                         <th>Ảnh</th>
+                         <th>Mô tả</th>
+                         <th>Giá</th>
+                         <th></th>
+                    </tr>
+               </tfoot>
+          </table>
      </div>
 </div>
+
+<script>
+     $("#dataTable").DataTable({
+         "responsive": true,
+         "autoWidth": true,
+         "columns": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              { "width": "20%" }
+              ]
+    });
+</script>

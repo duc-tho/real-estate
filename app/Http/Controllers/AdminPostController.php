@@ -8,7 +8,10 @@ class AdminPostController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'post']);
+          return view('admin.admin', [
+               'page' => 'post',
+               'page_title' => 'Quản Lý Bài Đăng'
+          ]);
      }
 
      public function getAdd()

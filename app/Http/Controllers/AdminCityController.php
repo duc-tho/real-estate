@@ -8,7 +8,10 @@ class AdminCityController extends Controller
 {
      public function index()
      {
-          return view('admin.admin', ['page' => 'city']);
+          return view('admin.admin', [
+               'page' => 'city',
+               'page_title' => 'Quản Lý Thành Phố'
+          ]);
      }
 
      public function getAdd()
