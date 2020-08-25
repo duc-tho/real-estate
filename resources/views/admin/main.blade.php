@@ -82,8 +82,10 @@
                @case('user.detail')
                @include('admin.page.user.detail')
                @break
+               @case('dashboard')
+               @include('admin.page.dashboard')
+               @break
                @default
-
                @include('admin.page.dashboard')
                @endswitch
           </div>

@@ -68,7 +68,7 @@ Route::group(['prefix' => 'auth'], function () {
      Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
      Route::get('/', 'AdminController@index')->name('admin');
 

@@ -1,3 +1,5 @@
+{{-- CDN --}}
+
 {{-- Plugins --}}
 {{-- <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script> --}}
 {{-- <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script> --}}
