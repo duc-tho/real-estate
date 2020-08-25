@@ -7,33 +7,33 @@
                <thead>
                     <tr>
                          <th>Mã Phường/Xã</th>
-                         <th>Tên</th>
-                         <th></th>
+                         <th>Tên Phường/Xã</th>
+                         <th>Mã Quận/Huyện</th>
+                       
+                         <th>Tùy Chỉnh</th>
                     </tr>
                </thead>
                <tbody>
+                    @foreach ($arealist as $area)
                     <tr>
-                         <td>1</td>
-                         <td>P25</td>
+                         <td>{{$area->AreaId}}</td>
+                         <td>{{$area->Name}}</td>
+                         <td>{{$area->DistrictId}}</td>
+                        
                          <td>
-                              <a href="{{route('adminAreaGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminAreaDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <a href="{{asset('admin/area/edit/'.$area->AreaId)}}" class="btn btn-warning"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Sửa</a>
+                              <a onclick="return confirm('Bạn có chắc chắn muốn xóa !')" href="{{asset('admin/area/delete/'.$area->AreaId)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>   
                          </td>
                     </tr>
-                    <tr>
-                         <td>2</td>
-                         <td>P27</td>
-                         <td>
-                              <a href="{{route('adminAreaGetEdit', 2)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminAreaDelete', 2)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
-                         </td>
-                    </tr>
+               @endforeach
                </tbody>
                <tfoot>
                     <tr>
                          <th>Mã Phường/Xã</th>
-                         <th>Tên</th>
-                         <th></th>
+                         <th>Tên Phường/Xã</th>
+                         <th>Mã Quận/Huyện</th>
+                         
+                         <th>Tùy Chỉnh</th>
                     </tr>
                </tfoot>
           </table>
@@ -47,6 +47,8 @@
           "columns": [
                null,
                null,
+               null,
+             
                { "width": "20%" }
                ]
      });

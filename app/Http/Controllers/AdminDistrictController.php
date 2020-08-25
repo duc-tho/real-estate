@@ -2,46 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
+use Illuminate\Support\Str;
+use App\Http\Requests\AddDistrictRequest;
+use App\Http\Requests\EditDistrictRequest;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class AdminDistrictController extends Controller
 {
      public function index()
      {
+          $data['districtlist'] = District::all();
           return view('admin.admin', [
                'page' => 'district.index',
                'page_title' => 'Quản Lý Quận / Huyện'
-          ]);
+          ],$data);
      }
 
      public function getAdd()
      {
+          $data['citylist'] = City::all();
           return view('admin.admin', [
                'page' => 'district.detail',
                'page_title' => 'Chi Tiết Quận / Huyện'
-          ]);
+          ],$data);
      }
 
-     public function postAdd()
+     public function postAdd(AddDistrictRequest $request)
      {
-          return 'postAdddistrict';
+        $district = new District();
+        $district->Name = $request->name;
+        $district->Status = $request->status;
+        $district->Slug = str::slug($request->slug);
+        $district->CityId = $request->city;
+        $district->save();
+        return back();
      }
 
-     public function getEdit()
+     public function getEdit($id)
      {
+          $data['district'] = District::find($id);
+          $data['listcity'] = City::all();
           return view('admin.admin', [
-               'page' => 'district.detail',
+               'page' => 'district.edit',
                'page_title' => 'Chi Tiết Quận / Huyện'
-          ]);
+          ],$data);
      }
 
-     public function putEdit()
+     public function putEdit(EditDistrictRequest $request,$id)
      {
-          return 'putEditdistrict';
+          $district = new District();
+          $arr['Name'] = $request->name;
+          $arr['Status'] = $request->status;
+          $arr['CityId'] = $request->city;
+          $arr['Slug'] = str::slug($request->slug);
+          $district::where('DistrictId',$id)->update($arr);
+          return redirect('admin/district');
      }
 
-     public function delete()
+     public function delete($id)
      {
-          return 'deletedistrict';
+          District::destroy($id);
+          return back();
      }
 }

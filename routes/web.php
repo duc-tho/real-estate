@@ -146,15 +146,15 @@ Route::prefix('admin')->group(function () {
 
           Route::post('/add', 'AdminCityController@postAdd')->name('adminCityPostAdd');
 
-          Route::get('/edit', 'AdminCityController@getEdit')
+          Route::get('/edit/{id}', 'AdminCityController@getEdit')
                ->name('adminCityGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit', 'AdminCityController@putEdit')
+          Route::post('/edit/{id}', 'AdminCityController@putEdit')
                ->name('adminCityPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminCityController@delete')
+          Route::get('/delete/{id}', 'AdminCityController@delete')
                ->name('adminCityDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -171,11 +171,11 @@ Route::prefix('admin')->group(function () {
                ->name('adminDistrictGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminDistrictController@putEdit')
+          Route::post('/edit/{id}', 'AdminDistrictController@putEdit')
                ->name('adminDistrictPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminDistrictController@delete')
+          Route::get('/delete/{id}', 'AdminDistrictController@delete')
                ->name('adminDistrictDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -192,11 +192,11 @@ Route::prefix('admin')->group(function () {
                ->name('adminAreaGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminAreaController@putEdit')
+          Route::post('/edit/{id}', 'AdminAreaController@putEdit')
                ->name('adminAreaPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminAreaController@delete')
+          Route::get('/delete/{id}', 'AdminAreaController@delete')
                ->name('adminAreaDelete')
                ->where(['id' => '[0-9]+']);
      });

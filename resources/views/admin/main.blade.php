@@ -1,5 +1,4 @@
 @include('admin.components.navbar')
-
 @include('admin.components.sidebar')
 
 
@@ -18,6 +17,9 @@
                @case('area.detail')
                @include('admin.page.area.detail')
                @break
+               @case('area.edit')
+               @include('admin.page.area.edit')
+               @break
                {{-- End Case Area --}}
 
                {{-- Start Case District --}}
@@ -26,6 +28,9 @@
                @break
                @case('district.detail')
                @include('admin.page.district.detail')
+               @break
+               @case('district.edit')
+               @include('admin.page.district.edit')
                @break
                {{-- End Case District --}}
 
@@ -60,6 +65,9 @@
                @break
                @case('city.detail')
                @include('admin.page.city.detail')
+               @break
+               @case('city.edit')
+               @include('admin.page.city.edit')
                @break
                {{-- start post --}}
                @case('post')
