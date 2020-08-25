@@ -13,24 +13,17 @@
                     </tr>
                </thead>
                <tbody>
+                    @foreach ($data['street_list'] as $item)
                     <tr>
-                         <td>1</td>
-                         <td>4</td>
-                         <td>Bạch Đằng</td>
+                         <td>{{ $item->AraeId }}</td>
+                         <td>{{ $item->StreetId }}</td>
+                         <td>{{ $item->Name }}</td>
                          <td>
-                              <a href="{{route('adminStreetGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminStreetDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <a href="{{ route('adminStreetGetEdit', $item->StreetId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{ route('adminStreetDelete', $item->StreetId) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
                          </td>
                     </tr>
-                    <tr>
-                     <td>2</td>
-                     <td>3</td>
-                     <td>Lê Duẩn</td>
-                         <td>
-                              <a href="{{route('adminStreetGetEdit', 2)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminStreetDelete', 2)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
-                         </td>
-                    </tr>
+                    @endforeach
                </tbody>
                <tfoot>
                     <tr>
