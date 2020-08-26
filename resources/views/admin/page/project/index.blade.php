@@ -12,21 +12,37 @@
                          <th>Chủ Đâu Tư</th>
                          <th>Số Block</th>
                          <th>Số Floor</th>
+                         <th>Số Căn Hộ</th>
+                         <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
                          <th>Ảnh</th>
                          <th>Mô tả</th>
                          <th>Giá</th>
-                         <th></th>
+                         <th>Tùy Chỉnh</th>
                     </tr>
                </thead>
                <tbody>
-                    @foreach ($data['street_list'] as $item)
+                    @foreach ($data['project_list'] as $item)
                     <tr>
-                         <td>{{ $item->StreetId }}</td>
-                         <td>{{ $item->Name }}</td>
+                         <td>{{ $item->ProjectID }}</td>
+                         <td>{{ $item->Title }}</td>
+                         <td>{{ $item->Location }}</td>
+                         <td>{{ $item->Investor }}</td>
+                         <td>{{ $item->NumberOfLock }}</td>
+                         <td>{{ $item->NumberOfFloor }}</td>
+                         <td>{{ $item->NumberOfApartment }}</td>
+                         <td>{{ $item->AreaApartment }}</td>
+                         <td>{{ $item->YearBuilt }}</td>
+                         <td>{{ $item->Image }}</td>
+                         <td>{{ $item->Description }}</td>
+                         <td>{{ $item->Price }}</td>
                          <td>
-                              <a href="{{ route('adminCategoryGetEdit', $item->CategoryId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{ route('adminCategoryDelete', $item->CategoryId) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <a href="{{ route('adminProjectGetEdit', $item->ProjectId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <form class="d-inline" action={{ route('adminProjectDelete', $item->ProjectId) }} method="post">
+                                   @csrf
+                                   @method('delete')
+                                   <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+                              </form>
                          </td>
                     </tr>
                     @endforeach
@@ -39,11 +55,13 @@
                          <th>Chủ Đâu Tư</th>
                          <th>Số Block</th>
                          <th>Số Floor</th>
+                         <th>Số Căn Hộ</th>
+                         <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
                          <th>Ảnh</th>
                          <th>Mô tả</th>
                          <th>Giá</th>
-                         <th></th>
+                         <th>Tùy Chỉnh</th>
                     </tr>
                </tfoot>
           </table>
