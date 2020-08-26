@@ -52,6 +52,11 @@
 			</div>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
-    
+    <script>
+		let name = document.getElementById('name');
+		let slug = document.getElementById('slug');
+		slug.value = convertToSlug(name.value);
+		name.addEventListener('input', () => slug.value = convertToSlug(name.value));
+   </script>
 	
 
