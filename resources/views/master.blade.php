@@ -17,9 +17,11 @@
      @yield('main')
      @include('components.js-import')
      @yield('js-import')
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> c971faf9278ae05bacd343c65e65e4d1aa46c944
 </body>
-
 
 </html>
