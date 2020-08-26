@@ -9,14 +9,19 @@
      @yield('head-import')
      @include('components.head-import')
 
-     <script type="text/javascript" src="{{asset('editor/ckeditor/ckeditor.js')}}"></script>
-     <script type="text/javascript" src="{{asset('editor/ckfinder/ckfinder.js')}}"></script>
+     <script type="text/javascript" src="{{asset('plugins/editor/ckeditor/ckeditor.js')}}"></script>
+     <script type="text/javascript" src="{{asset('plugins/editor/ckfinder/ckfinder.js')}}"></script>
 </head>
 
 <body class="sidebar-mini layout-fixed pace-success">
      @yield('main')
      @include('components.js-import')
      @yield('js-import')
+<<<<<<< HEAD
+
+    
+=======
+>>>>>>> c971faf9278ae05bacd343c65e65e4d1aa46c944
 </body>
 
 </html>
