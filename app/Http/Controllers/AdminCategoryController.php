@@ -66,7 +66,7 @@ class AdminCategoryController extends Controller
      public function putEdit(Request $req, $id)
      {
           if (!$req->filled(['Name', 'Slug', 'ParentId'])) {
-               return redirect()->route('adminCategorysGetEdit', ['id' => $id])->withInput()->with([
+               return redirect()->route('adminCategoryGetEdit', ['id' => $id])->withInput()->with([
                     'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
                ]);
           }
