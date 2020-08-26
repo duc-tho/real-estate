@@ -9,18 +9,22 @@
                          <th>Mã Đường</th>
                          <th>Mã Phường/Xã</th>
                          <th>Tên Đường</th>
-                         <th>Tùy Chỉnh </th>
+                         <th>Tùy Chỉnh</th>
                     </tr>
                </thead>
                <tbody>
                     @foreach ($data['street_list'] as $item)
                     <tr>
-                         <td>{{ $item->AraeId }}</td>
                          <td>{{ $item->StreetId }}</td>
+                         <td>{{ $item->AreaId }}</td>
                          <td>{{ $item->Name }}</td>
                          <td>
                               <a href="{{ route('adminStreetGetEdit', $item->StreetId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{ route('adminStreetDelete', $item->StreetId) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <form class="d-inline" action={{ route('adminStreetDelete', $item->StreetId) }} method="post">
+                                   @csrf
+                                   @method('delete')
+                                   <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+                              </form>
                          </td>
                     </tr>
                     @endforeach

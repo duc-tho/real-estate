@@ -42,9 +42,9 @@ class AdminStreetController extends Controller
           return back();
      }
 
-     public function getEdit()
+     public function getEdit($id)
      {
-          // $streetData = Street::find($id);
+          $streetData = Street::find($id);
           $streetList = Street::all();
 
           return view('admin.admin', [
@@ -57,13 +57,26 @@ class AdminStreetController extends Controller
           ]);
      }
 
-     public function putEdit()
+     public function putEdit(Request $req, $id)
      {
-          return 'putEditstreet';
+          if (!$req->filled(['Name', 'Slug', 'ParentId'])) {
+               return redirect()->route('adminStreetsGetEdit', ['id' => $id])->withInput()->with([
+                    'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
+               ]);
+          }
+
+          $categorys = Street::find($id);
+          $categorys->Name = $req->input('Name');
+          $categorys->Slug = $req->input('Slug');
+          $categorys->ParentId = $req->input('ParentId');
+          $categorys->save();
+
+          return redirect()->route("adminStreet");
      }
 
-     public function delete()
+     public function delete($id)
      {
-          return 'deletestreet';
+          Street::destroy($id);
+          return redirect()->route("adminStreet");
      }
 }
