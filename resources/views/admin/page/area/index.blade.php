@@ -1,6 +1,6 @@
 <div class="card">
      <div class="card-header">
-          <a href="{{route('adminAreaGetAdd')}}" class="btn btn-primary">Thêm Phường/Xã</a>
+          <a href="{{route('adminAreaGetAdd')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Thêm Phường/Xã</a>
      </div>
      <div class="card-body">
           <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
