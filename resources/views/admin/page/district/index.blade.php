@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-         <a href="{{route('adminDistrictGetAdd')}}" class="btn btn-primary">Thêm Quận/Huyện</a>
+         <a href="{{route('adminDistrictGetAdd')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Thêm Quận/Huyện</a>
     </div>
     <div class="card-body">
          <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
