@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Admin')
+@section('title', $title ?? 'Admin')
 
 @section('head-import')
 @include('admin.components.head-import')

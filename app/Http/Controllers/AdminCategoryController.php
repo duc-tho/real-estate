@@ -12,6 +12,7 @@ class AdminCategoryController extends Controller
           $categoryList = Category::all();
 
           return view('admin.admin', [
+               'title' => 'Quản Lý Danh Mục',
                'page' => 'category.index',
                'page_title' => 'Quản Lý Danh Mục',
                'data' => [
@@ -25,6 +26,7 @@ class AdminCategoryController extends Controller
           $categoryList = Category::all();
 
           return view('admin.admin', [
+               'title' => 'Thêm Danh Mục',
                'page' => 'category.detail',
                'page_title' => 'Thêm Danh Mục',
                'data' => [
@@ -51,6 +53,7 @@ class AdminCategoryController extends Controller
           $categoryList = Category::all();
 
           return view('admin.admin', [
+               'title' => 'Sửa Danh Mục',
                'page' => 'category.detail',
                'page_title' => 'Sửa Danh Mục',
                'data' => [
