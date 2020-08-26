@@ -15,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+     return $request->user();
+});
+
+Route::group(['prefix' => 'district'], function () {
+     Route::get('/', 'Api\DistrictController@index')->name('apiDistrict');
+
+     Route::get('/city/{cityId}', 'Api\DistrictController@getDistrictByCity')->name('apiDistrictByCity');
 });

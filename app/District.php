@@ -21,4 +21,9 @@ class District extends Model
      {
           return $this->hasMany('App\Area', 'AreaId', 'AreaId');
      }
+
+     public function City()
+     {
+          return $this->belongsTo('App\Models\City', 'CityId', 'CityId');
+     }
 }

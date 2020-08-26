@@ -40,7 +40,7 @@
                <div class="form-group">
                     <label class="col-sm-2" for="Slug" style="padding-top: 7px;">Slug</label>
                     <div class="w-100">
-                         <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Name') }}" readonly>
+                         <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Slug') }}" readonly>
                     </div>
                     <div class="col-lg-12 messages text-danger"></div>
                </div>

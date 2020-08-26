@@ -16,4 +16,9 @@ class Street extends Model
      {
           return $this->hasMany('App\Post', 'StreetId', 'StreetId');
      }
+
+     public function Area()
+     {
+          return $this->belongsTo('App\Models\Area', 'AreaId', 'AreaId');
+     }
 }

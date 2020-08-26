@@ -1,93 +1,71 @@
 <div class="card">
-    <div class="card-header">
-         <a href="{{route('adminPostGetAdd')}}" class="btn btn-primary">Thêm Bài Đắng</a>
-    </div>
-    <div class="card-body">
-         <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
-              <thead>
-                   <tr>
-                    <th>Mã Bài Đăng</th>
-                    <th>Tên</th>
-                    <th>Địa Chỉ</th>
-                    <th>Người Đăng</th>
-                    <th>Số Tòa</th>
-                    <th>Số Phòng</th>
-                    <th>Số Tầng</th>
-                    <th>Ảnh</th>
-                    <th>Mô tả</th>
-                    <th>Giá</th>
-                    <th></th>   
-                   </tr>
-              </thead>
-              <tbody>
-                   <tr>
-                        <td>1</td>
-                        <td>Chung cư</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Kiên</td>
-                        <td>2</td>
-                        <td>10</td>
-                        <td>15</td>
-                        <td>img</td>
-                        <td>pen housse</td>
-                        <td>10000</td>
-                        <td>
-                             <a href="{{route('adminPostGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                             <a href="{{route('adminPostDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
-                        </td>
-                   </tr>
-                   <tr>
-                        <td>2</td>
-                        <td>fsasa</td>
-                        <td>adadas</td>
-                        <td>ádas</td>
-                        <td>adsad</td>
-                        <td>ádsadasd</td>
-                        <td>đấád</td>
-                        <td>adssadsa</td>
-                        <td>đâsđ</td>
-                        <td>đasad</td>
-                        <td>
-                             <a href="{{route('adminPostGetEdit', 2)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                             <a href="{{route('adminPostDelete', 2)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
-                        </td>
-                   </tr>
-              </tbody>
-              <tfoot>
-                   <tr>
-                        <th>Mã Bài Đăng</th>
-                        <th>Tên</th>
-                        <th>Địa Chỉ</th>
-                        <th>Người Đăng</th>
-                        <th>Số Tòa</th>
-                        <th>Số Phòng</th>
-                        <th>Số Tầng</th>
-                        <th>Ảnh</th>
-                        <th>Mô tả</th>
-                        <th>Giá</th>
-                        <th></th>
-                   </tr>
-              </tfoot>
-         </table>
-    </div>
+     <div class="card-header">
+          <a href="{{route('adminPostGetAdd')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Thêm Bất Động Sản</a>
+     </div>
+     <div class="card-body">
+          <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
+               <thead>
+                    <tr>
+                         <th>Mã</th>
+                         <th>Tiêu đề</th>
+                         <th>Danh mục</th>
+                         <th>Dự Án</th>
+                         <th>Giá</th>
+                         <th>Người đăng</th>
+                         <th>Ngày đăng</th>
+                         <th>Trạng thái</th>
+                         <th></th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach ($data['post_list'] as $item)
+                    <tr>
+                         <th>{{ $item.PostId }}</th>
+                         <th>{{ $item.Title }}</th>
+                         <th>{{ $item.CategoryId }}</th>
+                         <td>{{ $item.ProjectId }}</td>
+                         <td>{{ $item.Price }}</td>
+                         <th>{{ $item.UserId }}</th>
+                         <th>{{ $item.create_at }}</th>
+                         <th>{{ $item.Status }}</th>
+                         <td>
+                              <a href="{{route('adminPostGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{route('adminPostDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                         </td>
+                    </tr>
+                    @endforeach
+               </tbody>
+               <tfoot>
+                    <tr>
+                         <th>Mã</th>
+                         <th>Tiêu đề</th>
+                         <th>Danh mục</th>
+                         <th>Dự Án</th>
+                         <th>Giá</th>
+                         <th>Người đăng</th>
+                         <th>Ngày đăng</th>
+                         <th>Trạng thái</th>
+                         <th></th>
+                    </tr>
+               </tfoot>
+          </table>
+     </div>
 </div>
 
 <script>
-    $("#dataTable").DataTable({
+     $("#dataTable").DataTable({
          "responsive": true,
          "autoWidth": true,
          "columns": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              { "width": "20%" }
-              ]
+               null,
+               null,
+               null,
+               null,
+               null,
+               null,
+               null,
+               null,
+               { "width": "17%" }
+          ]
     });
 </script>
