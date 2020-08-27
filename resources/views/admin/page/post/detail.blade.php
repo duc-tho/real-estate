@@ -1,4 +1,6 @@
 <form novalidate id="main" action="{{ Request::is('admin/post/add') ? route('adminPostPostAdd') : route('adminPostPutEdit', $data['post_info']->PostId) }}" method="post">
+     <input type="hidden" base_url="{{ URL::to('/') }}">
+
      @csrf
 
      @if (Request::is('admin/post/add'))
@@ -42,6 +44,7 @@
                               <label class="col-sm-2" for="Type" style="padding-top: 7px;">Loại</label>
                               <div class="w-100">
                                    <select class="form-control" name="Type" id="Type">
+                                        <option value="" aria-readonly="true">Chọn Loại Bất Động Sản</option>
                                         <option value="mua" {{ $data['post_info']->Type ?? '' === 'mua' ? 'selected' : '' }}>Mua</option>
                                         <option value="thuê" {{ $data['post_info']->Type ?? '' === 'thuê' ? 'selected' : '' }}>Thuê</option>
                                    </select>
@@ -56,13 +59,6 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="Price" style="padding-top: 7px;">Giá</label>
-                              <div class="w-100">
-                                   <input id="Price" class="form-control" type="number" placeholder="Giá" name="Price" value="{{ $data['post_info']->Price ?? old('Price') }}">
-                              </div>
-                              <div class="col-lg-12 messages text-danger"></div>
-                         </div>
-                         <div class="form-group">
                               <label class="col-sm-2" for="Slug" style="padding-top: 7px;">Slug</label>
                               <div class="w-100">
                                    <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Slug') }}" readonly>
@@ -70,9 +66,16 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
+                              <label class="col-sm-2" for="Price" style="padding-top: 7px;">Giá</label>
+                              <div class="w-100">
+                                   <input id="Price" class="form-control" type="number" placeholder="Giá" name="Price" value="{{ $data['post_info']->Price ?? old('Price') }}">
+                              </div>
+                              <div class="col-lg-12 messages text-danger"></div>
+                         </div>
+                         <div class="form-group">
                               <label class="col-sm-2" for="ProjectId" style="padding-top: 7px;">Dự Án</label>
                               <div class="w-100">
-                                   <select class="form-control" name="ProjectId" id="ProjectId">
+                                   <select class="form-control" name="ProjectId" id="Project">
                                         <option value="0">Không thuộc dự án nào</option>
                                         @isset($data['project_list'])
                                         @foreach ($data['project_list'] as $item)
@@ -84,9 +87,9 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="CityId" style="padding-top: 7px;">Thành Phố</label>
+                              <label class="col-sm-2" for="City" style="padding-top: 7px;">Thành Phố</label>
                               <div class="w-100">
-                                   <select class="form-control" name="CityId" id="CityId">
+                                   <select class="form-control" name="CityId" id="City">
                                         <option value="" aria-readonly="true">Chọn Thành Phố</option>
                                         @isset($data['city_list'])
                                         @foreach ($data['city_list'] as $item)
@@ -98,27 +101,27 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="DistrictId" style="padding-top: 7px;">Quận / Huyện</label>
+                              <label class="col-sm-2" for="District" style="padding-top: 7px;">Quận / Huyện</label>
                               <div class="w-100">
-                                   <select class="form-control" name="DistrictId" id="DistrictId">
+                                   <select class="form-control" name="DistrictId" id="District">
                                         <option value="" aria-readonly="true">Chọn Quận / Huyện</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="AreaId" style="padding-top: 7px;">Phường / Xã</label>
+                              <label class="col-sm-2" for="Area" style="padding-top: 7px;">Phường / Xã</label>
                               <div class="w-100">
-                                   <select class="form-control" name="AreaId" id="AreaId">
+                                   <select class="form-control" name="AreaId" id="Area">
                                         <option value="" aria-readonly="true">Chọn Phường / Xã</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="StreetId" style="padding-top: 7px;">Đường</label>
+                              <label class="col-sm-2" for="Street" style="padding-top: 7px;">Đường</label>
                               <div class="w-100">
-                                   <select class="form-control" name="StreetId" id="StreetId">
+                                   <select class="form-control" name="StreetId" id="Street">
                                         <option value="" aria-readonly="true">Chọn Đường</option>
                                    </select>
                               </div>
@@ -135,37 +138,54 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
+                              <label class="col-sm-2" for="Direction" style="padding-top: 7px;">Hướng</label>
+                              <div class="w-100">
+                                   <select class="form-control" name="Direction" id="Direction">
+                                        <option value="" aria-readonly="true">Chọn Hướng</option>
+                                        <option value="Đông">Đông</option>
+                                        <option value="Tây">Tây</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Bắc">Bắc</option>
+                                        <option value="Đông Nam">Đông Nam</option>
+                                        <option value="Đông Bắc">Đông Bắc</option>
+                                        <option value="Tây Nam">Tây Nam</option>
+                                        <option value="Tây Bắc">Tây Bắc</option>
+                                   </select>
+                              </div>
+                              <div class="col-lg-12 messages text-danger"></div>
+                         </div>
+                         <div class="form-group">
                               <label class="col-sm-2" for="Bedroom" style="padding-top: 7px;">Số Phòng Ngủ</label>
                               <div class="w-100">
-                                   <input id="Bedroom" class="form-control" type="number" placeholder="Số Phòng Ngủ" name="Bedroom" value="{{ $data['post_info']->Bedroom ?? old('Bedroom') }}">
+                                   <input id="Bedroom" min="0" class="form-control" type="number" placeholder="Số Phòng Ngủ" name="Bedroom" value="{{ $data['post_info']->Bedroom ?? old('Bedroom') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Bathroom" style="padding-top: 7px;">Số Phòng Tắm</label>
                               <div class="w-100">
-                                   <input id="Bathroom" class="form-control" type="number" placeholder="Số Phòng Tắm" name="Bathroom" value="{{ $data['post_info']->Bathroom ?? old('Bathroom') }}">
+                                   <input id="Bathroom" min="0" class="form-control" type="number" placeholder="Số Phòng Tắm" name="Bathroom" value="{{ $data['post_info']->Bathroom ?? old('Bathroom') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Floor" style="padding-top: 7px;">Số Tầng</label>
                               <div class="w-100">
-                                   <input id="Floor" class="form-control" type="number" placeholder="Số Tầng" name="Floor" value="{{ $data['post_info']->Floor ?? old('Floor') }}">
+                                   <input id="Floor" class="form-control" type="text" placeholder="1 tầng hầm 2 lầu ...." name="Floor" value="{{ $data['post_info']->Floor ?? old('Floor') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Length" style="padding-top: 7px;">Chiều Dài</label>
                               <div class="w-100">
-                                   <input id="Length" class="form-control" type="number" placeholder="Chiều Dài" name="Length" value="{{ $data['post_info']->Length ?? old('Length') }}">
+                                   <input id="Length" min="0" class="form-control" type="number" placeholder="Chiều Dài" name="Length" value="{{ $data['post_info']->Length ?? old('Length') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Width" style="padding-top: 7px;">Chiều Rộng</label>
                               <div class="w-100">
-                                   <input id="Width" class="form-control" type="number" placeholder="Chiều Rộng" name="Width" value="{{ $data['post_info']->Width ?? old('Width') }}">
+                                   <input id="Width" min="0" class="form-control" type="number" placeholder="Chiều Rộng" name="Width" value="{{ $data['post_info']->Width ?? old('Width') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -186,25 +206,140 @@
 </form>
 
 <script>
+     let url = document.querySelector('input[base_url]').attributes['base_url'].value;
      let title = document.getElementById('Title');
      let slug = document.getElementById('Slug');
+     let city = document.getElementById('City');
+     let district = document.getElementById('District');
+     let area = document.getElementById('Area');
+     let street = document.getElementById('Street');
+
      slug.value = convertToSlug(title.value);
      title.addEventListener('input', () => slug.value = convertToSlug(title.value));
 
-     // var validateConstraints = {
-     //      Name: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Tên danh mục Không được để trống!"
-     //           }
-     //      },
-     //      Slug: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Slug Không được để trống!"
-     //           }
-     //      },
-     // };
+     if (city.value) getDistrictByCity(city.value, url).then(html => district.innerHTML = html);
+     if (district.value) getAreaByDistrict(district.value, url).then(html => area.innerHTML = html);
+     if (area.value) getStreetByArea(area.value, url).then(html => street.innerHTML = html);
 
-     // validateData('form#main', validateConstraints);
+     city.addEventListener('change', () => {
+          district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
+          area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!city.value) return;
+          getDistrictByCity(city.value, url).then(html => district.innerHTML = html);
+     });
+
+     district.addEventListener('change', () => {
+          area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!district.value) return;
+          getAreaByDistrict(district.value, url).then(html => area.innerHTML = html);
+     });
+
+     area.addEventListener('change', () => {
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!area.value) return clearSelect();
+          getStreetByArea(area.value, url).then(html => street.innerHTML = html);
+     });
+
+     var validateConstraints = {
+          Title: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Tiêu đề Bất động sản Không được để trống!"
+               }
+          },
+          DistrictId: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn Quận / Huyện!"
+               },
+          },
+          StreetId: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn Đường!"
+               },
+          },
+          CityId: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn Thành phố!"
+               },
+          },
+          AreaId: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn Phường / Xã!"
+               },
+          },
+          ProjectId: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn Dự Án"
+               },
+          },
+          Price: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Giá không dược để trống!"
+               },
+          },
+          Type: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn loại bất động sản!"
+               },
+          },
+          Slug: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Slug Không được để trống!"
+               }
+          },
+          Status: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn trạng thái!"
+               }
+          },
+          ApartmentNumber: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Số nhà Không được để trống!"
+               },
+          },
+          Floor: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Số tầng Không được để trống!"
+               },
+          },
+          Bedroom: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Số phòng ngủ phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Bathroom: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Số phòng tắm phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Length: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Chiều dài phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Width: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Chiều rộng phải lớn hơn hoặc bằng 0!"
+               }
+          },
+     };
+
+     validateData('form#main', validateConstraints);
 </script>

@@ -7,5 +7,3 @@
 
 {{-- Dist --}}
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-
-{{-- Script --}}

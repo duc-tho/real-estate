@@ -50,6 +50,9 @@ class AdminPostController extends Controller
      public function getEdit($id)
      {
           $postData = Post::find($id);
+
+          if ($postData === null) return abort(404);
+
           $postData->AreaId = Street::find($postData['StreetId'])->Area['AreaId'];
           $postData->DistrictId = Area::find($postData['AreaId'])->District['DistrictId'];
           $postData->CityId = District::find($postData['DistrictId'])->City['CityId'];

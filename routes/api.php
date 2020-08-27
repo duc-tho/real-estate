@@ -23,3 +23,15 @@ Route::group(['prefix' => 'district'], function () {
 
      Route::get('/city/{cityId}', 'Api\DistrictController@getDistrictByCity')->name('apiDistrictByCity');
 });
+
+Route::group(['prefix' => 'area'], function () {
+     Route::get('/', 'Api\AreaController@index')->name('apiArea');
+
+     Route::get('/district/{districtId}', 'Api\AreaController@getAreaByDistrict')->name('apiAreaByCity');
+});
+
+Route::group(['prefix' => 'street'], function () {
+     Route::get('/', 'Api\StreetController@index')->name('apiStreet');
+
+     Route::get('/area/{areaId}', 'Api\StreetController@getStreetByArea')->name('apiStreetByCity');
+});
