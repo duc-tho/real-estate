@@ -9,8 +9,6 @@
      @yield('head-import')
      @include('components.head-import')
 
-     <script type="text/javascript" src="{{asset('plugins/editor/ckeditor/ckeditor.js')}}"></script>
-     <script type="text/javascript" src="{{asset('plugins/editor/ckfinder/ckfinder.js')}}"></script>
 </head>
 
 <body class="sidebar-mini layout-fixed pace-success">
