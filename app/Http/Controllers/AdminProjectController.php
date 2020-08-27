@@ -36,34 +36,68 @@ class AdminProjectController extends Controller
      public function postAdd(Request $req)
      {
           $project = new Project();
-          $project->Title = $req->title;
-          $project->Slug = str::slug($req->slug);
-          $project->Location = $req->location;
-          $project->Investor = $req->investor;
-          $project->NumberOfBlock = $req->block;
-          $project->NumberOfFloor = $req->floor;
-          $project->NumberOfApartment = $req->apartment;
-          $project->AreaApartment = $req->area;
-          $project->TotalArea = $req->totalarea;
-          $project->YearBuilt = $req->year;
-          $project->BuildingDensity = $req->density;
-          $project->Price = $req->price;
-          $project->Description = $req->desc;
-          $project->Image = $req->image;
-          $project->Status = $req->status;
+          $project->Title = $req->Title;
+          $project->Slug = str::slug($req->Slug);
+          $project->Location = $req->Location;
+          $project->Investor = $req->Investor;
+          $project->NumberOfBlock = $req->Block;
+          $project->NumberOfFloor = $req->Floor;
+          $project->NumberOfApartment = $req->Apartment;
+          $project->AreaApartment = $req->Area;
+          $project->TotalArea = $req->Totalarea;
+          $project->YearBuilt = $req->Year;
+          $project->BuildingDensity = $req->Density;
+          $project->Price = $req->Price;
+          $project->Description = $req->Desc;
+          $project->Image = $req->Image;
+          $project->Status = $req->Status;
 
           $project->save();
           return back();
      }
 
-     public function getEdit()
+     public function getEdit($id)
      {
-          return view('admin.admin', ['page' => 'project.detail']);
+          $projectData = Project::find($id);
+          $projectList = Project::all();
+
+          return view('admin.admin', [
+               'page' => 'project.detail',
+               'page_title' => 'Sửa Danh Mục',
+               'data' => [
+                    'project_list' => $projectList,
+                    'project_info' => $projectData
+               ]
+          ]);
      }
 
-     public function putEdit()
+     public function putEdit(Request $req, $id)
      {
-          return "Put Edit Project";
+          // if (!$req->filled(['Title', 'Slug', 'Location', 'Investor', 'NumberOfBlock', 'NumberOfFloor', 'NumberOfApartment', 'AreaApartment', 'TotakArea', 'YearBuilt', 'BuildingDensity', 'Price', 'Description', 'Image', 'Status'])) {
+          //      return redirect()->route('adminProjectGetEdit', ['id' => $id])->withInput()->with([
+          //           'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
+          //      ]);
+          // }
+
+          $project = Project::find($id);
+          $project->Title = $req->Title;
+          $project->Slug = str::slug($req->Slug);
+          $project->Location = $req->Location;
+          $project->Investor = $req->Investor;
+          $project->NumberOfBlock = $req->Block;
+          $project->NumberOfFloor = $req->Floor;
+          $project->NumberOfApartment = $req->Apartment;
+          $project->AreaApartment = $req->Area;
+          $project->TotalArea = $req->Totalarea;
+          $project->YearBuilt = $req->Year;
+          $project->BuildingDensity = $req->Density;
+          $project->Price = $req->Price;
+          $project->Description = $req->Desc;
+          $project->Image = $req->Image;
+          $project->Status = $req->Status;
+
+          $project->save();
+          return redirect()->route("adminProject");
      }
 
      public function delete($id)

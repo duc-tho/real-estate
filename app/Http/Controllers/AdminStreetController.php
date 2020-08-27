@@ -24,20 +24,23 @@ class AdminStreetController extends Controller
 
      public function getAdd()
      {
-          $data['area_list'] = Area::all();
+          $streetData = Area::all();
           return view('admin.admin', [
                'page' => 'street.detail',
-               'page_title' => 'Chi Tiết Phường / Xã'
-          ], $data);
+               'page_title' => 'Chi Tiết Đường',
+               'data' => [
+                    'street_list' => $streetData,
+               ]
+          ]);
      }
 
      public function postAdd(Request $req)
      {
           $street = new Street();
-          $street->Name = $req->name;
-          $street->Status = $req->status;
-          $street->Slug = str::slug($req->slug);
-          $street->AreaId = $req->areaId;
+          $street->Name = $req->Name;
+          $street->Status = $req->Status;
+          $street->Slug = str::slug($req->Slug);
+          $street->AreaId = $req->AreaId;
           $street->save();
           return back();
      }
@@ -49,7 +52,7 @@ class AdminStreetController extends Controller
 
           return view('admin.admin', [
                'page' => 'street.detail',
-               'page_title' => 'Sửa Danh Mục',
+               'page_title' => 'Sửa Đường',
                'data' => [
                     'street_list' => $streetList,
                     'street_info' => $streetData
@@ -59,18 +62,18 @@ class AdminStreetController extends Controller
 
      public function putEdit(Request $req, $id)
      {
-          if (!$req->filled(['Name', 'Slug', 'ParentId'])) {
-               return redirect()->route('adminStreetsGetEdit', ['id' => $id])->withInput()->with([
-                    'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
-               ]);
-          }
+          // if (!$req->filled(['AreaId', 'Name', 'Status', 'Slug'])) {
+          //      return redirect()->route('adminStreetGetEdit', ['id' => $id])->withInput()->with([
+          //           'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
+          //      ]);
+          // }
 
-          $categorys = Street::find($id);
-          $categorys->Name = $req->input('Name');
-          $categorys->Slug = $req->input('Slug');
-          $categorys->ParentId = $req->input('ParentId');
-          $categorys->save();
-
+          $street = Street::find($id);
+          $street->AreaId = $req->AreaId;
+          $street->Name = $req->Name;
+          $street->Status = $req->Status;
+          $street->Slug = $req->Slug;
+          $street->save();
           return redirect()->route("adminStreet");
      }
 
