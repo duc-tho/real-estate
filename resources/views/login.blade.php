@@ -6,7 +6,7 @@
 
 @extends('index-master')
 
-{{-- @section('title', 'Đăng Nhập') --}}
+@section('title', 'Đăng Nhập')
 
 @section('head-import')
 <link rel="stylesheet" href="{{ asset('dist/css/login.css') }}">
