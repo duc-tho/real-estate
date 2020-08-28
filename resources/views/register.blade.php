@@ -1,6 +1,6 @@
-@extends('master')
+@extends('index-master')
 
-@section('title', 'Đăng Ký')
+{{-- @section('title', 'Đăng Ký') --}}
 
 @section('head-import')
 <link rel="stylesheet" href="{{ asset('dist/css/login.css') }}">
