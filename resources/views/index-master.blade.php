@@ -6,7 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="canonical" href="http://bdsnew.eso.vn/">
      <link rel="shortcut icon" href="{{ asset('dist/img/favicon.png') }}" type="image/x-icon">
-     <title>Sàn BDS - Real Estate site</title>
+     <title>Sàn BDS - @yield('title')</title>
      @yield('head-import')
 </head>
 
