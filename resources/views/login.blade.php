@@ -9,7 +9,7 @@
 @section('title', 'Đăng Nhập')
 
 @section('head-import')
-<link rel="stylesheet" href="{{ asset('dist/css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('dist/css/admin/login.css') }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 @endsection
 
