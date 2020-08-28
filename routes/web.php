@@ -14,48 +14,48 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'Index\HomeController@index')->name('home');
 
 Route::group(['prefix' => 'project'], function () {
-     Route::get('/', 'ProjectController@index')->name('index');
+     Route::get('/', 'Index\ProjectController@index')->name('index');
 
-     Route::get('/{id}', 'ProjectController@projectDetail')
+     Route::get('/{id}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail')
           ->where(['id' => '[0-9]+']);
 });
 
 Route::group(['prefix' => 'user'], function () {
-     Route::get('/', 'UserController@index')->name('index');
+     Route::get('/', 'Index\UserController@index')->name('index');
 });
 
 Route::group(['prefix' => 'post'], function () {
-     Route::get('/post', 'PostController@index')->name('index');
+     Route::get('/', 'Index\PostController@index')->name('index');
 
-     Route::get('/post/city/{id}', 'PostController@postCity')
+     Route::get('/city/{id}', 'Index\PostController@postCity')
           ->name('postCity')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/city/district/{id} ', 'PostController@postDistrict')
+     Route::get('/city/district/{id} ', 'Index\PostController@postDistrict')
           ->name('postDistrict')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/city/district/area/{id} ', 'PostController@postArea')
+     Route::get('/city/district/area/{id} ', 'Index\PostController@postArea')
           ->name('postArea')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/city/district/area/street/{id}', 'PostController@postStreet')
+     Route::get('/city/district/area/street/{id}', 'Index\PostController@postStreet')
           ->name('postStreet')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/category', 'PostController@postCategory')
+     Route::get('/category', 'Index\PostController@postCategory')
           ->name('postCategory')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/project', 'PostController@postProject')
+     Route::get('/project', 'Index\PostController@postProject')
           ->name('postProject')
           ->where(['id' => '[0-9]+']);
 
-     Route::get('/post/{id}', 'PostController@postDetail')
+     Route::get('/{id}', 'Index\PostController@postDetail')
           ->name('postDetail')
           ->where(['id' => '[0-9]+']);
 });
@@ -70,25 +70,25 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
-     Route::get('/', 'AdminController@index')->name('admin');
+     Route::get('/', 'Admin\MainController@index')->name('admin');
 
      Route::group(['prefix' => 'post'], function () {
 
-          Route::get('/', 'AdminPostController@index')->name('adminPost');
+          Route::get('/', 'Admin\PostController@index')->name('adminPost');
 
-          Route::get('/add', 'AdminPostController@getAdd')->name('adminPostGetAdd');
+          Route::get('/add', 'Admin\PostController@getAdd')->name('adminPostGetAdd');
 
-          Route::post('/add', 'AdminPostController@postAdd')->name('adminPostPostAdd');
+          Route::post('/add', 'Admin\PostController@postAdd')->name('adminPostPostAdd');
 
-          Route::get('/edit/{id}', 'AdminPostController@getEdit')
+          Route::get('/edit/{id}', 'Admin\PostController@getEdit')
                ->name('adminPostGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminPostController@putEdit')
+          Route::put('/edit/{id}', 'Admin\PostController@putEdit')
                ->name('adminPostPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminPostController@delete')
+          Route::delete('/delete/{id}', 'Admin\PostController@delete')
                ->name('adminPostDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -96,21 +96,21 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
      Route::group(['prefix' => 'project'], function () {
 
-          Route::get('/', 'AdminProjectController@index')->name('adminProject');
+          Route::get('/', 'Admin\ProjectController@index')->name('adminProject');
 
-          Route::get('/add', 'AdminProjectController@getAdd')->name('adminProjectGetAdd');
+          Route::get('/add', 'Admin\ProjectController@getAdd')->name('adminProjectGetAdd');
 
-          Route::post('/add', 'AdminProjectController@postAdd')->name('adminProjectPostAdd');
+          Route::post('/add', 'Admin\ProjectController@postAdd')->name('adminProjectPostAdd');
 
-          Route::get('/edit/{id}', 'AdminProjectController@getEdit')
+          Route::get('/edit/{id}', 'Admin\ProjectController@getEdit')
                ->name('adminProjectGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminProjectController@putEdit')
+          Route::put('/edit/{id}', 'Admin\ProjectController@putEdit')
                ->name('adminProjectPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminProjectController@delete')
+          Route::delete('/delete/{id}', 'Admin\ProjectController@delete')
                ->name('adminProjectDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -118,21 +118,21 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
      Route::group(['prefix' => 'category'], function () {
 
-          Route::get('/', 'AdminCategoryController@index')->name('adminCategory');
+          Route::get('/', 'Admin\CategoryController@index')->name('adminCategory');
 
-          Route::get('/add', 'AdminCategoryController@getAdd')->name('adminCategoryGetAdd');
+          Route::get('/add', 'Admin\CategoryController@getAdd')->name('adminCategoryGetAdd');
 
-          Route::post('/add', 'AdminCategoryController@postAdd')->name('adminCategoryPostAdd');
+          Route::post('/add', 'Admin\CategoryController@postAdd')->name('adminCategoryPostAdd');
 
-          Route::get('/edit/{id}', 'AdminCategoryController@getEdit')
+          Route::get('/edit/{id}', 'Admin\CategoryController@getEdit')
                ->name('adminCategoryGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminCategoryController@putEdit')
+          Route::put('/edit/{id}', 'Admin\CategoryController@putEdit')
                ->name('adminCategoryPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminCategoryController@delete')
+          Route::delete('/delete/{id}', 'Admin\CategoryController@delete')
                ->name('adminCategoryDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -140,105 +140,105 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
      Route::group(['prefix' => 'city'], function () {
 
-          Route::get('/', 'AdminCityController@index')->name('adminCity');
+          Route::get('/', 'Admin\CityController@index')->name('adminCity');
 
-          Route::get('/add', 'AdminCityController@getAdd')->name('adminCityGetAdd');
+          Route::get('/add', 'Admin\CityController@getAdd')->name('adminCityGetAdd');
 
-          Route::post('/add', 'AdminCityController@postAdd')->name('adminCityPostAdd');
+          Route::post('/add', 'Admin\CityController@postAdd')->name('adminCityPostAdd');
 
-          Route::get('/edit/{id}', 'AdminCityController@getEdit')
+          Route::get('/edit/{id}', 'Admin\CityController@getEdit')
                ->name('adminCityGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::post('/edit/{id}', 'AdminCityController@putEdit')
+          Route::post('/edit/{id}', 'Admin\CityController@putEdit')
                ->name('adminCityPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::get('/delete/{id}', 'AdminCityController@delete')
+          Route::get('/delete/{id}', 'Admin\CityController@delete')
                ->name('adminCityDelete')
                ->where(['id' => '[0-9]+']);
      });
 
      Route::group(['prefix' => 'district'], function () {
 
-          Route::get('/', 'AdminDistrictController@index')->name('adminDistrict');
+          Route::get('/', 'Admin\DistrictController@index')->name('adminDistrict');
 
-          Route::get('/add', 'AdminDistrictController@getAdd')->name('adminDistrictGetAdd');
+          Route::get('/add', 'Admin\DistrictController@getAdd')->name('adminDistrictGetAdd');
 
-          Route::post('/add', 'AdminDistrictController@postAdd')->name('adminDistrictPostAdd');
+          Route::post('/add', 'Admin\DistrictController@postAdd')->name('adminDistrictPostAdd');
 
-          Route::get('/edit/{id}', 'AdminDistrictController@getEdit')
+          Route::get('/edit/{id}', 'Admin\DistrictController@getEdit')
                ->name('adminDistrictGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::post('/edit/{id}', 'AdminDistrictController@putEdit')
+          Route::post('/edit/{id}', 'Admin\DistrictController@putEdit')
                ->name('adminDistrictPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::get('/delete/{id}', 'AdminDistrictController@delete')
+          Route::get('/delete/{id}', 'Admin\DistrictController@delete')
                ->name('adminDistrictDelete')
                ->where(['id' => '[0-9]+']);
      });
 
      Route::group(['prefix' => 'area'], function () {
 
-          Route::get('/', 'AdminAreaController@index')->name('adminArea');
+          Route::get('/', 'Admin\AreaController@index')->name('adminArea');
 
-          Route::get('/add', 'AdminAreaController@getAdd')->name('adminAreaGetAdd');
+          Route::get('/add', 'Admin\AreaController@getAdd')->name('adminAreaGetAdd');
 
-          Route::post('/add', 'AdminAreaController@postAdd')->name('adminAreaPostAdd');
+          Route::post('/add', 'Admin\AreaController@postAdd')->name('adminAreaPostAdd');
 
-          Route::get('/edit/{id}', 'AdminAreaController@getEdit')
+          Route::get('/edit/{id}', 'Admin\AreaController@getEdit')
                ->name('adminAreaGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::post('/edit/{id}', 'AdminAreaController@putEdit')
+          Route::post('/edit/{id}', 'Admin\AreaController@putEdit')
                ->name('adminAreaPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::get('/delete/{id}', 'AdminAreaController@delete')
+          Route::get('/delete/{id}', 'Admin\AreaController@delete')
                ->name('adminAreaDelete')
                ->where(['id' => '[0-9]+']);
      });
 
      Route::group(['prefix' => 'street'], function () {
 
-          Route::get('/', 'AdminStreetController@index')->name('adminStreet');
+          Route::get('/', 'Admin\StreetController@index')->name('adminStreet');
 
-          Route::get('/add', 'AdminStreetController@getAdd')->name('adminStreetGetAdd');
+          Route::get('/add', 'Admin\StreetController@getAdd')->name('adminStreetGetAdd');
 
-          Route::post('/add', 'AdminStreetController@postAdd')->name('adminStreetPostAdd');
+          Route::post('/add', 'Admin\StreetController@postAdd')->name('adminStreetPostAdd');
 
-          Route::get('/edit/{id}', 'AdminStreetController@getEdit')
+          Route::get('/edit/{id}', 'Admin\StreetController@getEdit')
                ->name('adminStreetGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminStreetController@putEdit')
+          Route::put('/edit/{id}', 'Admin\StreetController@putEdit')
                ->name('adminStreetPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminStreetController@delete')
+          Route::delete('/delete/{id}', 'Admin\StreetController@delete')
                ->name('adminStreetDelete')
                ->where(['id' => '[0-9]+']);
      });
 
      Route::group(['prefix' => 'user'], function () {
 
-          Route::get('/', 'AdminUserController@index')->name('adminUser');
+          Route::get('/', 'Admin\UserController@index')->name('adminUser');
 
-          Route::get('/add', 'AdminUserController@getAdd')->name('adminUserGetAdd');
+          Route::get('/add', 'Admin\UserController@getAdd')->name('adminUserGetAdd');
 
-          Route::post('/add', 'AdminUserController@postAdd')->name('adminUserPostAdd');
+          Route::post('/add', 'Admin\UserController@postAdd')->name('adminUserPostAdd');
 
-          Route::get('/edit/{id}', 'AdminUserController@getEdit')
+          Route::get('/edit/{id}', 'Admin\UserController@getEdit')
                ->name('adminUserGetEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::put('/edit/{id}', 'AdminUserController@putEdit')
+          Route::put('/edit/{id}', 'Admin\UserController@putEdit')
                ->name('adminUserPutEdit')
                ->where(['id' => '[0-9]+']);
 
-          Route::delete('/delete/{id}', 'AdminUserController@delete')
+          Route::delete('/delete/{id}', 'Admin\UserController@delete')
                ->name('adminUserDelete')
                ->where(['id' => '[0-9]+']);
      });
@@ -246,7 +246,7 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
 
 Route::group(['prefix' => 'register'], function () {
-     Route::get('/', 'RegisterController@index')->name('registerView');
+     Route::get('/', 'Index\RegisterController@index')->name('registerView');
 
-     Route::post('/', 'RegisterController@register')->name('register');
+     Route::post('/', 'Index\RegisterController@register')->name('register');
 });

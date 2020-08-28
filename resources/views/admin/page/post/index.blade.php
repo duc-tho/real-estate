@@ -10,7 +10,6 @@
                          <th>Tiêu đề</th>
                          <th>Danh mục</th>
                          <th>Dự Án</th>
-                         <th>Giá</th>
                          <th>Người đăng</th>
                          <th>Ngày đăng</th>
                          <th>Trạng thái</th>
@@ -20,17 +19,16 @@
                <tbody>
                     @foreach ($data['post_list'] as $item)
                     <tr>
-                         <th>{{ $item.PostId }}</th>
-                         <th>{{ $item.Title }}</th>
-                         <th>{{ $item.CategoryId }}</th>
-                         <td>{{ $item.ProjectId }}</td>
-                         <td>{{ $item.Price }}</td>
-                         <th>{{ $item.UserId }}</th>
-                         <th>{{ $item.create_at }}</th>
-                         <th>{{ $item.Status }}</th>
+                         <td>{{ $item->PostId }}</td>
+                         <td>{{ $item->Title }}</td>
+                         <td>{{ $item->CategoryId }}</td>
+                         <td>{{ $item->ProjectId ?? 'Không' }}</td>
+                         <td>{{ $item->UserId }}</td>
+                         <td>{{ $item->created_at }}</td>
+                         <td>{{ $item->Status }}</td>
                          <td>
-                              <a href="{{route('adminPostGetEdit', 1)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminPostDelete', 1)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <a href="{{route('adminPostGetEdit', $item->PostId)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+                              <a href="{{route('adminPostDelete', $item->PostId)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
                          </td>
                     </tr>
                     @endforeach
@@ -41,7 +39,6 @@
                          <th>Tiêu đề</th>
                          <th>Danh mục</th>
                          <th>Dự Án</th>
-                         <th>Giá</th>
                          <th>Người đăng</th>
                          <th>Ngày đăng</th>
                          <th>Trạng thái</th>

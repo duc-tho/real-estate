@@ -34,7 +34,6 @@ class CreatePostTable extends Migration
                $table->foreign('UserId')->references('UserId')->on('User')->onDelete('cascade');
                $table->foreign('CategoryId')->references('CategoryId')->on('Category')->onDelete('cascade');
                $table->foreign('ProjectId')->references('ProjectId')->on('Project')->onDelete('cascade');
-
           });
      }
 

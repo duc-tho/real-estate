@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Street;
 use App\Models\Area;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class AdminStreetController extends Controller
+class StreetController extends Controller
 {
      public function index()
      {

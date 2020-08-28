@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddCityRequest;
 use App\Http\Requests\EditCityRequest;
 use App\Models\City;
 use Illuminate\Support\Str;
 
-class AdminCityController extends Controller
+class CityController extends Controller
 {
      public function index()
      {
@@ -16,7 +17,7 @@ class AdminCityController extends Controller
           return view('admin.admin', [
                'page' => 'city',
                'page_title' => 'Quản Lý Thành Phố'
-          ],$data);
+          ], $data);
      }
 
      public function getAdd()
@@ -29,13 +30,12 @@ class AdminCityController extends Controller
 
      public function postAdd(AddCityRequest $request)
      {
-        $city = new City();
-        $city->Name = $request->name;
-        $city->Status = $request->status;
-        $city->Slug = str::slug($request->slug);
-        $city->save();
-        return back();
-      
+          $city = new City();
+          $city->Name = $request->name;
+          $city->Status = $request->status;
+          $city->Slug = str::slug($request->slug);
+          $city->save();
+          return back();
      }
 
      public function getEdit($id)
@@ -44,7 +44,7 @@ class AdminCityController extends Controller
           return view('admin.admin', [
                'page' => 'city.edit',
                'page_title' => 'Sửa Chi Tiết Thành Phố'
-          ],$data);
+          ], $data);
      }
 
      public function putEdit(EditCityRequest $request, $id)
@@ -53,7 +53,7 @@ class AdminCityController extends Controller
           $arr['Name'] = $request->name;
           $arr['Status'] = $request->status;
           $arr['Slug'] = str::slug($request->slug);
-          $city::where('CityId',$id)->update($arr);
+          $city::where('CityId', $id)->update($arr);
           return redirect('admin/city');
      }
 

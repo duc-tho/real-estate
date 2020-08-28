@@ -33,9 +33,9 @@
                               <label class="col-sm-2" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <div class="w-100">
                                    <select class="form-control" name="Status" id="Status">
-                                        <option value="1" {{ $data['post_info']->Status ?? '' === '1' ? 'selected' : '' }}>Đang hoạt động</option>
-                                        <option value="-1" {{ $data['post_info']->Status ?? '' === '-1' ? 'selected' : '' }}>Không hoạt động</option>
-                                        <option value="0" {{ $data['post_info']->Status ?? '' === '0' ? 'selected' : '' }}>Chờ duyệt</option>
+                                        <option value="1" {{ ($data['post_info']->Status ?? '') === '1' ? 'selected' : '' }}>Đang hoạt động</option>
+                                        <option value="-1" {{ ($data['post_info']->Status ?? '') === '-1' ? 'selected' : '' }}>Không hoạt động</option>
+                                        <option value="0" {{ ($data['post_info']->Status ?? '') === '0' ? 'selected' : '' }}>Chờ duyệt</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -45,8 +45,8 @@
                               <div class="w-100">
                                    <select class="form-control" name="Type" id="Type">
                                         <option value="" aria-readonly="true">Chọn Loại Bất Động Sản</option>
-                                        <option value="mua" {{ $data['post_info']->Type ?? '' === 'mua' ? 'selected' : '' }}>Mua</option>
-                                        <option value="thuê" {{ $data['post_info']->Type ?? '' === 'thuê' ? 'selected' : '' }}>Thuê</option>
+                                        <option value="mua" {{ ($data['post_info']->Type ?? '') === 'mua' ? 'selected' : '' }}>Mua</option>
+                                        <option value="thuê" {{ ($data['post_info']->Type ?? '') === 'thuê' ? 'selected' : '' }}>Thuê</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -73,10 +73,24 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
+                              <label class="col-sm-2" for="CategoryId" style="padding-top: 7px;">Danh Mục</label>
+                              <div class="w-100">
+                                   <select class="form-control" name="CategoryId" id="Category">
+                                        <option value="">Chọn Danh Mục</option>
+                                        @isset($data['category_list'])
+                                        @foreach ($data['category_list'] as $item)
+                                        <option value="{{ $item->CategoryId }}" {{ $item->CategoryId === ($data['post_info']->CategoryId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
+                                        @endforeach
+                                        @endisset
+                                   </select>
+                              </div>
+                              <div class="col-lg-12 messages text-danger"></div>
+                         </div>
+                         <div class="form-group">
                               <label class="col-sm-2" for="ProjectId" style="padding-top: 7px;">Dự Án</label>
                               <div class="w-100">
                                    <select class="form-control" name="ProjectId" id="Project">
-                                        <option value="0">Không thuộc dự án nào</option>
+                                        <option value="">Không thuộc dự án nào</option>
                                         @isset($data['project_list'])
                                         @foreach ($data['project_list'] as $item)
                                         <option value="{{ $item->ProjectId }}" {{ $item->ProjectId === ($data['post_info']->ProjectId ?? '') ? 'selected' : '' }}>{{ $item->Title }}</option>
@@ -238,7 +252,7 @@
 
      area.addEventListener('change', () => {
           street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
-          if (!area.value) return clearSelect();
+          if (!area.value) return;
           getStreetByArea(area.value, url).then(html => street.innerHTML = html);
      });
 
@@ -273,17 +287,15 @@
                     message: "^Bạn chưa chọn Phường / Xã!"
                },
           },
-          ProjectId: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Bạn chưa chọn Dự Án"
-               },
-          },
           Price: {
                presence: {
                     allowEmpty: false,
                     message: "^Giá không dược để trống!"
                },
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Giá phải lớn hơn hoặc bằng 0!"
+               }
           },
           Type: {
                presence: {

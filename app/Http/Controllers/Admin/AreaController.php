@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\District;
 use Illuminate\Support\Str;
@@ -9,7 +10,7 @@ use App\Http\Requests\AddAreaRequest;
 use App\Http\Requests\EditAreaRequest;
 use Illuminate\Http\Request;
 
-class AdminAreaController extends Controller
+class AreaController extends Controller
 {
      public function index()
      {
@@ -17,7 +18,7 @@ class AdminAreaController extends Controller
           return view('admin.admin', [
                'page' => 'area.index',
                'page_title' => 'Quản Lý Phường / Xã'
-          ],$data);
+          ], $data);
      }
 
      public function getAdd()
@@ -47,17 +48,17 @@ class AdminAreaController extends Controller
           return view('admin.admin', [
                'page' => 'area.edit',
                'page_title' => 'Chi Tiết Phường / Xã'
-          ],$data);
+          ], $data);
      }
 
-     public function putEdit(EditAreaRequest $request , $id)
+     public function putEdit(EditAreaRequest $request, $id)
      {
           $area = new Area();
           $arr['Name'] = $request->name;
           $arr['Status'] = $request->status;
           $arr['DistrictId'] = $request->dis;
           $arr['Slug'] = str::slug($request->slug);
-          $area::where('AreaId',$id)->update($arr);
+          $area::where('AreaId', $id)->update($arr);
           return redirect('admin/area');
      }
 

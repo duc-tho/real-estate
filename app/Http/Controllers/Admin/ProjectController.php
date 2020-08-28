@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Project;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Session;
 
-class AdminProjectController extends Controller
+class ProjectController extends Controller
 {
      public function index()
      {

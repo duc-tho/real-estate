@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\District;
 use Illuminate\Support\Str;
 use App\Http\Requests\AddDistrictRequest;
@@ -9,7 +10,7 @@ use App\Http\Requests\EditDistrictRequest;
 use App\Models\City;
 use Illuminate\Http\Request;
 
-class AdminDistrictController extends Controller
+class DistrictController extends Controller
 {
      public function index()
      {
@@ -17,7 +18,7 @@ class AdminDistrictController extends Controller
           return view('admin.admin', [
                'page' => 'district.index',
                'page_title' => 'Quản Lý Quận / Huyện'
-          ],$data);
+          ], $data);
      }
 
      public function getAdd()
@@ -26,18 +27,18 @@ class AdminDistrictController extends Controller
           return view('admin.admin', [
                'page' => 'district.detail',
                'page_title' => 'Chi Tiết Quận / Huyện'
-          ],$data);
+          ], $data);
      }
 
      public function postAdd(AddDistrictRequest $request)
      {
-        $district = new District();
-        $district->Name = $request->name;
-        $district->Status = $request->status;
-        $district->Slug = str::slug($request->slug);
-        $district->CityId = $request->city;
-        $district->save();
-        return back();
+          $district = new District();
+          $district->Name = $request->name;
+          $district->Status = $request->status;
+          $district->Slug = str::slug($request->slug);
+          $district->CityId = $request->city;
+          $district->save();
+          return back();
      }
 
      public function getEdit($id)
@@ -47,17 +48,17 @@ class AdminDistrictController extends Controller
           return view('admin.admin', [
                'page' => 'district.edit',
                'page_title' => 'Chi Tiết Quận / Huyện'
-          ],$data);
+          ], $data);
      }
 
-     public function putEdit(EditDistrictRequest $request,$id)
+     public function putEdit(EditDistrictRequest $request, $id)
      {
           $district = new District();
           $arr['Name'] = $request->name;
           $arr['Status'] = $request->status;
           $arr['CityId'] = $request->city;
           $arr['Slug'] = str::slug($request->slug);
-          $district::where('DistrictId',$id)->update($arr);
+          $district::where('DistrictId', $id)->update($arr);
           return redirect('admin/district');
      }
 
