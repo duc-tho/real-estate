@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{{ asset('dist/css/adminlte-bootstrap.min.css') }}">
 <script src="{{ asset('dist/js/helper/slug.js') }}"></script>
 <script src="{{ asset('dist/js/helper/validate.js') }}"></script>
-<script src="{{ asset('dist/js/selectAreaAPI.js') }}"></script>
+<script src="{{ asset('dist/js/admin/selectAreaAPI.js') }}"></script>
 
 {{-- CDN --}}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

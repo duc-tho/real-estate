@@ -61,7 +61,6 @@
                null,
                null,
                null,
-               null,
                { "width": "17%" }
           ]
     });

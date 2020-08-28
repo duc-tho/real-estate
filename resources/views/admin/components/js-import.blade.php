@@ -7,4 +7,4 @@
 <script src="{{ asset('plugins/editor/ckeditor/ckeditor.js')}}"></script>
 <script src="{{ asset('plugins/editor/ckfinder/ckfinder.js')}}"></script>
 {{-- Dist --}}
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('dist/js/admin/adminlte.js') }}"></script>
