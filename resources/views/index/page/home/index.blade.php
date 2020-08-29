@@ -192,46 +192,50 @@
                               </div>
                          </div>
                          <div class="row rowm10">
+                              @foreach($data['project_list'] as $project)
+                              @if( $project->ProjectId%2 == 0)
                               <div class="col-sm-6 col-md-6 colm10 itemduan">
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
+                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
                                              </div>
-                                             <a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
-
+                                             <a href="{{ ('/project'.$project->ProjectId) }}" class="linkdetail"></a>
                                         </div>
                                         <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin">Vinhomes Grand Park</a></h2>
-                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Nguyễn Xiển, Phường Long Bình, Long Thạnh Mỹ, Quận 9, Hồ Chí Minh, Việt Nam</p>
-                                             <p class="bold500">Quy mô: 71 block, 10343 căn hộ </p>
-                                             <p class="threemt bold500">Năm xây dựng: 2018</p>
-                                             <p class="threemt bold500">Giá từ: 39 triệu/m2</p>
+                                             <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
+                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"> {{ $project->Location }}</i></p>
+                                             <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                             <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
+                                             <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
                                              <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
                                              <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
                                         </div>
                                    </div>
                               </div>
+                              @else
                               <div class="col-sm-6 col-md-6 colm10 itemduan">
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
+                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
                                              </div>
-                                             <a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
+                                             <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
 
                                         </div>
                                         <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin">Vinhomes Grand Park</a></h2>
-                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Nguyễn Xiển, Phường Long Bình, Long Thạnh Mỹ, Quận 9, Hồ Chí Minh, Việt Nam</p>
-                                             <p class="bold500">Quy mô: 71 block, 10343 căn hộ </p>
-                                             <p class="threemt bold500">Năm xây dựng: 2018</p>
-                                             <p class="threemt bold500">Giá từ: 39 triệu/m2</p>
+                                             <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
+                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
+                                             <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                             <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
+                                             <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
                                              <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
                                              <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
                                         </div>
                                    </div>
                               </div>
+                              @endif
+                              @endforeach
                          </div>
                     </div>
                </div>
