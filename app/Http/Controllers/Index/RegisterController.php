@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Index;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
      public function index()
      {
+          if (Auth::check()) {
+               return redirect()->route('home');
+          }
+
           return view('register');
      }
 
@@ -40,11 +45,13 @@ class RegisterController extends Controller
           $user->RoleId = 1;
           $user->Status = 1;
           $user->ProfileImage = 'dist/img/default_profile.png';
+
           try {
                $user->save();
           } catch (\Throwable $th) {
                return redirect()->route('registerView')->withInput()->with(['msg' => 'Email đã tồn tại']);
           }
+
           return redirect()->route('login')->with(['msg' => 'Đăng Ký Thành Công!']);
      }
 }

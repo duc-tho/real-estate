@@ -9,6 +9,9 @@ class HomeController extends Controller
 {
      public function index()
      {
-          return view('index.main');
+          return view('index.index', [
+               'title' => 'Trang chủ',
+               'page' => 'home'
+          ]);
      }
 }

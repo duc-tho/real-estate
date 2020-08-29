@@ -1,3 +1,4 @@
+
 <div class="home_banner" style="background-image: url({{ asset('asset/img/banner.jpg') }})">
      <div class="topsearch">
         <form action="https://bdsnew.eso.vn/projects" method="GET" id="frmhomesearch">
@@ -277,3 +278,18 @@
 
 </div>
 </div>
+{{-- @extends('index-master')
+
+@section('title', $title ?? 'Real Estate site')
+
+@section('head-import')
+@include('index.components.head-import')
+@endsection
+
+@section('js-import')
+@include('index.components.js-import')
+@endsection
+
+@section('main')
+@include('index.main')
+@endsection --}}
