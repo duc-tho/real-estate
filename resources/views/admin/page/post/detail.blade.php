@@ -1,4 +1,4 @@
-<form novalidate id="main" action="{{ Request::is('admin/post/add') ? route('adminPostPostAdd') : route('adminPostPutEdit', $data['post_info']->PostId) }}" method="post">
+<form enctype="multipart/form-data" id="main" action="{{ Request::is('admin/post/add') ? route('adminPostPostAdd') : route('adminPostPutEdit', $data['post_info']->PostId) }}" method="post">
      <input type="hidden" base_url="{{ URL::to('/') }}">
 
      @csrf
@@ -15,6 +15,11 @@
                <a href="{{route('adminPost')}}" class="btn btn-danger"><i class="fas fa-window-close"></i> Hủy bỏ</a>
           </div>
           <div class="card-body">
+               @empty (!session('errMsg'))
+               <div class="alert alert-warning" role="alert">
+                    {{session('errMsg')}}
+               </div>
+               @endempty
                <ul class="nav nav-tabs">
                     <li class="nav-item">
                          <a class="nav-link active" data-toggle="tab" href="#basicInfo">Thông tin cơ bản</a>
@@ -24,6 +29,9 @@
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" data-toggle="tab" href="#descriptionInfo">Mô tả</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" data-toggle="tab" href="#imageInfo">Ảnh</a>
                     </li>
                </ul>
 
@@ -119,6 +127,11 @@
                               <div class="w-100">
                                    <select class="form-control" name="DistrictId" id="District">
                                         <option value="" aria-readonly="true">Chọn Quận / Huyện</option>
+                                        @isset($data['district_list'])
+                                        @foreach ($data['district_list'] as $item)
+                                        <option value="{{ $item->DistrictId }}" {{ $item->DistrictId === ($data['post_info']->DistrictId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
+                                        @endforeach
+                                        @endisset
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -128,6 +141,11 @@
                               <div class="w-100">
                                    <select class="form-control" name="AreaId" id="Area">
                                         <option value="" aria-readonly="true">Chọn Phường / Xã</option>
+                                        @isset($data['area_list'])
+                                        @foreach ($data['area_list'] as $item)
+                                        <option value="{{ $item->AreaId }}" {{ $item->AreaId === ($data['post_info']->AreaId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
+                                        @endforeach
+                                        @endisset
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -137,6 +155,11 @@
                               <div class="w-100">
                                    <select class="form-control" name="StreetId" id="Street">
                                         <option value="" aria-readonly="true">Chọn Đường</option>
+                                        @isset($data['street_list'])
+                                        @foreach ($data['street_list'] as $item)
+                                        <option value="{{ $item->StreetId }}" {{ $item->StreetId === ($data['post_info']->StreetId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
+                                        @endforeach
+                                        @endisset
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -208,15 +231,54 @@
                     <div class="tab-pane container" id="descriptionInfo">
                          <div class="form-group">
                               <label class="col-sm-2" for="Description" style="padding-top: 7px;">Mô tả</label>
-                              <div class="w-100">
-                                   <input id="Description" class="form-control" type="text" placeholder="Mô tả" name="Description" value="{{ $data['post_info']->Description ?? old('Description') }}">
+                              <div class="md-form">
+                                   <textarea name="Description" class="md-textarea form-control" rows="10"></textarea>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                     </div>
+
+                    <div class="tab-pane container" id="imageInfo">
+                         <div class="card text-center mt-4">
+                              <div class="card-header bg-info">
+                                   Chọn ảnh để tải lên!
+                              </div>
+                              <div class="card-body">
+                                   <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                             <input multiple type="file" name="Image[]" class="custom-file-input" id="inputImageFile">
+                                             <label class="custom-file-label" for="inputImageFile" style="white-space: nowrap; overflow: hidden;">Bấm vào để chọn ảnh</label>
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="col-md-12 d-flex flex-wrap" id="imageImputList"></div>
+                                   </div>
+                              </div>
+                              <div class="card-footer text-muted" id="inputImageCount">
+                                   Chưa chọn ảnh nào!
+                              </div>
+                         </div>
+                         <div class="card text-center mt-4">
+                              <div class="card-header bg-success">
+                                   Danh sách ảnh của bất dộng sản này
+                              </div>
+                              <div class="card-body">
+                                   <div class="row">
+                                        <div class="col-md-12 d-flex flex-wrap" id="imageList">
+                                             @for ($i = 0; $i < count(explode("|", $data['post_info']->Image)); $i++)
+                                                  <figure class="col-md-4">
+                                                       <div class="w-100" style="height: 300px; position: relative;">
+                                                            <img alt="picture" src="{{ asset(explode("|", $data['post_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
+                                                       </div>
+                                                  </figure>
+                                                  @endfor
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
                </div>
           </div>
-     </div>
 </form>
 
 <script>
@@ -230,10 +292,6 @@
 
      slug.value = convertToSlug(title.value);
      title.addEventListener('input', () => slug.value = convertToSlug(title.value));
-
-     if (city.value) getDistrictByCity(city.value, url).then(html => district.innerHTML = html);
-     if (district.value) getAreaByDistrict(district.value, url).then(html => area.innerHTML = html);
-     if (area.value) getStreetByArea(area.value, url).then(html => street.innerHTML = html);
 
      city.addEventListener('change', () => {
           district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
@@ -255,6 +313,42 @@
           if (!area.value) return;
           getStreetByArea(area.value, url).then(html => street.innerHTML = html);
      });
+
+
+     $("#inputImageFile").change(function() {
+          loadPreviewFile(this);
+     });
+
+     let loadPreviewFile = (input) => {
+          $preview = $('#imageImputList').empty();
+
+          if (input.files) {
+               if (input.files.length === 0) {
+                    $('#inputImageCount').text('Chưa chọn ảnh nào!');
+               } else {
+                    $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
+
+               }
+
+
+               [...input.files].forEach(file => {
+                    let reader = new FileReader();
+
+                    reader.onloadend = (event) => {
+                         let html = `<figure class="col-md-4">
+                              <div class="w-100" style="height: 300px; position: relative;">
+                                   <img alt="picture" src="${reader.result}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
+                              </div>
+                         </figure>`;
+
+                         $preview.append($.parseHTML(html))
+                    }
+
+                    reader.readAsDataURL(file);
+               });
+
+          }
+     };
 
      var validateConstraints = {
           Title: {

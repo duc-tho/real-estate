@@ -19,7 +19,7 @@ class District extends Model
 
      public function Area()
      {
-          return $this->hasMany('App\Area', 'AreaId', 'AreaId');
+          return $this->hasMany('App\Models\Area', 'DistrictId', 'DistrictId');
      }
 
      public function City()

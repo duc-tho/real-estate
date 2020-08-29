@@ -13,6 +13,6 @@ class Role extends Model
 
      public function users()
      {
-          return $this->hasMany('App\Post', 'RoleId', 'RoleId');
+          return $this->hasMany('App\Models\Post', 'RoleId', 'RoleId');
      }
 }

@@ -34,15 +34,16 @@ class Post extends Model
 
      public function Category()
      {
-          return $this->hasMany('App\Category', 'CategoryId', 'CategoryId');
+          return $this->belongsTo('App\Models\Category', 'CategoryId', 'CategoryId');
      }
 
      public function Project()
      {
-          return $this->hasMany('App\Project', 'ProjectId', 'ProjectId');
+          return $this->belongsTo('App\Models\Project', 'ProjectId', 'ProjectId');
      }
+
      public function User()
      {
-          return $this->hasOne('App\User', 'UserId', 'UserId');
+          return $this->belongsTo('App\User', 'UserId', 'UserId');
      }
 }
