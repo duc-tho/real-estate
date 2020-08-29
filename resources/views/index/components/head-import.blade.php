@@ -22,9 +22,9 @@
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/owl.theme.default.css') }}">
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/style.css') }}">
 
-<script src="{{ asset('dist/js/index/owl.carousel.min.js') }}"></script>
-
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700,800" rel="stylesheet" type="text/css">
+
+<script src="{{ asset('dist/js/index/jquery.min.js') }}"></script>
 
 <style>
      :root {

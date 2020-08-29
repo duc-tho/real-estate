@@ -12,9 +12,6 @@
      window.themeUrl = 'https://flex-home.botble.com/themes/flex-home'
 </script>
 
-<script src="{{ asset('dist/js/index/app.js') }}"></script>
-<script src="{{ asset('dist/js/index/components.js') }}"></script>
-
 <script>
      'use strict';
      window.botbleCookieConsent = (function () {
@@ -55,6 +52,8 @@
      })();
 </script>
 
-<script src="{{ asset('dist/js/index/jquery.min.js') }}"></script>
 <script src="{{ asset('dist/js/index/popper.min.js') }}"></script>
 <script src="{{ asset('dist/js/index/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dist/js/index/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('dist/js/index/app.js') }}"></script>
+<script src="{{ asset('dist/js/index/components.js') }}"></script>
