@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
 
 {{-- Dist --}}
-<link rel="stylesheet" href="{{ asset('dist/css/adminlte-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('dist/css/admin/adminlte-bootstrap.min.css') }}">
 <script src="{{ asset('dist/js/helper/slug.js') }}"></script>
 <script src="{{ asset('dist/js/helper/validate.js') }}"></script>
 <script src="{{ asset('dist/js/admin/selectAreaAPI.js') }}"></script>

@@ -1,6 +1,6 @@
 @extends('index-master')
 
-{{-- @section('title', $title ?? 'Admin') --}}
+@section('title', $title ?? 'Real Estate site')
 
 @section('head-import')
 @include('index.components.head-import')
@@ -12,4 +12,4 @@
 
 @section('main')
 @include('index.main')
-@endsection
+@endsection 
