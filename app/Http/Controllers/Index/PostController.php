@@ -9,7 +9,7 @@ class PostController extends Controller
 {
      public function index()
      {
-          return 'Post Index';
+          return view('index.project');
      }
 
      public function postCity()

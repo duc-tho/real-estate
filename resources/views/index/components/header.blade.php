@@ -60,7 +60,7 @@
                          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                               <ul class="navbar-nav justify-content-end">
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="/html/listduan.php" target="_self">
+                                   <a class="nav-link " href="{{route('index')}}" target="_self">
                                              Dự Án
                                         </a>
                                    </li>
