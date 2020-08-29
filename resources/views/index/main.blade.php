@@ -1,9 +1,8 @@
-@include('index.components.head-import');
-@include('index.components.header');
-{{-- @include('index.page.index') --}}
+@include('index.components.head-import')
+@include('index.components.header')
 
 <div id="app">
-     @switch($page ?? 'index')
+     @switch($page ?? 'home')
      @case('project')
      @include('index.page.project.index')
      @break
@@ -19,4 +18,3 @@
 </div>
 
 @include('index.components.footer')
-

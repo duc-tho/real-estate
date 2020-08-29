@@ -1,4 +1,4 @@
-<div class="home_banner" style="background-image: url({{ asset('asset/img/banner.jpg') }})">
+<div class="home_banner" style="background-image: url({{ asset('dist/img/banner.jpg') }})">
      <div class="topsearch">
           <form action="https://bdsnew.eso.vn/projects" method="GET" id="frmhomesearch">
                <div class="typesearch" id="hometypesearch">
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="input-group-prepend">
-                         <span class="input-group-text"><img src="{{ asset('asset/img/search_icon.png')}}" alt="search"></span>
+                         <span class="input-group-text"><img src="{{ asset('dist/img/search_icon.png')}}" alt="search"></span>
                     </div>
                     <input type="hidden" name="type" value="project" id="txttypesearch">
                     <input type="text" class="form-control" name="k" placeholder="Enter keyword..." id="txtkey" autocomplete="off">
@@ -51,7 +51,7 @@
                                    <div class="col-6 col-sm-4  col-md-3 colm10">
                                         <div class="item">
                                              <div class="blii">
-                                                  <div class="img"><img class="thumb" data-src="asset/img/1-410x270.jpg" src="{{ asset('asset/img/1-410x270.jpg') }}" alt="Walnut Park Apartments">
+                                                  <div class="img"><img class="thumb" data-src="dist/img/1-410x270.jpg" src="{{ asset('dist/img/1-410x270.jpg') }}" alt="Walnut Park Apartments">
                                                   </div>
                                                   <a href="https://bdsnew.eso.vnprojects/walnut-park-apartment" class="linkdetail"></a>
                                              </div>
@@ -85,7 +85,7 @@
                                    <div class="owl-carousel" id="project-city-slides">
                                         <div class="item itemarea">
                                              <a href="https://bdsnew.eso.vnprojects/city/alhambra">
-                                                  <img src="{{ asset('asset/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
+                                                  <img src="{{ asset('dist/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
                                                   <h4>Alhambra</h4>
                                              </a>
                                         </div>
@@ -93,6 +93,7 @@
                               </div>
                          </div>
                     </div>
+               </div>
           </p>
 
           <p>
@@ -112,7 +113,7 @@
                                              <div class="hourseitem">
                                                   <div class="blii">
                                                        <div class="img">
-                                                            <img data-src="img/6-2-410x270.jpg" src="{{ asset('asset/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                                                            <img data-src="img/6-2-410x270.jpg" src="{{ asset('dist/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
                                                        </div>
                                                        <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a>
                                                        <div class="status">
@@ -124,19 +125,16 @@
                                                        <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>Kuala Lumpur, Malaysia</p>
                                                        <p class="bold500">Price: $1.59 million </p>
                                                        <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms">
-                                                                 <i><img src="{{ asset('asset/img/bed.svg') }}" alt="icon"></i> <i class="vti">5</i></span>
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i><img src="{{ asset('asset/img/bath.svg') }}" alt="icon"></i>
+                                                                 <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i> <i class="vti">5</i></span>
+                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
                                                                  <i class="vti">7</i></span> <span data-toggle="tooltip" data-placement="top" data-original-title="Square">
-                                                                 <i><img src="{{ ('asset/img/area.svg') }}" alt="icon">
+                                                                 <i><img src="{{ ('dist/img/area.svg') }}" alt="icon">
                                                                  </i> <i class="vti">377 m2</i>
                                                             </span></p>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
-
-
-
                                    <!--<property-component type="sale" url="https://bdsnew.eso.vnajax/properties"></property-component>-->
                               </div>
                          </div>
@@ -157,7 +155,7 @@
                               <div class="col-sm-4 col-md-3 colm10">
                                    <div class="hourseitem">
                                         <div class="blii">
-                                             <div class="img"><img data-src="img/t3-410x270.jpg" src="{{ asset('asset/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
+                                             <div class="img"><img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
                                              <a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
                                              <div class="status"><span class="label-success status-label">Renting</span></div>
                                         </div>
@@ -167,13 +165,13 @@
                                              <p class="bold500">Price: $1,217 / month </p>
                                              <p class="threemt bold500">
                                                   <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms">
-                                                       <i><img src="{{ asset('asset/img/bed.svg') }}" alt="icon"></i> <i class="vti">1</i>
+                                                       <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i> <i class="vti">1</i>
                                                   </span>
                                                   <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms">
-                                                       <i><img src="{{ asset('asset/img/bath.svg') }}" alt="icon"></i> <i class="vti">1</i>
+                                                       <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i> <i class="vti">1</i>
                                                   </span>
                                                   <span data-toggle="tooltip" data-placement="top" data-original-title="Square">
-                                                       <i><img src="{{ asset('asset/img/area.svg') }}" alt="icon"></i> <i class="vti">33 m2</i>
+                                                       <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i> <i class="vti">33 m2</i>
                                                   </span>
                                              </p>
                                         </div>
@@ -181,6 +179,7 @@
                               </div>
                          </div>
                     </div>
+               </div>
           </p>
 
           <p>
@@ -193,13 +192,11 @@
                               </div>
                          </div>
                          <div class="row rowm10">
-                              <!---->
-                              <!---->
                               <div class="col-sm-6 col-md-6 colm10 itemduan">
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('asset/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
+                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
                                              </div>
                                              <a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
 
@@ -219,7 +216,7 @@
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('asset/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
+                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="Nice Apartment for rent in Berlin" class="thumb">
                                              </div>
                                              <a href="https://bdsnew.eso.vnproperties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
 
@@ -237,13 +234,10 @@
                               </div>
                          </div>
                     </div>
-
-
                </div>
-
+          </p>
      </div>
 </div>
-</p>
 
 
 <p>
@@ -263,7 +257,7 @@
                                                        <div class="hourseitem" style="margin-top: 0px;">
                                                             <div class="blii">
                                                                  <div class="img">
-                                                                      <img data-src="img/download-410x270.jpeg" src="{{ asset('asset/img/download-410x270.jpeg') }}" alt="S. Korea’s Big Investors Flocking to Overseas Real Estate" class="thumb" style="border-radius: 0px;">
+                                                                      <img data-src="img/download-410x270.jpeg" src="{{ asset('dist/img/download-410x270.jpeg') }}" alt="S. Korea’s Big Investors Flocking to Overseas Real Estate" class="thumb" style="border-radius: 0px;">
                                                                  </div>
                                                                  <a href="https://bdsnew.eso.vns-koreas-big-investors-flocking-to-overseas-real-estate" class="linkdetail"></a>
                                                             </div>
@@ -287,7 +281,6 @@
                          </div>
                     </div>
                </div>
+          </div>
+     </div>
 </p>
-
-</div>
-</div>

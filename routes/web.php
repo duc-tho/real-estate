@@ -21,7 +21,7 @@ Route::group(['prefix' => 'project'], function () {
 
      Route::get('/{id}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail')
-          ->where(['id' => '[0-9]+']);
+          ->where(['id' => '[0-9]+' ]);
 });
 
 Route::group(['prefix' => 'user'], function () {
