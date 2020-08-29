@@ -32,11 +32,12 @@
                data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
           </div>
 
+          @foreach($data['project_detail'] as $project)
           <div class="container-fluid bgmenupro">
                <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
                     <div class="col-12">
-                         <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">The Avila Apartments</h1>
-                         <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> Singapore Island, Singapore</p>
+                         <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $project->Title }}</h1>
+                    <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $project->Location }}</p>
                     </div>
                </div>
           </div>
@@ -45,49 +46,55 @@
                <section class="general">
                     <div class="row">
                          <div class="col-md-8">
-                              <div class="head">Overview</div>
+                              <div class="head">Tổng quan</div>
                               <span class="line_title"></span>
                               <div class="row">
                                    <div class="col-sm-6 lineheight220">
-                                        <div><span>Status:</span> <b>Selling</b></div>
-                                        <div><span>Category:</span> <b>Villa</b></div>
-                                        <div><span>Investor:</span> <b>Ping An</b></div>
+                                        <div><span>Trạng thái: </span>
+                                             @if($project->Status == 1)
+                                             <b>Còn</b>
+                                             @else
+                                             <b>Hết</b>
+                                             @endif
+                                         </div>
+                                        <div><span>Category:</span> <b></b></div>
+                                        <div><span>Chủ Đầu Tư:</span> <b>{{ $project->Investor }}</b></div>
                                    </div>
                                    <div class="col-sm-6 lineheight220">
-                                        <div><span>Number of blocks:</span> <b>2</b></div>
-                                        <div><span>Number of floors:</span> <b>4</b></div>
-                                        <div><span>Number of flats:</span> <b>125</b></div>
+                                   <div><span>Số Block:</span> <b>{{ $project->NumberOfBlock }}</b></div>
+                                        <div><span>Số Tầng:</span> <b>{{ $project->NumberOfFloor }}</b></div>
+                                        <div><span>Số Tòa:</span> <b>{{ $project->NumberOfApartment }}</b></div>
                                    </div>
                               </div>
 
-                              <div class="head">Description</div>
-                              <p>A profoundly special project amidst history and Istanbul. In the heart of the Historical Peninsula, Select Lifestyle Alternatives ranging from 1+1 to 6+1, in limited numbers&hellip;. A timeless aesthetic enriched in perfect details .</p>
+                              <div class="head">Mô tả</div>
+                              <p>{{ $project->Description }}.</p>
 
-                              <h4><b>Why you should buy a house from this project?</b></h4>
+                              {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
 
                               <ul>
-                                   <li>1.&nbsp;Within the historical peninsula, there is a very special area where you will never find a similar one.</li>
-                                   <li>2.&nbsp;Unique sea view with a historical texture of Istanbul.</li>
-                                   <li>3.&nbsp;In the bustling city life, in the middle of all transportation possibilities.</li>
-                                   <li>4. 1+1 to 6+1 very special, suitable for all needs loft apartments</li>
+                                   <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
+                                   <li>2.&nbsp;Nhiều dịch vụ tiện ích tại đây.</li>
+                                   <li>3.&nbsp;Đầy đủ các của hàng tiện lợi.</li>
+                                   <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
                                    <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
-                              </ul>
-                              <div class="head">Features</div>
+                              </ul> --}}
+                              <div class="head">Dịch vụ</div>
                               <div class="row">
                                    <div class="col-sm-4">
                                         <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
                                    </div>
                                    <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Balcony</p>
+                                        <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
                                    </div>
                                    <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Parking</p>
+                                        <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
                                    </div>
                                    <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Garden</p>
+                                        <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
                                    </div>
                                    <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Security</p>
+                                        <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
                                    </div>
                               </div>
                               <br>
@@ -97,10 +104,11 @@
                                         <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                                    </div>
                               </div>
+                              @endforeach
                               <br>
                               <br>
                               <div class="socials">
-                                   <span>Share this project:</span>
+                                   <span>Liên Hệ Để Biết Thêm Chi Tiết Về Dự Án:</span>
                                    <ul>
                                         <li>
                                              <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fflex-home.botble.com%2Fprojects%2Fpark&title=Within the historical peninsula, there is a very special area where you will never find a similar one. Unique sea view with a historical texture of Istanbul. In the bustling city life, in the middle of all transportation possibilities. Large landscaping areas, cafes, shopping opportunities." target="_blank" title="Share on Facebook"><i
@@ -168,7 +176,7 @@
                          </div>
                     </div>
 
-                    <h5 class="headifhouse">Properties For Sale</h5>
+                    <h5 class="headifhouse">Khuyến Mãi</h5>
                     <div class="col-sm-4 col-md-4">
                          <div class="hourseitem row">
                               <h3><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">Nice Apartment for rent in Berlin</a></h3>
@@ -192,7 +200,7 @@
                                              <i class="vti">1</i></span>
                                    </p>
                                    <p><i class="far fa-heart"></i></p>
-                                   <a href="/du-an/hcm/quan-9/vinhomes-grand-park-id780/ban" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                   <a href="{{ URL::to('/project') }}" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
                               </div>
                          </div>
                     </div>
@@ -200,11 +208,6 @@
                     <br>
                     <h5 class="headifhouse">Properties For Rent</h5>
                     <property-component type="project-properties-for-rent" project_id="6" url="https://flex-home.botble.com/ajax/properties" :show_empty_string="true"></property-component>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                </section>
 
           </div>

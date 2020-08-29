@@ -53,6 +53,7 @@ class ProjectController extends Controller
           $project->Image = $req->Image;
           $project->Status = $req->Status;
 
+
           $project->save();
           return back();
      }
@@ -94,9 +95,14 @@ class ProjectController extends Controller
           $project->BuildingDensity = $req->Density;
           $project->Price = $req->Price;
           $project->Description = $req->Desc;
-          $project->Image = $req->Image;
-          $project->Status = $req->Status;
 
+          // $img = $req->Image;
+          // $destinationPath = public_path('public\dist\img\uploads\project');
+          // $img->move($destinationPath, $img);
+          // $project->Image = $img;
+
+          $project->Image   = $req->Image;
+          $project->Status = $req->Status;
           $project->save();
           return redirect()->route("adminProject");
      }
