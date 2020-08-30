@@ -1,14 +1,14 @@
 <div id="app">
      <div id="ismain-homes">
 
-          <div class="bgheadproject hidden-xs">
+          <div class="bgheadproject hidden-xs" style="background: url('{{ asset('dist/img/banner-du-an.jpg') }}')">
                <div class="description">
                     <div class="container-fluid w90">
-                         <h1 class="text-center" style="color: black">Dự án BĐS</h1>
-                         <p class="text-center" style="color: black">Chúng tôi luôn cập nhật những dự án BDS mới nhất</p>
+                         <h1 class="text-center">Dự án BĐS</h1>
+                         <p class="text-center">Chúng tôi luôn cập nhật những dự án BDS mới nhất</p>
                          <ul class="breadcrumb">
-                              <li class="breadcrumb-item" ><a href="/" style="color: black">Trang chủ</a></li>
-                              <li class="breadcrumb-item active" style="color: black">Dự án</li>
+                              <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                              <li class="breadcrumb-item active">Dự án</li>
                          </ul>
                     </div>
                </div>
@@ -20,90 +20,93 @@
                          <div class="homehouse padtop30 col-sm-9 col-md-9">
                               <div class="row">
                                    <div class="col-12">
-                                        <h2>DỰ ÁN</h2>
+                                        <h2>Dự Án</h2>
                                         <p>Danh sách dự án BDS nổi bật</p>
                                    </div>
                               </div>
                               <div class="row rowm10">
-                                   <!---->
-                                   <!---->
                                    @foreach($data['project_list'] as $project)
-                                   <div class="col-sm-6 col-md-6 colm10 itemduan">
+                                   <div class="col-sm-6 col-md-12 colm10 itemduan">
                                         <div class="hourseitem row">
-                                             <div class="blii col-sm-6 col-md-6 colm10">
-                                                  <div class="img">
-                                                       <img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="" class="thumb">
+                                             <div class="row w-100">
+                                                  <div class="blii col-sm-6 col-md-4 colm10">
+                                                       <div class="img">
+                                                            <img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="" class="thumb">
+                                                       </div>
+                                                       <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
+
                                                   </div>
-                                                  <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
-
-                                             </div>
-                                             <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">{{ $project->Title }}</a></h2>
-                                                  <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>{{ $project->Location }}</p>
-                                                  <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
-                                                  <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
-                                                  <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
-                                                  <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
-                                                  <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
-                                             </div>
-
-                                             <div class="chothue">
-                                                  <div class="hourseitem row">
-                                                       <h3><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">Nice Apartment for rent in Berlin</a> </h3>
-                                                       <div class="hinhpost col-sm-6 col-md-6">
-                                                            <div class="img"><img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
-                                                            <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
-                                                            <div class="status"><span class="label-success status-label">Renting</span></div>
-                                                       </div>
-                                                       <div class="col-sm-6 col-md-6">
-
-                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Tây Bắc</p>
-                                                            <p class="bold500">Giá 3,3 tỷ >>> 60tr/m2</p>
-                                                            <p><span data-toggle="tooltip" data-placement="top" data-original-title="Square"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/area.svg" alt="icon"></i>
-                                                                      <i class="vti">63 m2</i></span></p>
-                                                            <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/bed.svg" alt="icon"></i>
-                                                                      <i class="vti">2</i></span>
-                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/bath.svg" alt="icon"></i>
-                                                                      <i class="vti">2</i></span>
-
-                                                            </p>
-                                                            <p><i class="far fa-heart"></i></p>
-                                                            <a href="/du-an/hcm/quan-9/vinhomes-grand-park-id780/ban" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
-                                                       </div>
+                                                  <div class="info col-sm-6 col-md-8">
+                                                       <h2><a href="{{ route('projectDetail', $project->ProjectId) }}" style="text-transform: capitalize;">{{ $project->Title }}</a></h2>
+                                                       <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>{{ $project->Location }}</p>
+                                                       <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                                       <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
+                                                       <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
+                                                       <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
+                                                       <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
                                                   </div>
                                              </div>
-                                             <div class="bdsban">
-                                                  <div class="hourseitem row">
-                                                       <h3><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">Nice Apartment for rent in Berlin</a></h3>
-                                                       <div class="hinhpost col-sm-6 col-md-6">
-                                                            <div class="img"><img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
-                                                            <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
-                                                            <div class="status"><span class="label-success status-label">Selling</span></div>
-                                                       </div>
-                                                       <div class="col-sm-6 col-md-6">
+                                             <hr>
+                                             <div class="row">
+                                                  <div class="chothue col-md-6">
+                                                       <div class="hourseitem row">
+                                                            <h3><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">Nice Apartment for rent in Berlin</a> </h3>
+                                                            <div class="hinhpost col-sm-6 col-md-6">
+                                                                 <div class="img"><img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
+                                                                 <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
+                                                                 <div class="status"><span class="label-success status-label">Renting</span></div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6">
 
-                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Nam</p>
-                                                            <p class="bold500">Giá 8 triệu /tháng >>> 500k/m2</p>
-                                                            <p><span data-toggle="tooltip" data-placement="top" data-original-title="Square"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/area.svg" alt="icon"></i>
-                                                                      <i class="vti">49 m2</i></span></p>
-                                                            <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/bed.svg" alt="icon"></i>
-                                                                      <i class="vti">2</i></span>
-                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i>
-                                                                           <img src="https://flex-home.botble.com/themes/flex-home/images/bath.svg" alt="icon"></i>
-                                                                      <i class="vti">1</i></span>
-                                                            </p>
-                                                            <p><i class="far fa-heart"></i></p>
-                                                            <a href="/du-an/hcm/quan-9/vinhomes-grand-park-id780/ban" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                                                 <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Tây Bắc</p>
+                                                                 <p class="bold500">Giá 3,3 tỷ >>> 60tr/m2</p>
+                                                                 <p><span data-toggle="tooltip" data-placement="top" data-original-title="Square"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/area.svg" alt="icon"></i>
+                                                                           <i class="vti">63 m2</i></span></p>
+                                                                 <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/bed.svg" alt="icon"></i>
+                                                                           <i class="vti">2</i></span>
+                                                                      <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/bath.svg" alt="icon"></i>
+                                                                           <i class="vti">2</i></span>
+
+                                                                 </p>
+                                                                 <p><i class="far fa-heart"></i></p>
+                                                                 <a href="/du-an/hcm/quan-9/vinhomes-grand-park-id780/ban" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+
+                                                  <div class="bdsban col-md-6">
+                                                       <div class="hourseitem row">
+                                                            <h3><a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin">Nice Apartment for rent in Berlin</a></h3>
+                                                            <div class="hinhpost col-sm-6 col-md-6">
+                                                                 <div class="img"><img data-src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" src="https://flex-home.botble.com/storage/properties/t3-410x270.jpg" alt="Nice Apartment for rent in Berlin" class="thumb"></div>
+                                                                 <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
+                                                                 <div class="status"><span class="label-success status-label">Selling</span></div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6">
+
+                                                                 <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> Nam</p>
+                                                                 <p class="bold500">Giá 8 triệu /tháng >>> 500k/m2</p>
+                                                                 <p><span data-toggle="tooltip" data-placement="top" data-original-title="Square"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/area.svg" alt="icon"></i>
+                                                                           <i class="vti">49 m2</i></span></p>
+                                                                 <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/bed.svg" alt="icon"></i>
+                                                                           <i class="vti">2</i></span>
+                                                                      <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms"><i>
+                                                                                <img src="https://flex-home.botble.com/themes/flex-home/images/bath.svg" alt="icon"></i>
+                                                                           <i class="vti">1</i></span>
+                                                                 </p>
+                                                                 <p><i class="far fa-heart"></i></p>
+                                                                 <a href="/du-an/hcm/quan-9/vinhomes-grand-park-id780/ban" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                                            </div>
                                                        </div>
                                                   </div>
                                              </div>
                                         </div>
-                                   </div>    
+                                   </div>
                                    @endforeach
 
                               </div>

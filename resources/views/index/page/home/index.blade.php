@@ -99,7 +99,6 @@
           <p>
                <div class="padtop70">
                     <div class="box_shadow">
-
                          <div class="container-fluid w90">
                               <div class="homehouse">
                                    <div class="row">
@@ -183,59 +182,63 @@
           </p>
 
           <p>
-               <div class="container">
-                    <div class="homehouse padtop30">
-                         <div class="row">
-                              <div class="col-12">
-                                   <h2>DỰ ÁN</h2>
-                                   <p>Danh sách dự án BDS nổi bật</p>
-                              </div>
-                         </div>
-                         <div class="row rowm10">
-                              @foreach($data['project_list'] as $project)
-                              @if( $project->ProjectId%2 == 0)
-                              <div class="col-sm-6 col-md-6 colm10 itemduan">
-                                   <div class="hourseitem row">
-                                        <div class="blii col-sm-6 col-md-6 colm10">
-                                             <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
-                                             </div>
-                                             <a href="{{ ('/project'.$project->ProjectId) }}" class="linkdetail"></a>
-                                        </div>
-                                        <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
-                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"> {{ $project->Location }}</i></p>
-                                             <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
-                                             <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
-                                             <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
-                                             <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
-                                             <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
+               <div class="padtop70">
+                    <div class="box_shadow">
+                         <div class="container-fluid w90">
+                              <div class="homehouse padtop30">
+                                   <div class="row">
+                                        <div class="col-12">
+                                             <h2>Dự Án</h2>
+                                             <p>Danh sách dự án BDS nổi bật</p>
                                         </div>
                                    </div>
-                              </div>
-                              @else
-                              <div class="col-sm-6 col-md-6 colm10 itemduan">
-                                   <div class="hourseitem row">
-                                        <div class="blii col-sm-6 col-md-6 colm10">
-                                             <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                   <div class="row row10">
+                                        @foreach($data['project_list'] as $project)
+                                        @if( $project->ProjectId%2 == 0)
+                                        <div class="col-sm-6 col-md-6 colm10 itemduan">
+                                             <div class="hourseitem row">
+                                                  <div class="blii col-sm-6 col-md-6 colm10">
+                                                       <div class="img">
+                                                            <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                                       </div>
+                                                       <a href="{{ ('/project'.$project->ProjectId) }}" class="linkdetail"></a>
+                                                  </div>
+                                                  <div class="info col-sm-6 col-md-6">
+                                                       <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
+                                                       <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"> {{ $project->Location }}</i></p>
+                                                       <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                                       <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
+                                                       <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
+                                                       <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
+                                                       <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
+                                                  </div>
                                              </div>
-                                             <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
+                                        </div>
+                                        @else
+                                        <div class="col-sm-6 col-md-6 colm10 itemduan">
+                                             <div class="hourseitem row">
+                                                  <div class="blii col-sm-6 col-md-6 colm10">
+                                                       <div class="img">
+                                                            <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                                       </div>
+                                                       <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
 
+                                                  </div>
+                                                  <div class="info col-sm-6 col-md-6">
+                                                       <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
+                                                       <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
+                                                       <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                                       <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
+                                                       <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ $project->Price }} Triệu</p>
+                                                       <p class="bold500"><span class="font-weight-bold">Bán: </span> 8 <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> 13</p>
+                                                       <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> Đã hoàn thành</p>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
-                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
-                                             <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
-                                             <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
-                                             <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
-                                             <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
-                                             <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
-                                        </div>
+                                        @endif
+                                        @endforeach
                                    </div>
                               </div>
-                              @endif
-                              @endforeach
                          </div>
                     </div>
                </div>
@@ -245,8 +248,8 @@
 
 
 <p>
-     <div class="box_shadow" style="margin-bottom: 0;padding-bottom: 80px;">
-          <div class="container-fluid w90">
+     <div class="container-fluid w90">
+          <div class="homehouse padtop30">
                <div class="discover">
                     <div class="row">
                          <div class="col-12">
