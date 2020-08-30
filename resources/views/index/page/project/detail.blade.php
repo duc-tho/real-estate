@@ -1,6 +1,4 @@
 <?php include("header1.php"); ?>
-
-
 <div id="app">
     <main class="detailproject" style="background: #FFF;">
     <div class="boxsliderdetail">
@@ -18,14 +16,14 @@
         <div class="slidebot">
             <div style="max-width: 800px; margin: 0 auto;">
                     <div class="owl-carousel" id="listcarouselthumb">
-                                                    <div class="item cthumb" rel="0"><img  src="https://flex-home.botble.com/storage/properties/e1.jpg" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="1"><img  src="https://flex-home.botble.com/storage/properties/e2.jpg" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="2"><img  src="https://flex-home.botble.com/storage/properties/e3.jpg" class="showfullimg" rel="2" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="3"><img  src="https://flex-home.botble.com/storage/properties/e4.jpg" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="4"><img  src="https://flex-home.botble.com/storage/properties/e5.jpg" class="showfullimg" rel="4" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="5"><img  src="https://flex-home.botble.com/storage/properties/e7.jpg" class="showfullimg" rel="5" alt="The Avila Apartments"></div>
-                                                    <div class="item cthumb" rel="6"><img  src="https://flex-home.botble.com/storage/properties/e8.jpg" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
-                                            </div>
+                            <div class="item cthumb" rel="0"><img  src="https://flex-home.botble.com/storage/properties/e1.jpg" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="1"><img  src="https://flex-home.botble.com/storage/properties/e2.jpg" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="2"><img  src="https://flex-home.botble.com/storage/properties/e3.jpg" class="showfullimg" rel="2" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="3"><img  src="https://flex-home.botble.com/storage/properties/e4.jpg" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="4"><img  src="https://flex-home.botble.com/storage/properties/e5.jpg" class="showfullimg" rel="4" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="5"><img  src="https://flex-home.botble.com/storage/properties/e7.jpg" class="showfullimg" rel="5" alt="The Avila Apartments"></div>
+                            <div class="item cthumb" rel="6"><img  src="https://flex-home.botble.com/storage/properties/e8.jpg" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
+                    </div>
                     <i class="fas fa-chevron-right ar-next"></i>
                     <i class="fas fa-chevron-left ar-prev"></i>
             </div>

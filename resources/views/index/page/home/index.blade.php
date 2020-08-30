@@ -480,8 +480,10 @@ According to URA data, developers only sold 928...</p></div></div></div></div></
             <div class="owl-carousel" id="project-city-slides">
                <div class="item itemarea">
                        <a href="https://bdsnew.eso.vnprojects/city/alhambra">
-                           <img src="{{ asset('asset/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
-                           <h4>Alhambra</h4>
+                            <div class="img">
+                                <img  src="{{asset('asset/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
+                            </div>
+                            <h4>Alhambra</h4>
                        </a>
                </div>
            </div>
@@ -505,7 +507,7 @@ According to URA data, developers only sold 928...</p></div></div></div></div></
                <div class="col-sm-4 col-md-3 colm10">
                    <div class="hourseitem"><div class="blii">
                        <div class="img">
-                           <img data-src="img/6-2-410x270.jpg" src="{{ asset('asset/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                           <img data-src="{{asset('img/6-2-410x270.jpg')}}" src="{{ asset('asset/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
                        </div> 
                            <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a> 
                        <div class="status">

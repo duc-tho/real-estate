@@ -4,11 +4,10 @@
 	<div class="bgheadproject hidden-xs"><div class="description"><div class="container-fluid w90"><h1 class="text-center">Dự án BĐS</h1> <p class="text-center">Chúng tôi luôn cập nhật những dự án BDS mới nhất</p> 
 	<ul class="breadcrumb"><li class="breadcrumb-item"><a href="/">Trang chủ</a></li> <li class="breadcrumb-item active">Dự án</li></ul></div></div></div>
 	
+
+
+
 	
-        
-
-
-
 <p><div class="container-fluid w90">
 	<div class="row">
     <div class="homehouse padtop30 col-sm-9 col-md-9">
