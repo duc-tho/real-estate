@@ -129,10 +129,10 @@
     // convertToSlug();
     // name.addEventListener('input', convertToSlug);
 
-    let name = document.getElementById('Name');
-     let slug = document.getElementById('Slug');
-     slug.value = convertToSlug(name.value);
-     name.addEventListener('input', () => slug.value = convertToSlug(name.value));
+    let name = document.getElementById('title');
+    let slug = document.getElementById('slug');
+    slug.value = convertToSlug(name.value);
+    name.addEventListener('input', () => slug.value = convertToSlug(name.value));
     // var validateConstraints = {
     //         title: {
     //             presence: {

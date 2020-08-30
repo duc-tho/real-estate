@@ -14,7 +14,7 @@ class Street extends Model
 
      public function posts()
      {
-          return $this->hasMany('App\Post', 'StreetId', 'StreetId');
+          return $this->hasMany('App\Models\Post', 'StreetId', 'StreetId');
      }
 
      public function Area()

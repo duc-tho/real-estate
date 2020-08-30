@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Street;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,12 @@ class PostController extends Controller
      public function index()
      {
           $postList = Post::all();
+          $categoryList = Category::all();
+          $projectList = Project::all();
+
+          foreach ($postList as $item) {
+               $item->Author = $item->User;
+          }
 
           return view('admin.admin', [
                'title' => 'Quản Lý Bất Động Sản',
@@ -25,6 +32,8 @@ class PostController extends Controller
                'page_title' => 'Quản Lý Bất Động Sản',
                'data' => [
                     'post_list' => $postList,
+                    'category_list' => $categoryList,
+                    'project_list' => $projectList
                ]
           ]);
      }
@@ -59,10 +68,19 @@ class PostController extends Controller
                return redirect()->route('adminPostGetAdd')->withInput();
           }
 
+          $image = [];
+
+          if ($req->hasFile('Image')) {
+               foreach ($req->Image as $file) {
+                    $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
+                    array_push($image, $filename);
+               }
+          }
+
           $post = new Post($req->input());
           $post->UserId = Auth::user()->UserId;
+          $post->Image = implode('|', $image);
           if ($req->ProjectId === 0) $post->ProjectId = '?';
-
           $post->save();
 
           return redirect()->route("adminPost");
@@ -78,8 +96,11 @@ class PostController extends Controller
           $postData->DistrictId = Area::find($postData['AreaId'])->District['DistrictId'];
           $postData->CityId = District::find($postData['DistrictId'])->City['CityId'];
           $projectList = Project::all();
-          $cityList = City::all();
           $categoryList = Category::all();
+          $cityList = City::all();
+          $districtList = City::find($postData->CityId)->District;
+          $areaList = District::find($postData->DistrictId)->Area;
+          $streetList = Area::find($postData->AreaId)->Street;
 
           return view('admin.admin', [
                'title' => 'Sửa Bất Động Sản',
@@ -89,14 +110,41 @@ class PostController extends Controller
                     'post_info' => $postData,
                     'project_list' => $projectList,
                     'city_list' => $cityList,
-                    'category_list' => $categoryList
+                    'category_list' => $categoryList,
+                    'district_list' => $districtList,
+                    'area_list' => $areaList,
+                    'street_list' => $streetList
                ]
           ]);
      }
 
-     public function putEdit()
+     public function putEdit(Request $req, $id)
      {
-          return "Put Edit Post";
+          // if (!$req->filled(
+          //      [
+          //           'Title', 'Slug', 'StreetId',
+          //           'CategoryId', 'Floor', 'ApartmentNumber',
+          //           'Price', 'Status', 'Type', 'Slug'
+          //      ]
+          // )) {
+          //      return redirect()->route('adminPostGetAdd')->withInput();
+          // }
+
+          // $image = [];
+
+          // if ($req->hasFile('Image')) {
+          //      foreach ($req->Image as $file) {
+          //           $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
+          //           array_push($image, $filename);
+          //      }
+          // }
+
+          // $post = Post::find($id);
+          // $post->Image = implode('|', $image);
+          // if ($req->ProjectId === 0) $post->ProjectId = '?';
+          // $post->save();
+
+          // return redirect()->route("adminPost");
      }
 
      public function delete()

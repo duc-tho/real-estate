@@ -30,6 +30,6 @@ class Project extends Model
 
      public function posts()
      {
-          return $this->hasMany('App\Post', 'ProjectId', 'ProjectId');
+          return $this->hasMany('App\Models\Post', 'ProjectId', 'ProjectId');
      }
 }

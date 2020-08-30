@@ -26,12 +26,13 @@
                                    </li>
                                    @else
                                    <li class="dropdown">
-                                        <a data-toggle="dropdown" href="#">
-                                             <img height="17px" src="{{ asset(Auth::user()['ProfileImage']) }}" class="img-circle" alt="User Image">
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right text-center">
-                                             <span class="dropdown-item dropdown-header">{{ Auth::user()['FirstName'] }}</span>
-
+                                        <span class="d-flex ouline-none text-light justify-content-center align-items-center" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                             <a data-toggle="dropdown" href="#" aria-expanded="false">
+                                                  <img height="17px" src="{{ asset(Auth::user()['ProfileImage']) }}" class="img-circle" alt="User Image">
+                                             </a>
+                                             <span class="font-weight-bold">&nbsp; {{ Auth::user()['FirstName'] }}</span>
+                                        </span>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                              <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer text-danger">
                                                   <i class="fas fa-sign-out-alt mr-2"></i>
                                                   Đăng Xuất
@@ -60,7 +61,7 @@
                          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                               <ul class="navbar-nav justify-content-end">
                                    <li class="nav-item ">
-                                   <a class="nav-link " href="{{route('index')}}" target="_self">
+                                        <a class="nav-link " href="{{ URL::to('/project') }}" target="_self">
                                              Dự Án
                                         </a>
                                    </li>

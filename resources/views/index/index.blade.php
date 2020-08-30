@@ -1,5 +1,4 @@
 @extends('index-master')
-
 @section('title', $title ?? 'Real Estate site')
 
 @section('head-import')
@@ -12,4 +11,4 @@
 
 @section('main')
 @include('index.main')
-@endsection 
+@endsection

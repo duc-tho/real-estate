@@ -21,7 +21,7 @@ Route::group(['prefix' => 'project'], function () {
 
      Route::get('/{id}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail')
-          ->where(['id' => '[0-9]+' ]);
+          ->where(['id' => '[0-9]+']);
 });
 
 Route::group(['prefix' => 'user'], function () {
@@ -78,7 +78,7 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
 
           Route::get('/add', 'Admin\PostController@getAdd')->name('adminPostGetAdd');
 
-          Route::post('/add', 'Admin\PostController@postAdd')->name('adminPostPostAdd');
+          Route::post('/add', 'Admin\PostController@postAdd')->middleware('validateUploadFile')->name('adminPostPostAdd');
 
           Route::get('/edit/{id}', 'Admin\PostController@getEdit')
                ->name('adminPostGetEdit')

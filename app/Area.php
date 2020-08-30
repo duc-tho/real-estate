@@ -21,7 +21,7 @@ class Area extends Model
 
      public function Street()
      {
-          return $this->hasMany('App\Street', 'AreaId', 'AreaId');
+          return $this->hasMany('App\Models\Street', 'AreaId', 'AreaId');
      }
 
      public function District()

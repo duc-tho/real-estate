@@ -21,11 +21,40 @@
                     <tr>
                          <td>{{ $item->PostId }}</td>
                          <td>{{ $item->Title }}</td>
-                         <td>{{ $item->CategoryId }}</td>
-                         <td>{{ $item->ProjectId ?? 'Không' }}</td>
-                         <td>{{ $item->UserId }}</td>
-                         <td>{{ $item->created_at }}</td>
-                         <td>{{ $item->Status }}</td>
+                         @foreach ($data['category_list'] as $category_item)
+                         @if ($item->CategoryId === $category_item->CategoryId)
+                         <td>{{ $category_item->Name }}</td>
+                         @break
+                         @endif
+                         @endforeach
+
+                         @if ($item->ProjectId !== null)
+                         @foreach ($data['project_list'] as $project_item)
+                         @if ($item->ProjectId === $project_item->ProjectId)
+                         <td>{{ $project_item->Title }}</td>
+                         @break
+                         @endif
+                         @endforeach
+                         @else
+                         <td>Không</td>
+                         @endif
+
+                         <td>{{ $item->Author->FirstName }}</td>
+                         <td>{{ date_format(date_create(date("Y-m-d H:i:s", strtotime($item->created_at))), 'd/m/Y | H:i:s') }}</td>
+
+                         @switch($item->Status)
+                         @case(1)
+                         <td class="text-success">Hoạt động</td>
+                         @break
+                         @case(-1)
+                         <td class="text-secondary">Không hoạt động</td>
+                         @break
+                         @case(0)
+                         <td class="text-warning">Chờ duyệt</td>
+                         @break
+                         @default
+                         @endswitch
+
                          <td>
                               <a href="{{route('adminPostGetEdit', $item->PostId)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
                               <a href="{{route('adminPostDelete', $item->PostId)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
