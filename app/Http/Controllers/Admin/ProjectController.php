@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Session;
@@ -50,7 +51,21 @@ class ProjectController extends Controller
           $project->BuildingDensity = $req->Density;
           $project->Price = $req->Price;
           $project->Description = $req->Desc;
-          $project->Image = $req->Image;
+
+          $img = [];
+
+          // if ($req->hasFile('Image')) {
+
+          // }
+          foreach ($req->Image as $file) {
+               $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+               array_push($img, $filename);
+          }
+          //$project = new Project($req->input());
+          //$post->UserId = Auth::user()->UserId;
+          $project->Image = implode('|', $img);
+
+          //$project->Image = $req->Image;
           $project->Status = $req->Status;
 
 
@@ -75,6 +90,8 @@ class ProjectController extends Controller
 
      public function putEdit(Request $req, $id)
      {
+
+
           // if (!$req->filled(['Title', 'Slug', 'Location', 'Investor', 'NumberOfBlock', 'NumberOfFloor', 'NumberOfApartment', 'AreaApartment', 'TotakArea', 'YearBuilt', 'BuildingDensity', 'Price', 'Description', 'Image', 'Status'])) {
           //      return redirect()->route('adminProjectGetEdit', ['id' => $id])->withInput()->with([
           //           'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
@@ -101,7 +118,18 @@ class ProjectController extends Controller
           // $img->move($destinationPath, $img);
           // $project->Image = $img;
 
-          $project->Image   = $req->Image;
+          $image = [];
+
+          if ($req->hasFile('Image')) {
+               foreach ($req->Image as $file) {
+                    $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($image, $filename);
+               }
+          }
+          //$project->UserId = Auth::user()->UserId;
+          $project->Image = implode('|', $image);
+
+          //$project->Image   = $req->Image;
           $project->Status = $req->Status;
           $project->save();
           return redirect()->route("adminProject");
