@@ -41,9 +41,9 @@
                               <label class="col-sm-2" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <div class="w-100">
                                    <select class="form-control" name="Status" id="Status">
-                                        <option value="1" {{ ($data['post_info']->Status ?? '') === '1' ? 'selected' : '' }}>Đang hoạt động</option>
-                                        <option value="-1" {{ ($data['post_info']->Status ?? '') === '-1' ? 'selected' : '' }}>Không hoạt động</option>
-                                        <option value="0" {{ ($data['post_info']->Status ?? '') === '0' ? 'selected' : '' }}>Chờ duyệt</option>
+                                        <option value="1" {{ ($data['post_info']->Status ?? '') === 1 ? 'selected' : '' }}>Đang hoạt động</option>
+                                        <option value="-1" {{ ($data['post_info']->Status ?? '') === -1 ? 'selected' : '' }}>Không hoạt động</option>
+                                        <option value="0" {{ ($data['post_info']->Status ?? '') === 0 ? 'selected' : '' }}>Chờ duyệt</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -232,9 +232,9 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="Description" style="padding-top: 7px;">Mô tả</label>
                               <div class="md-form">
-                                   <textarea name="Description" class="md-textarea form-control" rows="10"></textarea>
+                                   <textarea name="Description" class="md-textarea form-control" rows="10">{{ $data['post_info']->Description ?? old('Description') }}</textarea>
                               </div>
-                              <div class="col-lg-12 messages text-danger"></div>
+                              <div class=" col-lg-12 messages text-danger"></div>
                          </div>
                     </div>
 
@@ -265,13 +265,17 @@
                               <div class="card-body">
                                    <div class="row">
                                         <div class="col-md-12 d-flex flex-wrap" id="imageList">
+                                             @isset($data['post_info'])
                                              @for ($i = 0; $i < count(explode("|", $data['post_info']->Image)); $i++)
+                                                  @if (explode("|", $data['post_info']->Image)[$i] !== '')
                                                   <figure class="col-md-4">
                                                        <div class="w-100" style="height: 300px; position: relative;">
-                                                            <img alt="picture" src="{{ asset(explode("|", $data['post_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
+                                                            <img alt="picture" src="{{ asset(explode("|", $data['post_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
                                                        </div>
                                                   </figure>
+                                                  @endif
                                                   @endfor
+                                                  @endisset
                                         </div>
                                    </div>
                               </div>

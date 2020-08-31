@@ -57,7 +57,11 @@
 
                          <td>
                               <a href="{{route('adminPostGetEdit', $item->PostId)}}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
-                              <a href="{{route('adminPostDelete', $item->PostId)}}" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                              <form class="d-inline" action={{route('adminPostDelete', $item->PostId)}} method="post">
+                                   @csrf
+                                   @method('delete')
+                                   <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+                              </form>
                          </td>
                     </tr>
                     @endforeach
@@ -90,7 +94,7 @@
                null,
                null,
                null,
-               { "width": "17%" }
+               { "width": "18%" }
           ]
     });
 </script>
