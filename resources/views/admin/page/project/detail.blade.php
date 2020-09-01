@@ -1,5 +1,5 @@
 {{-- <form action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit') }}" method="post"> --}}
-    <form action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit', $data['project_info']->ProjectId) }}" method="post">
+    <form action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit', $data['project_info']->ProjectId) }}" method="post"  enctype="multipart/form-data" role="form" action="">
     @csrf
 
     @if (Request::is('admin/project/add'))
@@ -7,7 +7,6 @@
     @else
     @method('PUT')
     @endif
-
     <div class="card">
          <div class="card-header">
               <input class="btn btn-success" type="submit" value="Lưu">
@@ -89,18 +88,28 @@
                 </div>
             </div>
 
-            <div class="form-group d-flex">
+            <div class="form-group d-flex "  >
                 <label class="col-sm-2" for="name" style="padding-top: 7px;">Ảnh</label>
                 <div class="w-100">
-                    <input id="image" class="form-control" type="file" placeholder="Ảnh" name="Image" value="{{ $data['project_info']->Image ?? old('Image') }}">
-                </div>
+                    {{-- <input required id="image" type="file" name="Image" class="form-control hidden"  placeholder="Ảnh"  value="{{ $data['project_info']->Image ?? old('Image') }}"> --}}
+                    <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)" placeholder="Ảnh"  value="{{ $data['project_info']->Image ?? old('Image') }}">
+                    <img id="avatar" class="thumbnail" width="300px" src="{{asset('dist/img/new_seo-10-512.png')}}">
+                </div>  
             </div>
 
             <div class="form-group d-flex">
                 <label class="col-sm-2" for="name" style="padding-top: 7px;">Mô tả</label>
-                <div class="w-100">
-                    <input id="desc" class="form-control" type="text" placeholder="Mô Tả" name="Desc" value="{{ $data['project_info']->Description ?? old('Description') }}">
-                </div>
+                
+                <textarea required class="ckeditor" required name="Desc" value="{{ $data['project_info']->Description ?? old('Description') }}"></textarea>		
+					<script type="text/javascript">
+						var editor = CKEDITOR.replace('Description',{
+							language:'vi',
+							filebrowserImageBrowseUrl: '../../editor/ckfinder/ckfinder.html?Type=Images',
+							filebrowserFlashBrowseUrl: '../../editor/ckfinder/ckfinder.html?Type=Flash',
+							filebrowserImageUploadUrl: '../../editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+							filebrowserFlashUploadUrl: '../../editor/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+						});
+					</script>
             </div>
 
                <div class="form-group d-flex" >
@@ -129,10 +138,10 @@
     // convertToSlug();
     // name.addEventListener('input', convertToSlug);
 
-    let name = document.getElementById('Name');
-     let slug = document.getElementById('Slug');
-     slug.value = convertToSlug(name.value);
-     name.addEventListener('input', () => slug.value = convertToSlug(name.value));
+    let name = document.getElementById('title');
+    let slug = document.getElementById('slug');
+    slug.value = convertToSlug(name.value);
+    name.addEventListener('input', () => slug.value = convertToSlug(name.value));
     // var validateConstraints = {
     //         title: {
     //             presence: {

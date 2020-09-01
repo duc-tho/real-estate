@@ -11,10 +11,10 @@
                     <div class="form-group">
                          <select name="blocks" id="select-blocks" class="form-control">
                               <option value="">-- Tỉnh, Thành Phố --</option>
-                              <option value="1">TP.HCM</option>
-                              <option value="2">Bình Dương</option>
-                              <option value="3">Đồng Nai</option>
-                              <option value="4">Bà Rịa - Vũng Tàu</option>
+                              @foreach ($city as $ci)
+                              <option value="{{asset('city/'.$ci->CityId.'/'.$ci->Slug.'.html')}}">{{$ci->Name}}</option>
+                              {{-- <a href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}" title="" style=" color: white;">{{$cate->cate_name}}</a> --}}
+                              @endforeach
                          </select>
                     </div>
 
@@ -182,6 +182,7 @@
           </p>
 
           <p>
+
                <div class="padtop70">
                     <div class="box_shadow">
                          <div class="container-fluid w90">
@@ -219,7 +220,7 @@
                                              <div class="hourseitem row">
                                                   <div class="blii col-sm-6 col-md-6 colm10">
                                                        <div class="img">
-                                                            <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                                            <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src={{('dist/img/upload/project/'.$project->Image)}} alt="" class="thumb">
                                                        </div>
                                                        <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
 

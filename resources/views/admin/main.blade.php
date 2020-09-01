@@ -52,12 +52,12 @@
                @break
                {{-- End Case Category --}}
 
-               @case('post')
+               {{-- @case('post')
                @include('admin.page.post.index')
                @break
                @case('project')
                @include('admin.page.project.index')
-               @break
+               @break --}}
 
                {{-- start city --}}
                @case('city')
@@ -77,7 +77,7 @@
                @include('admin.page.post.detail')
                @break
                {{-- start project --}}
-               @case('project')
+               @case('project.index')
                @include('admin.page.project.index')
                @break
                @case('project.detail')

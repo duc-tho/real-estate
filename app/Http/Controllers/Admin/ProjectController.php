@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddProjectRequest;
 use Illuminate\Support\Str;
 use Illuminate\Session;
 
@@ -14,15 +16,12 @@ class ProjectController extends Controller
 {
      public function index()
      {
-          $projectList = Project::all();
+          $data['projectList'] = Project::all();
 
           return view('admin.admin', [
-               'page' => 'project',
+               'page' => 'project.index',
                'page_title' => 'Quản Lý Dự Án',
-               'data' => [
-                    'project_list' => $projectList
-               ]
-          ]);
+          ], $data);
      }
 
      public function getAdd()
@@ -34,8 +33,10 @@ class ProjectController extends Controller
           ], $data);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(AddProjectRequest $req)
      {
+          $filename = $req->img->getClientOriginalName();
+
           $project = new Project();
           $project->Title = $req->Title;
           $project->Slug = str::slug($req->Slug);
@@ -50,11 +51,10 @@ class ProjectController extends Controller
           $project->BuildingDensity = $req->Density;
           $project->Price = $req->Price;
           $project->Description = $req->Desc;
-          $project->Image = $req->Image;
-          $project->Status = $req->Status;
 
-
+          $project->Image = $filename;
           $project->save();
+          $req->img->move('dist/img/upload/project', $filename);
           return back();
      }
 
@@ -75,6 +75,8 @@ class ProjectController extends Controller
 
      public function putEdit(Request $req, $id)
      {
+
+
           // if (!$req->filled(['Title', 'Slug', 'Location', 'Investor', 'NumberOfBlock', 'NumberOfFloor', 'NumberOfApartment', 'AreaApartment', 'TotakArea', 'YearBuilt', 'BuildingDensity', 'Price', 'Description', 'Image', 'Status'])) {
           //      return redirect()->route('adminProjectGetEdit', ['id' => $id])->withInput()->with([
           //           'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
@@ -101,7 +103,18 @@ class ProjectController extends Controller
           // $img->move($destinationPath, $img);
           // $project->Image = $img;
 
-          $project->Image   = $req->Image;
+          $image = [];
+
+          if ($req->hasFile('Image')) {
+               foreach ($req->Image as $file) {
+                    $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($image, $filename);
+               }
+          }
+          //$project->UserId = Auth::user()->UserId;
+          $project->Image = implode('|', $image);
+
+          //$project->Image   = $req->Image;
           $project->Status = $req->Status;
           $project->save();
           return redirect()->route("adminProject");

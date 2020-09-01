@@ -1,6 +1,6 @@
 <div class="card">
      <div class="card-header">
-          <a href="{{route('adminProjectGetAdd')}}" class="btn btn-primary">Thêm Bài Đắng</a>
+          <a href="{{route('adminProjectGetAdd')}}" class="btn btn-primary">Thêm Bài Đăng</a>
      </div>
      <div class="card-body">
           <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
@@ -22,19 +22,21 @@
                     </tr>
                </thead>
                <tbody>
-                    @foreach ($data['project_list'] as $item)
+                    @foreach ($projectList as $item)
                     <tr>
-                         <td>{{ $item->ProjectID }}</td>
-                         <td>{{ $item->Title }}</td>
-                         <td>{{ $item->Location }}</td>
-                         <td>{{ $item->Investor }}</td>
-                         <td>{{ $item->NumberOfLock }}</td>
-                         <td>{{ $item->NumberOfFloor }}</td>
-                         <td>{{ $item->NumberOfApartment }}</td>
-                         <td>{{ $item->AreaApartment }}</td>
-                         <td>{{ $item->YearBuilt }}</td>
-                         <td>{{ $item->Image }}</td>
-                         <td>{{ $item->Description }}</td>
+                         <td>{{$item->ProjectId }}</td>
+                         <td>{{$item->Title }}</td>
+                         <td>{{$item->Location }}</td>
+                         <td>{{$item->Investor }}</td>
+                         <td>{{$item->NumberOfBlock }}</td>
+                         <td>{{$item->NumberOfFloor }}</td>
+                         <td>{{$item->NumberOfApartment }}</td>
+                         <td>{{$item->AreaApartment }}</td>
+                         <td>{{$item->YearBuilt }}</td>
+                         <td>
+                              <img width="200px" src="{{asset('/dist/img/upload/project/'.$item->Image)}}" class="thumbnail" alt="Chưa có ảnh" >
+                         </td>
+                         <td>{!! $item->Description !!}</td>
                          <td>{{ $item->Price }}</td>
                          <td>
                               <a href="{{ route('adminProjectGetEdit', $item->ProjectId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
