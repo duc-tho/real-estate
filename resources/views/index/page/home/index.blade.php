@@ -288,7 +288,7 @@
                                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
                                                   <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ $project->Price }} Triệu</p>
+                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} VNĐ</p>
                                                   <p class="bold500"><span class="font-weight-bold">Bán: </span> 8 <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> 13</p>
                                                   <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> Đã hoàn thành</p>
                                              </div>

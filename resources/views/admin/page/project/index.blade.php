@@ -30,11 +30,18 @@
                          <td>{{$item->Investor }}</td>
                          <td>{{$item->NumberOfBlock }}</td>
                          <td>{{$item->NumberOfFloor }}</td>
-                         <td>{{$item->NumberOfApartment }}</td>
-                         <td>{{$item->AreaApartment }}</td>
+                         <td>{{$item->NumberOfApartment      }}</td>
+                         
+                         @foreach ($area_list as $area_item)
+                         @if ($item->AreaId === $area_item->AreaId)
+                         <td>{{ $area_item->Name }}</td>
+                         @break
+                         @endif
+                         @endforeach
+                         
                          <td>{{$item->YearBuilt }}</td>
                          <td>
-                              <img width="200px" src="{{asset('/dist/img/upload/project/'.$item->Image)}}" class="thumbnail" alt="Chưa có ảnh" >
+                              <img width="200px" src="{{ $item->Image }}" class="thumbnail" alt="Chưa có ảnh" >
                          </td>
                          <td>{!! $item->Description !!}</td>
                          <td>{{ $item->Price }}</td>
