@@ -18,7 +18,7 @@ class HomeController extends Controller
           $post_sale_list = [];
           $post_rent_list = [];
 
-          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh']))) {
+          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
                $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
 
                $district_list = $default_city->District;

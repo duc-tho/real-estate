@@ -162,7 +162,7 @@
                                              <div class="hourseitem pt-0">
                                                   <div class="blii">
                                                        <div class="img">
-                                                            <img data-src="img/6-2-410x270.jpg" src="{{ asset('dist/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                                                            <img data-src="img/6-2-410x270.jpg" src="{{ asset(explode("|", $post_sale->Image)[0]) }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
                                                        </div>
                                                        <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a>
                                                        <div class="status">
@@ -221,7 +221,7 @@
                                         <div class="hourseitem pt-0">
                                              <div class="blii">
                                                   <div class="img">
-                                                       <img data-src="img/6-2-410x270.jpg" src="{{ asset('dist/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                                                       <img data-src="img/6-2-410x270.jpg" src="{{ asset(explode("|", $post_rent->Image)[0]) }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
                                                   </div>
                                                   <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a>
                                                   <div class="status">
