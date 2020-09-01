@@ -11,10 +11,10 @@
                     <div class="form-group">
                          <select name="blocks" id="select-blocks" class="form-control">
                               <option value="">-- Tỉnh, Thành Phố --</option>
-                              <option value="1">TP.HCM</option>
-                              <option value="2">Bình Dương</option>
-                              <option value="3">Đồng Nai</option>
-                              <option value="4">Bà Rịa - Vũng Tàu</option>
+                              @foreach ($city as $ci)
+                                   <option value="{{asset('city/'.$ci->CityId.'/'.$ci->Slug.'.html')}}">{{$ci->Name}}</option>
+                                   {{-- <a href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}" title="" style=" color: white;">{{$cate->cate_name}}</a> --}}
+                              @endforeach
                          </select>
                     </div>
 

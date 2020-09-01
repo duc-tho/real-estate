@@ -33,77 +33,77 @@
           </div>
 
           @foreach($data['project_detail'] as $project)
-          <div class="container-fluid bgmenupro">
-               <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
-                    <div class="col-12">
-                         <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $project->Title }}</h1>
-                    <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $project->Location }}</p>
+               <div class="container-fluid bgmenupro">
+                    <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
+                         <div class="col-12">
+                              <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $project->Title }}</h1>
+                         <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $project->Location }}</p>
+                         </div>
                     </div>
                </div>
-          </div>
 
-          <div class="container-fluid w90 padtop30 single-post">
-               <section class="general">
-                    <div class="row">
-                         <div class="col-md-8">
-                              <div class="head">Tổng quan</div>
-                              <span class="line_title"></span>
-                              <div class="row">
-                                   <div class="col-sm-6 lineheight220">
-                                        <div><span>Trạng thái: </span>
-                                             @if($project->Status == 1)
-                                             <b>Còn</b>
-                                             @else
-                                             <b>Hết</b>
-                                             @endif
-                                         </div>
-                                        <div><span>Category:</span> <b></b></div>
-                                        <div><span>Chủ Đầu Tư:</span> <b>{{ $project->Investor }}</b></div>
+               <div class="container-fluid w90 padtop30 single-post">
+                    <section class="general">
+                         <div class="row">
+                              <div class="col-md-8">
+                                   <div class="head">Tổng quan</div>
+                                   <span class="line_title"></span>
+                                   <div class="row">
+                                        <div class="col-sm-6 lineheight220">
+                                             <div><span>Trạng thái: </span>
+                                                  @if($project->Status == 1)
+                                                  <b>Còn</b>
+                                                  @else
+                                                  <b>Hết</b>
+                                                  @endif
+                                             </div>
+                                             <div><span>Category:</span> <b></b></div>
+                                             <div><span>Chủ Đầu Tư:</span> <b>{{ $project->Investor }}</b></div>
+                                        </div>
+                                        <div class="col-sm-6 lineheight220">
+                                        <div><span>Số Block:</span> <b>{{ $project->NumberOfBlock }}</b></div>
+                                             <div><span>Số Tầng:</span> <b>{{ $project->NumberOfFloor }}</b></div>
+                                             <div><span>Số Tòa:</span> <b>{{ $project->NumberOfApartment }}</b></div>
+                                        </div>
                                    </div>
-                                   <div class="col-sm-6 lineheight220">
-                                   <div><span>Số Block:</span> <b>{{ $project->NumberOfBlock }}</b></div>
-                                        <div><span>Số Tầng:</span> <b>{{ $project->NumberOfFloor }}</b></div>
-                                        <div><span>Số Tòa:</span> <b>{{ $project->NumberOfApartment }}</b></div>
-                                   </div>
-                              </div>
 
-                              <div class="head">Mô tả</div>
-                              <p>{{ $project->Description }}.</p>
+                                   <div class="head">Mô tả</div>
+                                   <p>{{ $project->Description }}.</p>
 
-                              {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
+                                   {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
 
-                              <ul>
-                                   <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
-                                   <li>2.&nbsp;Nhiều dịch vụ tiện ích tại đây.</li>
-                                   <li>3.&nbsp;Đầy đủ các của hàng tiện lợi.</li>
-                                   <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
-                                   <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
-                              </ul> --}}
-                              <div class="head">Dịch vụ</div>
-                              <div class="row">
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
+                                   <ul>
+                                        <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
+                                        <li>2.&nbsp;Nhiều dịch vụ tiện ích tại đây.</li>
+                                        <li>3.&nbsp;Đầy đủ các của hàng tiện lợi.</li>
+                                        <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
+                                        <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
+                                   </ul> --}}
+                                   <div class="head">Dịch vụ</div>
+                                   <div class="row">
+                                        <div class="col-sm-4">
+                                             <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                             <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                             <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                             <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
+                                        </div>
+                                        <div class="col-sm-4">
+                                             <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
+                                        </div>
                                    </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
+                                   <br>
+                                   <br>
+                                   <div class="mapouter">
+                                        <div class="gmap_canvas">
+                                             <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                        </div>
                                    </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
-                                   </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
-                                   </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
-                                   </div>
-                              </div>
-                              <br>
-                              <br>
-                              <div class="mapouter">
-                                   <div class="gmap_canvas">
-                                        <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                   </div>
-                              </div>
                               @endforeach
                               <br>
                               <br>

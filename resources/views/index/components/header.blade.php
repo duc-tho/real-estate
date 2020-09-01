@@ -61,7 +61,7 @@
                          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                               <ul class="navbar-nav justify-content-end">
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{ URL::to('/project') }}" target="_self">
+                                        <a class="nav-link " href="{{URL::to('/project') }}" target="_self">
                                              Dự Án
                                         </a>
                                    </li>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddProjectRequest;
 use Illuminate\Support\Str;
 use Illuminate\Session;
 
@@ -15,15 +16,12 @@ class ProjectController extends Controller
 {
      public function index()
      {
-          $projectList = Project::all();
+          $data['projectList'] = Project::all();
 
           return view('admin.admin', [
-               'page' => 'project',
+               'page' => 'project.index',
                'page_title' => 'Quản Lý Dự Án',
-               'data' => [
-                    'project_list' => $projectList
-               ]
-          ]);
+          ],$data);
      }
 
      public function getAdd()
@@ -35,8 +33,10 @@ class ProjectController extends Controller
           ], $data);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(AddProjectRequest $req)
      {
+          $filename = $req->img->getClientOriginalName();
+
           $project = new Project();
           $project->Title = $req->Title;
           $project->Slug = str::slug($req->Slug);
@@ -51,26 +51,13 @@ class ProjectController extends Controller
           $project->BuildingDensity = $req->Density;
           $project->Price = $req->Price;
           $project->Description = $req->Desc;
-
-          $img = [];
-
-          // if ($req->hasFile('Image')) {
-
-          // }
-          foreach ($req->Image as $file) {
-               $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
-               array_push($img, $filename);
-          }
-          //$project = new Project($req->input());
-          //$post->UserId = Auth::user()->UserId;
-          $project->Image = implode('|', $img);
-
-          //$project->Image = $req->Image;
-          $project->Status = $req->Status;
-
-
+          
+          $project->Image = $filename;
           $project->save();
+          $req->img->storeAs('avatar',$filename);
           return back();
+          
+
      }
 
      public function getEdit($id)
