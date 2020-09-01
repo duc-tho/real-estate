@@ -37,7 +37,7 @@
 
                                                   </div>
                                                   <div class="info col-sm-6 col-md-6">
-                                                  <h2><a href={{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}>{{ $project->Title }}</a></h2>
+                                                  <h2><a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}">{{ $project->Title }}</a></h2>
                                                    {{-- href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}" --}}
                                                    {{-- {{URL::to('/project') }} --}}
                                                        <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>{{ $project->Location }}</p>

@@ -200,10 +200,10 @@
                                              <div class="img">
                                                   <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src="{{('/dist/img/upload/project/'.$project->Image)}}" alt="" class="thumb">
                                              </div>
-                                             <a href="{{ ('/project'.$project->ProjectId) }}" class="linkdetail"></a>
+                                             <a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}" class="linkdetail"></a>
                                         </div>
                                         <div class="info col-sm-6 col-md-6">
-                                             <h2><a href={{ ('/project'.$project->ProjectId) }}>{{ $project->Title }}</a></h2>
+                                             <h2><a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}">{{ $project->Title }}</a></h2>
                                              <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"> {{ $project->Location }}</i></p>
                                              <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
                                              <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
@@ -220,11 +220,11 @@
                                              <div class="img">
                                                   <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src={{('dist/img/upload/project/'.$project->Image)}} alt="" class="thumb">
                                              </div>
-                                             <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
+                                             <a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}" class="linkdetail"></a>
 
                                         </div>
                                         <div class="info col-sm-6 col-md-6">
-                                             <h2><a href="{{('project/'.$project->ProjectId)}}">{{ $project->Title }}</a></h2>
+                                             <h2><a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}">{{ $project->Title }}</a></h2>
                                              <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                              <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
                                              <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
