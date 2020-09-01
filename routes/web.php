@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Index\HomeController@index')->name('home');
 
 Route::group(['prefix' => 'project'], function () {
-     Route::get('/', 'Index\ProjectController@index')->name('index');
+     Route::get('/', 'Index\ProjectController@index')->name('project');
 
      Route::get('/{id}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail')
