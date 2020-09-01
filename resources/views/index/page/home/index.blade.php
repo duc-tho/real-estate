@@ -198,7 +198,7 @@
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                                  <img data-src="{{ asset('storage/app/project/'.$project->Img) }}" src="{{ asset('storage/app/project/'.$project->Img) }}" alt="" class="thumb">
                                              </div>
                                              <a href="{{ ('/project'.$project->ProjectId) }}" class="linkdetail"></a>
                                         </div>
@@ -218,7 +218,7 @@
                                    <div class="hourseitem row">
                                         <div class="blii col-sm-6 col-md-6 colm10">
                                              <div class="img">
-                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('dist/img/t3-410x270.jpg') }}" alt="" class="thumb">
+                                                  <img data-src="img/t3-410x270.jpg" src="{{ asset('storage/app/project/'.$project->Img) }}" alt="" class="thumb">
                                              </div>
                                              <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
 

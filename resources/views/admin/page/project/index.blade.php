@@ -34,7 +34,7 @@
                          <td>{{$item->AreaApartment }}</td>
                          <td>{{$item->YearBuilt }}</td>
                          <td>
-                              <img width="200px" src="{{asset('/storage/app/avatar/'.$item->Image)}}" class="thumbnail" alt="Chưa có ảnh" >
+                              <img width="200px" src="{{asset('/dist/img/upload_project/'.$item->Image)}}" class="thumbnail" alt="Chưa có ảnh" >
                          </td>
                          <td>{!! $item->Description !!}</td>
                          <td>{{ $item->Price }}</td>

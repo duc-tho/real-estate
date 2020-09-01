@@ -54,7 +54,7 @@ class ProjectController extends Controller
           
           $project->Image = $filename;
           $project->save();
-          $req->img->storeAs('avatar',$filename);
+          $req->img->storeAs('/dist/img/upload_project',$filename);
           return back();
           
 

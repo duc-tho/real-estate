@@ -264,7 +264,7 @@
                               </div>
                               <div class="card-body">
                                    <div class="row">
-                                        <div class="col-md-12 d-flex flex-wrap" id="imageList">
+                                        {{-- <div class="col-md-12 d-flex flex-wrap" id="imageList">
                                              @for ($i = 0; $i < count(explode("|", $data['post_info']->Image)); $i++)
                                                   <figure class="col-md-4">
                                                        <div class="w-100" style="height: 300px; position: relative;">
@@ -272,7 +272,7 @@
                                                        </div>
                                                   </figure>
                                                   @endfor
-                                        </div>
+                                        </div> --}}
                                    </div>
                               </div>
                          </div>
