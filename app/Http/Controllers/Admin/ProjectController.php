@@ -21,7 +21,7 @@ class ProjectController extends Controller
           return view('admin.admin', [
                'page' => 'project.index',
                'page_title' => 'Quản Lý Dự Án',
-          ],$data);
+          ], $data);
      }
 
      public function getAdd()
@@ -51,13 +51,11 @@ class ProjectController extends Controller
           $project->BuildingDensity = $req->Density;
           $project->Price = $req->Price;
           $project->Description = $req->Desc;
-          
+
           $project->Image = $filename;
           $project->save();
-          $req->img->storeAs('/dist/img/upload_project',$filename);
+          $req->img->move('dist/img/upload/project', $filename);
           return back();
-          
-
      }
 
      public function getEdit($id)

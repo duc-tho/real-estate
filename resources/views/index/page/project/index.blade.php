@@ -31,13 +31,13 @@
                                              <div class="hourseitem row">
                                                   <div class="blii col-sm-6 col-md-6 colm10">
                                                        <div class="img">
-                                                            <img data-src="{{asset('/storage/app/avatar/'.$project->Image)}}" src="{{asset('/storage/app/avatar/'.$project->Image)}}" alt="" class="thumb">
+                                                            <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src="{{('/dist/img/upload/project/'.$project->Image)}}" alt="" class="thumb">
                                                        </div>
-                                                       <a href="https://flex-home.botble.com/properties/nice-apartment-for-rent-in-berlin" class="linkdetail"></a>
+                                                  <a href={{ ('/project'.$project->ProjectId) }} class="linkdetail"></a>
 
                                                   </div>
                                                   <div class="info col-sm-6 col-md-6">
-                                                  <h2><a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html')}}">{{ $project->Title }}</a></h2>
+                                                  <h2><a href={{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}>{{ $project->Title }}</a></h2>
                                                    {{-- href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}" --}}
                                                    {{-- {{URL::to('/project') }} --}}
                                                        <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>{{ $project->Location }}</p>

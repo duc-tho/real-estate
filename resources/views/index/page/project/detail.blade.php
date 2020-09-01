@@ -1,12 +1,13 @@
 <div id="app">
      <main class="detailproject" style="background: #FFF;">
           <div class="boxsliderdetail">
+               @foreach($data['project_detail'] as $project)
                <div class="slidetop">
                     <div class="owl-carousel" id="listcarousel">
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e1.jpg" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e2.jpg" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e3.jpg" class="showfullimg" rel="2" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e4.jpg" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
+                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
+                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
+                         <div class="item"><img src='{{('public/dist/img/upload/project/'.$project->Image)}}' class="showfullimg" rel="2" alt="The Avila Apartments"></div>
+                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
                          <div class="item"><img src="https://flex-home.botble.com/storage/properties/e5.jpg" class="showfullimg" rel="4" alt="The Avila Apartments"></div>
                          <div class="item"><img src="https://flex-home.botble.com/storage/properties/e7.jpg" class="showfullimg" rel="5" alt="The Avila Apartments"></div>
                          <div class="item"><img src="https://flex-home.botble.com/storage/properties/e8.jpg" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
@@ -15,7 +16,7 @@
                <div class="slidebot">
                     <div style="max-width: 800px; margin: 0 auto;">
                          <div class="owl-carousel" id="listcarouselthumb">
-                              <div class="item cthumb" rel="0"><img src="https://flex-home.botble.com/storage/properties/e1.jpg" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
+                              <div class="item cthumb" rel="0"><img src={{('public/dist/img/upload/project/'.$project->Image)}} class="showfullimg" rel="0" alt="The Avila Apartments"></div>
                               <div class="item cthumb" rel="1"><img src="https://flex-home.botble.com/storage/properties/e2.jpg" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
                               <div class="item cthumb" rel="2"><img src="https://flex-home.botble.com/storage/properties/e3.jpg" class="showfullimg" rel="2" alt="The Avila Apartments"></div>
                               <div class="item cthumb" rel="3"><img src="https://flex-home.botble.com/storage/properties/e4.jpg" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
@@ -32,7 +33,7 @@
                data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
           </div>
 
-          @foreach($data['project_detail'] as $project)
+          
                <div class="container-fluid bgmenupro">
                     <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
                          <div class="col-12">
@@ -68,7 +69,7 @@
                                    </div>
 
                                    <div class="head">Mô tả</div>
-                                   <p>{{ $project->Description }}.</p>
+                                   <p>{!! $project->Description !!}.</p>
 
                                    {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
 
