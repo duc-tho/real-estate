@@ -19,7 +19,7 @@ Route::get('/', 'Index\HomeController@index')->name('home');
 Route::group(['prefix' => 'project'], function () {
      Route::get('/', 'Index\ProjectController@index')->name('index');
 
-     Route::get('/{id}/{slug}.html', 'Index\ProjectController@projectDetail')
+     Route::get('/{id}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail')
           ->where(['id' => '[0-9]+']);
 });
