@@ -1,10 +1,10 @@
 <div class="home_banner" style="background-image: url({{ asset('dist/img/banner.jpg') }})">
      <div class="topsearch">
-          <form action="https://bdsnew.eso.vn/projects" method="GET" id="frmhomesearch">
+          <form action="{{ route('project') }}" method="GET" id="frmhomesearch">
                <div class="typesearch" id="hometypesearch">
-                    <a href="javascript:void(0)" class="active" rel="project" data-url="https://bdsnew.eso.vnprojects">Dự Án</a>
-                    <a href="javascript:void(0)" rel="sale" data-url="https://bdsnew.eso.vnprojects">Bán</a>
-                    <a href="javascript:void(0)" rel="rent" data-url="https://bdsnew.eso.vnprojects">Cho Thuê</a>
+                    <a href="javascript:void(0)" class="active" rel="project" data-url="{{ route('project') }}">Dự Án</a>
+                    <a href="javascript:void(0)" rel="sale" data-url="{{ route('post') }}">Bán</a>
+                    <a href="javascript:void(0)" rel="rent" data-url="{{ route('post') }}">Cho Thuê</a>
                </div>
                <div class="input-group input-group-lg">
 
@@ -49,7 +49,7 @@
                                    <div class="col-6 col-sm-4  col-md-3 colm10">
                                         <div class="item">
                                              <div class="blii">
-                                                  <div class="img"><img class="thumb" data-src="dist/img/1-410x270.jpg" src="{{ asset('dist/img/1-410x270.jpg') }}" alt="Walnut Park Apartments">
+                                                  <div class="img"><img class="thumb" data-src="{{ asset('dist/img/1-410x270.jpg') }}" src="{{ asset('dist/img/1-410x270.jpg') }}" alt="Walnut Park Apartments">
                                                   </div>
                                                   <a href="https://bdsnew.eso.vnprojects/walnut-park-apartment" class="linkdetail"></a>
                                              </div>
@@ -130,7 +130,7 @@
                                         @empty(!$data['district_list'])
                                         @foreach ($data['district_list'] as $district)
                                         <div class="item itemarea">
-                                             <a href="#projects/city/alhambra">
+                                             <a href="{{ route('postDistrict', [$district->CitySlug, $district->Slug]) }}">
                                                   <img src="{{ asset('dist/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
                                                   <h4>{{ $district->Name }}</h4>
                                              </a>
@@ -160,36 +160,36 @@
                                         @foreach ($data['post_sale_list'] as $post_sale)
                                         <div class="col-sm-4 col-md-3 colm10">
                                              <div class="hourseitem pt-0">
-                                                  <div class="blii">
-                                                       <div class="img">
-                                                            <img data-src="img/6-2-410x270.jpg" src="{{ asset('dist/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                                                  <div class="blii" style="height: 200px;">
+                                                       <div class="img" style="height: 100%;">
+                                                            <img src="{{ asset(explode("|", $post_sale->Image)[0]) }}" alt="{{ $post_sale->Title }}" class="thumb">
                                                        </div>
-                                                       <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a>
+                                                       <a href="{{ route('postDetail', $post_sale->Slug) }}" class="linkdetail"></a>
                                                        <div class="status">
-                                                            <span class="label-success status-label">Bán</span>
+                                                            <span class="label-success status-label">Cho Thuê</span>
                                                        </div>
                                                   </div>
                                                   <div class="info">
                                                        <h3>
-                                                            <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences">{{ $post_sale->Title}}</a>
+                                                            <a style="overflow-wrap: anywhere;" href="{{ route('postDetail', $post_sale->Slug) }}">{{ $post_sale->Title}}</a>
                                                        </h3>
                                                        <p class="city">
                                                             <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                             {{ $post_sale->StreetName }}, {{ $post_sale->AreaName }}, {{ $post_sale->DistrictName }}, {{ $post_sale->CityName }}
                                                        </p>
-                                                       <p class="bold500">Giá: {{ number_format($post_sale->Price, 0, ".", ",") }} VNĐ</p>
+                                                       <p class="bold500">Giá: {{ number_format($post_sale->Price, 0, ".", ",") }} Tỷ</p>
                                                        <p class="threemt bold500">
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms">
+                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                  <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
                                                                  <i class="vti">{{ $post_sale->Bedroom ?? '-' }}</i>
                                                             </span>
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms">
+                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
                                                                  <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
                                                                  <i class="vti">{{ $post_sale->Bathroom ?? "-"}}</i>
                                                             </span>
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Square">
-                                                                 <i><img src="{{ ('dist/img/area.svg') }}" alt="icon"></i>
-                                                                 <i class="vti">- m2</i>
+                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
+                                                                 <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
+                                                                 <i class="vti">- m²</i>
                                                             </span></p>
                                                   </div>
                                              </div>
@@ -219,36 +219,36 @@
                                    @foreach ($data['post_rent_list'] as $post_rent)
                                    <div class="col-sm-4 col-md-3 colm10">
                                         <div class="hourseitem pt-0">
-                                             <div class="blii">
-                                                  <div class="img">
-                                                       <img data-src="img/6-2-410x270.jpg" src="{{ asset('dist/img/6-2-410x270.jpg') }}" alt="5 room luxury penthouse for sale in Kuala Lumpur" class="thumb">
+                                             <div class="blii" style="height: 200px;">
+                                                  <div class="img" style="height: 100%;">
+                                                       <img src="{{ asset(explode("|", $post_rent->Image)[0]) }}" alt="{{ $post_rent->Title }}" class="thumb">
                                                   </div>
-                                                  <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences" class="linkdetail"></a>
+                                                  <a href="{{ route('postDetail', $post_rent->Slug) }}" class="linkdetail"></a>
                                                   <div class="status">
                                                        <span class="label-success status-label">Cho Thuê</span>
                                                   </div>
                                              </div>
                                              <div class="info">
                                                   <h3>
-                                                       <a href="https://bdsnew.eso.vnproperties/villa-for-sale-in-lavanya-residences">{{ $post_rent->Title}}</a>
+                                                       <a style="overflow-wrap: anywhere;" href="{{ route('postDetail', $post_rent->Slug) }}">{{$post_rent->Title}}</a>
                                                   </h3>
                                                   <p class="city">
                                                        <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                        {{ $post_rent->StreetName }}, {{ $post_rent->AreaName }}, {{ $post_rent->DistrictName }}, {{ $post_rent->CityName }}
                                                   </p>
-                                                  <p class="bold500">Giá: {{ number_format($post_rent->Price, 0, ".", ",") }} VNĐ</p>
+                                                  <p class="bold500">Giá: {{ number_format($post_rent->Price, 0, ".", ",") }} Tỷ</p>
                                                   <p class="threemt bold500">
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms">
+                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                             <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
                                                             <i class="vti">{{ $post_rent->Bedroom ?? '-' }}</i>
                                                        </span>
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Number of rest rooms">
+                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
                                                             <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
                                                             <i class="vti">{{ $post_rent->Bathroom ?? "-"}}</i>
                                                        </span>
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Square">
-                                                            <i><img src="{{ ('dist/img/area.svg') }}" alt="icon"></i>
-                                                            <i class="vti">- m2</i>
+                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
+                                                            <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
+                                                            <i class="vti">- m²</i>
                                                        </span></p>
                                              </div>
                                         </div>
@@ -275,23 +275,26 @@
                                    @empty(!$data['project_list'])
                                    @foreach($data['project_list'] as $project)
                                    <div class="col-sm-6 col-md-6 colm10 itemduan">
-                                        <div class="hourseitem row">
-                                             <div class="blii col-sm-6 col-md-6 colm10">
-                                                  <div class="img">
-                                                       <img data-src="{{ asset('/dist/img/upload/project/'.$project->Image)}}" src={{ asset('dist/img/upload/project/'.$project->Image)}} alt="" class="thumb">
+                                        <div class="hourseitem row p-0">
+                                             <div class="blii col-sm-6 col-md-6 colm10 pl-0">
+                                                  <div class="img h-100">
+                                                       @if (!empty($project->Image))
+                                                       <img style="max-height: 205px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
+                                                       @else
+                                                       <img style="max-height: 205px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
+                                                       @endif
                                                   </div>
-                                                  <a href="{{('project/'.$project->ProjectId)}}" class="linkdetail"></a>
-                                                 
+                                                  <a href="{{ route('projectDetail', $project->Slug) }}" class="linkdetail"></a>
 
                                              </div>
-                                             <div class="info col-sm-6 col-md-6">
-                                                  <h2><a href="{{asset('project/'.$project->ProjectId.'/'.$project->slug.'.html') }}">{{ $project->Title }}</a></h2>
+                                             <div class="info col-sm-6 col-md-6 py-2">
+                                                  <h2><a href="{{ route('projectDetail', $project->Slug) }}" style="text-transform: capitalize;">{{ $project->Title }}</a></h2>
                                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
+                                                  <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment }} căn hộ </p>
                                                   <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ $project->Price }} Triệu</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Bán: </span> 8 <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> 13</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> Đã hoàn thành</p>
+                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ - <span class="text-secondary text-small">- / m²</span></p>
+                                                  <p class="bold500"><span class="font-weight-bold">Bán: </span> {{ $project->post_sale_count }} <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> {{ $project->post_rent_count }}</p>
+                                                  <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> -</p>
                                              </div>
                                         </div>
                                    </div>

@@ -14,36 +14,36 @@ class PostController extends Controller
 
      public function postCity()
      {
-          return 'User City';
+          return 'Post City';
      }
 
      public function postDistrict()
      {
-          return 'User District';
+          return 'Post District';
      }
 
      public function postArea()
      {
-          return 'User Area';
+          return 'Post Area';
      }
 
      public function postStreet()
      {
-          return 'User Street';
+          return 'Post Street';
      }
 
      public function postCategory()
      {
-          return 'User Category';
+          return 'Post Category';
      }
 
      public function postProject()
      {
-          return 'User Project';
+          return 'Post Project';
      }
 
      public function postDetail()
      {
-          return 'User Detail';
+          return 'Post Detail';
      }
 }

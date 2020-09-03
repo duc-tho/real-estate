@@ -16,48 +16,40 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Index\HomeController@index')->name('home');
 
-Route::group(['prefix' => 'project'], function () {
+Route::group(['prefix' => 'du-an'], function () {
      Route::get('/', 'Index\ProjectController@index')->name('project');
 
-     Route::get('/{id}/{slug}.html', 'Index\ProjectController@projectDetail')
-          ->name('projectDetail')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/{slug}', 'Index\ProjectController@projectDetail')
+          ->name('projectDetail');
 });
 
 Route::group(['prefix' => 'user'], function () {
-     Route::get('/', 'Index\UserController@index')->name('index');
+     Route::get('/', 'Index\UserController@index')->name('user');
 });
 
-Route::group(['prefix' => 'post'], function () {
-     Route::get('/', 'Index\PostController@index')->name('index');
+Route::group(['prefix' => 'bat-dong-san'], function () {
+     Route::get('/', 'Index\PostController@index')->name('post');
 
-     Route::get('/city/{id}', 'Index\PostController@postCity')
-          ->name('postCity')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/khu-vuc/{city_slug}', 'Index\PostController@postCity')
+          ->name('postCity');
 
-     Route::get('/city/district/{id} ', 'Index\PostController@postDistrict')
-          ->name('postDistrict')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/khu-vuc/{city_slug}/{district_slug}', 'Index\PostController@postDistrict')
+          ->name('postDistrict');
 
-     Route::get('/city/district/area/{id} ', 'Index\PostController@postArea')
-          ->name('postArea')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/khu-vuc/{city_slug}/{district_slug}/{area_slug}', 'Index\PostController@postArea')
+          ->name('postArea');
 
-     Route::get('/city/district/area/street/{id}', 'Index\PostController@postStreet')
-          ->name('postStreet')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/khu-vuc/{city_slug}/{district_slug}/{area_slug}/{street_slug}', 'Index\PostController@postStreet')
+          ->name('postStreet');
 
-     Route::get('/category', 'Index\PostController@postCategory')
-          ->name('postCategory')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/danh-muc/{category_slug}', 'Index\PostController@postCategory')
+          ->name('postCategory');
 
-     Route::get('/project', 'Index\PostController@postProject')
-          ->name('postProject')
-          ->where(['id' => '[0-9]+']);
+     Route::get('{type}/du-an/{project_slug}', 'Index\PostController@postProject')
+          ->name('postProject');
 
-     Route::get('/{id}', 'Index\PostController@postDetail')
-          ->name('postDetail')
-          ->where(['id' => '[0-9]+']);
+     Route::get('/{post_slug}', 'Index\PostController@postDetail')
+          ->name('postDetail');
 });
 
 Route::group(['prefix' => 'auth'], function () {

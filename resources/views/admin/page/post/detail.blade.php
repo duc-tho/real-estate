@@ -53,7 +53,7 @@
                               <div class="w-100">
                                    <select class="form-control" name="Type" id="Type">
                                         <option value="" aria-readonly="true">Chọn Loại Bất Động Sản</option>
-                                        <option value="mua" {{ ($data['post_info']->Type ?? '') === 'mua' ? 'selected' : '' }}>Mua</option>
+                                        <option value="bán" {{ ($data['post_info']->Type ?? '') === 'bán' ? 'selected' : '' }}>Bán</option>
                                         <option value="thuê" {{ ($data['post_info']->Type ?? '') === 'thuê' ? 'selected' : '' }}>Thuê</option>
                                    </select>
                               </div>
