@@ -78,7 +78,6 @@
                <div class="form-group d-flex">
                    <label class="col-sm-2" for="Slug" style="padding-top: 7px;">Slug</label>
                    <div class="w-100">
-                        {{-- <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Name') }}" readonly> --}}
                         <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Name') }}" readonly>
                    </div>
               </div>
