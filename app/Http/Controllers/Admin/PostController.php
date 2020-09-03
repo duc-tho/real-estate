@@ -120,35 +120,40 @@ class PostController extends Controller
 
      public function putEdit(Request $req, $id)
      {
-          // if (!$req->filled(
-          //      [
-          //           'Title', 'Slug', 'StreetId',
-          //           'CategoryId', 'Floor', 'ApartmentNumber',
-          //           'Price', 'Status', 'Type', 'Slug'
-          //      ]
-          // )) {
-          //      return redirect()->route('adminPostGetAdd')->withInput();
-          // }
+          if (!$req->filled(
+               [
+                    'Title', 'Slug', 'StreetId',
+                    'CategoryId', 'Floor', 'ApartmentNumber',
+                    'Price', 'Status', 'Type', 'Slug'
+               ]
+          )) {
+               return redirect()->route('adminPostGetAdd')->withInput();
+          }
 
-          // $image = [];
+          $image = [];
 
-          // if ($req->hasFile('Image')) {
-          //      foreach ($req->Image as $file) {
-          //           $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
-          //           array_push($image, $filename);
-          //      }
-          // }
+          if ($req->hasFile('Image')) {
+               foreach ($req->Image as $file) {
+                    $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
+                    array_push($image, $filename);
+               }
+          }
 
-          // $post = Post::find($id);
-          // $post->Image = implode('|', $image);
-          // if ($req->ProjectId === 0) $post->ProjectId = '?';
-          // $post->save();
+          $post = Post::find($id);
 
-          // return redirect()->route("adminPost");
+          $new_image = implode('|', $image) . '|' . $post->Image;
+
+          $req->merge(['Image' => $new_image]);
+          if ($req->ProjectId === 0)  $req->merge(['ProjectId' => '?']);
+
+          $post->update($req->input());
+
+          return redirect()->route("adminPost");
      }
 
-     public function delete()
+     public function delete($id)
      {
-          return "Delete Post";
+          Post::destroy($id);
+          return redirect()->route("adminPost");
      }
 }

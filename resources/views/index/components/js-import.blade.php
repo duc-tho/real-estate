@@ -57,3 +57,20 @@
 <script src="{{ asset('dist/js/index/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('dist/js/index/app.js') }}"></script>
 <script src="{{ asset('dist/js/index/components.js') }}"></script>
+
+<script>
+     $("#project-city-slides").owlCarousel(
+          { margin: 20,
+          dots: !1,
+          nav: !0,
+          navText: [$(".am-prev"), $(".am-next")],
+          loop: 0,
+          responsive: {
+               0: { items: 1 },
+               400: { items: 2 },
+               800: { items: 3 },
+               1e3: { items: 4 },
+               1300: { items: 5 }
+          }
+     })
+</script>

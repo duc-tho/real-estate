@@ -23,6 +23,17 @@
 												<label >Slug</label>
 												<input id="slug" required type="text" name="slug" class="form-control" value="{{$area->Slug}}">
 											</div>
+
+											<div class="form-group" >
+												<label>Danh mục Thành Phố</label>
+												<select required name="city" class="form-control">
+													@foreach ($listcity as $city)
+														<option value="{{$city->CityId}}">{{$city->Name}}</option>
+														{{-- <option value="{{$city->CityId}}" >{{$city->Name}}</option> --}}
+													@endforeach
+												</select>
+											</div>
+
 											<div class="form-group" >
 												<label>Danh mục Quận/Huyện</label>
 												<select required name="dis" class="form-control">

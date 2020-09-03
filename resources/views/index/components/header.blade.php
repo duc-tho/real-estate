@@ -61,7 +61,7 @@
                          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                               <ul class="navbar-nav justify-content-end">
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{URL::to('/project') }}" target="_self">
+                                        <a class="nav-link " href="{{ route('project') }}" target="_self">
                                              Dự Án
                                         </a>
                                    </li>
@@ -80,7 +80,7 @@
                                              Tin Tức
                                         </a>
                                    </li>
-                                   <li class="nav-item ">
+                                   <li class="nav-item">
                                         <a class="nav-link " href="https://bdsnew.eso.vn/contact" target="_self">
                                              Liên Hệ
                                         </a>

@@ -7,7 +7,7 @@
                <thead>
                     <tr>
                          <th>Mã Đường</th>
-                         <th>Mã Phường/Xã</th>
+                         <th>Phường/Xã</th>
                          <th>Tên Đường</th>
                          <th>Tùy Chỉnh</th>
                     </tr>
@@ -16,7 +16,13 @@
                     @foreach ($data['street_list'] as $item)
                     <tr>
                          <td>{{ $item->StreetId }}</td>
-                         <td>{{ $item->AreaId }}</td>
+                        
+                         @foreach ($data['area_list'] as $area_item)
+                              @if ($item->AreaId === $area_item->AreaId)
+                              <td>{{ $area_item->Name }}</td>
+                              @break
+                              @endif
+                         @endforeach
                          <td>{{ $item->Name }}</td>
                          <td>
                               <a href="{{ route('adminStreetGetEdit', $item->StreetId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>

@@ -13,12 +13,13 @@ class StreetController extends Controller
      public function index()
      {
           $streetList = Street::all();
-
+          $areaList = Area::all();
           return view('admin.admin', [
                'page' => 'street.index',
                'page_title' => 'Quản Lý Đường',
                'data' => [
-                    'street_list' => $streetList
+                    'street_list' => $streetList,
+                    'area_list' => $areaList
                ]
           ]);
      }

@@ -8,8 +8,8 @@
                     <tr>
                          <th>Mã Phường/Xã</th>
                          <th>Tên Phường/Xã</th>
-                         <th>Mã Quận/Huyện</th>
-                       
+                         <th> Quận/Huyện</th>
+                         <th> Trạng Thái</th>
                          <th>Tùy Chỉnh</th>
                     </tr>
                </thead>
@@ -18,7 +18,24 @@
                     <tr>
                          <td>{{$area->AreaId}}</td>
                          <td>{{$area->Name}}</td>
-                         <td>{{$area->DistrictId}}</td>
+                         @foreach ($district_list as $dis)
+                              @if ($dis->DistrictId === $area->DistrictId)
+                              <td>{{$dis->Name}}</td>
+                              @break
+                              @endif
+                         @endforeach
+                         @switch($area->Status)
+                                   @case(1)
+                                   <td class="text-success">Hoạt động</td>
+                                   @break
+                                   @case(-1)
+                                   <td class="text-secondary">Không hoạt động</td>
+                                   @break
+                                   @case(0)
+                                   <td class="text-warning">Chờ duyệt</td>
+                                   @break
+                                   @default
+                                   @endswitch
                         
                          <td>
                               <a href="{{asset('admin/area/edit/'.$area->AreaId)}}" class="btn btn-warning"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Sửa</a>
@@ -31,8 +48,8 @@
                     <tr>
                          <th>Mã Phường/Xã</th>
                          <th>Tên Phường/Xã</th>
-                         <th>Mã Quận/Huyện</th>
-                         
+                         <th>Quận/Huyện</th>
+                         <th> Trạng Thái</th>
                          <th>Tùy Chỉnh</th>
                     </tr>
                </tfoot>
@@ -48,7 +65,7 @@
                null,
                null,
                null,
-             
+               null,
                { "width": "20%" }
                ]
      });
