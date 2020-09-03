@@ -69,11 +69,13 @@ class ProjectController extends Controller
      {
           $projectDetail = Project::where('Slug', $slug)->first();
 
+          $projectImg = Project::select('Image')->get();
           return view('index.index', [
                'title' => 'Chi tiết dự án',
                'page' => 'project.detail',
                'data' => [
-                    'project_detail' => $projectDetail
+                    'project_detail' => $projectDetail,
+                    'project_img' => $projectImg
                ]
           ]);
      }

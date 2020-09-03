@@ -1,5 +1,4 @@
-{{-- <form action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit') }}" method="post"> --}}
-<form action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit', $data['project_info']->ProjectId) }}" method="post" enctype="multipart/form-data" role="form" action="">
+<form enctype="multipart/form-data" id="main" action="{{ Request::is('admin/project/add') ? route('adminProjectPostAdd') : route('adminProjectPutEdit', $data['project_info']->ProjectId) }}" method="post">
      @csrf
 
      @if (Request::is('admin/project/add'))
@@ -31,6 +30,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Tên Dự Án</label>
                               <div class="w-100">
                                    <input id="title" class="form-control" type="text" placeholder="Tên Dự Án" name="Title" value="{{ $data['project_info']->Title ?? old('Title') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -38,6 +38,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Địa Chỉ</label>
                               <div class="w-100">
                                    <input id="location" class="form-control" type="text" placeholder="Địa Chỉ" name="Location" value="{{ $data['project_info']->Location ?? old('Location') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -45,6 +46,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Chủ Đầu Tư</label>
                               <div class="w-100">
                                    <input id="investor" class="form-control" type="text" placeholder="Chủ Đầu Tư" name="Investor" value="{{ $data['project_info']->Investor ?? old('Investor') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -52,17 +54,20 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Block</label>
                               <div class="w-100">
                                    <input id="block" class="form-control" type="text" placeholder="Số Block" name="NumberOfBlock" value="{{ $data['project_info']->NumberOfBlock ?? old('NumberOfBlock') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
 
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Floor</label>
                               <div class="w-100">
                                    <input id="floor" class="form-control" type="text" placeholder="Số Floor" name="NumberOfFloor" value="{{ $data['project_info']->NumberOfFloor ?? old('NumberOfFloor') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
 
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Căn Hộ</label>
 
                               <div class="w-100">
                                    <input id="apartment" class="form-control" type="text" placeholder="Số Căn Hộ" name="NumberOfApartment" value="{{ $data['project_info']->NumberOfApartment ?? old('NumberOfApartment') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -70,6 +75,7 @@
                               <label class="col-sm-2" for="city" style="padding-top: 7px;">Diện tích căn hộ</label>
                               <div class="w-100">
                                    <input id="apartment" class="form-control" type="text" placeholder="Số Căn Hộ" name="AreaApartment" value="{{ $data['project_info']->AreaApartment ?? old('AreaApartment') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -77,6 +83,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px.r;">Tổng Diện Tích</label>
                               <div class="w-100">
                                    <input id="totalarea" class="form-control" type="text" placeholder="Tổng Diện Tích" name="TotalArea" value="{{ $data['project_info']->TotalArea ?? old('TotalArea') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -84,6 +91,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 1px.r;">Mật độ</label>
                               <div class="w-100">
                                    <input id="density" class="form-control" type="text" placeholder="Mật độ" name="BuildingDensity" value="{{ $data['project_info']->BuildingDensity ?? old('BuildingDensity') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -91,6 +99,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Năm Xây Dựng</label>
                               <div class="w-100">
                                    <input id="year" class="form-control" type="text" placeholder="Năm Xây Dựng" name="YearBuilt" value="{{ $data['project_info']->YearBuilt ?? old('YearBuilt') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -98,6 +107,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Giá</label>
                               <div class="w-100">
                                    <input id="price" class="form-control" type="text" placeholder="Giá" name="Price" value="{{ $data['project_info']->Price ?? old('Price  ') }}">
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
 
@@ -108,12 +118,14 @@
                                    <option value="-1" {{ ($data['project_info']->Status ?? '') === -1 ? 'selected' : '' }}>Không hoạt động</option>
                                    <option value="0" {{ ($data['project_info']->Status ?? '') === 0 ? 'selected' : '' }}>Chờ duyệt</option>
                               </select>
+                              <div class="col-lg-12 messages text-danger"></div>
                          </div>
 
                          <div class="form-group d-flex">
                               <label class="col-sm-2" for="Slug" style="padding-top: 7px;">Slug</label>
                               <div class="w-100">
                                    <input id="slug" class="form-control" type="text" placeholder="" name="Slug" value="{{ old('Name') }}" readonly>
+                                   <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
                     </div>
@@ -214,4 +226,86 @@
 
           }
      };
+
+     // var validateConstraints = {
+     //      Title: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập tên dự án!"
+     //           }
+     //      },
+     //      Location: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập địa chỉ dự án!"
+     //           },
+     //      },
+     //      Investor: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập chủ đầu tư!"
+     //           },
+     //      },
+     //      NumnberOfBlock: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập số Block!"
+     //           },
+     //      },
+     //      NumnberOfFloor: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập số Floor!"
+     //           },
+     //      },
+     //      NumnberOfApartment: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập số Apartment!"
+     //           },
+     //      },
+     //      AreaApartment: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng chọn Thành Phố!"
+     //           },
+     //      },
+     //      TotalArea: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhạp diện tích!"
+     //           },
+     //      },
+     //      Density: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập mật độ!"
+     //           },
+     //      },
+     //      YearBuilt: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập năm xây dựng!"
+     //           },
+     //      },
+     //      Price: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập giá dự án!"
+     //           },
+     //      },
+     //      Status: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng chọn trạng thái dự án!"
+     //           },
+     //      },
+     //      Description: {
+     //           presence: {
+     //                allowEmpty: false,
+     //                message: "^Vui lòng nhập mô tả!"
+     //           },
+     //      },
+     // }
+     // validateData('form#main', validateConstraints);
 </script>

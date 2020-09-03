@@ -32,7 +32,6 @@ class ProjectController extends Controller
                'data' => [
                     'project_list' => $projectList,
                     'city_list' => $cityList,
-                    //'category_list' => $categoryList
                ]
           ]);
      }
@@ -66,7 +65,6 @@ class ProjectController extends Controller
           $project = new Project($req->input());
           $project->Image = implode('|', preg_replace('/^\|+|\|+$/i', '', $image));
           $project->save();
-          //$req->img->move('dist/img/upload/project', $filename);
           return redirect()->route("adminProject");
      }
 
@@ -74,6 +72,7 @@ class ProjectController extends Controller
      {
           $projectData = Project::find($id);
           $projectList = Project::all();
+          $cityList = City::all();
 
           return view('admin.admin', [
                'page' => 'project.detail',
@@ -81,6 +80,7 @@ class ProjectController extends Controller
                'data' => [
                     'project_list' => $projectList,
                     'project_info' => $projectData,
+                    'city_list' => $cityList,
                ]
           ]);
      }
@@ -95,7 +95,6 @@ class ProjectController extends Controller
 
           $project = Project::find($id);
           $project->Title = $req->Title;
-          $project->Slug = str::slug($req->Slug);
           $project->Location = $req->Location;
           $project->Investor = $req->Investor;
           $project->NumberOfBlock = $req->NumberOfBlock;
@@ -103,9 +102,11 @@ class ProjectController extends Controller
           $project->NumberOfApartment = $req->NumberOfApartment;
           $project->AreaApartment = $req->AreaApartment;
           $project->TotalArea = $req->TotalArea;
-          $project->YearBuilt = $req->YearBuilt;
           $project->BuildingDensity = $req->BuildingDensity;
+          $project->YearBuilt = $req->YearBuilt;
           $project->Price = $req->Price;
+          $project->Status = $req->Status;
+          $project->Slug = str::slug($req->Slug);
           $project->Description = $req->Description;
 
           $image = [];
@@ -121,6 +122,7 @@ class ProjectController extends Controller
 
           $project->Status = $req->Status;
           $project->save();
+
           return redirect()->route("adminProject");
      }
 

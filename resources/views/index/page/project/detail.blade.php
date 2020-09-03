@@ -8,6 +8,7 @@
                          <div class="item"><img src="{{ asset($image) }}" class="showfullimg" rel="1" alt=""></div>
                          @endif
                          @endforeach
+
                     </div>
                </div>
                <div class="slidebot">
