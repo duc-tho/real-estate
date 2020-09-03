@@ -23,11 +23,13 @@ class ProjectController extends Controller
      public function projectDetail($id)
      {
           $projectDetail = Project::where('ProjectId', $id)->get();
+          $projectImg = Project::select('Image')->get();;
           return view('index.index', [
                'title' => 'Chi tiết dự án',
                'page' => 'project.detail',
                'data' => [
-                    'project_detail' => $projectDetail
+                    'project_detail' => $projectDetail,
+                    'project_img' => $projectImg
                ]
           ]);
      }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Street;
 use App\Models\Area;
+use App\Models\District;
+use App\Models\City;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -25,12 +28,16 @@ class StreetController extends Controller
 
      public function getAdd()
      {
+          $city = City::all();
+          $district = District::all();
           $streetData = Area::all();
           return view('admin.admin', [
                'page' => 'street.detail',
                'page_title' => 'Chi Tiết Đường',
                'data' => [
                     'street_list' => $streetData,
+                    'district_list' => $district,
+                    'city_list' => $city,
                ]
           ]);
      }
@@ -50,13 +57,19 @@ class StreetController extends Controller
      {
           $streetData = Street::find($id);
           $streetList = Street::all();
+          $city = City::all();
+          $district = District::all();
+          $area = Area::all();
 
           return view('admin.admin', [
                'page' => 'street.detail',
                'page_title' => 'Sửa Đường',
                'data' => [
                     'street_list' => $streetList,
-                    'street_info' => $streetData
+                    'street_info' => $streetData,
+                    'city_list' => $city,
+                    'district_list' => $district,
+                    'area_list' => $area,
                ]
           ]);
      }

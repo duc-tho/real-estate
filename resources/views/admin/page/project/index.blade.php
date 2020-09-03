@@ -15,7 +15,6 @@
                          <th>Số Căn Hộ</th>
                          <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
-                         <th>Ảnh</th>
                          <th>Mô tả</th>
                          <th>Giá</th>
                          <th>Tùy Chỉnh</th>
@@ -40,9 +39,6 @@
                          @endforeach
                          
                          <td>{{$item->YearBuilt }}</td>
-                         <td>
-                              <img width="200px" src="{{ $item->Image }}" class="thumbnail" alt="Chưa có ảnh" >
-                         </td>
                          <td>{!! $item->Description !!}</td>
                          <td>{{ $item->Price }}</td>
                          <td>
@@ -67,7 +63,6 @@
                          <th>Số Căn Hộ</th>
                          <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
-                         <th>Ảnh</th>
                          <th>Mô tả</th>
                          <th>Giá</th>
                          <th>Tùy Chỉnh</th>
@@ -82,7 +77,6 @@
          "responsive": true,
          "autoWidth": true,
          "columns": [
-              null,
               null,
               null,
               null,
