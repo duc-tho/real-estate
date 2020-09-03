@@ -111,13 +111,15 @@
                               </div>
                          </div>
 
-                         <div class="form-group d-flex">
-                              <label class="col-sm-2">Trạng thái</label>
-                              <select class="form-control" name="Status" id="Status">
-                                   <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>Đang hoạt động</option>
-                                   <option value="-1" {{ ($data['project_info']->Status ?? '') === -1 ? 'selected' : '' }}>Không hoạt động</option>
-                                   <option value="0" {{ ($data['project_info']->Status ?? '') === 0 ? 'selected' : '' }}>Chờ duyệt</option>
-                              </select>
+                         <div class="form-group">
+                              <label class="col-sm-2 d-inline-block" for="Status" style="padding-top: 7px;">Trạng Thái</label>
+                              <div class="d-inline-block">
+                                   <select class="form-control" name="Status" id="Status">
+                                        <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>Đang hoạt động</option>
+                                        <option value="-1" {{ ($data['project_info']->Status ?? '') === -1 ? 'selected' : '' }}>Không hoạt động</option>
+                                        <option value="0" {{ ($data['project_info']->Status ?? '') === 0 ? 'selected' : '' }}>Chờ duyệt</option>
+                                   </select>
+                              </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
 
@@ -227,85 +229,80 @@
           }
      };
 
-     // var validateConstraints = {
-     //      Title: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập tên dự án!"
-     //           }
-     //      },
-     //      Location: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập địa chỉ dự án!"
-     //           },
-     //      },
-     //      Investor: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập chủ đầu tư!"
-     //           },
-     //      },
-     //      NumnberOfBlock: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập số Block!"
-     //           },
-     //      },
-     //      NumnberOfFloor: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập số Floor!"
-     //           },
-     //      },
-     //      NumnberOfApartment: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập số Apartment!"
-     //           },
-     //      },
-     //      AreaApartment: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng chọn Thành Phố!"
-     //           },
-     //      },
-     //      TotalArea: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhạp diện tích!"
-     //           },
-     //      },
-     //      Density: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập mật độ!"
-     //           },
-     //      },
-     //      YearBuilt: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập năm xây dựng!"
-     //           },
-     //      },
-     //      Price: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập giá dự án!"
-     //           },
-     //      },
-     //      Status: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng chọn trạng thái dự án!"
-     //           },
-     //      },
-     //      Description: {
-     //           presence: {
-     //                allowEmpty: false,
-     //                message: "^Vui lòng nhập mô tả!"
-     //           },
-     //      },
-     // }
-     // validateData('form#main', validateConstraints);
+     var validateConstraints = {
+          Title: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập tên dự án!"
+               }
+          },
+          Location: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập địa chỉ dự án!"
+               },
+          },
+          Investor: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập chủ đầu tư!"
+               },
+          },
+          NumberOfBlock: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập số Block!"
+               },
+          },
+          NumberOfFloor: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập số Floor!"
+               },
+          },
+          NumberOfApartment: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập số Apartment!"
+               },
+          },
+          AreaApartment: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng chọn Thành Phố!"
+               },
+          },
+          TotalArea: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhạp diện tích!"
+               },
+          },
+          BuildingDensity: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập mật độ!"
+               },
+          },
+          YearBuilt: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập năm xây dựng!"
+               },
+          },
+          Price: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng nhập giá dự án!"
+               },
+          },
+          Status: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Vui lòng chọn trạng thái dự án!"
+               },
+          },
+     }
+
+     validateData('form#main', validateConstraints);
 </script>
