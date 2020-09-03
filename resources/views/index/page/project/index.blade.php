@@ -29,22 +29,17 @@
                                         <div class="hourseitem row" style="border-bottom-right-radius: 0;border-bottom-left-radius: 0;box-shadow: 0 4px 7px -4px #aaa;">
                                              <div class=" blii col-sm-6 col-md-6 colm10">
                                                   <div class="img">
-<<<<<<< HEAD
                                                        @if (!empty($project->Image))
                                                        <img style="max-height: 180px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
                                                        @else
                                                        <img style="max-height: 180px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @endif
                                                        {{-- <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src="{{('/dist/img/upload/project/'.$project->Image)}}" alt="" class="thumb"> --}}
-=======
-                                                       <img data-src="{{('/dist/img/upload/project/'.$project->Image)}}" src="{{ asset(explode("|", $project->Image)[0]) }}" alt="" class="thumb">
->>>>>>> 487f817a5c8ae4a3f5b17ad10bd53ea29812153a
                                                   </div>
                                                   <a href={{ ('/project'.$project->ProjectId) }} class="linkdetail"></a>
 
                                              </div>
                                              <div class="info col-sm-6 col-md-6">
-<<<<<<< HEAD
                                                   <h2><a href="{{ route('projectDetail', $project->Slug) }}" style="text-transform: capitalize;">{{ $project->Title }}</a></h2>
                                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment }} căn hộ </p>
@@ -52,16 +47,6 @@
                                                   <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ - <span class="text-secondary text-small">- / m²</span></p>
                                                   <p class="bold500"><span class="font-weight-bold">Bán: </span> {{ $project->post_sale_count }} <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> {{ $project->post_rent_count }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> -</p>
-=======
-                                                  
-                                                  <h2><a href={{asset('project/'.$project->ProjectId.'/'.$project->Slug)}}>{{ $project->Title }}</a></h2>
-                                                  <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>{{ $project->Location }}</p>
-                                                  <p class="bold500">Quy mô: {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment}} căn hộ </p>
-                                                  <p class="threemt bold500">Năm xây dựng: {{ $project->YearBuilt }}</p>
-                                                  <p class="threemt bold500">Giá từ: {{ $project->Price }} triệu/m2</p>
-                                                  <p class="threemt bold500">Bán: 8 - Thuê: 13</p>
-                                                  <p class="threemt bold500">Tiến độ: Đã hoàn thành</p>
->>>>>>> 487f817a5c8ae4a3f5b17ad10bd53ea29812153a
                                              </div>
                                         </div>
                                         <div class="row pb-3">
