@@ -143,7 +143,7 @@ class PostController extends Controller
 
           $new_image = implode('|', $image) . '|' . $post->Image;
 
-          $req->merge(['Image' => $new_image]);
+          $req->merge(['Image' => preg_replace('/^\|+|\|+$/i', '', $new_image)]);
           if ($req->ProjectId === 0)  $req->merge(['ProjectId' => '?']);
 
           $post->update($req->input());

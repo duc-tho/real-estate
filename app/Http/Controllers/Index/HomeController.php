@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
-use App\Models\District;
 use App\Models\Post;
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -18,10 +16,25 @@ class HomeController extends Controller
           $post_sale_list = [];
           $post_rent_list = [];
 
+          foreach ($project_list as $project) {
+               $project->post_sale_count = Post::where([
+                    'ProjectId' => $project->ProjectId,
+                    'Type' => 'bán',
+               ])->count();
+               $project->post_rent_count = Post::where([
+                    'ProjectId' => $project->ProjectId,
+                    'Type' => 'thuê',
+               ])->count();
+          }
+
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
                $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
 
                $district_list = $default_city->District;
+
+               foreach ($district_list as $district) {
+                    $district->CitySlug = $default_city->Slug;
+               }
 
                $post_sale_list = City::join('District', 'City.CityId', '=', 'District.CityId')
                     ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')

@@ -1,77 +1,70 @@
 <div id="app">
      <main class="detailproject" style="background: #FFF;">
           <div class="boxsliderdetail">
-               @foreach($data['project_detail'] as $project)
                <div class="slidetop">
                     <div class="owl-carousel" id="listcarousel">
-                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="0" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
-                         <div class="item"><img src='{{('public/dist/img/upload/project/'.$project->Image)}}' class="showfullimg" rel="2" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="{{('public/dist/img/upload/project/'.$project->Image)}}" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e5.jpg" class="showfullimg" rel="4" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e7.jpg" class="showfullimg" rel="5" alt="The Avila Apartments"></div>
-                         <div class="item"><img src="https://flex-home.botble.com/storage/properties/e8.jpg" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
+                         @foreach(explode('|', $data['project_detail']->Image) as $image)
+                         @if (!empty($image))
+                         <div class="item"><img src="{{ asset($image) }}" class="showfullimg" rel="1" alt=""></div>
+                         @endif
+                         @endforeach
                     </div>
                </div>
                <div class="slidebot">
                     <div style="max-width: 800px; margin: 0 auto;">
                          <div class="owl-carousel" id="listcarouselthumb">
-                              <div class="item cthumb" rel="0"><img src={{('public/dist/img/upload/project/'.$project->Image)}} class="showfullimg" rel="0" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="1"><img src="https://flex-home.botble.com/storage/properties/e2.jpg" class="showfullimg" rel="1" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="2"><img src="https://flex-home.botble.com/storage/properties/e3.jpg" class="showfullimg" rel="2" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="3"><img src="https://flex-home.botble.com/storage/properties/e4.jpg" class="showfullimg" rel="3" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="4"><img src="https://flex-home.botble.com/storage/properties/e5.jpg" class="showfullimg" rel="4" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="5"><img src="https://flex-home.botble.com/storage/properties/e7.jpg" class="showfullimg" rel="5" alt="The Avila Apartments"></div>
-                              <div class="item cthumb" rel="6"><img src="https://flex-home.botble.com/storage/properties/e8.jpg" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
+                              @foreach(explode('|', $data['project_detail']->Image) as $image)
+                              @if (!empty($image))
+                              <div class="item cthumb" rel="6"><img src="{{ asset($image) }}" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
+                              @endif
+                              @endforeach
                          </div>
                          <i class="fas fa-chevron-right ar-next"></i>
                          <i class="fas fa-chevron-left ar-prev"></i>
                     </div>
                </div>
           </div>
-          <div id="gallery"
+          {{-- <div id="gallery"
                data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
-          </div>
+          </div> --}}
 
-          
-               <div class="container-fluid bgmenupro">
-                    <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
-                         <div class="col-12">
-                              <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $project->Title }}</h1>
-                         <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $project->Location }}</p>
-                         </div>
+
+          <div class="container-fluid bgmenupro">
+               <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
+                    <div class="col-12">
+                         <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $data['project_detail']->Title }}</h1>
+                         <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $data['project_detail']->Location }}</p>
                     </div>
                </div>
+          </div>
 
-               <div class="container-fluid w90 padtop30 single-post">
-                    <section class="general">
-                         <div class="row">
-                              <div class="col-md-8">
-                                   <div class="head">Tổng quan</div>
-                                   <span class="line_title"></span>
-                                   <div class="row">
-                                        <div class="col-sm-6 lineheight220">
-                                             <div><span>Trạng thái: </span>
-                                                  @if($project->Status == 1)
-                                                  <b>Còn</b>
-                                                  @else
-                                                  <b>Hết</b>
-                                                  @endif
-                                             </div>
-                                             <div><span>Category:</span> <b></b></div>
-                                             <div><span>Chủ Đầu Tư:</span> <b>{{ $project->Investor }}</b></div>
-                                        </div>
-                                        <div class="col-sm-6 lineheight220">
-                                        <div><span>Số Block:</span> <b>{{ $project->NumberOfBlock }}</b></div>
-                                             <div><span>Số Tầng:</span> <b>{{ $project->NumberOfFloor }}</b></div>
-                                             <div><span>Số Tòa:</span> <b>{{ $project->NumberOfApartment }}</b></div>
-                                        </div>
+          <div class="container-fluid w90 padtop30 single-post">
+               <section class="general">
+                    <div class="row">
+                         <div class="col-md-8">
+                              <div class="head">Tổng quan</div>
+                              <span class="line_title"></span>
+                              <div class="row">
+                                   <div class="col-sm-6 lineheight220">
+                                        <div><span>Tên dự án:</span> <b>{{ $data['project_detail']->Title }}</b></div>
+                                        <div><span>Vị trí:</span> <b>{{ $data['project_detail']->Location }}</b></div>
+                                        <div><span>Chủ Đầu Tư:</span> <b>{{ $data['project_detail']->Investor }}</b></div>
+                                        <div><span>Mật độ xây dựng:</span> <b>{{ $data['project_detail']->BuildingDensity }}%</b></div>
+                                        <div><span>Năm xây dựng:</span> <b>{{ $data['project_detail']->YearBuilt }}</b></div>
                                    </div>
+                                   <div class="col-sm-6 lineheight220">
+                                        <div><span>Số block:</span> <b>{{ $data['project_detail']->NumberOfBlock }}</b></div>
+                                        <div><span>Số tầng:</span> <b>{{ $data['project_detail']->NumberOfFloor }}</b></div>
+                                        <div><span>Số căn hộ:</span> <b>{{ $data['project_detail']->NumberOfApartment }}</b></div>
+                                        <div><span>Diện tích căn hộ:</span> <b>{{ $data['project_detail']->AreaApartment }}</b></div>
+                                        <div><span>Tổng diện tích:</span> <b>{{ $data['project_detail']->TotalArea }}</b></div>
+                                   </div>
+                              </div>
 
-                                   <div class="head">Mô tả</div>
-                                   <p>{!! $project->Description !!}.</p>
+                              <div class="head">Mô tả</div>
+                              <p>{!! $data['project_detail']->Description !!}.</p>
 
-                                   {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
+                              {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
 
                                    <ul>
                                         <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
@@ -80,32 +73,31 @@
                                         <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
                                         <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
                                    </ul> --}}
-                                   <div class="head">Dịch vụ</div>
-                                   <div class="row">
-                                        <div class="col-sm-4">
-                                             <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                             <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                             <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                             <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
-                                        </div>
-                                        <div class="col-sm-4">
-                                             <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
-                                        </div>
+                              {{-- <div class="head">Dịch vụ</div>
+                              <div class="row">
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
                                    </div>
-                                   <br>
-                                   <br>
-                                   <div class="mapouter">
-                                        <div class="gmap_canvas">
-                                             <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                        </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
                                    </div>
-                              @endforeach
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
+                                   </div>
+                              </div> --}}
+                              <br>
+                              <br>
+                              <div class="mapouter">
+                                   <div class="gmap_canvas">
+                                        <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                   </div>
+                              </div>
                               <br>
                               <br>
                               <div class="socials">
@@ -192,7 +184,7 @@
                                    <p class="bold500">Giá 8 triệu /tháng </p>
                                    <p><span data-toggle="tooltip" data-placement="top" data-original-title="Square"><i>
                                                   <img src="https://flex-home.botble.com/themes/flex-home/images/area.svg" alt="icon"></i>
-                                             <i class="vti">49 m2</i></span></p>
+                                             <i class="vti">49 m²</i></span></p>
                                    <p class="threemt bold500"><span data-toggle="tooltip" data-placement="top" data-original-title="Number of rooms"><i>
                                                   <img src="https://flex-home.botble.com/themes/flex-home/images/bed.svg" alt="icon"></i>
                                              <i class="vti">2</i></span>
@@ -210,10 +202,6 @@
                     <h5 class="headifhouse">Properties For Rent</h5>
                     <property-component type="project-properties-for-rent" project_id="6" url="https://flex-home.botble.com/ajax/properties" :show_empty_string="true"></property-component>
                </section>
-
           </div>
      </main>
-     <br>
-     <br>
-
 </div>

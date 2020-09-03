@@ -6,19 +6,16 @@
           <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                <thead>
                     <tr>
-                         <th>Mã Dự Án</th>
-                         <th>Tên</th>
-                         <th>Địa Chỉ</th>
+                         <th>Mã</th>
+                         <th>Tên Dự Án</th>
+                         <th>Vị Trí</th>
                          <th>Chủ Đâu Tư</th>
                          <th>Số Block</th>
-                         <th>Số Floor</th>
                          <th>Số Căn Hộ</th>
                          <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
-                         <th>Ảnh</th>
-                         <th>Mô tả</th>
                          <th>Giá</th>
-                         <th>Tùy Chỉnh</th>
+                         <th></th>
                     </tr>
                </thead>
                <tbody>
@@ -29,21 +26,16 @@
                          <td>{{$item->Location }}</td>
                          <td>{{$item->Investor }}</td>
                          <td>{{$item->NumberOfBlock }}</td>
-                         <td>{{$item->NumberOfFloor }}</td>
-                         <td>{{$item->NumberOfApartment      }}</td>
-                         
+                         <td>{{$item->NumberOfApartment }}</td>
+
                          @foreach ($area_list as $area_item)
                          @if ($item->AreaId === $area_item->AreaId)
                          <td>{{ $area_item->Name }}</td>
                          @break
                          @endif
                          @endforeach
-                         
+
                          <td>{{$item->YearBuilt }}</td>
-                         <td>
-                              <img width="200px" src="{{ $item->Image }}" class="thumbnail" alt="Chưa có ảnh" >
-                         </td>
-                         <td>{!! $item->Description !!}</td>
                          <td>{{ $item->Price }}</td>
                          <td>
                               <a href="{{ route('adminProjectGetEdit', $item->ProjectId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
@@ -58,19 +50,16 @@
                </tbody>
                <tfoot>
                     <tr>
-                         <th>Mã Dự Án</th>
-                         <th>Tên</th>
-                         <th>Địa Chỉ</th>
+                         <th>Mã</th>
+                         <th>Tên Dự Án</th>
+                         <th>Vị Trí</th>
                          <th>Chủ Đâu Tư</th>
                          <th>Số Block</th>
-                         <th>Số Floor</th>
                          <th>Số Căn Hộ</th>
                          <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
-                         <th>Ảnh</th>
-                         <th>Mô tả</th>
                          <th>Giá</th>
-                         <th>Tùy Chỉnh</th>
+                         <th></th>
                     </tr>
                </tfoot>
           </table>
@@ -91,10 +80,7 @@
               null,
               null,
               null,
-              null,
-              null,
-              null,
-              { "width": "20%" }
-              ]
+              { "width": "17%" }
+          ]
     });
 </script>
