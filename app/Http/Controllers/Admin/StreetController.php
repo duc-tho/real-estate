@@ -30,7 +30,8 @@ class StreetController extends Controller
      {
           $city = City::all();
           $district = District::all();
-          $streetData = Area::all();
+          $streetData = Street::all();
+          $area = Area::all();
           return view('admin.admin', [
                'page' => 'street.detail',
                'page_title' => 'Chi Tiết Đường',
@@ -38,6 +39,7 @@ class StreetController extends Controller
                     'street_list' => $streetData,
                     'district_list' => $district,
                     'city_list' => $city,
+                    'area_list' => $area,
                ]
           ]);
      }
