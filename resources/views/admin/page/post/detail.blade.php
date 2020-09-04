@@ -76,7 +76,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="Price" style="padding-top: 7px;">Giá</label>
                               <div class="w-100">
-                                   <input id="Price" class="form-control" type="number" placeholder="Giá" name="Price" value="{{ $data['post_info']->Price ?? old('Price') }}">
+                                   <input id="Price" min="1" class="form-control" type="number" step="0.01" placeholder="Giá" name="Price" value="{{ $data['post_info']->Price ?? old('Price') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -168,9 +168,9 @@
 
                     <div class="tab-pane container" id="detailInfo">
                          <div class="form-group">
-                              <label class="col-sm-2" for="ApartmentNumber" style="padding-top: 7px;">Số Nhà</label>
+                              <label class="col-sm-2" for="Apartmentnumber" step="0.01" style="padding-top: 7px;">Số Nhà</label>
                               <div class="w-100">
-                                   <input id="ApartmentNumber" class="form-control" type="text" placeholder="Số Nhà" name="ApartmentNumber" value="{{ $data['post_info']->ApartmentNumber ?? old('ApartmentNumber') }}">
+                                   <input id="Apartmentnumber" step="0.01" class="form-control" type="text" placeholder="Số Nhà" name="ApartmentNumber" step="0.01" value="{{ $data['post_info']->ApartmentNumber ?? old('ApartmentNumber') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -194,14 +194,14 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="Bedroom" style="padding-top: 7px;">Số Phòng Ngủ</label>
                               <div class="w-100">
-                                   <input id="Bedroom" min="0" class="form-control" type="number" placeholder="Số Phòng Ngủ" name="Bedroom" value="{{ $data['post_info']->Bedroom ?? old('Bedroom') }}">
+                                   <input id="Bedroom" min="0" class="form-control" type="number" step="0.01" placeholder="Số Phòng Ngủ" name="Bedroom" value="{{ $data['post_info']->Bedroom ?? old('Bedroom') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Bathroom" style="padding-top: 7px;">Số Phòng Tắm</label>
                               <div class="w-100">
-                                   <input id="Bathroom" min="0" class="form-control" type="number" placeholder="Số Phòng Tắm" name="Bathroom" value="{{ $data['post_info']->Bathroom ?? old('Bathroom') }}">
+                                   <input id="Bathroom" min="0" class="form-control" type="number" step="0.01" placeholder="Số Phòng Tắm" name="Bathroom" value="{{ $data['post_info']->Bathroom ?? old('Bathroom') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -215,14 +215,14 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="Length" style="padding-top: 7px;">Chiều Dài</label>
                               <div class="w-100">
-                                   <input id="Length" min="0" class="form-control" type="number" placeholder="Chiều Dài" name="Length" value="{{ $data['post_info']->Length ?? old('Length') }}">
+                                   <input id="Length" min="0" class="form-control" type="number" step="0.01" placeholder="Chiều Dài" name="Length" value="{{ $data['post_info']->Length ?? old('Length') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Width" style="padding-top: 7px;">Chiều Rộng</label>
                               <div class="w-100">
-                                   <input id="Width" min="0" class="form-control" type="number" placeholder="Chiều Rộng" name="Width" value="{{ $data['post_info']->Width ?? old('Width') }}">
+                                   <input id="Width" min="0" class="form-control" type="number" step="0.01" placeholder="Chiều Rộng" name="Width" value="{{ $data['post_info']->Width ?? old('Width') }}">
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -391,7 +391,7 @@
                     message: "^Giá không dược để trống!"
                },
                numericality: {
-                    greaterThanOrEqualTo: 0,
+                    greaterThanOrEqualTo: 1,
                     message: "^Giá phải lớn hơn hoặc bằng 0!"
                }
           },
@@ -438,14 +438,22 @@
                }
           },
           Length: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Chiều rộng không dược để trống!"
+               },
                numericality: {
-                    greaterThanOrEqualTo: 0,
+                    greaterThanOrEqualTo: 1,
                     message: "^Chiều dài phải lớn hơn hoặc bằng 0!"
                }
           },
           Width: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Chiều dài không dược để trống!"
+               },
                numericality: {
-                    greaterThanOrEqualTo: 0,
+                    greaterThanOrEqualTo: 1,
                     message: "^Chiều rộng phải lớn hơn hoặc bằng 0!"
                }
           },

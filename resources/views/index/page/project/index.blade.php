@@ -44,7 +44,7 @@
                                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment }} căn hộ </p>
                                                   <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ - <span class="text-secondary text-small">- / m²</span></p>
+                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ</p>
                                                   <p class="bold500"><span class="font-weight-bold">Bán: </span> {{ $project->post_sale_count }} <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> {{ $project->post_rent_count }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> -</p>
                                              </div>
@@ -87,7 +87,7 @@
                                                                       </span>
                                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
                                                                            <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                                           <i class="vti">- m²</i>
+                                                                           <i class="vti">{{ (round(($project_rent_item->Width) * ($project_rent_item->Length), 1)) }} m²</i>
                                                                       </span></p>
                                                             </div>
                                                        </div>
@@ -136,7 +136,7 @@
                                                                       </span>
                                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
                                                                            <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                                           <i class="vti">- m²</i>
+                                                                           <i class="vti">{{ (round(($project_sale_item->Width) * ($project_sale_item->Length), 1)) }} m²</i>
                                                                       </span>
                                                                  </p>
                                                             </div>

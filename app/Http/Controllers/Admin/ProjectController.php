@@ -118,7 +118,7 @@ class ProjectController extends Controller
                }
           }
 
-          $project->Image = implode('|', $image) . '|' . $project->Image;
+          $project->Image = preg_replace('/^\|+|\|+$/i', '', implode('|', $image) . '|' . $project->Image);
 
           $project->Status = $req->Status;
           $project->save();
