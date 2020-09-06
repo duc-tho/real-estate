@@ -60,7 +60,7 @@ class PostController extends Controller
      {
           if (!$req->filled(
                [
-                    'Title', 'Slug', 'StreetId',
+                    'Title', 'Slug',
                     'CategoryId', 'Floor', 'ApartmentNumber',
                     'Price', 'Status', 'Type', 'Slug'
                ]
@@ -77,10 +77,16 @@ class PostController extends Controller
                }
           }
 
+          if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
+          else {
+               $pj = Project::find($req->ProjectId);
+               $req->merge(['StreetId' => $pj['StreetId']]);
+          }
+
           $post = new Post($req->input());
           $post->UserId = Auth::user()->UserId;
           $post->Image = implode('|', $image);
-          if ($req->ProjectId === 0) $post->ProjectId = '?';
+
           $post->save();
 
           return redirect()->route("adminPost");
@@ -122,7 +128,7 @@ class PostController extends Controller
      {
           if (!$req->filled(
                [
-                    'Title', 'Slug', 'StreetId',
+                    'Title', 'Slug',
                     'CategoryId', 'Floor', 'ApartmentNumber',
                     'Price', 'Status', 'Type', 'Slug'
                ]
@@ -144,7 +150,12 @@ class PostController extends Controller
           $new_image = implode('|', $image) . '|' . $post->Image;
 
           $req->merge(['Image' => preg_replace('/^\|+|\|+$/i', '', $new_image)]);
-          if ($req->ProjectId === 0)  $req->merge(['ProjectId' => '?']);
+
+          if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
+          else {
+               $pj = Project::find($req->ProjectId);
+               $req->merge(['StreetId' => $pj['StreetId']]);
+          }
 
           $post->update($req->input());
 

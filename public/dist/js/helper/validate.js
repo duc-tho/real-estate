@@ -23,7 +23,7 @@ function handleFormSubmit(form, constraints) {
 }
 
 function showErrors(form, errors) {
-     // console.log(errors)
+     console.log(errors)
      _.each(form.querySelectorAll("input[name], select[name]"), function (input) {
           showErrorsForInput(input, errors && errors[input.name]);
      });
