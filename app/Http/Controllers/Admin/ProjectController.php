@@ -53,7 +53,10 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Desciption;
+          $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
+          $project->PGroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
 
           $image = [];
           if ($req->hasFile('Image')) {
@@ -107,7 +110,13 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Description;
+          $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
+          $project->GroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
+
+          // print_r($req->input());
+          // die();
 
           $image = [];
 
@@ -118,7 +127,7 @@ class ProjectController extends Controller
                }
           }
 
-          $project->Image = implode('|', $image) . '|' . $project->Image;
+          $project->Image = preg_replace('/^\|+|\|+$/i', '', implode('|', $image) . '|' . $project->Image);
 
           $project->Status = $req->Status;
           $project->save();

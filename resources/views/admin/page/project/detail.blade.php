@@ -9,7 +9,7 @@
      <div class="card">
           <div class="card-header">
                <input class="btn btn-success" type="submit" value="Lưu">
-               <a href="{{route('adminProject')}}" class="btn btn-danger">Hủy bỏ</a>
+               <a href="{{ route('adminProject') }}" class="btn btn-danger">Hủy bỏ</a>
           </div>
           <div class="card-body">
                <ul class="nav nav-tabs mb-4">
@@ -17,7 +17,13 @@
                          <a class="nav-link active" data-toggle="tab" href="#basicInfo">Thông tin</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" data-toggle="tab" href="#descriptionInfo">Mô tả</a>
+                         <a class="nav-link" data-toggle="tab" href="#vtht">Vị Trí Hạ Tầng</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" data-toggle="tab" href="#tkmb">Thiết Kế - Mặt Bằng</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" data-toggle="tab" href="#tikm">Tiện Ích - Khuyến Mãi</a>
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" data-toggle="tab" href="#imageInfo">Ảnh</a>
@@ -115,9 +121,12 @@
                               <label class="col-sm-2 d-inline-block" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <div class="d-inline-block">
                                    <select class="form-control" name="Status" id="Status">
-                                        <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>Đang hoạt động</option>
-                                        <option value="-1" {{ ($data['project_info']->Status ?? '') === -1 ? 'selected' : '' }}>Không hoạt động</option>
-                                        <option value="0" {{ ($data['project_info']->Status ?? '') === 0 ? 'selected' : '' }}>Chờ duyệt</option>
+                                        <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>
+                                             Đang hoạt động</option>
+                                        <option value="-1" {{ ($data['project_info']->Status ?? '') === -1 ? 'selected' : '' }}>
+                                             Không hoạt động</option>
+                                        <option value="0" {{ ($data['project_info']->Status ?? '') === 0 ? 'selected' : '' }}>
+                                             Chờ duyệt</option>
                                    </select>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
@@ -132,16 +141,40 @@
                          </div>
                     </div>
 
-                    <div class="tab-pane container" id="descriptionInfo">
+                    <div class="tab-pane container" id="vtht">
                          <div class="form-group">
-                              <label class="col-sm-2" for="Description" style="padding-top: 7px;">Mô tả</label>
                               <div class="md-form">
-                                   <textarea name="Description" class="md-textarea form-control" rows="10">{{ $data['project_info']->Description ?? old('Description') }}</textarea>
+                                   <textarea id="InfrastructureLocation" name="InfrastructureLocation" class="md-textarea form-control" rows="20">{{ $data['project_info']->InfrastructureLocation ?? old('InfrastructureLocation') }}</textarea>
                               </div>
                               <div class=" col-lg-12 messages text-danger"></div>
                          </div>
                     </div>
 
+                    <div class="tab-pane container" id="tkmb">
+                         <div class="form-group">
+                              <div class="md-form">
+                                   <textarea id="GroundDesign" name="GroundDesign" class="md-textarea form-control" rows="20">{{ $data['project_info']->GroundDesign ?? old('GroundDesign') }}</textarea>
+                              </div>
+                              <div class=" col-lg-12 messages text-danger"></div>
+                         </div>
+                    </div>
+                    <div class="tab-pane container" id="tikm">
+                         <div class="form-group">
+                              <label class="col-sm-2" for="Utility" style="padding-top: 7px;">Tiện ích</label>
+                              <input type="hidden" name="Utility" id="Utility" value="{{ $data['project_info']->Utility ?? old('Utility') }}">
+                              <div class="row" id="UtilityList">
+                                   <button type="button" class="btn ml-2 btn-info my-auto" id="UtilityAddBtn" style="height: max-content;"><i class="far fa-plus-square"></i></button>
+                              </div>
+                         </div>
+                         <div class=" col-lg-12 messages text-danger"></div>
+                         <div class="form-group">
+                              <label class="col-sm-2" for="Promotion" style="padding-top: 7px;">Khuyến Mãi</label>
+                              <div class="md-form">
+                                   <textarea id="Promotion" name="Promotion" class="md-textarea form-control" rows="20">{{ $data['project_info']->Promotion ?? old('Promotion') }}</textarea>
+                              </div>
+                              <div class=" col-lg-12 messages text-danger"></div>
+                         </div>
+                    </div>
                     <div class="tab-pane container" id="imageInfo">
                          <div class="card text-center mt-4">
                               <div class="card-header bg-info">
@@ -170,11 +203,11 @@
                                    <div class="row">
                                         <div class="col-md-12 d-flex flex-wrap" id="imageList">
                                              @isset($data['project_info'])
-                                             @for ($i = 0; $i < count(explode("|", $data['project_info']->Image)); $i++)
-                                                  @if (explode("|", $data['project_info']->Image)[$i] !== '')
+                                             @for ($i = 0; $i < count(explode('|', $data['project_info']->Image)); $i++)
+                                                  @if (explode('|', $data['project_info']->Image)[$i] !== '')
                                                   <figure class="col-md-4">
                                                        <div class="w-100" style="height: 300px; position: relative;">
-                                                            <img alt="picture" src="{{ asset(explode("|", $data['project_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+                                                            <img alt="picture" src="{{ asset(explode('|', $data['project_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
                                                        </div>
                                                   </figure>
                                                   @endif
@@ -187,122 +220,177 @@
                     </div>
                </div>
           </div>
+     </div>
 </form>
 
 <script>
-     let name = document.getElementById('title');
+     $("#UtilityAddBtn").click(() => {
+          let html = `<div class="col-md-3">
+               <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()">
+          </div>`;
+
+          $(html).insertBefore('#UtilityAddBtn');
+     });
+
+     if ($('#Utility').val()) showUtilityItem($('#Utility').val());
+
+     function showUtilityItem(list) {
+          if (list) {
+               JSON.parse(list).forEach(item => {
+                    let html = `<div class="col-md-3">
+                         <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()" value="${item}">
+                    </div>`;
+
+                    $(html).insertBefore('#UtilityAddBtn');
+               })
+          }
+     }
+
+     function UtilityItemChange() {
+          let listItem = [];
+
+          document.querySelectorAll('input[data="UtilityItem"]').forEach(item => {
+               if(item.value) listItem.push(item.value);
+          });
+
+          $('#Utility').val(JSON.stringify(listItem));
+     }
+
+     CKEDITOR.replace('Promotion');
+     CKEDITOR.replace('GroundDesign');
+     CKEDITOR.replace('InfrastructureLocation');
+
+     let promotionEditor = CKEDITOR.instances.Promotion;
+     let GroundDesignEditor = CKEDITOR.instances.GroundDesign;
+     let InfrastructureLocationEditor = CKEDITOR.instances.InfrastructureLocation;
+
+     promotionEditor.on('change', function() {
+          $('#Promotion').text(this.getData());
+     });
+
+     GroundDesignEditor.on('change', function() {
+          $('#GroundDesign').text(this.getData());
+     });
+
+     InfrastructureLocationEditor.on('change', function() {
+          $('#InfrastructureLocation').text(this.getData());
+     });
+
+
+    let name = document.getElementById('title');
     let slug = document.getElementById('slug');
     slug.value = convertToSlug(name.value);
     name.addEventListener('input', () => slug.value = convertToSlug(name.value));
 
     $("#inputImageFile").change(function() {
-          loadPreviewFile(this);
-     });
+        loadPreviewFile(this);
+    });
 
-     let loadPreviewFile = (input) => {
-          $preview = $('#imageImputList').empty();
+    let loadPreviewFile = (input) => {
+        $preview = $('#imageImputList').empty();
 
-          if (input.files) {
-               if (input.files.length === 0) {
-                    $('#inputImageCount').text('Chưa chọn ảnh nào!');
-               } else {
-                    $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
+        if (input.files) {
+            if (input.files.length === 0) {
+                $('#inputImageCount').text('Chưa chọn ảnh nào!');
+            } else {
+                $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
 
-               }
+            }
 
-               [...input.files].forEach(file => {
-                    let reader = new FileReader();
+            [...input.files].forEach(file => {
+                let reader = new FileReader();
 
-                    reader.onloadend = (event) => {
-                         let html = `<figure class="col-md-4">
+                reader.onloadend = (event) => {
+                    let html = `<figure class="col-md-4">
                               <div class="w-100" style="height: 300px; position: relative;">
                                    <img alt="picture" src="${reader.result}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
                               </div>
                          </figure>`;
 
-                         $preview.append($.parseHTML(html))
-                    }
+                    $preview.append($.parseHTML(html))
+                }
 
-                    reader.readAsDataURL(file);
-               });
+                reader.readAsDataURL(file);
+            });
 
-          }
-     };
+        }
+    };
 
-     var validateConstraints = {
-          Title: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập tên dự án!"
-               }
-          },
-          Location: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập địa chỉ dự án!"
-               },
-          },
-          Investor: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập chủ đầu tư!"
-               },
-          },
-          NumberOfBlock: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập số Block!"
-               },
-          },
-          NumberOfFloor: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập số Floor!"
-               },
-          },
-          NumberOfApartment: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập số Apartment!"
-               },
-          },
-          AreaApartment: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng chọn Thành Phố!"
-               },
-          },
-          TotalArea: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhạp diện tích!"
-               },
-          },
-          BuildingDensity: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập mật độ!"
-               },
-          },
-          YearBuilt: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập năm xây dựng!"
-               },
-          },
-          Price: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập giá dự án!"
-               },
-          },
-          Status: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng chọn trạng thái dự án!"
-               },
-          },
-     }
+    var validateConstraints = {
+        Title: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập tên dự án!"
+            }
+        },
+        Location: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập địa chỉ dự án!"
+            },
+        },
+        Investor: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập chủ đầu tư!"
+            },
+        },
+        NumberOfBlock: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập số Block!"
+            },
+        },
+        NumberOfFloor: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập số Floor!"
+            },
+        },
+        NumberOfApartment: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập số Apartment!"
+            },
+        },
+        AreaApartment: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng chọn Thành Phố!"
+            },
+        },
+        TotalArea: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhạp diện tích!"
+            },
+        },
+        BuildingDensity: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập mật độ!"
+            },
+        },
+        YearBuilt: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập năm xây dựng!"
+            },
+        },
+        Price: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng nhập giá dự án!"
+            },
+        },
+        Status: {
+            presence: {
+                allowEmpty: false,
+                message: "^Vui lòng chọn trạng thái dự án!"
+            },
+        },
+    }
 
-     validateData('form#main', validateConstraints);
+    validateData('form#main', validateConstraints);
+
 </script>

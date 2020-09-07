@@ -51,10 +51,10 @@
                                    </div>
                                    <div class="col-sm-6 lineheight220">
                                         <div><span>Số block:</span> <b>{{ $data['project_detail']->NumberOfBlock }}</b></div>
-                                        <div><span>Số tầng:</span> <b>{{ $data['project_detail']->NumberOfFloor }}</b></div>
-                                        <div><span>Số căn hộ:</span> <b>{{ $data['project_detail']->NumberOfApartment }}</b></div>
-                                        <div><span>Diện tích căn hộ:</span> <b>{{ $data['project_detail']->AreaApartment }}</b></div>
-                                        <div><span>Tổng diện tích:</span> <b>{{ $data['project_detail']->TotalArea }}</b></div>
+                                        <div><span>Số tầng:</span> <b>{{ $data['project_detail']->NumberOfFloor }} tầng</b></div>
+                                        <div><span>Số căn hộ:</span> <b>{{ $data['project_detail']->NumberOfApartment }} căn</b></div>
+                                        <div><span>Diện tích căn hộ:</span> <b>{{ $data['project_detail']->AreaApartment }} m²</b></div>
+                                        <div><span>Tổng diện tích:</span> <b>{{ $data['project_detail']->TotalArea }} ha</b></div>
                                    </div>
                               </div>
 
@@ -165,7 +165,7 @@
                               </div>
                          </div>
                     </div>
-
+                    {{--
                     <h5 class="headifhouse">Khuyến Mãi</h5>
                     <div class="col-sm-4 col-md-4">
                          <div class="hourseitem row">
@@ -191,14 +191,14 @@
                                    </p>
                                    <p><i class="far fa-heart"></i></p>
                                    <a href="{{ URL::to('/project') }}" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
-                              </div>
-                         </div>
-                    </div>
-
-                    <br>
-                    <h5 class="headifhouse">Properties For Rent</h5>
-                    <property-component type="project-properties-for-rent" project_id="6" url="https://flex-home.botble.com/ajax/properties" :show_empty_string="true"></property-component>
-               </section>
           </div>
-     </main>
+</div>
+</div>
+
+<br>
+<h5 class="headifhouse">Properties For Rent</h5>
+<property-component type="project-properties-for-rent" project_id="6" url="https://flex-home.botble.com/ajax/properties" :show_empty_string="true"></property-component> --}}
+</section>
+</div>
+</main>
 </div>
