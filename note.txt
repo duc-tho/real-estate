@@ -77,3 +77,18 @@
  * /admin/user/delete/{id}   Method: DELETE --> Xóa                    --> AdminUserController@delete
  *
  */
+
+
+--- Change db project - change admin
+[1] + Utility - tiện ích - thêm từng dòng
+[1] + *[InfrastructureLocation - description] - vị trí hạ tầng - khung soạn thảo
+[1] + GroundDesign - thiết kế mặt bằng - khung soạn thảo
+[1] + *Investor - khung soạn thảo
+[1] + Promotion - khuyến mãi - khung soạn thảo
+[0] + xóa ảnh
+[0] + thêm ảnh theo nhóm
+[0] + chọn vị trí (StreetId) cho project
+
+FE
+[0] - tìm kiếm - Lọc
+[0] - làm lại hệ thống URL
