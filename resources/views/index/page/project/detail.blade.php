@@ -25,10 +25,6 @@
                     </div>
                </div>
           </div>
-          {{-- <div id="gallery"
-               data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
-          </div> --}}
-
 
           <div class="container-fluid bgmenupro">
                <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
