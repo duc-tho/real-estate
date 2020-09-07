@@ -247,3 +247,5 @@ Route::group(['prefix' => 'register'], function () {
 
      Route::post('/', 'Index\RegisterController@register')->name('register');
 });
+
+Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
