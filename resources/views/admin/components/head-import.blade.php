@@ -28,7 +28,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/css-element-queries/1.2.3/ResizeSensor.min.js"></script>
 
 <script>
-     $(document).ready(function () {
-          bsCustomFileInput.init()
-     });
+    $(document).ready(function() {
+        bsCustomFileInput.init()
+    });
+
 </script>
+
+<style>
+    td {
+        vertical-align: middle !important;
+    }
+
+</style>

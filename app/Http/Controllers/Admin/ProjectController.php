@@ -53,7 +53,9 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Desciption;
+          $project->Promotion = $req->Promotion;
+          $project->PGroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
 
           $image = [];
           if ($req->hasFile('Image')) {
@@ -107,7 +109,12 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Description;
+          $project->Promotion = $req->Promotion;
+          $project->GroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
+
+          // print_r($req->input());
+          // die();
 
           $image = [];
 
