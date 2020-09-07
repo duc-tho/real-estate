@@ -54,6 +54,7 @@ class ProjectController extends Controller
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
           $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
           $project->PGroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
 
@@ -110,6 +111,7 @@ class ProjectController extends Controller
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
           $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
 
