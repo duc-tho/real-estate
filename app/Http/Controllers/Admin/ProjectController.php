@@ -63,15 +63,29 @@ class ProjectController extends Controller
           $project->StreetId = $req->StreetId;
 
           $image = [];
+          $imgObjStr = '';
+
           if ($req->hasFile('Image')) {
                foreach ($req->Image as $file) {
-                    $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
-                    array_push($image, $filename);
+                    $file_url = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($image, $file_url);
                }
+
+               $imgObj = [
+                    [
+                         "id" => "all",
+                         "name" => "Tất cả ảnh",
+                         "imgList" => $image
+                    ]
+               ];
+
+               $imgObjStr = json_encode($imgObj);
           }
+
           $project = new Project($req->input());
-          $project->Image = implode('|', preg_replace('/^\|+|\|+$/i', '', $image));
+          $project->Image = $imgObjStr;
           $project->save();
+
           return redirect()->route("adminProject");
      }
 

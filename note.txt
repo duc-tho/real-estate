@@ -92,3 +92,7 @@
 FE
 [0] - tìm kiếm - Lọc
 [0] - làm lại hệ thống URL
+
+
+"[{"id":"all", "name":"Tất cả ảnh", imgList: []}]"
+"[{"id":"all", "name":"Tất cả ảnh", imgList: []},{"id":"GroupItem-1","name":"1asd","imgList":[]},{"id":"GroupItem-2","name":"asd2","imgList":[]}]"

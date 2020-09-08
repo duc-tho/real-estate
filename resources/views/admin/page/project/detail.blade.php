@@ -267,31 +267,22 @@
                               </div>
                          </div>
                          <div class="card text-center mt-4">
-                              <div class="card-header bg-success">
-                                   Danh sách ảnh của bất dộng sản này
+                              <div class="card-header bg-info">
+                                   Tạo nhóm ảnh
                               </div>
                               <div class="card-body">
-                                   <div class="row">
-                                        <div class="col-md-12 d-flex flex-wrap" id="imageList">
-                                             @isset($data['project_info'])
-                                             @for ($i = 0; $i < count(explode('|', $data['project_info']->Image)); $i++)
-                                                  @if (explode('|', $data['project_info']->Image)[$i] !== '')
-                                                  <figure class="col-md-4">
-                                                       <div class="w-100" style="height: 300px; position: relative;">
-                                                            <img alt="picture" src="{{ asset(explode('|', $data['project_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
-                                                       </div>
-                                                  </figure>
-                                                  @endif
-                                                  @endfor
-                                                  @endisset
+                                   <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                             <input type="hidden" name="ImageGroup" class="custom-file-input" id="ImageGroup">
+                                             <button type="button" class="btn ml-2 btn-info my-auto" id="ImageGroupAddBtn" style="height: max-content;"><i class="far fa-plus-square"></i></button>
                                         </div>
                                    </div>
                               </div>
                          </div>
+                         <div class="d-flex flex-wrap" id="imageList"></div>
                     </div>
                </div>
           </div>
-     </div>
 </form>
 
 <script>
@@ -300,6 +291,8 @@
      let district = document.getElementById('District');
      let area = document.getElementById('Area');
      let street = document.getElementById('Street');
+
+     /* --- Location Select --- */
 
      city.addEventListener('change', () => {
           district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
@@ -321,6 +314,62 @@
           if (!area.value) return;
           getStreetByArea(area.value, url).then(html => street.innerHTML = html);
      });
+
+     /* --- Image Group, Select --- */
+
+     let groupList = [];
+
+     $("#ImageGroupAddBtn").click(() => {
+          if ($('input[data^="GroupItem-"]').length)
+          if (!$('input[data^="GroupItem-"]')[$('input[data^="GroupItem-"]').length - 1].value)
+               return alert('Vui lòng điền tên nhóm trước khi tạo thêm nhóm mới!');
+
+          groupList.push({
+               id: `GroupItem-${++$('input[data^="GroupItem-"]').length}`,
+               name: '',
+               imgList: []
+          });
+
+          let html = `<div class="col-md-3">
+               <input data="GroupItem-${++$('input[data^="GroupItem"]').length}" type="text" class="form-control my-2" placeholder="Tên Nhóm">
+          </div>`;
+
+          let elemt = $(html);
+
+          elemt.on('input', function() {
+               let id = this.children[0].attributes.data.value;
+
+               groupList.forEach(item => {
+                    if (item.id === id) {
+                         item.name = this.children[0].value;
+                    }
+               });
+
+               loadGroupListToSelect();
+          });
+
+          elemt.insertBefore('#ImageGroupAddBtn');
+     });
+
+     let loadGroupListToSelect = async () => {
+          let allSelectBox = $('select[data^="GroupSelect"]');
+
+          let groupHtml = await ['<option selected>-- Chọn Nhóm --</option>', ...groupList.map(item => (item.name ? `<option data="${item.id}">${item.name}</option>` : ''))].join('');
+
+          allSelectBox.each((key, item) => item.innerHTML = groupHtml);
+     };
+
+     let imageSelectChange = () => {
+          let allSelectBox = $('select[data^="GroupSelect"]');
+
+          allSelectBox.each((key, item) =>  {
+               item.change(function (e) {
+                    console.log(e);
+               });
+          });
+     };
+
+     /* --- Utility --- */
 
      $("#UtilityAddBtn").click(() => {
           let html = `<div class="col-md-3">
@@ -354,6 +403,8 @@
           $('#Utility').val(JSON.stringify(listItem));
      }
 
+     /* --- CKEditor --- */
+
      CKEDITOR.config.filebrowserImageUploadUrl = "{!! route('uploadCKEditor').'?_token='.csrf_token() !!}";
      CKEDITOR.config.filebrowserUploadMethod = 'form';
      CKEDITOR.replace('Promotion', { height: '80vh' });
@@ -376,11 +427,50 @@
           $('#InfrastructureLocation').text(this.getData());
      });
 
+     /* --- Slug --- */
 
      let name = document.getElementById('title');
      let slug = document.getElementById('slug');
      slug.value = convertToSlug(name.value);
      name.addEventListener('input', () => slug.value = convertToSlug(name.value));
+
+     /* --- Image --- */
+
+     let loadImage = (imgJsonStr) => {
+          let imgList = JSON.parse(imgJsonStr);
+          let html = '';
+
+          if (!imgList) return;
+
+          imgList.forEach(item => {
+               item.imgList.forEach(imgURL => {
+                    html += `<figure class="col-md-3">
+                         <div class="w-100 border rounded" style="height: 200px; position: relative;">
+                              <img alt="picture" src="{!! asset('public') !!}/${imgURL}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+                         </div>
+                         <select data="GroupSelect" class="form-control mt-1">
+                              <option selected>-- Chọn Nhóm --</option>
+                         </select>
+                    </figure>`;
+               });
+          });
+
+          let wrap = `<div class="card text-center mt-4 col-md-12 px-0">
+               <div class="card-header bg-secondary col-md-12">
+                    Tất cả ảnh
+               </div>
+               <div class="card-body">
+                    <div class="row">
+                         ${html}
+                    </div>
+               </div>
+          </div>`;
+
+          $('#imageList').append(wrap);
+
+     }
+
+     loadImage('{!! $data['project_info']->Image ?? "[]" !!}');
 
      $("#inputImageFile").change(function () {
           loadPreviewFile(this);
@@ -415,6 +505,8 @@
 
           }
      };
+
+     /* --- Validate --- */
 
      var validateConstraints = {
           Title: {

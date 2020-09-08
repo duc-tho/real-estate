@@ -56,7 +56,7 @@
 <script src="{{ asset('dist/js/index/bootstrap.min.js') }}"></script>
 <script src="{{ asset('dist/js/index/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('dist/js/index/app.js') }}"></script>
-<script src="{{ asset('dist/js/index/components.js') }}"></script>
+{{-- <script src="{{ asset('dist/js/index/components.js') }}"></script> --}}
 
 <script>
      $("#project-city-slides").owlCarousel(
