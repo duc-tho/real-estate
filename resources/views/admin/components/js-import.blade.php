@@ -49,7 +49,9 @@
 		});
      });
 
-     new ResizeSensor($("#dataTable"), () => {
-          table.draw();
-     });
+     if ($('#dataTable')) {
+          new ResizeSensor($("#dataTable"), () => {
+               table.draw();
+          });
+     }
 </script>
