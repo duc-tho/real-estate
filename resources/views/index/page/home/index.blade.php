@@ -166,7 +166,7 @@
                                                        </div>
                                                        <a href="{{ route('postDetail', $post_sale->Slug) }}" class="linkdetail"></a>
                                                        <div class="status">
-                                                            <span class="label-success status-label">Cho Thuê</span>
+                                                            <span class="label-success status-label">Bán</span>
                                                        </div>
                                                   </div>
                                                   <div class="info">
@@ -189,7 +189,7 @@
                                                             </span>
                                                             <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
                                                                  <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                                 <i class="vti">- m²</i>
+                                                                 <i class="vti">{{ (round(($post_sale->Width) * ($post_sale->Length), 1)) }} m²</i>
                                                             </span></p>
                                                   </div>
                                              </div>
@@ -248,7 +248,7 @@
                                                        </span>
                                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
                                                             <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                            <i class="vti">- m²</i>
+                                                            <i class="vti">{{ (round(($post_rent->Width) * ($post_rent->Length), 1)) }} m²</i>
                                                        </span></p>
                                              </div>
                                         </div>
@@ -292,10 +292,79 @@
                                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment }} căn hộ </p>
                                                   <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ - <span class="text-secondary text-small">- / m²</span></p>
+                                                  <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ</p>
                                                   <p class="bold500"><span class="font-weight-bold">Bán: </span> {{ $project->post_sale_count }} <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> {{ $project->post_rent_count }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> -</p>
                                              </div>
+                                             <hr class="w-100">
+                                             @if (!empty($project->post_rent))
+                                             <div class="col-sm-12 col-md-12">
+                                                  <div class="row p-2 border mb-3">
+                                                       <h3 class="m-0 mb-2 w-100"><a href="{{ route('postDetail', $project->post_rent->Slug) }}" style="overflow-wrap: anywhere;">{{ $project->post_rent->Title }}</a></h3>
+                                                       <div class="hinhpost col-sm-6 col-md-6">
+                                                            <div class="img">
+                                                                 <img data-src="{{ asset(explode("|", $project->post_rent->Image)[0]) }}" src="{{ asset(explode("|", $project->post_rent->Image)[0]) }}" alt="{{ $project->post_rent->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
+                                                            </div>
+                                                            <a href="{{ route('postDetail', $project->post_rent->Slug) }}" class="linkdetail"></a>
+                                                            <div class="status"><span class="label-success status-label">Cho Thuê</span></div>
+                                                       </div>
+                                                       <div class="col-sm-6 col-md-6">
+                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_rent->Direction }}</p>
+                                                            <p class="bold500">Giá: {{ number_format($project->post_rent->Price, 0, ".", ",") }} Tỷ</p>
+                                                            <p class="threemt bold500">
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
+                                                                      <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ $project->post_rent->Bedroom ?? '-' }}</i>
+                                                                 </span>
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
+                                                                      <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ $project->post_rent->Bathroom ?? "-"}}</i>
+                                                                 </span>
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
+                                                                      <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ (round(($project->post_rent->Width) * ($project->post_rent->Length), 1)) }} m²</i>
+                                                                 </span>
+                                                            </p>
+                                                            <p><i class="far fa-heart"></i></p>
+                                                            <a href="#" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             @endif
+                                             @if (!empty($project->post_sale))
+                                             <div class="col-sm-12 col-md-12">
+                                                  <div class="row p-2 border mb-3">
+                                                       <h3 class="m-0 mb-2 w-100"><a href="{{ route('postDetail', $project->post_sale->Slug) }}" style="overflow-wrap: anywhere;">{{ $project->post_sale->Title }}</a></h3>
+                                                       <div class="hinhpost col-sm-6 col-md-6">
+                                                            <div class="img">
+                                                                 <img data-src="{{ asset(explode("|", $project->post_sale->Image)[0]) }}" src="{{ asset(explode("|", $project->post_sale->Image)[0]) }}" alt="{{ $project->post_sale->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
+                                                            </div>
+                                                            <a href="{{ route('postDetail', $project->post_sale->Slug) }}" class="linkdetail"></a>
+                                                            <div class="status"><span class="label-success status-label">Bán</span></div>
+                                                       </div>
+                                                       <div class="col-sm-6 col-md-6">
+                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_sale->Direction }}</p>
+                                                            <p class="bold500">Giá: {{ number_format($project->post_sale->Price, 0, ".", ",") }} Tỷ</p>
+                                                            <p class="threemt bold500">
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
+                                                                      <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ $project->post_sale->Bedroom ?? '-' }}</i>
+                                                                 </span>
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
+                                                                      <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ $project->post_sale->Bathroom ?? "-"}}</i>
+                                                                 </span>
+                                                                 <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
+                                                                      <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
+                                                                      <i class="vti">{{ (round(($project->post_sale->Width) * ($project->post_sale->Length), 1)) }} m²</i>
+                                                                 </span>
+                                                            </p>
+                                                            <p><i class="far fa-heart"></i></p>
+                                                            <a href="#" class=" viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             @endif
                                         </div>
                                    </div>
                                    @endforeach

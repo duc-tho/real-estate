@@ -1,6 +1,6 @@
 <div class="card">
      <div class="card-header">
-          <a href="{{route('adminProjectGetAdd')}}" class="btn btn-primary">Thêm Bài Đăng</a>
+          <a href="{{ route('adminProjectGetAdd') }}" class="btn btn-primary">Thêm Dự Án</a>
      </div>
      <div class="card-body">
           <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
@@ -9,10 +9,9 @@
                          <th>Mã</th>
                          <th>Tên Dự Án</th>
                          <th>Vị Trí</th>
-                         <th>Chủ Đâu Tư</th>
+                         <th>Chủ Đầu Tư</th>
                          <th>Số Block</th>
                          <th>Số Căn Hộ</th>
-                         <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
                          <th>Giá</th>
                          <th></th>
@@ -21,22 +20,14 @@
                <tbody>
                     @foreach ($projectList as $item)
                     <tr>
-                         <td>{{$item->ProjectId }}</td>
-                         <td>{{$item->Title }}</td>
-                         <td>{{$item->Location }}</td>
-                         <td>{{$item->Investor }}</td>
-                         <td>{{$item->NumberOfBlock }}</td>
-                         <td>{{$item->NumberOfApartment }}</td>
-
-                         @foreach ($area_list as $area_item)
-                         @if ($item->AreaId === $area_item->AreaId)
-                         <td>{{ $area_item->Name }}</td>
-                         @break
-                         @endif
-                         @endforeach
-
-                         <td>{{$item->YearBuilt }}</td>
-                         <td>{{ $item->Price }}</td>
+                         <td>{{ $item->ProjectId }}</td>
+                         <td>{{ $item->Title }}</td>
+                         <td>{{ $item->Location }}</td>
+                         <td>{{ $item->Investor }}</td>
+                         <td>{{ $item->NumberOfBlock }}</td>
+                         <td>{{ $item->NumberOfApartment }}</td>
+                         <td>{{ $item->YearBuilt }}</td>
+                         <td>{{ number_format($item->Price, 0, '.', ',') }}</td>
                          <td>
                               <a href="{{ route('adminProjectGetEdit', $item->ProjectId) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
                               <form class="d-inline" action={{ route('adminProjectDelete', $item->ProjectId) }} method="post">
@@ -53,10 +44,9 @@
                          <th>Mã</th>
                          <th>Tên Dự Án</th>
                          <th>Vị Trí</th>
-                         <th>Chủ Đâu Tư</th>
+                         <th>Chủ Đầu Tư</th>
                          <th>Số Block</th>
                          <th>Số Căn Hộ</th>
-                         <th>Khu Vực</th>
                          <th>Năm Xây Dựng</th>
                          <th>Giá</th>
                          <th></th>
@@ -67,21 +57,68 @@
 </div>
 
 <script>
-     $("#dataTable").DataTable({
-         "responsive": true,
-         "autoWidth": true,
-         "columns": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              { "width": "17%" }
-          ]
-
+     let table = $("#dataTable").DataTable({
+        scrollX: true,
+        scrollCollapse: true,
+        autoWidth: false,
+        fixedColumns: true,
+        fixedHeader: true,
+        columnDefs: [{
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 145px;'>" + data + "</div>";
+                },
+                targets: 8
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 145px;'>" + data + "</div>";
+                },
+                targets: 7
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 120px;' class='text-center'>" + data + "</div>";
+                },
+                targets: 6
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 90px;' class='text-center'>" + data + "</div>";
+                },
+                targets: 5
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 80px;' class='text-center'>" + data + "</div>";
+                },
+                targets: 4
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 100px;'>" + data + "</div>";
+                },
+                targets: 3
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='width: 160px;'>" + data + "</div>";
+                },
+                targets: 2
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='white-space:normal; width:200px;'>" + data + "</div>";
+                },
+                targets: 1
+            },
+            {
+                render: function(data, type, full, meta) {
+                    return "<div style='max-width: 50px; min-width: 40px;' class='text-center'>" +
+                        data + "</div>";
+                },
+                targets: 0
+            }
+        ],
     });
+
 </script>

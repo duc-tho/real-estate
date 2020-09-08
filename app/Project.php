@@ -10,6 +10,7 @@ class Project extends Model
      protected $primaryKey = 'ProjectId';
      protected $guarded = [];
      protected $fillable = [
+          'StreetId',
           'Title',
           'Slug',
           'Location',

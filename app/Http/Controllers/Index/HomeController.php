@@ -22,10 +22,29 @@ class HomeController extends Controller
                     'ProjectId' => $project->ProjectId,
                     'Type' => 'bán',
                ])->count();
+
                $project->post_rent_count = Post::where([
                     'ProjectId' => $project->ProjectId,
                     'Type' => 'thuê',
                ])->count();
+
+               $project->post_sale = City::join('District', 'City.CityId', '=', 'District.CityId')
+                    ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
+                    ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
+                    ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
+                    ->where('Post.ProjectId', $project->ProjectId)
+                    ->where(['Type' => 'bán'])
+                    ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+                    ->first();
+
+               $project->post_rent = City::join('District', 'City.CityId', '=', 'District.CityId')
+                    ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
+                    ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
+                    ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
+                    ->where('Post.ProjectId', $project->ProjectId)
+                    ->where(['Type' => 'thuê'])
+                    ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+                    ->first();
           }
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {

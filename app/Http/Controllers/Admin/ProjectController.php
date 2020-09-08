@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\City;
+use App\Models\District;
+use App\Models\Street;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -25,7 +28,7 @@ class ProjectController extends Controller
      {
           $projectList = Project::all();
           $cityList = City::all();
-          //$categoryList = Category::all();
+
           return view('admin.admin', [
                'page' => 'project.detail',
                'page_title' => 'Chi Tiết Dự Án',
@@ -53,7 +56,11 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Desciption;
+          $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
+          $project->PGroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
+          $project->StreetId = $req->StreetId;
 
           $image = [];
           if ($req->hasFile('Image')) {
@@ -71,8 +78,17 @@ class ProjectController extends Controller
      public function getEdit($id)
      {
           $projectData = Project::find($id);
+
+          if ($projectData === null) return abort(404);
+
+          $projectData->AreaId = Street::find($projectData['StreetId'])->Area['AreaId'];
+          $projectData->DistrictId = Area::find($projectData['AreaId'])->District['DistrictId'];
+          $projectData->CityId = District::find($projectData['DistrictId'])->City['CityId'];
           $projectList = Project::all();
           $cityList = City::all();
+          $districtList = City::find($projectData->CityId)->District;
+          $areaList = District::find($projectData->DistrictId)->Area;
+          $streetList = Area::find($projectData->AreaId)->Street;
 
           return view('admin.admin', [
                'page' => 'project.detail',
@@ -81,6 +97,9 @@ class ProjectController extends Controller
                     'project_list' => $projectList,
                     'project_info' => $projectData,
                     'city_list' => $cityList,
+                    'district_list' => $districtList,
+                    'area_list' => $areaList,
+                    'street_list' => $streetList
                ]
           ]);
      }
@@ -107,7 +126,11 @@ class ProjectController extends Controller
           $project->Price = $req->Price;
           $project->Status = $req->Status;
           $project->Slug = str::slug($req->Slug);
-          $project->Description = $req->Description;
+          $project->Promotion = $req->Promotion;
+          $project->Utility = $req->Utility;
+          $project->GroundDesign = $req->GroundDesign;
+          $project->InfrastructureLocation = $req->InfrastructureLocation;
+          $project->StreetId = $req->StreetId;
 
           $image = [];
 
@@ -118,7 +141,7 @@ class ProjectController extends Controller
                }
           }
 
-          $project->Image = implode('|', $image) . '|' . $project->Image;
+          $project->Image = preg_replace('/^\|+|\|+$/i', '', implode('|', $image) . '|' . $project->Image);
 
           $project->Status = $req->Status;
           $project->save();

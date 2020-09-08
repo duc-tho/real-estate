@@ -28,6 +28,11 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 Route::group(['prefix' => 'bat-dong-san'], function () {
+     /**
+      * /bat-dong-san//mua/nha/hcm/quan-binh-thanh/ban-nha-123
+      * /du-an/hcm/quan-binh-thanh/du-an-123/thue
+      */
+
      Route::get('/', 'Index\PostController@index')->name('post');
 
      Route::get('/khu-vuc/{city_slug}', 'Index\PostController@postCity')
@@ -242,3 +247,5 @@ Route::group(['prefix' => 'register'], function () {
 
      Route::post('/', 'Index\RegisterController@register')->name('register');
 });
+
+Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
