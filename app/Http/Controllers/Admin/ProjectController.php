@@ -50,7 +50,7 @@ class ProjectController extends Controller
           $project->NumberOfFloor = $req->NumberOfFloor;
           $project->NumberOfApartment = $req->NumberOfApartment;
           $project->AreaApartment = $req->AreaApartment;
-          $project->TotalArea = $req->Totalarea;
+          $project->TotalArea = $req->TotalArea;
           $project->BuildingDensity = $req->BuildingDensity;
           $project->YearBuilt = $req->YearBuilt;
           $project->Price = $req->Price;
@@ -58,7 +58,7 @@ class ProjectController extends Controller
           $project->Slug = str::slug($req->Slug);
           $project->Promotion = $req->Promotion;
           $project->Utility = $req->Utility;
-          $project->PGroundDesign = $req->GroundDesign;
+          $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
           $project->StreetId = $req->StreetId;
 
@@ -69,7 +69,7 @@ class ProjectController extends Controller
                     array_push($image, $filename);
                }
           }
-          $project = new Project($req->input());
+          
           $project->Image = implode('|', preg_replace('/^\|+|\|+$/i', '', $image));
           $project->save();
           return redirect()->route("adminProject");

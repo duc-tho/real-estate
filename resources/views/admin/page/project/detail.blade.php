@@ -150,10 +150,10 @@
                                    <select class="form-control" name="StreetId" id="Street">
                                         <option value="" aria-readonly="true">Chọn Đường</option>
                                         @isset($data['street_list'])
-                                        @foreach ($data['street_list'] as $item)
-                                        <option value="{{ $item->StreetId }}" {{ $item->StreetId === ($data['project_info']->StreetId ?? '') ? 'selected' : '' }}>
-                                             {{ $item->Name }}</option>
-                                        @endforeach
+                                             @foreach ($data['street_list'] as $item)
+                                             <option value="{{ $item->StreetId }}" {{ $item->StreetId === ($data['project_info']->StreetId ?? '') ? 'selected' : '' }}>
+                                                  {{ $item->Name }}</option>
+                                             @endforeach
                                         @endisset
                                    </select>
                               </div>
@@ -229,6 +229,7 @@
                               <div class=" col-lg-12 messages text-danger"></div>
                          </div>
                     </div>
+                    
                     <div class="tab-pane container" id="tikm">
                          <div class="form-group">
                               <label class="col-sm-2" for="Utility" style="padding-top: 7px;">Tiện ích</label>
