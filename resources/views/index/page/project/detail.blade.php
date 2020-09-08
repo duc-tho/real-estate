@@ -25,10 +25,6 @@
                     </div>
                </div>
           </div>
-          {{-- <div id="gallery"
-               data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
-          </div> --}}
-
 
           <div class="container-fluid bgmenupro">
                <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
@@ -62,36 +58,14 @@
                                    </div>
                               </div>
 
-                              <div class="head">Mô tả</div>
-                              <p>{!! $data['project_detail']->Description !!}.</p>
-
-                              {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
-
-                                   <ul>
-                                        <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
-                                        <li>2.&nbsp;Nhiều dịch vụ tiện ích tại đây.</li>
-                                        <li>3.&nbsp;Đầy đủ các của hàng tiện lợi.</li>
-                                        <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
-                                        <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
-                                   </ul> --}}
-                              {{-- <div class="head">Dịch vụ</div>
+                              <div class="head">Cơ Sở Hạ Tầng</div>
+                                   <p>{{ $data['project_detail']->InfrastructureLocation }}</p>
+                              <div class="head">Tiện Ích</div>
                               <div class="row">
                                    <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
+                                        <p><i class="fas fa-check text-orange text0i"></i>{{ $data['project_detail']->Utility }}</p>
                                    </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
-                                   </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
-                                   </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
-                                   </div>
-                                   <div class="col-sm-4">
-                                        <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
-                                   </div>
-                              </div> --}}
+                              </div>
                               <br>
                               <br>
                               <div class="mapouter">

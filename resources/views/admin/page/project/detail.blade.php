@@ -276,15 +276,15 @@
                                         <div class="col-md-12 d-flex flex-wrap" id="imageList">
                                              @isset($data['project_info'])
                                              @for ($i = 0; $i < count(explode('|', $data['project_info']->Image)); $i++)
-                                                  @if (explode('|', $data['project_info']->Image)[$i] !== '')
+                                             @if (explode('|', $data['project_info']->Image)[$i] !== '')
                                                   <figure class="col-md-4">
                                                        <div class="w-100" style="height: 300px; position: relative;">
                                                             <img alt="picture" src="{{ asset(explode('|', $data['project_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
                                                        </div>
                                                   </figure>
-                                                  @endif
-                                                  @endfor
-                                                  @endisset
+                                             @endif
+                                             @endfor
+                                             @endisset
                                         </div>
                                    </div>
                               </div>

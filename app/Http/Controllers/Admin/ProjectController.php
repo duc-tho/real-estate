@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Street;
 use App\Models\City;
 use App\Models\District;
-use App\Models\Street;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -26,6 +26,9 @@ class ProjectController extends Controller
 
      public function getAdd()
      {
+          $street = Street::all();
+          $district = District::all();
+          $area = Area::all();
           $projectList = Project::all();
           $cityList = City::all();
 
@@ -35,6 +38,9 @@ class ProjectController extends Controller
                'data' => [
                     'project_list' => $projectList,
                     'city_list' => $cityList,
+                    'street_list' => $street,
+                    'district_list' => $district,
+                    'area_list' => $area,
                ]
           ]);
      }
@@ -130,8 +136,6 @@ class ProjectController extends Controller
           $project->Utility = $req->Utility;
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
-          $project->StreetId = $req->StreetId;
-
           $image = [];
 
           if ($req->hasFile('Image')) {
