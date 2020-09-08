@@ -47,13 +47,8 @@
                    <label class="col-sm-2" for="AreaId" style="padding-top: 7px;">Danh mục Phường Xã</label>
                    <div class="w-100">
                         <div class="form-group" >       
-<<<<<<< HEAD
                               <select class="form-control" name="AreaId" id="AreaId">
                                    @foreach ( $data['street_list'] as $item )
-=======
-                              <select class="form-control" name="AreaId" id="area">
-                                   @foreach ( $data['area_list'] as $item )
->>>>>>> e18ad6a73ccb9a8b89f2a886dcad8d6cb0b23aeb
                                         <option value="{{ $item->AreaId }}" {{ $item->AreaId === ($data['street_info']->AreaId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
                                    @endforeach
                               </select>

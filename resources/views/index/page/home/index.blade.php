@@ -279,9 +279,9 @@
                                              <div class="blii col-sm-6 col-md-6 colm10 pl-0">
                                                   <div class="img h-100">
                                                        @if (!empty($project->Image))
-                                                       <img style="max-height: 205px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
+                                                            <img style="max-height: 205px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
                                                        @else
-                                                       <img style="max-height: 205px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
+                                                            <img style="max-height: 205px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @endif
                                                   </div>
                                                   <a href="{{ route('projectDetail', $project->Slug) }}" class="linkdetail"></a>
