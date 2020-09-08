@@ -19,7 +19,7 @@ Route::get('/', 'Index\HomeController@index')->name('home');
 Route::group(['prefix' => 'du-an'], function () {
      Route::get('/', 'Index\ProjectController@index')->name('project');
 
-     Route::get('/{slug}', 'Index\ProjectController@projectDetail')
+     Route::get('/{Slug}', 'Index\ProjectController@projectDetail')
           ->name('projectDetail');
 });
 

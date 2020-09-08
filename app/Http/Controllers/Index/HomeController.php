@@ -15,6 +15,7 @@ class HomeController extends Controller
           $district_list = [];
           $post_sale_list = [];
           $post_rent_list = [];
+        
 
           foreach ($project_list as $project) {
                $project->post_sale_count = Post::where([

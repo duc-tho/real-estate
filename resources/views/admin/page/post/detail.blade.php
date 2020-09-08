@@ -280,6 +280,10 @@
                                 rows="10">{{ $data['post_info']->Description ?? old('Description') }}</textarea>
                         </div>
                         <div class=" col-lg-12 messages text-danger"></div>
+                        {{-- <div class="md-form">
+                            <textarea id="GroundDesign" name="GroundDesign" class="md-textarea form-control" rows="20">{{ $data['project_info']->GroundDesign ?? old('GroundDesign') }}</textarea>
+                       </div>
+                       <div class=" col-lg-12 messages text-danger"></div> --}}
                     </div>
                 </div>
 

@@ -32,8 +32,6 @@
           </div> --}}
 
 
-                    {{-- </div>
-          </div> --}}
                     <div class="container-fluid">
                          <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
                               <div class="col-12">
@@ -67,7 +65,7 @@
                                         </div>
 
                                         <div class="head">Vị trí hạ tầng</div>
-                                        <p>{!! $data['project_detail']->InfrastructureLocation !!}.</p>
+                                        <p>{!! $data['project_detail']->Description !!}.</p>
 
                                         {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
 
@@ -79,28 +77,23 @@
                                         <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
                                    </ul> --}}
                                         {{-- <div class="head">Dịch vụ</div>
-
-                              <div class="head">Cơ Sở Hạ Tầng</div>
-                                   <p>{{ $data['project_detail']->InfrastructureLocation }}</p>
-                                        <div class="head">Tiện Ích</div>
-                                        <div class="row">
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i>{{ $data['project_detail']->Utility }}</p>
-                                             </div>
-
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
-                                             </div>
-                                        </div> --}}
+                              <div class="row">
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Wifi</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
+                                   </div>
+                                   <div class="col-sm-4">
+                                        <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
+                                   </div>
+                              </div> --}}
                                         <br>
 
 
@@ -108,7 +101,9 @@
                                         <span class="line_title"></span>
                                         <div class="row">
                                              <div class="col-sm-12 lineheight220">
-                                                  <p>{!! $data['project_detail']->GroundDesign !!}</p>
+                                                  <p>Khung soạn thảo
+                                                  </p>
+
                                              </div>
                                         </div>
 
@@ -116,17 +111,19 @@
                                         <span class="line_title"></span>
                                         <div class="row">
                                              <div class="col-sm-12 lineheight220">
-                                                  <p>{!! $data['project_detail']->Investor !!}</p>
+                                                  <p>Khung soạn thảo
+                                                  </p>
 
                                              </div>
                                         </div>
 
-                                        <div class="head">Tiện ích</div>
+                                        <div class="head">Tiện tích</div>
                                         <span class="line_title"></span>
                                         <div class="row">
                                              <div class="col-sm-12 lineheight220">
-                                                  <ul style="column-count: 3" id="listUtility">
-                                                  </ul>
+                                                  <p>List tiện ích >> Điền từng dòng
+                                                  </p>
+
                                              </div>
                                         </div>
 
@@ -211,6 +208,9 @@
                                                        </div>
                                                        <!-- END GRID -->
                                                   </div>
+
+
+
                                              </div>
                                         </div>
 
@@ -221,7 +221,6 @@
                                                   <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                                              </div>
                                         </div>
-
                                         <br>
                                         <br>
                                         <div class="socials">
@@ -244,12 +243,6 @@
                                         <div class="clearfix"></div>
                                         <br>
                                    </div>
-                                   <br>
-                                   <br>
-                                   {{-- <div class="mapouter">
-                                        <div class="gmap_canvas">
-                                             <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q=Singapore+Island%2C+Singapore%20&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                        </div> --}}
                                    <!--<div class="col-md-4 padtop10">
                               <div class="boxright">
                                    <form action="https://flex-home.botble.com/send-consult" method="post" id="contact-form" class="generic-form">
@@ -301,6 +294,10 @@
 
                               <h5 class="headifhouse">Khuyến Mãi</h5>
                               <div>Nội dung ưu đãi</div>
+
+
+
+
                               <br>
                               <div class="listban">
                                    <h5 class="headifhouse">Căn hộ đang bán</h5>
@@ -579,12 +576,17 @@
                                              <option value="4">Quận 4</option>
                                         </select>
                                    </div>
+
+
                                    <div class="form-group text-center"><button type="submit" class="btn btn-primary btn-full">Search</button>
                                    </div>
                               </form>
                          </div>
                     </div>
+
+
                </div>
+
 
                <div class="boxright">
                     <h5>Dự án các khu vực</h5>
@@ -600,18 +602,6 @@
      </div>
 </div>
 <script>
-     showUtilityItem('{!! $data['project_detail']->Utility !!}');
-
-     function showUtilityItem(list) {
-          if (list) {
-               JSON.parse(list).forEach(item => {
-                    let html = `<li><span>${item}</span></li>`;
-
-                    $('#listUtility').append(html);
-               })
-          }
-     }
-
      filterSelection("all") // Execute the function and show all columns
      function filterSelection(c) {
           var x, i;

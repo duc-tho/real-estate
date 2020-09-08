@@ -8,6 +8,7 @@ use App\Models\District;
 use Illuminate\Support\Str;
 use App\Http\Requests\AddAreaRequest;
 use App\Http\Requests\EditAreaRequest;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class AreaController extends Controller
@@ -15,6 +16,7 @@ class AreaController extends Controller
      public function index()
      {
           $data['arealist'] = Area::all();
+          $data['district_list'] = District::all();
           return view('admin.admin', [
                'page' => 'area.index',
                'page_title' => 'Quản Lý Phường / Xã'
@@ -24,6 +26,7 @@ class AreaController extends Controller
      public function getAdd()
      {
           $data['dislist'] = District::all();
+          $data['citylist'] = City::all();
           return view('admin.admin', [
                'page' => 'area.detail',
                'page_title' => 'Chi Tiết Phường / Xã'
@@ -45,6 +48,7 @@ class AreaController extends Controller
      {
           $data['area'] = Area::find($id);
           $data['listdis'] = District::all();
+          $data['listcity'] = City::all();
           return view('admin.admin', [
                'page' => 'area.edit',
                'page_title' => 'Chi Tiết Phường / Xã'

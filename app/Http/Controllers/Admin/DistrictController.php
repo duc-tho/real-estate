@@ -15,6 +15,7 @@ class DistrictController extends Controller
      public function index()
      {
           $data['districtlist'] = District::all();
+          $data['city_list'] = City::all();
           return view('admin.admin', [
                'page' => 'district.index',
                'page_title' => 'Quản Lý Quận / Huyện'

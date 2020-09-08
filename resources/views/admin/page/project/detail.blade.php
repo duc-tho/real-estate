@@ -229,6 +229,7 @@
                               <div class=" col-lg-12 messages text-danger"></div>
                          </div>
                     </div>
+
                     <div class="tab-pane container" id="tikm">
                          <div class="form-group">
                               <label class="col-sm-2" for="Utility" style="padding-top: 7px;">Tiện ích</label>
@@ -279,11 +280,16 @@
                                    </div>
                               </div>
                          </div>
-                         <div class="d-flex flex-wrap" id="imageList"></div>
+                         <div class="row">
+                              <div class="col-md-12 d-flex flex-wrap" id="imageList"></div>
+                         </div>
                     </div>
                </div>
           </div>
+     </div>
+     </div>
 </form>
+
 
 <script>
      let url = document.querySelector('input[base_url]').attributes['base_url'].value;
@@ -291,9 +297,6 @@
      let district = document.getElementById('District');
      let area = document.getElementById('Area');
      let street = document.getElementById('Street');
-
-     /* --- Location Select --- */
-
      city.addEventListener('change', () => {
           district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
           area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
@@ -375,19 +378,15 @@
           let html = `<div class="col-md-3">
                <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()">
           </div>`;
-
           $(html).insertBefore('#UtilityAddBtn');
      });
-
      if ($('#Utility').val()) showUtilityItem($('#Utility').val());
-
      function showUtilityItem(list) {
           if (list) {
                JSON.parse(list).forEach(item => {
                     let html = `<div class="col-md-3">
                          <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()" value="${item}">
                     </div>`;
-
                     $(html).insertBefore('#UtilityAddBtn');
                })
           }
@@ -478,31 +477,24 @@
 
      let loadPreviewFile = (input) => {
           $preview = $('#imageImputList').empty();
-
           if (input.files) {
                if (input.files.length === 0) {
                     $('#inputImageCount').text('Chưa chọn ảnh nào!');
                } else {
                     $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
-
                }
-
                [...input.files].forEach(file => {
                     let reader = new FileReader();
-
                     reader.onloadend = (event) => {
                          let html = `<figure class="col-md-4">
                               <div class="w-100" style="height: 300px; position: relative;">
                                    <img alt="picture" src="${reader.result}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
                               </div>
                          </figure>`;
-
                          $preview.append($.parseHTML(html))
                     }
-
                     reader.readAsDataURL(file);
                });
-
           }
      };
 

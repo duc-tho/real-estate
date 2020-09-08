@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Street;
 use App\Models\City;
 use App\Models\District;
-use App\Models\Street;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -26,6 +26,9 @@ class ProjectController extends Controller
 
      public function getAdd()
      {
+          $street = Street::all();
+          $district = District::all();
+          $area = Area::all();
           $projectList = Project::all();
           $cityList = City::all();
 
@@ -35,6 +38,9 @@ class ProjectController extends Controller
                'data' => [
                     'project_list' => $projectList,
                     'city_list' => $cityList,
+                    'street_list' => $street,
+                    'district_list' => $district,
+                    'area_list' => $area,
                ]
           ]);
      }
@@ -50,7 +56,7 @@ class ProjectController extends Controller
           $project->NumberOfFloor = $req->NumberOfFloor;
           $project->NumberOfApartment = $req->NumberOfApartment;
           $project->AreaApartment = $req->AreaApartment;
-          $project->TotalArea = $req->Totalarea;
+          $project->TotalArea = $req->TotalArea;
           $project->BuildingDensity = $req->BuildingDensity;
           $project->YearBuilt = $req->YearBuilt;
           $project->Price = $req->Price;
@@ -58,7 +64,7 @@ class ProjectController extends Controller
           $project->Slug = str::slug($req->Slug);
           $project->Promotion = $req->Promotion;
           $project->Utility = $req->Utility;
-          $project->PGroundDesign = $req->GroundDesign;
+          $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
           $project->StreetId = $req->StreetId;
 
@@ -82,7 +88,6 @@ class ProjectController extends Controller
                $imgObjStr = json_encode($imgObj);
           }
 
-          $project = new Project($req->input());
           $project->Image = $imgObjStr;
           $project->save();
 
@@ -144,8 +149,6 @@ class ProjectController extends Controller
           $project->Utility = $req->Utility;
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
-          $project->StreetId = $req->StreetId;
-
           $image = [];
 
           if ($req->hasFile('Image')) {

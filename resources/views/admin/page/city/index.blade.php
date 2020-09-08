@@ -8,7 +8,7 @@
                     <tr>
                          <th >Mã Thành Phố</th>
                          <th>Tên Thành Phố</th>
-                        
+                         <th>Trạng Thái</th>
                          <th >Tùy chọn</th>
                     </tr>
                </thead>
@@ -17,6 +17,18 @@
                          <tr>
                               <td>{{$city->CityId}}</td>
                               <td>{{$city->Name}}</td>
+                              @switch($city->Status)
+                                   @case(1)
+                                   <td class="text-success">Hoạt động</td>
+                                   @break
+                                   @case(-1)
+                                   <td class="text-secondary">Không hoạt động</td>
+                                   @break
+                                   @case(0)
+                                   <td class="text-warning">Chờ duyệt</td>
+                                   @break
+                                   @default
+                                   @endswitch
                               <td>
                                    <a href="{{asset('admin/city/edit/'.$city->CityId)}}" class="btn btn-warning"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Sửa</a>
                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa !')" href="{{asset('admin/city/delete/'.$city->CityId)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>   
@@ -38,7 +50,7 @@
                     <tr>
                          <th>Mã Thành Phố</th>
                          <th>Tên</th>
-                       
+                         <th>Trạng Thái</th>
                          <th>Tùy Chọn</th>
                     </tr>
                </tfoot>
@@ -53,7 +65,7 @@
           "columns": [
                null,
                null,
-             
+               null,
           
                { "width": "20%" }
                ]
