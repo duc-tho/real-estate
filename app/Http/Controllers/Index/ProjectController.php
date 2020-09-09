@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Index;
 
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use App\Models\City;
+use App\Models\District;
 use App\Models\Post;
+use App\Models\Street;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -68,14 +71,16 @@ class ProjectController extends Controller
      public function projectDetail($slug)
      {
           $projectDetail = Project::where('Slug', $slug)->first();
+          $projectDetail->Street = Street::find($projectDetail->StreetId);
+          $projectDetail->Area = Street::find($projectDetail->StreetId)->Area;
+          $projectDetail->District = Area::find($projectDetail->Area->AreaId)->District;
+          $projectDetail->City = District::find($projectDetail->District->DistrictId)->City;
 
-          $projectImg = Project::select('Image')->get();
           return view('index.index', [
                'title' => 'Chi tiết dự án',
                'page' => 'project.detail',
                'data' => [
                     'project_detail' => $projectDetail,
-                    'project_img' => $projectImg
                ]
           ]);
      }

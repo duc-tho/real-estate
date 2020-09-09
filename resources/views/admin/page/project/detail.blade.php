@@ -320,12 +320,41 @@
 
      /* --- Image Group, Select --- */
 
-     let groupList = [];
+     let groupList = JSON.parse(`{!! $data['project_info']->Image ?? "[]" !!}`);
+
+
+     let loadGroup = () => {
+          groupList.shift();
+
+          groupList.forEach(item => {
+               let html = `<div class="col-md-3">
+                    <input data="${item.id}" type="text" class="form-control my-2" placeholder="Tên Nhóm" value="${item.name}">
+               </div>`;
+
+               let elemt = $(html);
+
+               elemt.on('input', function () {
+                    let id = this.children[0].attributes.data.value;
+
+                    groupList.forEach(item => {
+                         if (item.id === id) {
+                              item.name = this.children[0].value;
+                         }
+                    });
+
+                    loadGroupListToSelect();
+
+                    $('#ImageGroup').val(JSON.stringify(groupList));
+               });
+
+               elemt.insertBefore('#ImageGroupAddBtn');
+          });
+     }
 
      $("#ImageGroupAddBtn").click(() => {
           if ($('input[data^="GroupItem-"]').length)
-          if (!$('input[data^="GroupItem-"]')[$('input[data^="GroupItem-"]').length - 1].value)
-               return alert('Vui lòng điền tên nhóm trước khi tạo thêm nhóm mới!');
+               if (!$('input[data^="GroupItem-"]')[$('input[data^="GroupItem-"]').length - 1].value)
+                    return alert('Vui lòng điền tên nhóm trước khi tạo thêm nhóm mới!');
 
           groupList.push({
                id: `GroupItem-${++$('input[data^="GroupItem-"]').length}`,
@@ -339,7 +368,7 @@
 
           let elemt = $(html);
 
-          elemt.on('input', function() {
+          elemt.on('input', function () {
                let id = this.children[0].attributes.data.value;
 
                groupList.forEach(item => {
@@ -349,25 +378,44 @@
                });
 
                loadGroupListToSelect();
+
+               $('#ImageGroup').val(JSON.stringify(groupList));
           });
 
           elemt.insertBefore('#ImageGroupAddBtn');
      });
 
-     let loadGroupListToSelect = async () => {
+     let loadGroupListToSelect = () => {
           let allSelectBox = $('select[data^="GroupSelect"]');
 
-          let groupHtml = await ['<option selected>-- Chọn Nhóm --</option>', ...groupList.map(item => (item.name ? `<option data="${item.id}">${item.name}</option>` : ''))].join('');
+          allSelectBox.each((key, selectBox) => {
+               let groupHtml = [
+                    '<option selected>-- Chọn Nhóm --</option>',
+                    ...groupList.map(group => {
+                         return (group.name ? `<option data="${group.id}" ${group.imgList.indexOf(selectBox.attributes['img-url'].value) !== -1 ? 'selected' : ''}>${group.name}</option>` : '')
+                    })
+               ].join('');
 
-          allSelectBox.each((key, item) => item.innerHTML = groupHtml);
+               selectBox.innerHTML = groupHtml
+          });
      };
 
-     let imageSelectChange = () => {
+     let imageGroupSelectChange = () => {
           let allSelectBox = $('select[data^="GroupSelect"]');
 
-          allSelectBox.each((key, item) =>  {
-               item.change(function (e) {
-                    console.log(e);
+          allSelectBox.each((key, item) => {
+               $(item).on('change', function () {
+                    groupList.forEach(item => {
+                         if (item.name === this.value) {
+                              item.imgList.push(this.attributes['img-url'].value);
+                              return;
+                         }
+
+                         let itemIndex = item.imgList.indexOf(this.attributes['img-url'].value);
+                         if (itemIndex !== -1) item.imgList.splice(itemIndex, 1);
+                    });
+
+                    $('#ImageGroup').val(JSON.stringify(groupList));
                });
           });
      };
@@ -380,7 +428,9 @@
           </div>`;
           $(html).insertBefore('#UtilityAddBtn');
      });
+
      if ($('#Utility').val()) showUtilityItem($('#Utility').val());
+
      function showUtilityItem(list) {
           if (list) {
                JSON.parse(list).forEach(item => {
@@ -436,7 +486,7 @@
      /* --- Image --- */
 
      let loadImage = (imgJsonStr) => {
-          let imgList = JSON.parse(imgJsonStr);
+          let imgList = JSON.parse(imgJsonStr).slice(0, 1);
           let html = '';
 
           if (!imgList) return;
@@ -447,7 +497,7 @@
                          <div class="w-100 border rounded" style="height: 200px; position: relative;">
                               <img alt="picture" src="{!! asset('public') !!}/${imgURL}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
                          </div>
-                         <select data="GroupSelect" class="form-control mt-1">
+                         <select img-url="${imgURL}" data="GroupSelect" class="form-control mt-1">
                               <option selected>-- Chọn Nhóm --</option>
                          </select>
                     </figure>`;
@@ -497,6 +547,13 @@
                });
           }
      };
+
+     imageGroupSelectChange();
+
+     if (groupList) {
+          loadGroup();
+          loadGroupListToSelect();
+     }
 
      /* --- Validate --- */
 

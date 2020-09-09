@@ -21,6 +21,8 @@
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/owl.carousel.min.css') }}">
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/owl.theme.default.css') }}">
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/style.css') }}">
+<link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/project.css') }}">
+
 
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700,800" rel="stylesheet" type="text/css">
 

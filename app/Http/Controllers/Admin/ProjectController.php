@@ -70,6 +70,14 @@ class ProjectController extends Controller
 
           $image = [];
           $imgObjStr = '';
+          $imgObj = [
+               [
+                    "id" => "all",
+                    "name" => "Tất cả ảnh",
+                    "imgList" => []
+               ]
+          ];
+
 
           if ($req->hasFile('Image')) {
                foreach ($req->Image as $file) {
@@ -77,16 +85,16 @@ class ProjectController extends Controller
                     array_push($image, $file_url);
                }
 
-               $imgObj = [
-                    [
-                         "id" => "all",
-                         "name" => "Tất cả ảnh",
-                         "imgList" => $image
-                    ]
-               ];
-
-               $imgObjStr = json_encode($imgObj);
+               $imgObj[0]['imgList'] = $image;
           }
+
+          if ($req->has('ImageGroup')) {
+               foreach (json_decode($req->ImageGroup) as $group) {
+                    array_push($imgObj, $group);
+               }
+          }
+
+          $imgObjStr = json_encode($imgObj);
 
           $project->Image = $imgObjStr;
           $project->save();
@@ -149,16 +157,32 @@ class ProjectController extends Controller
           $project->Utility = $req->Utility;
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
-          $image = [];
+
+
+          $imgObjStr = '';
+          $imgObj = json_decode($project->Image, true);
+          $new_img_obj = [];
 
           if ($req->hasFile('Image')) {
                foreach ($req->Image as $file) {
-                    $filename = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
-                    array_push($image, $filename);
+                    $file_url = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($imgObj[0]['imgList'], $file_url);
                }
           }
 
-          $project->Image = preg_replace('/^\|+|\|+$/i', '', implode('|', $image) . '|' . $project->Image);
+          if ($req->has('ImageGroup') && !empty($req->input('ImageGroup'))) {
+               array_push($new_img_obj, $imgObj[0]);
+
+               foreach (json_decode($req->ImageGroup ?? '[]') as $group) {
+                    array_push($new_img_obj, $group);
+               }
+
+               $imgObjStr = json_encode($new_img_obj);
+          } else {
+               $imgObjStr = json_encode($imgObj);
+          }
+
+          $project->Image = $imgObjStr;
 
           $project->Status = $req->Status;
           $project->save();

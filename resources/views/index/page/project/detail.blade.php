@@ -5,7 +5,7 @@
                     <div class="boxsliderdetail">
                          <div class="slidetop">
                               <div class="owl-carousel" id="listcarousel">
-                                   @foreach(explode('|', $data['project_detail']->Image) as $image)
+                                   @foreach(json_decode($data['project_detail']->Image, true)[0]['imgList'] as $image)
                                    @if (!empty($image))
                                    <div class="item"><img src="{{ asset($image) }}" class="showfullimg" rel="1" alt=""></div>
                                    @endif
@@ -16,7 +16,7 @@
                          <div class="slidebot">
                               <div style="max-width: 800px; margin: 0 auto;">
                                    <div class="owl-carousel" id="listcarouselthumb">
-                                        @foreach(explode('|', $data['project_detail']->Image) as $image)
+                                        @foreach(json_decode($data['project_detail']->Image, true)[0]['imgList'] as $image)
                                         @if (!empty($image))
                                         <div class="item cthumb" rel="6"><img src="{{ asset($image) }}" class="showfullimg" rel="6" alt="The Avila Apartments"></div>
                                         @endif
@@ -27,18 +27,12 @@
                               </div>
                          </div>
                     </div>
-                    {{-- <div id="gallery"
-               data-images="[&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e1.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e2.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e3.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e4.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e5.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e7.jpg&quot;,&quot;https:\/\/flex-home.botble.com\/storage\/properties\/e8.jpg&quot;]">
-          </div> --}}
 
-
-                    {{-- </div>
-          </div> --}}
                     <div class="container-fluid">
                          <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
                               <div class="col-12">
-                                   <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0;">{{ $data['project_detail']->Title }}</h1>
-                                   <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $data['project_detail']->Location }}</p>
+                                   <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0; text-transform: capitalize;">{{ $data['project_detail']->Title }}</h1>
+                                   <p class="addresshouse"><i class="fas fa-map-marker-alt"></i> {{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}</p>
                               </div>
                          </div>
                     </div>
@@ -51,8 +45,8 @@
                                         <span class="line_title"></span>
                                         <div class="row">
                                              <div class="col-sm-6 lineheight220">
-                                                  <div><span>Tên dự án:</span> <b>{{ $data['project_detail']->Title }}</b></div>
-                                                  <div><span>Vị trí:</span> <b>{{ $data['project_detail']->Location }}</b></div>
+                                                  <div><span>Tên dự án:</span> <b style="text-transform: capitalize;">{{ $data['project_detail']->Title }}</b></div>
+                                                  <div><span>Vị trí:</span> <b>{{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}</b></div>
                                                   <div><span>Chủ Đầu Tư:</span> <b>{{ $data['project_detail']->Investor }}</b></div>
                                                   <div><span>Mật độ xây dựng:</span> <b>{{ $data['project_detail']->BuildingDensity }}%</b></div>
                                                   <div><span>Năm xây dựng:</span> <b>{{ $data['project_detail']->YearBuilt }}</b></div>
@@ -69,40 +63,7 @@
                                         <div class="head">Vị trí hạ tầng</div>
                                         <p>{!! $data['project_detail']->InfrastructureLocation !!}.</p>
 
-                                        {{-- <h4><b>Tại sao bạn cần sở hửu một ngôi nhà tại dự án này? </b></h4>
-
-                                   <ul>
-                                        <li>1.&nbsp;Trong dự án, có một khu vực rất đặc biệt mà bạn sẽ không bao giờ tìm thấy một khu vực tương tự.</li>
-                                        <li>2.&nbsp;Nhiều dịch vụ tiện ích tại đây.</li>
-                                        <li>3.&nbsp;Đầy đủ các của hàng tiện lợi.</li>
-                                        <li>4. Đặc biệt một trung tâm mua sấm sầm uất</li>
-                                        <li>5.Large landscaping areas, cafes, shopping opportunities.</li>
-                                   </ul> --}}
-                                        {{-- <div class="head">Dịch vụ</div>
-
-                              <div class="head">Cơ Sở Hạ Tầng</div>
-                                   <p>{{ $data['project_detail']->InfrastructureLocation }}</p>
-                                        <div class="head">Tiện Ích</div>
-                                        <div class="row">
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i>{{ $data['project_detail']->Utility }}</p>
-                                             </div>
-
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Ban Công</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Đỗ xe</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Vườn</p>
-                                             </div>
-                                             <div class="col-sm-4">
-                                                  <p><i class="fas fa-check text-orange text0i"></i> Bảo vệ</p>
-                                             </div>
-                                        </div> --}}
                                         <br>
-
 
                                         <div class="head">Thiết kế mặt bằng</div>
                                         <span class="line_title"></span>
@@ -133,88 +94,29 @@
                                         <br>
 
                                         <div class="hinhduan">
-                                             <span>HÌNH ẢNH</span>
+                                             <span><b>Hình Ảnh</b></span>
                                              <div class="listhinhanh">
                                                   <div id="myBtnContainer">
-                                                       <button class="btn active" onclick="filterSelection('all')"> Tất cả</button>
-                                                       <button class="btn" onclick="filterSelection('nature')"> Toà nhà</button>
-                                                       <button class="btn" onclick="filterSelection('cars')"> Trong nhà nhà </button>
-                                                       <button class="btn" onclick="filterSelection('people')"> Căn hộ mẫu</button>
+                                                       @foreach(json_decode($data['project_detail']->Image) as $group)
+                                                       <button class="btn" onclick="filterSelection('{{ $group->id }}')">{{ $group->name }}</button>
+                                                       @endforeach
                                                   </div>
 
-                                                  <!-- Portfolio Gallery Grid -->
                                                   <div class="row">
-                                                       <div class="column nature">
+                                                       @foreach(array_slice(json_decode($data['project_detail']->Image), 1) as $group)
+                                                       @foreach($group->imgList as $image)
+                                                       <div class="column {{ $group->id }}">
                                                             <div class="content">
-                                                                 <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">
-                                                                 <h4>Mountains</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
+                                                                 <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
+                                                                 {{-- <h4>Mountains</h4>
+                                                                 <p>Lorem ipsum dolor..</p> --}}
                                                             </div>
                                                        </div>
-                                                       <div class="column nature">
-                                                            <div class="content">
-                                                                 <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-                                                                 <h4>Lights</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <div class="column nature">
-                                                            <div class="content">
-                                                                 <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
-                                                                 <h4>Forest</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-
-                                                       <div class="column cars">
-                                                            <div class="content">
-                                                                 <img src="/w3images/cars1.jpg" alt="Car" style="width:100%">
-                                                                 <h4>Retro</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <div class="column cars">
-                                                            <div class="content">
-                                                                 <img src="/w3images/cars2.jpg" alt="Car" style="width:100%">
-                                                                 <h4>Fast</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <div class="column cars">
-                                                            <div class="content">
-                                                                 <img src="/w3images/cars3.jpg" alt="Car" style="width:100%">
-                                                                 <h4>Classic</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-
-                                                       <div class="column people">
-                                                            <div class="content">
-                                                                 <img src="/w3images/people1.jpg" alt="People" style="width:100%">
-                                                                 <h4>Girl</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <div class="column people">
-                                                            <div class="content">
-                                                                 <img src="/w3images/people2.jpg" alt="People" style="width:100%">
-                                                                 <h4>Man</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <div class="column people">
-                                                            <div class="content">
-                                                                 <img src="/w3images/people3.jpg" alt="People" style="width:100%">
-                                                                 <h4>Woman</h4>
-                                                                 <p>Lorem ipsum dolor..</p>
-                                                            </div>
-                                                       </div>
-                                                       <!-- END GRID -->
+                                                       @endforeach
+                                                       @endforeach
                                                   </div>
                                              </div>
                                         </div>
-
-
 
                                         <div class="mapouter">
                                              <div class="gmap_canvas">
@@ -300,7 +202,7 @@
                               </div>
 
                               <h5 class="headifhouse">Khuyến Mãi</h5>
-                              <div>Nội dung ưu đãi</div>
+                              <div>{!! $data['project_detail']->Promotion !!}</div>
                               <br>
                               <div class="listban">
                                    <h5 class="headifhouse">Căn hộ đang bán</h5>
@@ -650,13 +552,11 @@
      }
 
      // Add active class to the current button (highlight it)
-     var btnContainer = document.getElementById("myBtnContainer");
-     var btns = btnContainer.getElementsByClassName("btn");
-     for (var i = 0; i < btns.length; i++) {
-          btns[i].addEventListener("click", function () {
-               var current = document.getElementsByClassName("active");
-               current[0].className = current[0].className.replace(" active", "");
-               this.className += " active";
-          });
-     }
+     $('#myBtnContainer>button').each((key, item) => {
+          $(item).on('click', () => {
+               $('#myBtnContainer>button').each((k, i) => i.classList.remove('active'));
+
+               item.classList.add('active');
+          })
+     })
 </script>
