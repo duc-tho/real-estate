@@ -88,7 +88,7 @@
                               </ul>
 
                               <a class="btn btn-primary add-property" href="https://bdsnew.eso.vn/account/properties">
-                                   <i class="fas fa-plus-circle"></i> Add Property
+                                   <i class="fas fa-plus-circle"></i> Gửi BĐS
                               </a>
                          </div>
                     </nav>

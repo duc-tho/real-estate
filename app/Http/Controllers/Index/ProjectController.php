@@ -76,11 +76,27 @@ class ProjectController extends Controller
           $projectDetail->District = Area::find($projectDetail->Area->AreaId)->District;
           $projectDetail->City = District::find($projectDetail->District->DistrictId)->City;
 
+          $district_list = [];
+
+          $projectDetail->post_sale_list = Post::where(['Type' => 'bán', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
+          $projectDetail->post_rent_list = Post::where(['Type' => 'thuê', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
+
+          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
+               $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
+
+               $district_list = $default_city->District;
+
+               foreach ($district_list as $district) {
+                    $district->CitySlug = $default_city->Slug;
+               }
+          }
+
           return view('index.index', [
                'title' => 'Chi tiết dự án',
                'page' => 'project.detail',
                'data' => [
                     'project_detail' => $projectDetail,
+                    'district_list' => $district_list
                ]
           ]);
      }
