@@ -30,7 +30,7 @@
                                              <div class=" blii col-sm-6 col-md-6 colm10">
                                                   <div class="img">
                                                        @if (!empty($project->Image))
-                                                       <img style="max-height: 180px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
+                                                       <img style="max-height: 180px;" src={{ asset(json_decode($project->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @else
                                                        <img style="max-height: 180px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @endif
@@ -60,7 +60,7 @@
                                                        <div class="hourseitem pt-0" style="background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);">
                                                             <div class="blii" style="height: 200px;">
                                                                  <div class="img" style="height: 100%;">
-                                                                      <img src="{{ asset(explode("|", $project_rent_item->Image)[0]) }}" alt="{{ $project_rent_item->Title }}" class="thumb">
+                                                                      <img src="{{ asset(json_decode($project_rent_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $project_rent_item->Title }}" class="thumb">
                                                                  </div>
                                                                  <a href="{{ route('postDetail', $project_rent_item->Slug) }}" class="linkdetail"></a>
                                                                  <div class="status">
@@ -109,7 +109,7 @@
                                                        <div class="hourseitem pt-0" style="background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);">
                                                             <div class="blii" style="height: 200px;">
                                                                  <div class="img" style="height: 100%;">
-                                                                      <img src="{{ asset(explode("|", $project_sale_item->Image)[0]) }}" alt="{{ $project_sale_item->Title }}" class="thumb">
+                                                                      <img src="{{ asset(json_decode($project_sale_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $project_sale_item->Title }}" class="thumb">
                                                                  </div>
                                                                  <a href="{{ route('postDetail', $project_sale_item->Slug) }}" class="linkdetail"></a>
                                                                  <div class="status">

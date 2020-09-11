@@ -162,7 +162,7 @@
                                              <div class="hourseitem pt-0">
                                                   <div class="blii" style="height: 200px;">
                                                        <div class="img" style="height: 100%;">
-                                                            <img src="{{ asset(explode("|", $post_sale->Image)[0]) }}" alt="{{ $post_sale->Title }}" class="thumb">
+                                                            <img src="{{ asset(json_decode($post_sale->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_sale->Title }}" class="thumb">
                                                        </div>
                                                        <a href="{{ route('postDetail', $post_sale->Slug) }}" class="linkdetail"></a>
                                                        <div class="status">
@@ -221,7 +221,7 @@
                                         <div class="hourseitem pt-0">
                                              <div class="blii" style="height: 200px;">
                                                   <div class="img" style="height: 100%;">
-                                                       <img src="{{ asset(explode("|", $post_rent->Image)[0]) }}" alt="{{ $post_rent->Title }}" class="thumb">
+                                                       <img src="{{ asset(json_decode($post_rent->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_rent->Title }}" class="thumb">
                                                   </div>
                                                   <a href="{{ route('postDetail', $post_rent->Slug) }}" class="linkdetail"></a>
                                                   <div class="status">
@@ -279,9 +279,9 @@
                                              <div class="blii col-sm-6 col-md-6 colm10 pl-0">
                                                   <div class="img h-100">
                                                        @if (!empty($project->Image))
-                                                            <img style="max-height: 205px;" src={{ asset(explode("|", $project->Image)[0]) }} alt="{{ $project->Title }}" class="thumb">
+                                                       <img style="max-height: 205px;" src={{ asset(json_decode($project->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @else
-                                                            <img style="max-height: 205px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
+                                                       <img style="max-height: 205px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $project->Title }}" class="thumb">
                                                        @endif
                                                   </div>
                                                   <a href="{{ route('projectDetail', $project->Slug) }}" class="linkdetail"></a>
@@ -289,27 +289,27 @@
                                              </div>
                                              <div class="info col-sm-6 col-md-6 py-2">
                                                   <h2><a href="{{ route('projectDetail', $project->Slug) }}" style="text-transform: capitalize;">{{ $project->Title }}</a></h2>
-                                                  <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
+                                                  <p class="city" style="white-space: nowrap; overflow: hidden;"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->Location }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Quy mô: </span> {{ $project->NumberOfBlock }} block, {{ $project->NumberOfApartment }} căn hộ </p>
                                                   <p class="bold500"><span class="font-weight-bold">Năm xây dựng: </span> {{ $project->YearBuilt }}</p>
                                                   <p class="bold500"><span class="font-weight-bold">Giá từ: </span> {{ number_format($project->Price, 0, ".", ",") }} Tỷ</p>
                                                   <p class="bold500"><span class="font-weight-bold">Bán: </span> {{ $project->post_sale_count }} <span class="font-weight-bold"> - </span> <span class="font-weight-bold">Thuê: </span> {{ $project->post_rent_count }}</p>
-                                                  <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> -</p>
+                                                  <p class="bold500"><span class="font-weight-bold">Tiến độ: </span> {{ ($project->Progress ?? '-') === 1 ? "Đang mở bán" : "Sắp mở bán" }}</p>
                                              </div>
-                                             <hr class="w-100">
+                                             <hr class="w-100 mt-0">
                                              @if (!empty($project->post_rent))
                                              <div class="col-sm-12 col-md-12">
                                                   <div class="row p-2 border mb-3">
                                                        <h3 class="m-0 mb-2 w-100"><a href="{{ route('postDetail', $project->post_rent->Slug) }}" style="overflow-wrap: anywhere;">{{ $project->post_rent->Title }}</a></h3>
                                                        <div class="hinhpost col-sm-6 col-md-6">
                                                             <div class="img">
-                                                                 <img data-src="{{ asset(explode("|", $project->post_rent->Image)[0]) }}" src="{{ asset(explode("|", $project->post_rent->Image)[0]) }}" alt="{{ $project->post_rent->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
+                                                                 <img data-src="{{ asset(json_decode($project->post_rent->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" src="{{ asset(json_decode($project->post_rent->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $project->post_rent->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
                                                             </div>
                                                             <a href="{{ route('postDetail', $project->post_rent->Slug) }}" class="linkdetail"></a>
                                                             <div class="status"><span class="label-success status-label">Cho Thuê</span></div>
                                                        </div>
                                                        <div class="col-sm-6 col-md-6">
-                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_rent->Direction }}</p>
+                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_rent->Direction ?? '-' }}</p>
                                                             <p class="bold500">Giá: {{ number_format($project->post_rent->Price, 0, ".", ",") }} Tỷ</p>
                                                             <p class="threemt bold500">
                                                                  <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
@@ -337,13 +337,13 @@
                                                        <h3 class="m-0 mb-2 w-100"><a href="{{ route('postDetail', $project->post_sale->Slug) }}" style="overflow-wrap: anywhere;">{{ $project->post_sale->Title }}</a></h3>
                                                        <div class="hinhpost col-sm-6 col-md-6">
                                                             <div class="img">
-                                                                 <img data-src="{{ asset(explode("|", $project->post_sale->Image)[0]) }}" src="{{ asset(explode("|", $project->post_sale->Image)[0]) }}" alt="{{ $project->post_sale->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
+                                                                 <img data-src="{{ asset(json_decode($project->post_sale->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" src="{{ asset(json_decode($project->post_sale->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $project->post_sale->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
                                                             </div>
                                                             <a href="{{ route('postDetail', $project->post_sale->Slug) }}" class="linkdetail"></a>
                                                             <div class="status"><span class="label-success status-label">Bán</span></div>
                                                        </div>
                                                        <div class="col-sm-6 col-md-6">
-                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_sale->Direction }}</p>
+                                                            <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_sale->Direction ?? '-' }}</p>
                                                             <p class="bold500">Giá: {{ number_format($project->post_sale->Price, 0, ".", ",") }} Tỷ</p>
                                                             <p class="threemt bold500">
                                                                  <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
@@ -378,7 +378,7 @@
 </div>
 
 
-<p>
+{{-- <p>
      <div class="container-fluid w90">
           <div class="homehouse padtop30">
                <div class="discover">
@@ -396,29 +396,29 @@
                                                             <div class="blii">
                                                                  <div class="img">
                                                                       <img data-src="img/download-410x270.jpeg" src="{{ asset('dist/img/download-410x270.jpeg') }}" alt="S. Korea’s Big Investors Flocking to Overseas Real Estate" class="thumb" style="border-radius: 0px;">
-                                                                 </div>
-                                                                 <a href="https://bdsnew.eso.vns-koreas-big-investors-flocking-to-overseas-real-estate" class="linkdetail"></a>
-                                                            </div>
-                                                       </div>
-                                                       <div class="grid-h">
-                                                            <div class="blog-title">
-                                                                 <a href="https://bdsnew.eso.vns-koreas-big-investors-flocking-to-overseas-real-estate">
-                                                                      <h2>S. Korea’s Big Investors Flocking to Overseas Real Estate</h2>
-                                                                 </a>
-                                                                 <p class="post-meta">18 Nov, 2019 - <i class="fa fa-eye"></i> 1</p>
-                                                            </div>
-                                                            <div class="blog-excerpt">
-                                                                 <p>An increasing number of South Korean investors are getting interested in real estate in foreign countries, especially the United States and Japan where regulations are relatively lax and property values are stable.</p>
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          </div>
+</div>
+<a href="https://bdsnew.eso.vns-koreas-big-investors-flocking-to-overseas-real-estate" class="linkdetail"></a>
+</div>
+</div>
+<div class="grid-h">
+     <div class="blog-title">
+          <a href="https://bdsnew.eso.vns-koreas-big-investors-flocking-to-overseas-real-estate">
+               <h2>S. Korea’s Big Investors Flocking to Overseas Real Estate</h2>
+          </a>
+          <p class="post-meta">18 Nov, 2019 - <i class="fa fa-eye"></i> 1</p>
      </div>
-</p>
+     <div class="blog-excerpt">
+          <p>An increasing number of South Korean investors are getting interested in real estate in foreign countries, especially the United States and Japan where regulations are relatively lax and property values are stable.</p>
+     </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</p> --}}

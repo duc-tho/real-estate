@@ -67,6 +67,7 @@ class ProjectController extends Controller
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
           $project->StreetId = $req->StreetId;
+          $project->Progress = $req->Progress;
 
           $image = [];
           $imgObjStr = '';
@@ -157,7 +158,7 @@ class ProjectController extends Controller
           $project->Utility = $req->Utility;
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
-
+          $project->Progress = $req->Progress;
 
           $imgObjStr = '';
           $imgObj = json_decode($project->Image, true);
@@ -173,7 +174,7 @@ class ProjectController extends Controller
           if ($req->has('ImageGroup') && !empty($req->input('ImageGroup'))) {
                array_push($new_img_obj, $imgObj[0]);
 
-               foreach (json_decode($req->ImageGroup ?? '[]') as $group) {
+               foreach (json_decode($req->ImageGroup) as $group) {
                     array_push($new_img_obj, $group);
                }
 

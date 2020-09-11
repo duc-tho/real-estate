@@ -288,20 +288,18 @@
                               Danh sách ảnh của bất dộng sản này
                          </div>
                          <div class="card-body">
-                              <div class="row">
-                                   <div class="col-md-12 d-flex flex-wrap" id="imageList">
-                                        @isset($data['post_info'])
-                                        @for ($i = 0; $i < count(explode('|', $data['post_info']->Image)); $i++)
-                                             @if (explode('|', $data['post_info']->Image)[$i] !== '')
-                                             <figure class="col-md-4">
-                                                  <div class="w-100" style="height: 300px; position: relative;">
-                                                       <img alt="picture" src="{{ asset(explode('|', $data['post_info']->Image)[$i]) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
-                                                  </div>
-                                             </figure>
-                                             @endif
-                                             @endfor
-                                             @endisset
-                                   </div>
+                              <div class="row" id="imageList">
+                                   @isset($data['post_info'])
+                                   @foreach(json_decode($data['post_info']->Image ?? '[]', true)[0]['imgList'] ?? [] as $key => $image)
+                                   @if (!empty($image))
+                                   <figure class="col-md-3 border rounded">
+                                        <div class="w-100" style="height: 300px; position: relative;">
+                                             <img alt="picture" src="{{ asset($image) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+                                        </div>
+                                   </figure>
+                                   @endif
+                                   @endforeach
+                                   @endisset
                               </div>
                          </div>
                     </div>

@@ -50,6 +50,18 @@
                               </select>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
+                         <div class="form-group">
+                              <label class="col-sm-2k" for="Progress" style="padding-top: 7px;">Tiến Độ</label>
+                              <select class="form-control" name="Progress" id="Progress">
+                                   <option value="" selected>
+                                        Chọn Trạng Thái</option>
+                                   <option value="1" {{ ($data['project_info']->Progress ?? '') === 1 ? 'selected' : '' }}>
+                                        Đang mở bán</option>
+                                   <option value="0" {{ ($data['project_info']->Progress ?? '') === 0 ? 'selected' : '' }}>
+                                        Sắp mở bán</option>
+                              </select>
+                              <div class="col-lg-12 messages text-danger"></div>
+                         </div>
 
                          <div class="form-group">
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Tên Dự Án</label>
