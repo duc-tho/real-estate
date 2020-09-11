@@ -101,20 +101,18 @@
                                                        @endforeach
                                                   </div>
 
-                                                  <div class="row mt-2">
-                                                       <div class="col-md-12" style="display: grid; grid-gap: 6px; grid-template-columns: 1fr 1fr 1fr;">
-                                                            @foreach(array_slice(json_decode($data['project_detail']->Image), 1) as $group)
-                                                            @foreach($group->imgList as $image)
-                                                            <div class="column w-100 {{ $group->id }}">
-                                                                 <div class="content p-0">
-                                                                      <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
-                                                                      {{-- <h4>Mountains</h4>
+                                                  <div class="card-columns mt-2">
+                                                       @foreach(array_slice(json_decode($data['project_detail']->Image), 1) as $group)
+                                                       @foreach($group->imgList as $image)
+                                                       <div class="card d-none {{ $group->id }}">
+                                                            {{-- <div class="content p-0"> --}}
+                                                            <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
+                                                            {{-- <h4>Mountains</h4>
                                                                       <p>Lorem ipsum dolor..</p> --}}
-                                                                 </div>
-                                                            </div>
-                                                            @endforeach
-                                                            @endforeach
+                                                            {{-- </div> --}}
                                                        </div>
+                                                       @endforeach
+                                                       @endforeach
                                                   </div>
                                              </div>
                                         </div>
@@ -246,7 +244,7 @@
      filterSelection("all") // Execute the function and show all columns
      function filterSelection(c) {
           var x, i;
-          x = document.getElementsByClassName("column");
+          x = document.getElementsByClassName("card");
           if (c == "all") c = "";
           // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
           for (i = 0; i < x.length; i++) {

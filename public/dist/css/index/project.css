@@ -81,7 +81,7 @@
 
 /* The "show" class is added to the filtered elements */
 .show {
-     display: block;
+     display: block !important;
 }
 
 /* Style the buttons */

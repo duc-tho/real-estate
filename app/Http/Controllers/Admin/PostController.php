@@ -10,7 +10,6 @@ use App\Models\District;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Street;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,7 +60,7 @@ class PostController extends Controller
           if (!$req->filled(
                [
                     'Title', 'Slug',
-                    'CategoryId', 'Floor', 'ApartmentNumber',
+                    'CategoryId', 'Floor',
                     'Price', 'Status', 'Type', 'Slug'
                ]
           )) {
@@ -69,12 +68,23 @@ class PostController extends Controller
           }
 
           $image = [];
+          $imgObjStr = '';
+          $imgObj = [
+               [
+                    "id" => "all",
+                    "name" => "Tất cả ảnh",
+                    "imgList" => []
+               ]
+          ];
+
 
           if ($req->hasFile('Image')) {
                foreach ($req->Image as $file) {
-                    $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
-                    array_push($image, $filename);
+                    $file_url = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($image, $file_url);
                }
+
+               $imgObj[0]['imgList'] = $image;
           }
 
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
@@ -85,7 +95,9 @@ class PostController extends Controller
 
           $post = new Post($req->input());
           $post->UserId = Auth::user()->UserId;
-          $post->Image = implode('|', $image);
+
+          $imgObjStr = json_encode($imgObj);
+          $post->Image = $imgObjStr;
 
           $post->save();
 
@@ -129,27 +141,28 @@ class PostController extends Controller
           if (!$req->filled(
                [
                     'Title', 'Slug',
-                    'CategoryId', 'Floor', 'ApartmentNumber',
+                    'CategoryId', 'Floor',
                     'Price', 'Status', 'Type', 'Slug'
                ]
           )) {
                return redirect()->route('adminPostGetAdd')->withInput();
           }
 
-          $image = [];
+          $post = Post::find($id);
+
+          $imgObjStr = '';
+          $imgObj = json_decode($post->Image, true);
 
           if ($req->hasFile('Image')) {
                foreach ($req->Image as $file) {
-                    $filename = $file->store('/dist/img/upload/post', ['disk' => 'public_file']);
-                    array_push($image, $filename);
+                    $file_url = $file->store('/dist/img/upload/project', ['disk' => 'public_file']);
+                    array_push($imgObj[0]['imgList'], $file_url);
                }
           }
 
-          $post = Post::find($id);
+          $imgObjStr = json_encode($imgObj);
 
-          $new_image = implode('|', $image) . '|' . $post->Image;
-
-          $req->merge(['Image' => preg_replace('/^\|+|\|+$/i', '', $new_image)]);
+          $req->merge(['Image' => $imgObjStr]);
 
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {

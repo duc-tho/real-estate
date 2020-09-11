@@ -564,12 +564,6 @@
                     message: "^Vui lòng nhập tên dự án!"
                }
           },
-          Location: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Vui lòng nhập địa chỉ dự án!"
-               },
-          },
           Investor: {
                presence: {
                     allowEmpty: false,

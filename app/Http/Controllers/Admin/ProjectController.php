@@ -34,7 +34,7 @@ class ProjectController extends Controller
 
           return view('admin.admin', [
                'page' => 'project.detail',
-               'page_title' => 'Chi Tiết Dự Án',
+               'page_title' => 'Thêm Dự Án',
                'data' => [
                     'project_list' => $projectList,
                     'city_list' => $cityList,
@@ -88,7 +88,7 @@ class ProjectController extends Controller
                $imgObj[0]['imgList'] = $image;
           }
 
-          if ($req->has('ImageGroup')) {
+          if ($req->filled('ImageGroup')) {
                foreach (json_decode($req->ImageGroup) as $group) {
                     array_push($imgObj, $group);
                }
@@ -119,7 +119,7 @@ class ProjectController extends Controller
 
           return view('admin.admin', [
                'page' => 'project.detail',
-               'page_title' => 'Sửa Danh Mục',
+               'page_title' => 'Sửa Dự Án',
                'data' => [
                     'project_list' => $projectList,
                     'project_info' => $projectData,
@@ -133,7 +133,7 @@ class ProjectController extends Controller
 
      public function putEdit(Request $req, $id)
      {
-          if (!$req->filled(['Title', 'Slug', 'Location', 'Investor', 'NumberOfBlock', 'NumberOfFloor', 'NumberOfApartment', 'AreaApartment', 'TotalArea', 'YearBuilt', 'BuildingDensity', 'Price', 'Status'])) {
+          if (!$req->filled(['Title', 'Slug', 'Investor', 'NumberOfBlock', 'NumberOfFloor', 'NumberOfApartment', 'AreaApartment', 'TotalArea', 'YearBuilt', 'BuildingDensity', 'Price', 'Status'])) {
                return redirect()->route('adminProjectGetEdit', ['id' => $id])->withInput()->with([
                     'err' => 'Sửa thông tin thất bại! Vui lòng điền đầy đủ thông tin'
                ]);
