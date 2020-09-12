@@ -28,7 +28,7 @@
                          <a class="nav-link" data-toggle="tab" href="#detailInfo">Thông tin chi tiết</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" data-toggle="tab" href="#descriptionInfo">Mô tả</a>
+                         <a class="nav-link" data-toggle="tab" href="#descriptionInfo">Tiện Ích - Mô tả</a>
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" data-toggle="tab" href="#imageInfo">Ảnh</a>
@@ -79,8 +79,14 @@
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="Price" style="padding-top: 7px;">Giá</label>
-                              <div class="w-100">
+                              <div class="w-100 input-group">
                                    <input id="Price" min="1" class="form-control" type="number" step="0.01" placeholder="Giá" name="Price" value="{{ $data['post_info']->Price ?? old('Price') }}">
+                                   <div class="input-group-append">
+                                        <select id="PriceUnit" name="PriceUnit" class="form-control input-group-text">
+                                             <option value="Tỷ" {{ ($data['post_info']->PriceUnit ?? '') === 'Tỷ' ? 'selected' : '' }}>Tỷ</option>
+                                             <option value="Triệu" {{ ($data['post_info']->PriceUnit ?? '') === 'Triệu' ? 'selected' : '' }}>Triệu</option>
+                                        </select>
+                                   </div>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
@@ -251,259 +257,307 @@
 
                     <div class="tab-pane container" id="descriptionInfo">
                          <div class="form-group">
+                              <label class="col-sm-2" for="Utility" style="padding-top: 7px;">Tiện ích</label>
+                              <input type="hidden" name="Utility" id="Utility" value="{{ $data['post_info']->Utility ?? old('Utility') }}">
+                              <div class="row" id="UtilityList">
+                                   <button type="button" class="btn ml-2 btn-info my-auto" id="UtilityAddBtn" style="height: max-content;"><i class="far fa-plus-square"></i></button>
+                              </div>
+                         </div>
+                         <div class="form-group">
                               <label class="col-sm-2" for="Description" style="padding-top: 7px;">Mô tả</label>
                               <div class="md-form">
-                                   <textarea name="Description" class="md-textarea form-control" rows="10">{{ $data['post_info']->Description ?? old('Description') }}</textarea>
+                                   <textarea id="Description" name="Description" class="md-textarea form-control" rows="10">{{ $data['post_info']->Description ?? old('Description') }}</textarea>
                               </div>
                               <div class=" col-lg-12 messages text-danger"></div>
-                              {{-- <div class="md-form">
-                            <textarea id="GroundDesign" name="GroundDesign" class="md-textarea form-control" rows="20">{{ $data['project_info']->GroundDesign ?? old('GroundDesign') }}</textarea>
                          </div>
-                         <div class=" col-lg-12 messages text-danger"></div> --}}
                     </div>
-               </div>
 
-               <div class="tab-pane container" id="imageInfo">
-                    <div class="card text-center mt-4">
-                         <div class="card-header bg-info">
-                              Chọn ảnh để tải lên!
-                         </div>
-                         <div class="card-body">
-                              <div class="input-group mb-3">
-                                   <div class="custom-file">
-                                        <input multiple type="file" name="Image[]" class="custom-file-input" id="inputImageFile">
-                                        <label class="custom-file-label" for="inputImageFile" style="white-space: nowrap; overflow: hidden;">Bấm vào để chọn ảnh</label>
+                    <div class="tab-pane container" id="imageInfo">
+                         <div class="card text-center mt-4">
+                              <div class="card-header bg-info">
+                                   Chọn ảnh để tải lên!
+                              </div>
+                              <div class="card-body">
+                                   <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                             <input multiple type="file" name="Image[]" class="custom-file-input" id="inputImageFile">
+                                             <label class="custom-file-label" for="inputImageFile" style="white-space: nowrap; overflow: hidden;">Bấm vào để chọn ảnh</label>
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="col-md-12 d-flex flex-wrap" id="imageImputList"></div>
                                    </div>
                               </div>
-                              <div class="row">
-                                   <div class="col-md-12 d-flex flex-wrap" id="imageImputList"></div>
+                              <div class="card-footer text-muted" id="inputImageCount">
+                                   Chưa chọn ảnh nào!
                               </div>
                          </div>
-                         <div class="card-footer text-muted" id="inputImageCount">
-                              Chưa chọn ảnh nào!
-                         </div>
-                    </div>
-                    <div class="card text-center mt-4">
-                         <div class="card-header bg-success">
-                              Danh sách ảnh của bất dộng sản này
-                         </div>
-                         <div class="card-body">
-                              <div class="row" id="imageList">
-                                   @isset($data['post_info'])
-                                   @foreach(json_decode($data['post_info']->Image ?? '[]', true)[0]['imgList'] ?? [] as $key => $image)
-                                   @if (!empty($image))
-                                   <figure class="col-md-3 border rounded">
-                                        <div class="w-100" style="height: 300px; position: relative;">
-                                             <img alt="picture" src="{{ asset($image) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
-                                        </div>
-                                   </figure>
-                                   @endif
-                                   @endforeach
-                                   @endisset
+                         <div class="card text-center mt-4">
+                              <div class="card-header bg-success">
+                                   Danh sách ảnh của bất dộng sản này
+                              </div>
+                              <div class="card-body">
+                                   <div class="row" id="imageList">
+                                        @isset($data['post_info'])
+                                        @foreach(json_decode($data['post_info']->Image ?? '[]', true)[0]['imgList'] ?? [] as $key => $image)
+                                        @if (!empty($image))
+                                        <figure class="col-md-3 border rounded">
+                                             <div class="w-100" style="height: 300px; position: relative;">
+                                                  <img alt="picture" src="{{ asset($image) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+                                             </div>
+                                        </figure>
+                                        @endif
+                                        @endforeach
+                                        @endisset
+                                   </div>
                               </div>
                          </div>
                     </div>
                </div>
           </div>
-     </div>
 </form>
 
 <script>
      let url = document.querySelector('input[base_url]').attributes['base_url'].value;
-    let title = document.getElementById('Title');
-    let slug = document.getElementById('Slug');
-    let project = document.getElementById('Project');
-    let locationChoose = document.getElementById('locationChoose');
-    let city = document.getElementById('City');
-    let district = document.getElementById('District');
-    let area = document.getElementById('Area');
-    let street = document.getElementById('Street');
+     let title = document.getElementById('Title');
+     let slug = document.getElementById('Slug');
+     let project = document.getElementById('Project');
+     let locationChoose = document.getElementById('locationChoose');
+     let city = document.getElementById('City');
+     let district = document.getElementById('District');
+     let area = document.getElementById('Area');
+     let street = document.getElementById('Street');
 
-    slug.value = convertToSlug(title.value);
-    title.addEventListener('input', () => slug.value = convertToSlug(title.value));
+     slug.value = convertToSlug(title.value);
+     title.addEventListener('input', () => slug.value = convertToSlug(title.value));
 
-    project.addEventListener('change', () => {
-        street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
-        area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
-        district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
-        city.selectedIndex = 0;
+     project.addEventListener('change', () => {
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
+          district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
+          city.selectedIndex = 0;
 
-        if (project.value) locationChoose.classList.add('d-none');
-        else locationChoose.classList.remove('d-none');
-    });
+          if (project.value) locationChoose.classList.add('d-none');
+          else locationChoose.classList.remove('d-none');
+     });
 
-    city.addEventListener('change', () => {
-        district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
-        area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
-        street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
-        if (!city.value) return;
-        getDistrictByCity(city.value, url).then(html => district.innerHTML = html);
-    });
+     city.addEventListener('change', () => {
+          district.innerHTML = '<option value="" aria-readonly="true">Chọn Quận / Huyện</option>';
+          area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!city.value) return;
+          getDistrictByCity(city.value, url).then(html => district.innerHTML = html);
+     });
 
-    district.addEventListener('change', () => {
-        area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
-        street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
-        if (!district.value) return;
-        getAreaByDistrict(district.value, url).then(html => area.innerHTML = html);
-    });
+     district.addEventListener('change', () => {
+          area.innerHTML = '<option value="" aria-readonly="true">Chọn Phường / Xã</option>';
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!district.value) return;
+          getAreaByDistrict(district.value, url).then(html => area.innerHTML = html);
+     });
 
-    area.addEventListener('change', () => {
-        street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
-        if (!area.value) return;
-        getStreetByArea(area.value, url).then(html => street.innerHTML = html);
-    });
+     area.addEventListener('change', () => {
+          street.innerHTML = '<option value="" aria-readonly="true">Chọn Đường</option>';
+          if (!area.value) return;
+          getStreetByArea(area.value, url).then(html => street.innerHTML = html);
+     });
+
+     /* --- CKEditor --- */
+
+     CKEDITOR.config.filebrowserImageUploadUrl = "{!! route('uploadCKEditor').'?_token='.csrf_token() !!}";
+     CKEDITOR.config.filebrowserUploadMethod = 'form';
+     CKEDITOR.replace('Description', { height: '80vh' });
+
+     let descriptionEditor = CKEDITOR.instances.Description;
+
+     descriptionEditor.on('change', function () {
+          $('#Description').text(this.getData());
+     });
+
+     /* --- Utility --- */
+
+     $("#UtilityAddBtn").click(() => {
+          let html = `<div class="col-md-3">
+               <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()">
+          </div>`;
+          $(html).insertBefore('#UtilityAddBtn');
+     });
+
+     if ($('#Utility').val()) showUtilityItem($('#Utility').val());
+
+     function showUtilityItem(list) {
+          if (list) {
+               JSON.parse(list).forEach(item => {
+                    let html = `<div class="col-md-3">
+                         <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()" value="${item}">
+                    </div>`;
+                    $(html).insertBefore('#UtilityAddBtn');
+               })
+          }
+     }
+
+     function UtilityItemChange() {
+          let listItem = [];
+
+          document.querySelectorAll('input[data="UtilityItem"]').forEach(item => {
+               if (item.value) listItem.push(item.value);
+          });
+
+          $('#Utility').val(JSON.stringify(listItem));
+     }
+
+     /** Image */
+
+     $("#inputImageFile").change(function () {
+          loadPreviewFile(this);
+     });
+
+     let loadPreviewFile = (input) => {
+          $preview = $('#imageImputList').empty();
+
+          if (input.files) {
+               if (input.files.length === 0) {
+                    $('#inputImageCount').text('Chưa chọn ảnh nào!');
+               } else {
+                    $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
+
+               }
 
 
-    $("#inputImageFile").change(function() {
-        loadPreviewFile(this);
-    });
+               [...input.files].forEach(file => {
+                    let reader = new FileReader();
 
-    let loadPreviewFile = (input) => {
-        $preview = $('#imageImputList').empty();
-
-        if (input.files) {
-            if (input.files.length === 0) {
-                $('#inputImageCount').text('Chưa chọn ảnh nào!');
-            } else {
-                $('#inputImageCount').text(`Đã chọn ${input.files.length} ảnh! Bấm lưu dể lưu thay đổi!`);
-
-            }
-
-
-            [...input.files].forEach(file => {
-                let reader = new FileReader();
-
-                reader.onloadend = (event) => {
-                    let html = `<figure class="col-md-4">
+                    reader.onloadend = (event) => {
+                         let html = `<figure class="col-md-4">
                                    <div class="w-100" style="height: 300px; position: relative;">
                                         <img alt="picture" src="${reader.result}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%">
                                    </div>
                               </figure>`;
 
-                    $preview.append($.parseHTML(html))
-                }
-
-                reader.readAsDataURL(file);
-            });
-
-        }
-    };
-
-    var validateConstraints = {
-        Title: {
-            presence: {
-                allowEmpty: false,
-                message: "^Tiêu đề Bất động sản Không được để trống!"
-            }
-        },
-        DistrictId: (value) => {
-            if (!project.value) {
-                if (!value) return {
-                    presence: {
-                        allowEmpty: false,
-                        message: "^Bạn chưa chọn Quận Huyện!"
+                         $preview.append($.parseHTML(html))
                     }
-                }
-            }
-        },
-        CityId: (value) => {
-            if (!project.value) {
-                if (!value) return {
-                    presence: {
-                        allowEmpty: false,
-                        message: "^Bạn chưa chọn Thành Phố"
-                    }
-                }
-            }
-        },
-        AreaId: (value) => {
-            if (!project.value) {
-                if (!value) return {
-                    presence: {
-                        allowEmpty: false,
-                        message: "^Bạn chưa chọn Phường / Xã!"
-                    }
-                }
-            }
-        },
-        StreetId: (value) => {
-            if (!project.value) {
-                if (!value) return {
-                    presence: {
-                        allowEmpty: false,
-                        message: "^Bạn chưa chọn Đường!"
-                    }
-                }
-            }
-        },
-        Price: {
-            presence: {
-                allowEmpty: false,
-                message: "^Giá không dược để trống!"
-            },
-            numericality: {
-                greaterThanOrEqualTo: 1,
-                message: "^Giá phải lớn hơn hoặc bằng 0!"
-            }
-        },
-        Type: {
-            presence: {
-                allowEmpty: false,
-                message: "^Bạn chưa chọn loại bất động sản!"
-            },
-        },
-        Slug: {
-            presence: {
-                allowEmpty: false,
-                message: "^Slug Không được để trống!"
-            }
-        },
-        Status: {
-            presence: {
-                allowEmpty: false,
-                message: "^Bạn chưa chọn trạng thái!"
-            }
-        },
-        Floor: {
-            presence: {
-                allowEmpty: false,
-                message: "^Số tầng Không được để trống!"
-            },
-        },
-        Bedroom: {
-            numericality: {
-                greaterThanOrEqualTo: 0,
-                message: "^Số phòng ngủ phải lớn hơn hoặc bằng 0!"
-            }
-        },
-        Bathroom: {
-            numericality: {
-                greaterThanOrEqualTo: 0,
-                message: "^Số phòng tắm phải lớn hơn hoặc bằng 0!"
-            }
-        },
-        Length: {
-            presence: {
-                allowEmpty: false,
-                message: "^Chiều rộng không dược để trống!"
-            },
-            numericality: {
-                greaterThanOrEqualTo: 1,
-                message: "^Chiều dài phải lớn hơn hoặc bằng 0!"
-            }
-        },
-        Width: {
-            presence: {
-                allowEmpty: false,
-                message: "^Chiều dài không dược để trống!"
-            },
-            numericality: {
-                greaterThanOrEqualTo: 1,
-                message: "^Chiều rộng phải lớn hơn hoặc bằng 0!"
-            }
-        },
-    };
 
-    validateData('form#main', validateConstraints);
+                    reader.readAsDataURL(file);
+               });
+
+          }
+     };
+
+     var validateConstraints = {
+          Title: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Tiêu đề Bất động sản Không được để trống!"
+               }
+          },
+          DistrictId: (value) => {
+               if (!project.value) {
+                    if (!value) return {
+                         presence: {
+                              allowEmpty: false,
+                              message: "^Bạn chưa chọn Quận Huyện!"
+                         }
+                    }
+               }
+          },
+          CityId: (value) => {
+               if (!project.value) {
+                    if (!value) return {
+                         presence: {
+                              allowEmpty: false,
+                              message: "^Bạn chưa chọn Thành Phố"
+                         }
+                    }
+               }
+          },
+          AreaId: (value) => {
+               if (!project.value) {
+                    if (!value) return {
+                         presence: {
+                              allowEmpty: false,
+                              message: "^Bạn chưa chọn Phường / Xã!"
+                         }
+                    }
+               }
+          },
+          StreetId: (value) => {
+               if (!project.value) {
+                    if (!value) return {
+                         presence: {
+                              allowEmpty: false,
+                              message: "^Bạn chưa chọn Đường!"
+                         }
+                    }
+               }
+          },
+          Price: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Giá không dược để trống!"
+               },
+               numericality: {
+                    greaterThanOrEqualTo: 1,
+                    message: "^Giá phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Type: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn loại bất động sản!"
+               },
+          },
+          Slug: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Slug Không được để trống!"
+               }
+          },
+          Status: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Bạn chưa chọn trạng thái!"
+               }
+          },
+          Floor: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Số tầng Không được để trống!"
+               },
+          },
+          Bedroom: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Số phòng ngủ phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Bathroom: {
+               numericality: {
+                    greaterThanOrEqualTo: 0,
+                    message: "^Số phòng tắm phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Length: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Chiều rộng không dược để trống!"
+               },
+               numericality: {
+                    greaterThanOrEqualTo: 1,
+                    message: "^Chiều dài phải lớn hơn hoặc bằng 0!"
+               }
+          },
+          Width: {
+               presence: {
+                    allowEmpty: false,
+                    message: "^Chiều dài không dược để trống!"
+               },
+               numericality: {
+                    greaterThanOrEqualTo: 1,
+                    message: "^Chiều rộng phải lớn hơn hoặc bằng 0!"
+               }
+          },
+     };
+
+     validateData('form#main', validateConstraints);
 
 </script>

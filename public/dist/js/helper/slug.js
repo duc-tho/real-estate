@@ -13,5 +13,5 @@ let convertToSlug = str => {
      str = str.replace(/\s+/g, '-')
      // Bỏ tất cả dấu - ở đầu và cuối
      str = str.replace(/^-+|-+$/g, '');
-     return str;
+     return `${str}-${Date.now()}`;
 }

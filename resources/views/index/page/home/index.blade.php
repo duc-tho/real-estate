@@ -177,7 +177,7 @@
                                                             <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                             {{ $post_sale->StreetName }}, {{ $post_sale->AreaName }}, {{ $post_sale->DistrictName }}, {{ $post_sale->CityName }}
                                                        </p>
-                                                       <p class="bold500">Giá: {{ number_format($post_sale->Price, 0, ".", ",") }} Tỷ</p>
+                                                       <p class="bold500">Giá: {{ number_format($post_sale->Price, 0, ".", ",") }} {{ $post_sale->PriceUnit }}</p>
                                                        <p class="threemt bold500">
                                                             <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                  <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
@@ -236,7 +236,7 @@
                                                        <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                        {{ $post_rent->StreetName }}, {{ $post_rent->AreaName }}, {{ $post_rent->DistrictName }}, {{ $post_rent->CityName }}
                                                   </p>
-                                                  <p class="bold500">Giá: {{ number_format($post_rent->Price, 0, ".", ",") }} Tỷ</p>
+                                                  <p class="bold500">Giá: {{ number_format($post_rent->Price, 0, ".", ",") }} {{ $post_rent->PriceUnit }}</p>
                                                   <p class="threemt bold500">
                                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                             <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
@@ -310,7 +310,7 @@
                                                        </div>
                                                        <div class="col-sm-6 col-md-6">
                                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_rent->Direction ?? '-' }}</p>
-                                                            <p class="bold500">Giá: {{ number_format($project->post_rent->Price, 0, ".", ",") }} Tỷ</p>
+                                                            <p class="bold500">Giá: {{ number_format($project->post_rent->Price, 0, ".", ",") }} {{ $project->post_rent->PriceUnit }}</p>
                                                             <p class="threemt bold500">
                                                                  <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                       <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
@@ -344,7 +344,7 @@
                                                        </div>
                                                        <div class="col-sm-6 col-md-6">
                                                             <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $project->post_sale->Direction ?? '-' }}</p>
-                                                            <p class="bold500">Giá: {{ number_format($project->post_sale->Price, 0, ".", ",") }} Tỷ</p>
+                                                            <p class="bold500">Giá: {{ number_format($project->post_sale->Price, 0, ".", ",") }} {{ $project->post_sale->PriceUnit }}</p>
                                                             <p class="threemt bold500">
                                                                  <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                       <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>

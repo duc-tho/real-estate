@@ -164,7 +164,7 @@
                          @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
                          <div class="hourseitem row" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: rgb(170, 170, 170) 0px 4px 7px -4px;">
                               <div class=" blii col-sm-6 col-md-6 colm10">
-                                   <div class="img"><img src="http://bdsnew.eso.vn/dist/img/upload/project/tK93CnpqxsPAkpKNbcHtAtnjMZbxPx0YYeofMpBI.jpeg" alt="{{ $post_sale_item->Title }}" class="thumb" style="max-height: 180px;"></div>
+                                   <div class="img"><img src="{{ asset(json_decode($post_sale_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_sale_item->Title }}" class="thumb" style="max-height: 180px;"></div>
                                    <a href="{{ route('postDetail', $post_sale_item->Slug) }}" class="linkdetail"></a>
                               </div>
                               <div class="info col-sm-6 col-md-6">
@@ -172,7 +172,7 @@
                                    <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                         {{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}
                                    </p>
-                                   <p class="bold500">Giá: {{ $post_sale_item->Price }} Tỷ</p>
+                                   <p class="bold500">Giá: {{ $post_sale_item->Price }} {{ $post_sale_item->PriceUnit }}</p>
                                    <p class="threemt bold500">
                                         <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                              <i><img src="http://bdsnew.eso.vn/dist/img/bed.svg" alt="icon"></i> <i class="vti">{{ $post_sale_item->Bedroom }}</i>
@@ -198,7 +198,7 @@
                          @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
                          <div class="hourseitem row" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: rgb(170, 170, 170) 0px 4px 7px -4px;">
                               <div class=" blii col-sm-6 col-md-6 colm10">
-                                   <div class="img"><img src="http://bdsnew.eso.vn/dist/img/upload/project/tK93CnpqxsPAkpKNbcHtAtnjMZbxPx0YYeofMpBI.jpeg" alt="{{ $post_rent_item->Title }}" class="thumb" style="max-height: 180px;"></div>
+                                   <div class="img"><img src="{{ asset(json_decode($post_rent_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_rent_item->Title }}" class="thumb" style="max-height: 180px;"></div>
                                    <a href="{{ route('postDetail', $post_rent_item->Slug) }}" class="linkdetail"></a>
                               </div>
                               <div class="info col-sm-6 col-md-6">
@@ -206,7 +206,7 @@
                                    <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                         {{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}
                                    </p>
-                                   <p class="bold500">Giá: {{ $post_rent_item->Price }} Tỷ</p>
+                                   <p class="bold500">Giá: {{ $post_rent_item->Price }} {{ $post_rent_item->PriceUnit }}</p>
                                    <p class="threemt bold500">
                                         <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                              <i><img src="http://bdsnew.eso.vn/dist/img/bed.svg" alt="icon"></i> <i class="vti">{{ $post_rent_item->Bedroom }}</i>

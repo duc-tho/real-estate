@@ -71,6 +71,9 @@ class ProjectController extends Controller
      public function projectDetail($slug)
      {
           $projectDetail = Project::where('Slug', $slug)->first();
+
+          if (empty($projectDetail)) abort(404);
+
           $projectDetail->Street = Street::find($projectDetail->StreetId);
           $projectDetail->Area = Street::find($projectDetail->StreetId)->Area;
           $projectDetail->District = Area::find($projectDetail->Area->AreaId)->District;

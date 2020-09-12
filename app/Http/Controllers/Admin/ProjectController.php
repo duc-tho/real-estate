@@ -47,7 +47,6 @@ class ProjectController extends Controller
 
      public function postAdd(Request $req)
      {
-
           $project = new Project();
           $project->Title = $req->Title;
           $project->Location = $req->Location;

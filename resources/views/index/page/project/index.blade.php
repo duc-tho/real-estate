@@ -75,7 +75,7 @@
                                                                       <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                                       {{ $project_rent_item->StreetName }}, {{ $project_rent_item->AreaName }}, {{ $project_rent_item->DistrictName }}, {{ $project_rent_item->CityName }}
                                                                  </p>
-                                                                 <p class="bold500">Giá: {{ number_format($project_rent_item->Price, 0, ".", ",") }} Tỷ</p>
+                                                                 <p class="bold500">Giá: {{ number_format($project_rent_item->Price, 0, ".", ",") }} {{ $project_rent_item->PriceUnit }}</p>
                                                                  <p class="threemt bold500">
                                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                            <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
@@ -124,7 +124,7 @@
                                                                       <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                                                                       {{ $project_sale_item->StreetName }}, {{ $project_sale_item->AreaName }}, {{ $project_sale_item->DistrictName }}, {{ $project_sale_item->CityName }}
                                                                  </p>
-                                                                 <p class="bold500">Giá: {{ number_format($project_sale_item->Price, 0, ".", ",") }} Tỷ</p>
+                                                                 <p class="bold500">Giá: {{ number_format($project_sale_item->Price, 0, ".", ",") }} {{ $project_sale_item->PriceUnit }}</p>
                                                                  <p class="threemt bold500">
                                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                                                                            <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
