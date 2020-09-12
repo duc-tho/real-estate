@@ -79,7 +79,6 @@
  */
 
 
---- Change db project - change admin
 [X] + Utility - tiện ích - thêm từng dòng
 [X] + *[InfrastructureLocation - description] - vị trí hạ tầng - khung soạn thảo
 [X] + GroundDesign - thiết kế mặt bằng - khung soạn thảo
@@ -88,18 +87,17 @@
 [X] + thêm ảnh theo nhóm
 [X] + chọn vị trí (StreetId) cho project
 [X] + Không bắt buộc người dùng nhập vị trí Project
+[X] + Điều chỉnh cách lưu data upload ảnh và cách lấy dữ liệu của post
+[X] + Đổ Dữ liệu vào project detail page - Cần điều chỉnh cách upload ảnh của post trước r mới hoàn thiện đc
+[X] + sửa cách lấy ảnh của Project và Post trên trang Project Index
+[X] + Thêm tiện ích, đơn vị tiền và chuyển mô tả của post thành ckeditor
+[X] + Hiện 404 khi nhập sai url project không tồn tại
+[ ] + Sửa Diện tích và giá của project theo dạng từ X (tỷ/m2) đến Y (tỷ/m2)
 [ ] + xóa ảnh
-[ ] + Điều chỉnh cách lưu data upload ảnh và cách lấy dữ liệu của post
-[1] + Đổ Dữ liệu vào project detail page - Cần điều chỉnh cách upload ảnh của post trước r mới hoàn thiện đc
 [ ] + Up ảnh của District (1 ảnh)
-[ ] + Cho phép người dùng chọn ảnh muốn diển thị của project
+[ ] + Cho phép người dùng chọn ảnh muốn Hiển thị của project
 [ ] + Đổ dữ liệu trang Post
-[ ] + sửa cách lấy ảnh của Project và Post trên trang Project Index
-
-FE
-[ ] - tìm kiếm - Lọc
-[ ] - làm lại hệ thống URL
-
+[ ] + tìm kiếm - Lọc
 
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []}]"
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []},{"id":"GroupItem-1","name":"1asd","imgList":[]},{"id":"GroupItem-2","name":"asd2","imgList":[]}]"

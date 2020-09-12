@@ -60,7 +60,7 @@ class ProjectController extends Controller
 
           return view('index.index', [
                'title' => 'Danh sách dự án',
-               'page' => 'project',
+               'page' => 'project.index',
                'data' => [
                     'project_list' => $project_list,
                     'district_list' => $district_list
