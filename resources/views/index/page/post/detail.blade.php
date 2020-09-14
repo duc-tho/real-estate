@@ -27,15 +27,13 @@
                          </div>
                     </div>
 
-                    <div class="container-fluid">
-                         <div class="container-fluid w90 padtop30" style="padding: 15px 0;">
-                              <div class="col-12">
-                                   <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0; text-transform: capitalize;">{{ $data['post_detail']->Title }}</h1>
-                                   <p class="addresshouse"><i class="fas fa-map-marker-alt"></i>
-                                        {{ !empty($data['post_detail']->Street->Name) ? $data['post_detail']->Street->Name.', ' : '' }}{{ !empty($data['post_detail']->Area->Name) ? $data['post_detail']->Area->Name.', ' : '' }}{{ !empty($data['post_detail']->District->Name) ? $data['post_detail']->District->Name.', ' : '' }}{{ $data['post_detail']->City->Name }}</p>
-                                   <p>{{ $data['post_detail']->Price + 0 }} {{ $data['post_detail']->PriceUnit }} - {{ $data['post_detail']->Width * $data['post_detail']->Length }} m²<br />
-                                        {{ floatVal(number_format(($data['post_detail']->Price / ($data['post_detail']->Width * $data['post_detail']->Length) * 1000), 1, ',', '')) }} {{($data['post_detail']->PriceUnit === 'Tỷ' ? "Triệu" : "Ngàn")}} / m²</p>
-                              </div>
+                    <div class="w90 padtop30" style="padding: 15px 0;">
+                         <div class="col-12">
+                              <h1 class="title" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0; text-transform: capitalize;">{{ $data['post_detail']->Title }}</h1>
+                              <p class="addresshouse"><i class="fas fa-map-marker-alt"></i>
+                                   {{ !empty($data['post_detail']->Street->Name) ? $data['post_detail']->Street->Name.', ' : '' }}{{ !empty($data['post_detail']->Area->Name) ? $data['post_detail']->Area->Name.', ' : '' }}{{ !empty($data['post_detail']->District->Name) ? $data['post_detail']->District->Name.', ' : '' }}{{ $data['post_detail']->City->Name }}</p>
+                              <p class="font-weight-bold">{{ $data['post_detail']->Price + 0 }} {{ $data['post_detail']->PriceUnit }} - {{ $data['post_detail']->Width * $data['post_detail']->Length }} m²<br />
+                                   <small>{{ floatVal(number_format(($data['post_detail']->Price / ($data['post_detail']->Width * $data['post_detail']->Length) * 1000), 1, ',', '')) }} {{($data['post_detail']->PriceUnit === 'Tỷ' ? "Triệu" : "Ngàn")}} / m²</small></p>
                          </div>
                     </div>
 
@@ -52,7 +50,6 @@
                                                        <div class="col-sm-6 lineheight220">
                                                             <div><span>Hướng:</span> <b style="text-transform: capitalize;">{{ $data['post_detail']->Direction ?? 'Không xác định' }}</b></div>
                                                             <div><span>Số tầng:</span> <b>{{ $data['post_detail']->Floor ?? '-' }}</b></div>
-
                                                        </div>
                                                        <div class="col-sm-6 lineheight220">
                                                             <div><span>Phòng ngủ:</span> <b>{{ $data['post_detail']->Bedroom ?? '-' }}</b></div>
@@ -108,7 +105,7 @@
                                         </div>
 
                                         <div class="head">Thông tin chi tiết</div>
-                                        <div>{{ $data['post_detail']->Description }}</div>
+                                        <p>{!! $data['post_detail']->Description !!}</p>
 
                                         <br>
 
@@ -116,7 +113,6 @@
                                         <span class="line_title"></span>
                                         <div class="row">
                                              <div class="col-sm-12 lineheight220">
-                                                  List các tiện ích > các dòng
                                                   <ul style="column-count: 3" id="listUtility">
                                                   </ul>
                                              </div>
@@ -132,7 +128,7 @@
                                    <br>
                                    <br>
 
-                                   <div class="socials">
+                                   <div class="socials mt-4">
                                         <span>Liên Hệ Để Biết Thêm Chi Tiết Về Dự Án:</span>
                                         <ul>
                                              <li>
@@ -157,39 +153,23 @@
 
                     <br>
                     <div class="listban">
-                         <h5 class="headifhouse">Căn hộ đang bán cùng dự án</h5>
-
-                         <div class="hourseitem row" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: rgb(170, 170, 170) 0px 4px 7px -4px;">
-                              <div class=" blii col-sm-6 col-md-6 colm10">
-                                   <div class="img"><img src="{{-- asset(json_decode($post_sale_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') --}}" alt="{{-- $post_sale_item->Title --}}" class="thumb" style="max-height: 180px;"></div>
-                                   <a href="{{-- route('postDetail', $post_sale_item->Slug) --}}" class="linkdetail"></a>
-                              </div>
-                              <div class="info col-sm-6 col-md-6">
-                                   <h3><a href="{{-- route('postDetail', $post_sale_item->Slug) --}}" style="overflow-wrap: anywhere;">Căn hộ 2 PN ABC</a></h3>
-                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
-                                        Bình Thjanh
-                                   </p>
-                                   <p class="bold500">Giá: 3 Tỷ</p>
-                                   <p class="threemt bold500">
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bed.svg" alt="icon"></i> <i class="vti">3</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bath.svg" alt="icon"></i> <i class="vti">2</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/area.svg" alt="icon"></i> <i class="vti">55 m²</i>
-                                        </span>
-                                   </p>
-                              </div>
+                         <h5 class="headifhouse">Các BĐS có cùng dự án</h5>
+                         @if (count($data['post_detail']->post_list) > 0)
+                         @foreach ($data['post_detail']->post_list as $post_item)
+                         <x-index.post-horizontal :postData="$post_item" :postLocation="(!empty($data['post_detail']->Street->Name) ? $data['post_detail']->Street->Name.', ' : '').(!empty($data['post_detail']->Area->Name) ? $data['post_detail']->Area->Name.', ' : '').(!empty($data['post_detail']->District->Name) ? $data['post_detail']->District->Name.', ' : '').$data['post_detail']->City->Name" />
+                         @endforeach
+                         <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                         @else
+                         <div class="col-sm-12 col-md-12 colm10">
+                              <h6 class="text-center py-2 text-secondary">Chưa có BĐS nào khác</h6>
                          </div>
-                         <a href="#">Xem tất cả</a>
+                         @endif
                     </div>
                </main>
           </div>
           <div class="col-md-4">
-               {{-- @include('index.components.search-box')
-     @include('index.components.box-right') --}}
+               @include('index.components.search-box')
+               @include('index.components.box-right')
           </div>
      </div>
 </div>

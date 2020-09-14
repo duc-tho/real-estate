@@ -77,7 +77,6 @@
                                         <div class="row">
                                              <div class="col-sm-12 lineheight220">
                                                   <p>{!! $data['project_detail']->Investor !!}</p>
-
                                              </div>
                                         </div>
 
@@ -102,140 +101,94 @@
                                                   </div>
 
                                                   <div class="card-columns mt-2" style="column-count: 4;">
-                                                       {{-- @foreach(json_decode($data['project_detail']->Image ?? '[]') as $group)
-                                                       @foreach($group->imgList as $image)
-                                                       <div class="card d-none {{ $group->id }}">
-                                                       <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
+                                                       @foreach(json_decode($data['project_detail']->Image ?? '[]')[0]->imgList as $image)
+                                                       <div class="card d-none
+                                                                 @foreach(array_slice(json_decode($data['project_detail']->Image), 1) as $group)
+                                                                      @foreach($group->imgList as $image_name)
+                                                                           @if($image === $image_name)
+                                                                           {{ $group->id }}
+                                                                           @endif
+                                                                      @endforeach
+                                                                 @endforeach
+                                                            ">
+                                                            <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
+                                                       </div>
+                                                       @endforeach
                                                   </div>
-                                                  @endforeach
-                                                  @endforeach --}}
-                                                  @foreach(json_decode($data['project_detail']->Image ?? '[]')[0]->imgList as $image)
-                                                  <div class="card d-none
-                                                  @foreach(array_slice(json_decode($data['project_detail']->Image), 1) as $group)
-                                                  @foreach($group->imgList as $image_name)
-                                                       @if($image === $image_name)
-                                                       {{ $group->id }}
-                                                       @endif
-                                                  @endforeach
-                                                  @endforeach
-                                                  ">
-                                                       <img src="{{ asset($image) }}" alt="Ảnh" style="width:100%">
-                                                  </div>
-                                                  @endforeach
                                              </div>
                                         </div>
-                                   </div>
 
-                                   <div class="mapouter">
-                                        <div class="gmap_canvas">
-                                             <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q={{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                        <div class="mapouter">
+                                             <div class="gmap_canvas">
+                                                  <iframe id="gmap_canvas" width="100%" height="500" src="https://maps.google.com/maps?q={{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                             </div>
                                         </div>
+
+                                        <br>
+                                        <br>
+
+                                        <div class="socials">
+                                             <span>Liên Hệ Để Biết Thêm Chi Tiết Về Dự Án:</span>
+                                             <ul>
+                                                  <li>
+                                                       <a href="https://www.facebook.com/" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                                                  </li>
+                                                  <li>
+                                                       <a href="https://www.linkedin.com/" title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                                  </li>
+                                                  <li>
+                                                       <a href="https://twitter.com/" target="_blank" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                                  </li>
+                                             </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <br>
                                    </div>
+                                   <br>
+                                   <br>
+                              </div>
 
-                                   <br>
-                                   <br>
-                                   <div class="socials">
-                                        <span>Liên Hệ Để Biết Thêm Chi Tiết Về Dự Án:</span>
-                                        <ul>
-                                             <li>
-                                                  <a href="https://www.facebook.com/" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-                                             </li>
-                                             <li>
-                                                  <a href="https://www.linkedin.com/" title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                             </li>
-                                             <li>
-                                                  <a href="https://twitter.com/" target="_blank" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                                             </li>
-                                        </ul>
+                              <h5 class="headifhouse">Khuyến Mãi</h5>
+                              <div>{!! $data['project_detail']->Promotion !!}</div>
+                              <br>
+                              <div class="listban">
+                                   <h5 class="headifhouse">Căn hộ đang bán</h5>
+                                   @if (count($data['project_detail']->post_sale_list) > 0)
+                                   @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
+                                   <x-index.post-horizontal :postData="$post_sale_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   @endforeach
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   @else
+                                   <div class="col-sm-12 col-md-12 colm10">
+                                        <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang bán!</h6>
                                    </div>
-                                   <div class="clearfix"></div>
-                                   <br>
+                                   @endif
                               </div>
-                              <br>
-                              <br>
+
+                              <div class="listban">
+                                   <h5 class="headifhouse">Căn hộ cho thuê</h5>
+                                   @if (count($data['project_detail']->post_rent_list) > 0)
+                                   @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
+                                   <x-index.post-horizontal :postData="$post_rent_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   @endforeach
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   @else
+                                   <div class="col-sm-12 col-md-12 colm10">
+                                        <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang cho thuê!</h6>
+                                   </div>
+                                   @endif
+                              </div>
+                         </section>
                     </div>
-
-                    <h5 class="headifhouse">Khuyến Mãi</h5>
-                    <div>{!! $data['project_detail']->Promotion !!}</div>
-                    <br>
-                    <div class="listban">
-                         <h5 class="headifhouse">Căn hộ đang bán</h5>
-                         @if (count($data['project_detail']->post_sale_list) > 0)
-                         @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
-                         <div class="hourseitem row" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: rgb(170, 170, 170) 0px 4px 7px -4px;">
-                              <div class=" blii col-sm-6 col-md-6 colm10">
-                                   <div class="img"><img src="{{ asset(json_decode($post_sale_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_sale_item->Title }}" class="thumb" style="max-height: 180px;"></div>
-                                   <a href="{{ route('postDetail', $post_sale_item->Slug) }}" class="linkdetail"></a>
-                              </div>
-                              <div class="info col-sm-6 col-md-6">
-                                   <h3><a href="{{ route('postDetail', $post_sale_item->Slug) }}" style="overflow-wrap: anywhere;">{{ $post_sale_item->Title }}</a></h3>
-                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
-                                        {{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}
-                                   </p>
-                                   <p class="bold500">Giá: {{ $post_sale_item->Price }} {{ $post_sale_item->PriceUnit }}</p>
-                                   <p class="threemt bold500">
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bed.svg" alt="icon"></i> <i class="vti">{{ $post_sale_item->Bedroom }}</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bath.svg" alt="icon"></i> <i class="vti">{{ $post_sale_item->Bathroom }}</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/area.svg" alt="icon"></i> <i class="vti">{{ $post_sale_item->Width * $post_sale_item->Length }} m²</i>
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         @endforeach
-                         @endif
-
-                         <a href="#">Xem tất cả</a>
-                    </div>
-
-                    <div class="listban">
-                         <h5 class="headifhouse">Căn hộ cho thuê</h5>
-                         @if (count($data['project_detail']->post_rent_list) > 0)
-                         @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
-                         <div class="hourseitem row" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: rgb(170, 170, 170) 0px 4px 7px -4px;">
-                              <div class=" blii col-sm-6 col-md-6 colm10">
-                                   <div class="img"><img src="{{ asset(json_decode($post_rent_item->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_rent_item->Title }}" class="thumb" style="max-height: 180px;"></div>
-                                   <a href="{{ route('postDetail', $post_rent_item->Slug) }}" class="linkdetail"></a>
-                              </div>
-                              <div class="info col-sm-6 col-md-6">
-                                   <h3><a href="{{ route('postDetail', $post_rent_item->Slug) }}" style="overflow-wrap: anywhere;">{{ $post_rent_item->Title }}</a></h3>
-                                   <p class="city"><i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
-                                        {{ $data['project_detail']->Location }}, {{ $data['project_detail']->Street->Name }}, {{ $data['project_detail']->Area->Name }}, {{ $data['project_detail']->District->Name }}, {{ $data['project_detail']->City->Name }}
-                                   </p>
-                                   <p class="bold500">Giá: {{ $post_rent_item->Price }} {{ $post_rent_item->PriceUnit }}</p>
-                                   <p class="threemt bold500">
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bed.svg" alt="icon"></i> <i class="vti">{{ $post_rent_item->Bedroom }}</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/bath.svg" alt="icon"></i> <i class="vti">{{ $post_rent_item->Bathroom }}</i>
-                                        </span>
-                                        <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
-                                             <i><img src="http://bdsnew.eso.vn/dist/img/area.svg" alt="icon"></i> <i class="vti">{{ $post_rent_item->Width * $post_rent_item->Length }} m²</i>
-                                        </span>
-                                   </p>
-                              </div>
-                         </div>
-                         @endforeach
-                         @endif
-
-                         <a href="#">Xem tất cả</a>
-                    </div>
-                    </section>
+               </main>
           </div>
-          </main>
-     </div>
 
 
-     <div class="col-md-4">
-          @include('index.components.search-box')
-          @include('index.components.box-right')
+          <div class="col-md-4">
+               @include('index.components.search-box')
+               @include('index.components.box-right')
+          </div>
      </div>
-</div>
 </div>
 <script>
      showUtilityItem('{!! $data['project_detail']->Utility !!}');

@@ -68,8 +68,11 @@ class PostController extends Controller
 
           $district_list = [];
 
-          // $postDetail->post_sale_list = Post::where(['Type' => 'bán', 'ProjectId' => $postDetail->ProjectId])->paginate(2);
-          // $postDetail->post_rent_list = Post::where(['Type' => 'thuê', 'ProjectId' => $postDetail->ProjectId])->paginate(2);
+          $postDetail->post_list = Post::where([
+               'Type' => $postDetail->Type,
+               'ProjectId' => $postDetail->ProjectId,
+               ['PostId', '!=', $postDetail->PostId]
+          ])->paginate(3);
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
                $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
