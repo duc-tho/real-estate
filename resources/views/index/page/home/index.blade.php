@@ -159,40 +159,7 @@
                                         @empty(!$data['post_sale_list'])
                                         @foreach ($data['post_sale_list'] as $post_sale)
                                         <div class="col-sm-4 col-md-3 colm10">
-                                             <div class="hourseitem pt-0">
-                                                  <div class="blii" style="height: 200px;">
-                                                       <div class="img" style="height: 100%;">
-                                                            <img src="{{ asset(json_decode($post_sale->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_sale->Title }}" class="thumb">
-                                                       </div>
-                                                       <a href="{{ route('postDetail', $post_sale->Slug) }}" class="linkdetail"></a>
-                                                       <div class="status">
-                                                            <span class="label-success status-label">Bán</span>
-                                                       </div>
-                                                  </div>
-                                                  <div class="info">
-                                                       <h3>
-                                                            <a style="overflow-wrap: anywhere;" href="{{ route('postDetail', $post_sale->Slug) }}">{{ $post_sale->Title}}</a>
-                                                       </h3>
-                                                       <p class="city">
-                                                            <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
-                                                            {{ $post_sale->StreetName }}, {{ $post_sale->AreaName }}, {{ $post_sale->DistrictName }}, {{ $post_sale->CityName }}
-                                                       </p>
-                                                       <p class="bold500">Giá: {{ number_format($post_sale->Price, 0, ".", ",") }} {{ $post_sale->PriceUnit }}</p>
-                                                       <p class="threemt bold500">
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
-                                                                 <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
-                                                                 <i class="vti">{{ $post_sale->Bedroom ?? '-' }}</i>
-                                                            </span>
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
-                                                                 <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
-                                                                 <i class="vti">{{ $post_sale->Bathroom ?? "-"}}</i>
-                                                            </span>
-                                                            <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
-                                                                 <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                                 <i class="vti">{{ (round(($post_sale->Width) * ($post_sale->Length), 1)) }} m²</i>
-                                                            </span></p>
-                                                  </div>
-                                             </div>
+                                             <x-index.post-vertical postData="$post_sale" postLocation="$post_sale->StreetName, $post_sale->AreaName, $post_sale->DistrictName, $post_sale->CityName" />
                                         </div>
                                         @endforeach
                                         @endempty
@@ -218,40 +185,7 @@
                                    @empty(!$data['post_rent_list'])
                                    @foreach ($data['post_rent_list'] as $post_rent)
                                    <div class="col-sm-4 col-md-3 colm10">
-                                        <div class="hourseitem pt-0">
-                                             <div class="blii" style="height: 200px;">
-                                                  <div class="img" style="height: 100%;">
-                                                       <img src="{{ asset(json_decode($post_rent->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $post_rent->Title }}" class="thumb">
-                                                  </div>
-                                                  <a href="{{ route('postDetail', $post_rent->Slug) }}" class="linkdetail"></a>
-                                                  <div class="status">
-                                                       <span class="label-success status-label">Cho Thuê</span>
-                                                  </div>
-                                             </div>
-                                             <div class="info">
-                                                  <h3>
-                                                       <a style="overflow-wrap: anywhere;" href="{{ route('postDetail', $post_rent->Slug) }}">{{$post_rent->Title}}</a>
-                                                  </h3>
-                                                  <p class="city">
-                                                       <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
-                                                       {{ $post_rent->StreetName }}, {{ $post_rent->AreaName }}, {{ $post_rent->DistrictName }}, {{ $post_rent->CityName }}
-                                                  </p>
-                                                  <p class="bold500">Giá: {{ number_format($post_rent->Price, 0, ".", ",") }} {{ $post_rent->PriceUnit }}</p>
-                                                  <p class="threemt bold500">
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
-                                                            <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
-                                                            <i class="vti">{{ $post_rent->Bedroom ?? '-' }}</i>
-                                                       </span>
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Tắm">
-                                                            <i><img src="{{ asset('dist/img/bath.svg') }}" alt="icon"></i>
-                                                            <i class="vti">{{ $post_rent->Bathroom ?? "-"}}</i>
-                                                       </span>
-                                                       <span data-toggle="tooltip" data-placement="top" data-original-title="Rộng">
-                                                            <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
-                                                            <i class="vti">{{ (round(($post_rent->Width) * ($post_rent->Length), 1)) }} m²</i>
-                                                       </span></p>
-                                             </div>
-                                        </div>
+                                        <x-index.post-vertical :postData="$post_rent" :postLocation="(!empty($post_rent->StreetName) ? $post_rent->StreetName.', ' : '') . (!empty($post_rent->AreaName) ? $post_rent->AreaName.', ' : '') . (!empty($post_rent->DistrictName) ? $post_rent->DistrictName.', ' : '') . (!empty($post_rent->CityName) ? $post_rent->CityName : '')" />
                                    </div>
                                    @endforeach
                                    @endempty

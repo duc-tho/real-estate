@@ -66,28 +66,28 @@
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="https://bdsnew.eso.vn/properties" target="_self">
+                                        <a class="nav-link " href="{{ route('post', ['type' => 'bán']) }}" target="_self">
                                              BDS Bán
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="https://bdsnew.eso.vn/news" target="_self">
+                                        <a class="nav-link " href="{{ route('post', ['type' => 'thuê']) }}" target="_self">
                                              BDS Cho Thuê
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="https://bdsnew.eso.vn/careers" target="_self">
+                                        <a class="nav-link " href="#" target="_self">
                                              Tin Tức
                                         </a>
                                    </li>
                                    <li class="nav-item">
-                                        <a class="nav-link " href="https://bdsnew.eso.vn/contact" target="_self">
+                                        <a class="nav-link " href="#" target="_self">
                                              Liên Hệ
                                         </a>
                                    </li>
                               </ul>
 
-                              <a class="btn btn-primary add-property" href="https://bdsnew.eso.vn/account/properties">
+                              <a class="btn btn-primary add-property" href="#">
                                    <i class="fas fa-plus-circle"></i> Gửi BĐS
                               </a>
                          </div>

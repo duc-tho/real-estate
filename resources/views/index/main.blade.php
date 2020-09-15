@@ -9,6 +9,9 @@
      @case('project.detail')
      @include('index.page.project.detail')
      @break
+     @case('post.index')
+     @include('index.page.post.index')
+     @break
      @case('post.detail')
      @include('index.page.post.detail')
      @break

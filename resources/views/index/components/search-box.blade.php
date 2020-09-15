@@ -13,61 +13,60 @@
      </ul>
      <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade p-3 show active" id="ban" role="tabpanel" aria-labelledby="home-tab" style="background: #fff">
-               <h6 class="text-center font-weight-bold">Nhà Đất Bán</h6>
-               <form action="#" method="get">
-
+               <h6 class="text-center font-weight-bold">Bán</h6>
+               <form action="{{ route('post') }}" method="get">
                     <div class="form-group">
                          <label for="select-category" class="control-label">Danh mục</label>
                          <select name="category_id" id="select-category" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Căn hộ</option>
+                              {{-- <option value="1">Căn hộ</option>
                               <option value="2">Đất nền</option>
-                              <option value="3">Nhà riêng</option>
+                              <option value="3">Nhà riêng</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
                          <label for="select-blocks" class="control-label">Tỉnh - Thành phố</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <select name="city_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">TP.HCM</option>
+                              {{-- <option value="1">TP.HCM</option>
                               <option value="2">Bình Dương</option>
                               <option value="3">Đồng Nai</option>
-                              <option value="4">Bà Rịa - Vũng Tàu</option>
+                              <option value="4">Bà Rịa - Vũng Tàu</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
                          <label for="select-quanhuyen" class="control-label">Quận - huyện</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <select name="district_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Quận 1</option>
+                              {{-- <option value="1">Quận 1</option>
                               <option value="2">Quận 2</option>
                               <option value="3">Quận 3</option>
-                              <option value="4">Quận 4</option>
+                              <option value="4">Quận 4</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
                          <label for="select-quanhuyen" class="control-label">Phường - Xã</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <select name="area_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Phường 1</option>
+                              {{-- <option value="1">Phường 1</option>
                               <option value="2">Phường 2</option>
                               <option value="3">Phường 3</option>
-                              <option value="4">Phường 4</option>
+                              <option value="4">Phường 4</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
                          <div class="row">
                               <div class="col-md-6">
-                                   <label for="min_floor" class="control-label">Giá từ</label>
-                                   <input type="number" name="min_floor" id="min_floor" value="" class="form-control">
+                                   <label for="min_price" class="control-label">Giá từ</label>
+                                   <input type="number" min="1" name="min_price" id="min_price" value="" class="form-control">
                               </div>
                               <div class="col-md-6">
-                                   <label for="max_floor" class="control-label">đến</label>
-                                   <input type="number" name="max_floor" id="max_floor" value="" class="form-control">
+                                   <label for="max_price" class="control-label">đến</label>
+                                   <input type="number" min="1" name="max_price" id="max_price" value="" class="form-control">
                               </div>
                          </div>
                     </div>
@@ -75,76 +74,77 @@
                     <div class="form-group">
                          <div class="row">
                               <div class="col-md-6">
-                                   <label for="min_flat" class="control-label">Diện tích từ</label>
-                                   <input type="number" name="min_flat" id="min_flat" value="" class="form-control">
+                                   <label for="min_acreage" class="control-label">Diện tích từ</label>
+                                   <input type="number" min="0" name="min_acreage" id="min_acreage" value="" class="form-control">
                               </div>
                               <div class="col-md-6">
-                                   <label for="max_flat" class="control-label">đến</label>
-                                   <input type="number" name="max_flat" id="max_flat" value="" class="form-control"></div>
+                                   <label for="max_acreage" class="control-label">đến</label>
+                                   <input type="number" min="0" name="max_acreage" id="max_acreage" value="" class="form-control"></div>
                          </div>
                     </div>
 
-                    <div class="form-group text-center"><button type="submit" class="btn btn-primary btn-full">Search</button>
+                    <input type="hidden" name="type" value="bán">
+                    <div class="form-group text-center">
+                         <button type="submit" class="btn btn-primary btn-full">Tìm kiếm</button>
                     </div>
                </form>
 
           </div>
-          <div class="tab-pane fade p-3" id="thue" role="tabpanel" aria-labelledby="profile-tab">
-               CHO THUÊ
-               <form action="https://flex-home.botble.com/projects" method="get">
-
+          <div class="tab-pane fade p-3" id="thue" role="tabpanel" aria-labelledby="profile-tab" style="background: #fff">
+               <h6 class="text-center font-weight-bold">Cho thuê</h6>
+               <form action="{{ route('post') }}" method="get">
                     <div class="form-group">
                          <label for="select-category" class="control-label">Danh mục</label>
                          <select name="category_id" id="select-category" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Căn hộ</option>
+                              {{-- <option value="1">Căn hộ</option>
                               <option value="2">Đất nền</option>
-                              <option value="3">Nhà riêng</option>
+                              <option value="3">Nhà riêng</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
-                         <label for="select-blocks" class="control-label">Tỉnh - Thành phố</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <label for="city_id" class="control-label">Tỉnh - Thành phố</label>
+                         <select name="city_id" id="city_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">TP.HCM</option>
+                              {{-- <option value="1">TP.HCM</option>
                               <option value="2">Bình Dương</option>
                               <option value="3">Đồng Nai</option>
-                              <option value="4">Bà Rịa - Vũng Tàu</option>
+                              <option value="4">Bà Rịa - Vũng Tàu</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
-                         <label for="select-quanhuyen" class="control-label">Quận - huyện</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <label for="district_id" class="control-label">Quận - huyện</label>
+                         <select name="district_id" id="district_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Quận 1</option>
+                              {{-- <option value="1">Quận 1</option>
                               <option value="2">Quận 2</option>
                               <option value="3">Quận 3</option>
-                              <option value="4">Quận 4</option>
+                              <option value="4">Quận 4</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
-                         <label for="select-quanhuyen" class="control-label">Phường - Xã</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <label for="area_id" class="control-label">Phường - Xã</label>
+                         <select name="area_id" id="area_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Phường 1</option>
+                              {{-- <option value="1">Phường 1</option>
                               <option value="2">Phường 2</option>
                               <option value="3">Phường 3</option>
-                              <option value="4">Phường 4</option>
+                              <option value="4">Phường 4</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
                          <div class="row">
                               <div class="col-md-6">
-                                   <label for="min_floor" class="control-label">Giá từ</label>
-                                   <input type="number" name="min_floor" id="min_floor" value="" class="form-control">
+                                   <label for="min_price" class="control-label">Giá từ</label>
+                                   <input type="number" min="1" name="min_price" id="min_price" value="" class="form-control">
                               </div>
                               <div class="col-md-6">
-                                   <label for="max_floor" class="control-label">đến</label>
-                                   <input type="number" name="max_floor" id="max_floor" value="" class="form-control">
+                                   <label for="max_price" class="control-label">đến</label>
+                                   <input type="number" min="1" name="max_price" id="max_price" value="" class="form-control">
                               </div>
                          </div>
                     </div>
@@ -152,48 +152,48 @@
                     <div class="form-group">
                          <div class="row">
                               <div class="col-md-6">
-                                   <label for="min_flat" class="control-label">Diện tích từ</label>
-                                   <input type="number" name="min_flat" id="min_flat" value="" class="form-control">
+                                   <label for="min_acreage" class="control-label">Diện tích từ</label>
+                                   <input type="number" name="min_acreage" id="min_acreage" value="" class="form-control">
                               </div>
                               <div class="col-md-6">
-                                   <label for="max_flat" class="control-label">đến</label>
-                                   <input type="number" name="max_flat" id="max_flat" value="" class="form-control"></div>
+                                   <label for="max_acreage" class="control-label">đến</label>
+                                   <input type="number" name="max_acreage" id="max_acreage" value="" class="form-control"></div>
                          </div>
                     </div>
 
-                    <div class="form-group text-center"><button type="submit" class="btn btn-primary btn-full">Search</button>
+                    <input type="hidden" name="type" value="thuê">
+
+                    <div class="form-group text-center">
+                         <button type="submit" class="btn btn-primary btn-full">Tìm kiếm</button>
                     </div>
                </form>
           </div>
-          <div class="tab-pane fade p-3" id="duan" role="tabpanel" aria-labelledby="contact-tab">
-               DỰ ÁN
-
-               <form action="https://flex-home.botble.com/projects" method="get">
-
-
-
+          <div class="tab-pane fade p-3 w-100" id="duan" role="tabpanel" aria-labelledby="contact-tab" style="background: #fff">
+               <h6 class="text-center font-weight-bold">Dự Án</h6>
+               <form action="{{ route('project') }}" method="get">
                     <div class="form-group">
-                         <label for="select-blocks" class="control-label">Tỉnh - Thành phố</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <label for="city_id" class="control-label">Tỉnh - Thành phố</label>
+                         <select name="city_id" id="city_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">TP.HCM</option>
+                              {{-- <option value="1">TP.HCM</option>
                               <option value="2">Bình Dương</option>
                               <option value="3">Đồng Nai</option>
-                              <option value="4">Bà Rịa - Vũng Tàu</option>
+                              <option value="4">Bà Rịa - Vũng Tàu</option> --}}
                          </select>
                     </div>
 
                     <div class="form-group">
-                         <label for="select-quanhuyen" class="control-label">Quận - huyện</label>
-                         <select name="blocks" id="select-blocks" class="form-control">
+                         <label for="district_id" class="control-label">Quận - huyện</label>
+                         <select name="district_id" id="district_id" class="form-control">
                               <option value="">-- Select --</option>
-                              <option value="1">Quận 1</option>
+                              {{-- <option value="1">Quận 1</option>
                               <option value="2">Quận 2</option>
                               <option value="3">Quận 3</option>
-                              <option value="4">Quận 4</option>
+                              <option value="4">Quận 4</option> --}}
                          </select>
                     </div>
-                    <div class="form-group text-center"><button type="submit" class="btn btn-primary btn-full">Search</button>
+                    <div class="form-group text-center">
+                         <button type="submit" class="btn btn-primary btn-full">Tìm kiếm</button>
                     </div>
                </form>
           </div>
