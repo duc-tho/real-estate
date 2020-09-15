@@ -43,18 +43,18 @@
                     </div>
                </div>
 
-              <div class="form-group d-flex">
-                   <label class="col-sm-2" for="AreaId" style="padding-top: 7px;">Danh mục Phường Xã</label>
-                   <div class="w-100">
-                        <div class="form-group" >       
-                              <select class="form-control" name="AreaId" id="AreaId">
-                                   @foreach ( $data['street_list'] as $item )
-                                        <option value="{{ $item->AreaId }}" {{ $item->AreaId === ($data['street_info']->AreaId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
+               <div class="form-group d-flex">
+                    <label class="col-sm-2" for="AreaId" style="padding-top: 7px;">Mã Phường Xã</label>
+                    <div class="w-100">
+                         <div class="form-group" >       
+                              <select class="form-control" name="AreaId" id="district">
+                                   @foreach ( $data['area_list'] as $item )
+                                        <option value="{{ $item->AreaId }}" {{ $item->AreaId === ($data['area_info']->AreaId ?? '') ? 'selected' : '' }}>{{ $item->Name }}</option>
                                    @endforeach
                               </select>
-                        </div>
-                   </div>
-              </div>
+                         </div>
+                    </div>
+               </div>
 
 
               <div class="form-group d-flex">
