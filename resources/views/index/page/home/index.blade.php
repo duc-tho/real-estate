@@ -159,7 +159,7 @@
                                         @empty(!$data['post_sale_list'])
                                         @foreach ($data['post_sale_list'] as $post_sale)
                                         <div class="col-sm-4 col-md-3 colm10">
-                                             <x-index.post-vertical postData="$post_sale" postLocation="$post_sale->StreetName, $post_sale->AreaName, $post_sale->DistrictName, $post_sale->CityName" />
+                                             <x-index.post-vertical :postData="$post_sale" :postLocation="(!empty($post_sale->StreetName) ? $post_sale->StreetName.', ' : '') . (!empty($post_sale->AreaName) ? $post_sale->AreaName.', ' : '') . (!empty($post_sale->DistrictName) ? $post_sale->DistrictName.', ' : '') . (!empty($post_sale->CityName) ? $post_sale->CityName : '')" />
                                         </div>
                                         @endforeach
                                         @endempty

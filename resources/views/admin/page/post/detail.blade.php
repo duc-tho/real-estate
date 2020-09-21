@@ -36,7 +36,9 @@
                </ul>
 
                <div class="tab-content">
+               @include('errors.note')
                     <div class="tab-pane active container" id="basicInfo">
+                    
                          <div class="form-group">
                               <label class="col-sm-2" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <div class="w-100">

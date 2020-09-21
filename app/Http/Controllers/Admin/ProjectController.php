@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectAddRequest;
 use App\Models\Street;
 use App\Models\City;
 use App\Models\District;
@@ -45,7 +46,7 @@ class ProjectController extends Controller
           ]);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(ProjectAddRequest $req)
      {
           $project = new Project();
           $project->Title = $req->Title;

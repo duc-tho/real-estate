@@ -12,6 +12,7 @@ use App\Models\Project;
 use App\Models\Street;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostAddRequest;
 
 class PostController extends Controller
 {
@@ -55,7 +56,7 @@ class PostController extends Controller
           ]);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(PostAddRequest $req)
      {
           if (!$req->filled(
                [
