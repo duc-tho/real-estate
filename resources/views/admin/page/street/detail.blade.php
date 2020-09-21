@@ -13,7 +13,7 @@
                <a href="{{route('adminStreet')}}" class="btn btn-danger">Hủy bỏ</a>
           </div>
           <div class="card-body">
-
+               @include('errors.note')
                <div class="form-group d-flex">
                     <label class="col-sm-2" for="City" style="padding-top: 7px;">Thành Phố</label>
                     <div class="w-100">

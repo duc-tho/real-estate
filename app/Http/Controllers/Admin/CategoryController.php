@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryEditRequest;
+use App\Http\Requests\CategoryAddRequest;
+
 
 class CategoryController extends Controller
 {
@@ -36,7 +39,7 @@ class CategoryController extends Controller
           ]);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(CategoryAddRequest $req)
      {
           if (!$req->filled(['Name', 'Slug'])) {
                return redirect()->route('adminCategoryGetAdd')->withInput();
@@ -64,7 +67,7 @@ class CategoryController extends Controller
           ]);
      }
 
-     public function putEdit(Request $req, $id)
+     public function putEdit(CategoryEditRequest $req, $id)
      {
           if (!$req->filled(['Name', 'Slug', 'ParentId'])) {
                return redirect()->route('adminCategoryGetEdit', ['id' => $id])->withInput()->with([
