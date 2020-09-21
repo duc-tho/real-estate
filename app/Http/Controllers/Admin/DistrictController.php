@@ -38,6 +38,28 @@ class DistrictController extends Controller
           $district->Status = $request->status;
           $district->Slug = str::slug($request->slug);
           $district->CityId = $request->city;
+          
+
+          $image = [];
+          $imgObjStr = '';
+          $imgObj = [
+               [
+                    "id" => "all",
+                    "name" => "Tất cả ảnh",
+                    "imgList" => []
+               ]
+          ];
+          if ($request->hasFile('Image')) {
+               foreach ($request->Image as $file) {
+                    $file_url = $file->store('/dist/img/upload/district', ['disk' => 'public_file']);
+                    array_push($image, $file_url);
+               }
+
+               $imgObj[0]['imgList'] = $image;
+          }
+          $imgObjStr = json_encode($imgObj);
+          $district->Image = $imgObjStr;
+
           $district->save();
           return back();
      }
@@ -59,6 +81,20 @@ class DistrictController extends Controller
           $arr['Status'] = $request->status;
           $arr['CityId'] = $request->city;
           $arr['Slug'] = str::slug($request->slug);
+
+          $imgObjStr = '';
+          $imgObj = json_decode($district->Image, true);
+
+          if ($request->hasFile('Image')) {
+               foreach ($request->Image as $file) {
+                    $file_url = $file->store('/dist/img/upload/district', ['disk' => 'public_file']);
+                    array_push($imgObj[0]['imgList'], $file_url);
+               }
+          }
+          
+          $imgObjStr = json_encode($imgObj);
+
+          $request->merge(['Image' => $imgObjStr]);   
           $district::where('DistrictId', $id)->update($arr);
           return redirect('admin/district');
      }
