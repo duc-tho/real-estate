@@ -158,6 +158,7 @@ class ProjectController extends Controller
           $project->GroundDesign = $req->GroundDesign;
           $project->InfrastructureLocation = $req->InfrastructureLocation;
           $project->Progress = $req->Progress;
+          $project->StreetId = $req->StreetId;
 
           $imgObjStr = '';
           $imgObj = json_decode($project->Image, true);

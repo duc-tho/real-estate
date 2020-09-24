@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Post;
 use App\Models\Street;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -21,25 +22,36 @@ class ProjectController extends Controller
                $city = City::where('Slug', $city_slug)->first();
                if ($city === null) abort(404);
 
-               if ($district_slug === null) return $this->projectList();
+               if ($district_slug === null) return $this->projectList($city_slug, null);
                else {
 
                     $district = District::where('Slug', $district_slug)->first();
                     if ($district === null) abort(404);
 
-                    if ($project_slug === null) return $this->postList();
-                    else return $this->postDetail($project_slug);
+                    if ($project_slug === null) return $this->projectList($city_slug, $district_slug);
+                    else return $this->projectDetail($project_slug);
                }
           };
      }
 
-     public function ProjectList()
+     public function ProjectList($city_slug, $district_slug)
      {
-          $project_list = Project::all();
+          $project_list = City::join('District', 'City.CityId', '=', 'District.CityId')
+               ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
+               ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
+               ->join('Project', 'Project.StreetId', '=', 'Street.StreetId')
+               ->where('City.Slug', $city_slug)
+               ->where([$district_slug !== null ? ['District.Slug', $district_slug] : [DB::raw('null')]])
+               ->select('City.Name as CityName', 'Project.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+               ->get();
+
           $district_list = [];
 
           foreach ($project_list as $project) {
-
+               $project->Street = Street::find($project->StreetId);
+               $project->Area = Street::find($project->StreetId)->Area;
+               $project->District = Area::find($project->Area->AreaId)->District;
+               $project->City = District::find($project->District->DistrictId)->City;
 
                $project->post_sale_count = Post::where([
                     'ProjectId' => $project->ProjectId,
@@ -96,14 +108,22 @@ class ProjectController extends Controller
                }
           }
 
-          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
-               $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
+          // if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
+          //      $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
 
-               $district_list = $default_city->District;
+          //      $district_list = $default_city->District;
 
-               foreach ($district_list as $district) {
-                    $district->CitySlug = $default_city->Slug;
-               }
+          //      foreach ($district_list as $district) {
+          //           $district->CitySlug = $default_city->Slug;
+          //      }
+          // }
+
+          $default_city = City::where(['Slug' => $city_slug])->first();
+
+          $district_list = $default_city->District;
+
+          foreach ($district_list as $district) {
+               $district->CitySlug = $default_city->Slug;
           }
 
           return view('index.index', [
@@ -131,6 +151,27 @@ class ProjectController extends Controller
 
           $projectDetail->post_sale_list = Post::where(['Type' => 'bán', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
           $projectDetail->post_rent_list = Post::where(['Type' => 'thuê', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
+
+
+          if (!empty($projectDetail->post_rent_list)) {
+               foreach ($projectDetail->post_rent_list as $item) {
+                    $item->StreetId = $projectDetail->StreetId;
+                    $item->Street = Street::find($item->StreetId);
+                    $item->Area = Street::find($item->StreetId)->Area;
+                    $item->District = Area::find($item->Area->AreaId)->District;
+                    $item->City = District::find($item->District->DistrictId)->City;
+               }
+          }
+
+          if (!empty($projectDetail->post_sale_list)) {
+               foreach ($projectDetail->post_sale_list as $item) {
+                    $item->StreetId = $projectDetail->StreetId;
+                    $item->Street = Street::find($item->StreetId);
+                    $item->Area = Street::find($item->StreetId)->Area;
+                    $item->District = Area::find($item->Area->AreaId)->District;
+                    $item->City = District::find($item->District->DistrictId)->City;
+               }
+          }
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
                $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();

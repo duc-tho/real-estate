@@ -43,6 +43,8 @@ class PostController extends Controller
           $cityList = City::all();
           $categoryList = Category::all();
 
+          foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
+
           return view('admin.admin', [
                'title' => 'Thêm Bất Động Sản',
                'page' => 'post.detail',
@@ -61,7 +63,7 @@ class PostController extends Controller
                [
                     'Title', 'Slug',
                     'CategoryId', 'Floor',
-                    'Price', 'Status', 'Type', 'Slug'
+                    'Price', 'Status', 'Slug'
                ]
           )) {
                return redirect()->route('adminPostGetAdd')->withInput();
@@ -98,6 +100,9 @@ class PostController extends Controller
 
           $imgObjStr = json_encode($imgObj);
           $post->Image = $imgObjStr;
+
+          $req_category = Category::find($req->CategoryId)->ParentId;
+          $post->Type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
 
           $post->save();
 
@@ -145,10 +150,10 @@ class PostController extends Controller
                [
                     'Title', 'Slug',
                     'CategoryId', 'Floor',
-                    'Price', 'Status', 'Type', 'Slug'
+                    'Price', 'Status', 'Slug'
                ]
           )) {
-               return redirect()->route('adminPostGetAdd')->withInput();
+               return redirect()->route('adminPostGetEdit', [$id])->withInput();
           }
 
           $post = Post::find($id);
@@ -173,9 +178,13 @@ class PostController extends Controller
                $req->merge(['StreetId' => $pj['StreetId']]);
           }
 
+          $req_category = Category::find($req->CategoryId);
+          $type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
+          $req->merge(['Type' => $type]);
+
           $post->update($req->input());
 
-          return redirect()->route("adminPost");
+          return redirect()->back();
      }
 
      public function delete($id)

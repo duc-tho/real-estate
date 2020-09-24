@@ -185,7 +185,6 @@
 
 
           <div class="col-md-4">
-               {{-- @include('index.components.search-box') --}}
                <x-index.search-box />
                {{-- <x-index.box-right :categoryId="6" /> --}}
           </div>

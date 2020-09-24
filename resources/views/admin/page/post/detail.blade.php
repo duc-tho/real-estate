@@ -52,18 +52,6 @@
                               <div class="col-lg-12 messages text-danger"></div>
                          </div>
                          <div class="form-group">
-                              <label class="col-sm-2" for="Type" style="padding-top: 7px;">Loại</label>
-                              <div class="w-100">
-                                   <select class="form-control" name="Type" id="Type">
-                                        <option value="" aria-readonly="true">Chọn Loại Bất Động Sản</option>
-                                        <option value="bán" {{ ($data['post_info']->Type ?? '') === 'bán' ? 'selected' : '' }}>
-                                             Bán</option>
-                                        <option value="thuê" {{ ($data['post_info']->Type ?? '') === 'thuê' ? 'selected' : '' }}>Thuê</option>
-                                   </select>
-                              </div>
-                              <div class="col-lg-12 messages text-danger"></div>
-                         </div>
-                         <div class="form-group">
                               <label class="col-sm-2" for="Title" style="padding-top: 7px;">Tiêu Đề</label>
                               <div class="w-100">
                                    <input id="Title" class="form-control" type="text" placeholder="Tiêu đề" name="Title" value="{{ $data['post_info']->Title ?? old('Title') }}">
@@ -89,6 +77,18 @@
                                    </div>
                               </div>
                               <div class="col-lg-12 messages text-danger"></div>
+                         </div>
+                         <div class="form-group">
+                              <label class="col-sm-2" for="Type" style="padding-top: 7px;">Loại</label>
+                              <div class="w-100">
+                                   <select class="form-control" name="Type" id="Type" disabled>
+                                        <option value="" aria-readonly="true">--------</option>
+                                        <option value="bán" {{ mb_strtolower($data['post_info']->Type ?? '') === 'bán' ? 'selected' : '' }}>Bán</option>
+                                        <option value="thuê" {{ mb_strtolower($data['post_info']->Type ?? '') === 'thuê' ? 'selected' : '' }}>Thuê</option>
+                                   </select>
+                              </div>
+                              <div class=" col-lg-12 messages text-danger">
+                              </div>
                          </div>
                          <div class="form-group">
                               <label class="col-sm-2" for="CategoryId" style="padding-top: 7px;">Danh Mục</label>
@@ -503,12 +503,12 @@
                     message: "^Giá phải lớn hơn hoặc bằng 0!"
                }
           },
-          Type: {
-               presence: {
-                    allowEmpty: false,
-                    message: "^Bạn chưa chọn loại bất động sản!"
-               },
-          },
+          // Type: {
+          //      presence: {
+          //           allowEmpty: false,
+          //           message: "^Bạn chưa chọn loại bất động sản!"
+          //      },
+          // },
           Slug: {
                presence: {
                     allowEmpty: false,
