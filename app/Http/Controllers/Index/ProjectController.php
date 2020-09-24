@@ -13,12 +13,34 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-     public function index()
+     public function index(Request $req, $city_slug = null, $district_slug = null, $project_slug = null)
+     {
+          if ($city_slug === null) {
+               return redirect()->route('project', ['thanh-pho-ho-chi-minh']);
+          } else {
+               $city = City::where('Slug', $city_slug)->first();
+               if ($city === null) abort(404);
+
+               if ($district_slug === null) return $this->projectList();
+               else {
+
+                    $district = District::where('Slug', $district_slug)->first();
+                    if ($district === null) abort(404);
+
+                    if ($project_slug === null) return $this->postList();
+                    else return $this->postDetail($project_slug);
+               }
+          };
+     }
+
+     public function ProjectList()
      {
           $project_list = Project::all();
           $district_list = [];
 
           foreach ($project_list as $project) {
+
+
                $project->post_sale_count = Post::where([
                     'ProjectId' => $project->ProjectId,
                     'Type' => 'bán',
@@ -38,6 +60,19 @@ class ProjectController extends Controller
                     ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                     ->paginate(2);
 
+               foreach ($project->post_sale_list as $item) {
+                    if ($item->ProjectId !== null) {
+                         $projectDetail = Project::find($item->ProjectId);
+
+                         $item->StreetId = $projectDetail->StreetId;
+                    }
+
+                    $item->Street = Street::find($item->StreetId);
+                    $item->Area = Street::find($item->StreetId)->Area;
+                    $item->District = Area::find($item->Area->AreaId)->District;
+                    $item->City = District::find($item->District->DistrictId)->City;
+               }
+
                $project->post_rent_list = City::join('District', 'City.CityId', '=', 'District.CityId')
                     ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
                     ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
@@ -46,6 +81,19 @@ class ProjectController extends Controller
                     ->where(['Type' => 'thuê'])
                     ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                     ->paginate(2);
+
+               foreach ($project->post_rent_list as $item) {
+                    if ($item->ProjectId !== null) {
+                         $projectDetail = Project::find($item->ProjectId);
+
+                         $item->StreetId = $projectDetail->StreetId;
+                    }
+
+                    $item->Street = Street::find($item->StreetId);
+                    $item->Area = Street::find($item->StreetId)->Area;
+                    $item->District = Area::find($item->Area->AreaId)->District;
+                    $item->City = District::find($item->District->DistrictId)->City;
+               }
           }
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {

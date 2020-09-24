@@ -114,11 +114,14 @@ class PostController extends Controller
           $postData->DistrictId = Area::find($postData['AreaId'])->District['DistrictId'];
           $postData->CityId = District::find($postData['DistrictId'])->City['CityId'];
           $projectList = Project::all();
-          $categoryList = Category::all();
+          $categoryList = Category::where('ParentId', 0)->get();
           $cityList = City::all();
           $districtList = City::find($postData->CityId)->District;
           $areaList = District::find($postData->DistrictId)->Area;
           $streetList = Area::find($postData->AreaId)->Street;
+
+
+          foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
 
           return view('admin.admin', [
                'title' => 'Sửa Bất Động Sản',

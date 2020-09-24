@@ -19,15 +19,15 @@
                          <div class="homehouse padtop30 col-sm-9 col-md-9">
                               <div class="row">
                                    <div class="col-12">
-                                        <h2>Bất động sản</h2>
-                                        <p>Danh sách bất động sản</p>
+                                        <h2>{{ $content_title }}</h2>
+                                        <p>{{ $location }}</p>
                                    </div>
                               </div>
                               <div class="row rowm10">
                                    @empty(!$data['post_list'])
                                    @foreach ($data['post_list'] as $post_item)
                                    <div class="col-sm-4 col-md-4 colm10">
-                                        <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" :postLocation="(!empty($post_item->StreetName) ? $post_item->StreetName.', ' : '') . (!empty($post_item->AreaName) ? $post_item->AreaName.', ' : '') . (!empty($post_item->DistrictName) ? $post_item->DistrictName.', ' : '') . (!empty($post_item->CityName) ? $post_item->CityName : '')" />
+                                        <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" :postLocation="(!empty($post_item->Street->Name) ? $post_item->Street->Name.', ' : '') . (!empty($post_item->Area->Name) ? $post_item->Area->Name.', ' : '') . (!empty($post_item->District->Name) ? $post_item->District->Name.', ' : '') . (!empty($post_item->City->Name) ? $post_item->City->Name : '')" />
                                    </div>
                                    @endforeach
                                    @endempty
@@ -36,8 +36,8 @@
 
                          <!--<property-component type="rent" url="https://flex-home.botble.com/ajax/properties"></property-component>-->
                          <div class="padtop30 col-sm-3 col-md-3">
-                              @include('index.components.search-box')
-                              {{-- @include('index.components.box-right') --}}
+                              <x-index.search-box />
+                              {{-- <x-index.box-right :type="thue" :category_id="6" /> --}}
                          </div>
                     </div>
                </div>

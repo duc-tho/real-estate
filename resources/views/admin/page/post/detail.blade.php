@@ -97,8 +97,11 @@
                                         <option value="">Chọn Danh Mục</option>
                                         @isset($data['category_list'])
                                         @foreach ($data['category_list'] as $item)
-                                        <option value="{{ $item->CategoryId }}" {{ $item->CategoryId === ($data['post_info']->CategoryId ?? '') ? 'selected' : '' }}>
-                                             {{ $item->Name }}</option>
+                                        <optgroup label="{{ $item->Name }}">
+                                             @foreach($item->child as $child_item)
+                                             <option value="{{ $child_item->CategoryId }}" {{ $child_item->CategoryId === ($data['post_info']->CategoryId ?? '') ? 'selected' : '' }}>{{ $child_item->Name }}</option>
+                                             @endforeach
+                                        </optgroup>
                                         @endforeach
                                         @endisset
                                    </select>

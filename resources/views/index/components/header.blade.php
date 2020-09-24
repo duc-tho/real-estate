@@ -66,12 +66,12 @@
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{ route('post', ['type' => 'bán']) }}" target="_self">
+                                        <a class="nav-link " href="/*{{-- route('post',['type'=>'bán']) --}}" target="_self">
                                              BDS Bán
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{ route('post', ['type' => 'thuê']) }}" target="_self">
+                                        <a class="nav-link " href="{{-- route('post',['type'=>'thuê']) --}}" target="_self">
                                              BDS Cho Thuê
                                         </a>
                                    </li>

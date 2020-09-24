@@ -15,6 +15,9 @@
      @case('post.detail')
      @include('index.page.post.detail')
      @break
+     @case('addPost.index')
+     @include('index.page.add-post.index')
+     @break
      @case('home')
      @include('index.page.home.index')
      @break

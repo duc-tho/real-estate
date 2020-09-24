@@ -24,7 +24,7 @@ class CategoryController extends Controller
 
      public function getAdd()
      {
-          $categoryList = Category::all();
+          $categoryList = Category::where('ParentId', '0')->get();
 
           return view('admin.admin', [
                'title' => 'Thêm Danh Mục',
@@ -51,7 +51,7 @@ class CategoryController extends Controller
      public function getEdit($id)
      {
           $categoryData = Category::find($id);
-          $categoryList = Category::all();
+          $categoryList = Category::where('ParentId', '0')->get();
 
           return view('admin.admin', [
                'title' => 'Sửa Danh Mục',

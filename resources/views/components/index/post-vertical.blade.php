@@ -4,14 +4,14 @@
                <div class="img" style="height: 100%;">
                     <img src="{{ asset(json_decode($data->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $data->Title }}" class="thumb">
                </div>
-               <a href="{{ route('postDetail', $data->Slug) }}" class="linkdetail"></a>
+               <a href="{{ $data->url }}" class="linkdetail"></a>
                <div class="status">
-                    <span class="label-success status-label" style="text-transform: capitalize">{{ $data->Type }}</span>
+                    <span class="label-success status-label" style="text-transform: capitalize">{{ $data->category_type ?? '-' }}</span>
                </div>
           </div>
           <div class="info">
                <h3>
-                    <a style="overflow-wrap: anywhere;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; min-height: 40px" href="{{ route('postDetail', $data->Slug) }}">{{ $data->Title}}</a>
+                    <a style="overflow-wrap: anywhere;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; min-height: 40px" href="{{ $data->url }}">{{ $data->Title}}</a>
                </h3>
                <p class="city">
                     <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>

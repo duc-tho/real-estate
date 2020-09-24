@@ -2,6 +2,7 @@
 
 namespace App\View\Components\index;
 
+use App\Models\Category;
 use Illuminate\View\Component;
 
 class PostHorizontal extends Component
@@ -13,10 +14,31 @@ class PostHorizontal extends Component
       *
       * @return void
       */
-     public function __construct($postData, $postLocation)
+     public function __construct($postData, $postLocation, $postStyle = '')
      {
           $this->data = $postData;
+
+          $category = Category::where('CategoryId', $postData->CategoryId)->first();
+          $type = Category::where(
+               ['CategoryId' => $category->ParentId],
+               ['ParentId' => 0]
+          )->first();
+
+          $this->data->url = route(
+               'post',
+               [
+                    $type->Slug,
+                    $category->Slug,
+                    $postData->City->Slug,
+                    $postData->District->Slug,
+                    $postData->Area->Slug,
+                    $postData->Slug
+               ]
+          );
+
           $this->data->Location = $postLocation;
+
+          $this->style = $postStyle;
      }
 
      /**

@@ -168,8 +168,8 @@
                </main>
           </div>
           <div class="col-md-4">
-               @include('index.components.search-box')
-               @include('index.components.box-right')
+               <x-index.search-box />
+               {{-- <x-index.box-right :category_id="6" /> --}}
           </div>
      </div>
 </div>
