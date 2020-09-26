@@ -97,20 +97,6 @@ class PostController extends Controller
           $district = $district_slug !== null ? District::where('District.Slug', $district_slug)->first() : null;
           $area = $area_slug !== null ? Area::where('Area.Slug', $area_slug)->first() : null;
 
-          foreach ($post_list as $item) {
-               if ($item->ProjectId !== null) {
-                    $projectDetail = Project::find($item->ProjectId);
-
-                    $item->StreetId = $projectDetail->StreetId;
-               }
-
-               $item->category_type = $category_type->Name;
-               $item->Street = Street::find($item->StreetId);
-               $item->Area = Street::find($item->StreetId)->Area;
-               $item->District = Area::find($item->Area->AreaId)->District;
-               $item->City = District::find($item->District->DistrictId)->City;
-          }
-
           return view('index.index', [
                'title' => 'Danh sách bất động sản tại ' . $city->Name,
                'page' => 'post.index',
@@ -127,6 +113,9 @@ class PostController extends Controller
           $postDetail = Post::where('Slug', $slug)->first();
 
           if ($postDetail === null) abort(404);
+
+          $postDetail->ViewCount = $postDetail->ViewCount + 1;
+          $postDetail->Save();
 
           if ($postDetail->ProjectId !== null) {
                $projectDetail = Project::find($postDetail->ProjectId);
@@ -147,21 +136,6 @@ class PostController extends Controller
                'ProjectId' => $postDetail->ProjectId,
                ['PostId', '!=', $postDetail->PostId]
           ])->paginate(3);
-
-
-          foreach ($postDetail->post_list as $item) {
-               if ($item->ProjectId !== null) {
-                    $projectDetail = Project::find($item->ProjectId);
-
-                    $item->StreetId = $projectDetail->StreetId;
-               }
-
-               // $item->category_type = $category_type->Name;
-               $item->Street = Street::find($item->StreetId);
-               $item->Area = Street::find($item->StreetId)->Area;
-               $item->District = Area::find($item->Area->AreaId)->District;
-               $item->City = District::find($item->District->DistrictId)->City;
-          }
 
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {

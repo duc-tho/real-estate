@@ -17,7 +17,6 @@
                     <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i>
                     {{ $data->Location }}
                </p>
-               <p class="bold500">Giá: {{ number_format($data->Price, 0, ".", ",") }} {{ $data->PriceUnit }}</p>
                <p class="threemt bold500">
                     <span data-toggle="tooltip" data-placement="top" data-original-title="Phòng Ngủ">
                          <i><img src="{{ asset('dist/img/bed.svg') }}" alt="icon"></i>
@@ -31,6 +30,11 @@
                          <i><img src="{{ asset('dist/img/area.svg') }}" alt="icon"></i>
                          <i class="vti">{{ (round(($data->Width) * ($data->Length), 1)) }} m²</i>
                     </span>
+               </p>
+               <hr>
+               <p class="bold500 d-flex justify-content-between">
+                    <span>Giá: {{ number_format($data->Price, 0, ".", ",") }} {{ $data->PriceUnit }}</span>
+                    <span><i class="fas fa-eye" style="opacity: .7"></i> {{ $data->ViewCount }}</span>
                </p>
           </div>
      </div>

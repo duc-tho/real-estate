@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84px" height="72px" viewBox="0 0 84 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-2.7%" y="-12.5%" width="105.4%" height="125.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="-7" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.474542942   0 0 0 0 0.474542942   0 0 0 0 0.474542942  0 0 0 0.149286685 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-24.1%" y="-31.7%" width="148.1%" height="163.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="#-CTA" transform="translate(-1039.000000, -45.000000)" stroke="#FFFFFF" stroke-width="1.98">
+            <g filter="url(#filter-1)" id="Group-13">
+                <g transform="translate(1044.000000, 50.000000)">
+                    <g id="phone" transform="translate(10.000000, 16.000000)">
+                        <g id="mail">
+                            <g id="Group-6" filter="url(#filter-2)">
+                                <polygon id="Stroke-1" points="0.274420268 40.8257488 53.7663988 40.8257488 53.7663988 0.277181642 0.274420268 0.277181642"></polygon>
+                                <polyline id="Stroke-3" points="2.25024619 1.76630886 27.020149 24.6667086 52.555997 1.38099302"></polyline>
+                                <line x1="17.8619805" y1="24.6666208" x2="2.24868304" y2="39.1014824" id="Stroke-4"></line>
+                                <line x1="51.7948281" y1="39.1012191" x2="36.1745833" y2="24.6663575" id="Stroke-5"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

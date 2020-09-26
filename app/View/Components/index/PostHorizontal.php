@@ -2,7 +2,11 @@
 
 namespace App\View\Components\index;
 
+use App\Models\Area;
 use App\Models\Category;
+use App\Models\District;
+use App\Models\Project;
+use App\Models\Street;
 use Illuminate\View\Component;
 
 class PostHorizontal extends Component
@@ -14,8 +18,23 @@ class PostHorizontal extends Component
       *
       * @return void
       */
-     public function __construct($postData, $postLocation, $postStyle = '')
+     public function __construct($postData, $postStyle = '')
      {
+          // STRAT: get Location
+          if ($postData->ProjectId !== null) {
+               $projectDetail = Project::find($postData->ProjectId);
+
+               $postData->StreetId = $projectDetail->StreetId;
+          }
+
+          $postData->Street = Street::find($postData->StreetId);
+          $postData->Area = Street::find($postData->StreetId)->Area;
+          $postData->District = Area::find($postData->Area->AreaId)->District;
+          $postData->City = District::find($postData->District->DistrictId)->City;
+
+          $postData->Location = (!empty($postData->Street->Name) ? $postData->Street->Name . ', ' : '') . (!empty($postData->Area->Name) ? $postData->Area->Name . ', ' : '') . (!empty($postData->District->Name) ? $postData->District->Name . ', ' : '') . (!empty($postData->City->Name) ? $postData->City->Name : '');
+          // END: get Location
+
           $this->data = $postData;
 
           $category = Category::where('CategoryId', $postData->CategoryId)->first();
@@ -35,8 +54,6 @@ class PostHorizontal extends Component
                     $postData->Slug
                ]
           );
-
-          $this->data->Location = $postLocation;
 
           $this->style = $postStyle;
      }

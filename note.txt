@@ -96,8 +96,12 @@
 [ ] + xóa ảnh
 [ ] + Up ảnh của District (1 ảnh)
 [ ] + Cho phép người dùng chọn ảnh muốn Hiển thị của project
-[ ] + Đổ dữ liệu trang Post
-[ ] + tìm kiếm - Lọc
+[X] + Đổ dữ liệu trang Post
+[X] + Xây đựng lại hệ thông url FE
+[X] + tìm kiếm - Lọc
+[ ] + thêm trang danh sách bds thuoc du án
+[ ] + phân trang
+[ ] + chuyển các trang moi từ server về
 
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []}]"
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []},{"id":"GroupItem-1","name":"1asd","imgList":[]},{"id":"GroupItem-2","name":"asd2","imgList":[]}]"

@@ -155,7 +155,7 @@
                                    <h5 class="headifhouse">Căn hộ đang bán</h5>
                                    @if (count($data['project_detail']->post_sale_list) > 0)
                                    @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
-                                   <x-index.post-horizontal :postData="$post_sale_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   <x-index.post-horizontal :postData="$post_sale_item" />
                                    @endforeach
                                    <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
@@ -169,7 +169,7 @@
                                    <h5 class="headifhouse">Căn hộ cho thuê</h5>
                                    @if (count($data['project_detail']->post_rent_list) > 0)
                                    @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
-                                   <x-index.post-horizontal :postData="$post_rent_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   <x-index.post-horizontal :postData="$post_rent_item" />
                                    @endforeach
                                    <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
                                    @else

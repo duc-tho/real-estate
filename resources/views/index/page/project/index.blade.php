@@ -56,8 +56,7 @@
                                                   @if (count($project->post_rent_list) > 0)
                                                   @foreach ($project->post_rent_list as $project_rent_item)
                                                   <div class="col-sm-12 col-md-12 colm10">
-                                                       <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$project_rent_item"
-                                                            :postLocation="(!empty($project_rent_item->StreetName) ? $project_rent_item->StreetName.', ' : '') . (!empty($project_rent_item->AreaName) ? $project_rent_item->AreaName.', ' : '') . (!empty($project_rent_item->DistrictName) ? $project_rent_item->DistrictName.', ' : '') . (!empty($project_rent_item->CityName) ? $project_rent_item->CityName : '')" />
+                                                       <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$project_rent_item" />
                                                   </div>
                                                   @endforeach
                                                   @else
@@ -73,8 +72,7 @@
                                                   @if (count($project->post_sale_list) > 0)
                                                   @foreach ($project->post_sale_list as $project_sale_item)
                                                   <div class="col-sm-12 col-md-12 colm10">
-                                                       <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$project_sale_item"
-                                                            :postLocation="(!empty($project_sale_item->StreetName) ? $project_sale_item->StreetName.', ' : '') . (!empty($project_sale_item->AreaName) ? $project_sale_item->AreaName.', ' : '') . (!empty($project_sale_item->DistrictName) ? $project_sale_item->DistrictName.', ' : '') . (!empty($project_sale_item->CityName) ? $project_sale_item->CityName : '')" />
+                                                       <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$project_sale_item" />
                                                   </div>
                                                   @endforeach
                                                   @else

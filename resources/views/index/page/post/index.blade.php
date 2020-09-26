@@ -27,7 +27,7 @@
                                    @empty(!$data['post_list'])
                                    @foreach ($data['post_list'] as $post_item)
                                    <div class="col-sm-4 col-md-4 colm10">
-                                        <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" :postLocation="(!empty($post_item->Street->Name) ? $post_item->Street->Name.', ' : '') . (!empty($post_item->Area->Name) ? $post_item->Area->Name.', ' : '') . (!empty($post_item->District->Name) ? $post_item->District->Name.', ' : '') . (!empty($post_item->City->Name) ? $post_item->City->Name : '')" />
+                                        <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" />
                                    </div>
                                    @endforeach
                                    @endempty

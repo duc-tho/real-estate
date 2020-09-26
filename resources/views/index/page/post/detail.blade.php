@@ -156,7 +156,7 @@
                          <h5 class="headifhouse">Các BĐS có cùng dự án</h5>
                          @if (count($data['post_detail']->post_list) > 0)
                          @foreach ($data['post_detail']->post_list as $post_item)
-                         <x-index.post-horizontal :postData="$post_item" :postLocation="(!empty($data['post_detail']->Street->Name) ? $data['post_detail']->Street->Name.', ' : '').(!empty($data['post_detail']->Area->Name) ? $data['post_detail']->Area->Name.', ' : '').(!empty($data['post_detail']->District->Name) ? $data['post_detail']->District->Name.', ' : '').$data['post_detail']->City->Name" />
+                         <x-index.post-horizontal :postData="$post_item" />
                          @endforeach
                          <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
                          @else
