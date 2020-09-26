@@ -37,6 +37,7 @@ class PostController extends Controller
 
           if ($req->filled('min_acreage')) array_push($condition, [DB::raw('(Width * Length)'), '>=', $req->query('min_acreage')]);
           if ($req->filled('max_acreage')) array_push($condition, [DB::raw('(Width * Length)'), '<=', $req->query('max_acreage')]);
+          if ($req->filled('tu-khoa')) array_push($condition, ['Title', 'LIKE', '%' . $req->query('tu-khoa') . '%']);
 
           if ($city_slug === null) {
                return redirect()->route('post', [$type, $category_slug, 'thanh-pho-ho-chi-minh']);

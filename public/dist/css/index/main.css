@@ -1,0 +1,17 @@
+html {
+     scroll-behavior: smooth;
+}
+
+::selection {
+     color: #fff;
+     background: #1d5f6f;
+}
+
+a {
+     color: rgb(29, 95, 111);
+     /*#424242*/
+}
+
+a:hover {
+     color: rgb(6, 58, 93);
+}

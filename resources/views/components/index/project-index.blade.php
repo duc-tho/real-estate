@@ -12,7 +12,9 @@
 
           </div>
           <div class="info col-sm-6 col-md-6 py-2">
-               <h2><a href="{{-- route('projectDetail',$data->Slug) --}}" style="text-transform: capitalize;">{{ $data->Title }}</a></h2>
+               <h2 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" data-toggle="tooltip" data-placement="top" data-original-title="{{ $data->Title }}">
+                    <a href="{{-- route('projectDetail',$data->Slug) --}}" style="text-transform: capitalize;">{{ $data->Title }}</a>
+               </h2>
                <p class="city" style="overflow: hidden; height: 45px;">
                     <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2" title="{{ $data->Location }}">
                          <i class="fas fa-map-marker-alt" style="opacity: 0.7;"></i> {{ $data->Location }}

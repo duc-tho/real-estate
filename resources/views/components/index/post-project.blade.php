@@ -1,5 +1,5 @@
 <div class="row p-2 border mb-3 w-100">
-     <h3 class="m-0 mb-2 w-100" style="height: 45px; overflow: hidden;"><a href="{{ $data->url }}" style="overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2">{{ $data->Title }}</a></h3>
+     <h3 class="m-0 mb-2 w-100" style="height: 45px; overflow: hidden;" data-toggle="tooltip" data-placement="top" data-original-title="{{ $data->Title }}"><a href="{{ $data->url }}" style="overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2">{{ $data->Title }}</a></h3>
      <div class="hinhpost col-sm-6 col-md-6">
           <div class="img">
                <img data-src="{{ asset(json_decode($data->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" src="{{ asset(json_decode($data->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $data->Title }}" class="thumb" style="max-height: 125px; height: max-content;">

@@ -10,7 +10,7 @@
                </div>
           </div>
           <div class="info">
-               <h3>
+               <h3 data-toggle="tooltip" data-placement="top" data-original-title="{{ $data->Title }}">
                     <a style="overflow-wrap: anywhere;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; min-height: 40px" href="{{ $data->url }}">{{ $data->Title}}</a>
                </h3>
                <p class="city">

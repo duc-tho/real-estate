@@ -1,19 +1,18 @@
 <div class="home_banner" style="background-image: url({{ asset('dist/img/banner.jpg') }})">
      <div class="topsearch">
-          <form action="{{ route('project') }}" method="GET" id="frmhomesearch">
+          <form action="{{ route('project', ['thanh-pho-ho-chi-minh']) }}" method="GET" id="frmhomesearch">
+               <input id="baseUrl" type="hidden" data-base-url="{{ URL::to('/') }}">
                <div class="typesearch" id="hometypesearch">
-                    <a href="javascript:void(0)" class="active" rel="project" data-url="{{ route('project') }}">Dự Án</a>
-                    <a href="javascript:void(0)" rel="sale" data-url="{{ route('post', ['ban', 'bat-dong-san', 'thanh-pho-ho-chi-minh']) }}">Bán</a>
-                    <a href="javascript:void(0)" rel="rent" data-url="{{ route('post', ['thue', 'bat-dong-san', 'thanh-pho-ho-chi-minh']) }}">Cho Thuê</a>
+                    <a id="project" href="javascript:void(0)" class="active" rel="project">Dự Án</a>
+                    <a id="sale" href="javascript:void(0)" rel="sale">Bán</a>
+                    <a id="rent" href="javascript:void(0)" rel="rent">Cho Thuê</a>
                </div>
                <div class="input-group input-group-lg">
 
                     <div class="form-group">
-                         <select name="blocks" id="select-blocks" class="form-control">
-                              <option value="">-- Tỉnh, Thành Phố --</option>
+                         <select id="select-area" class="form-control">
                               @foreach ($city as $ci)
-                              <option value="{{asset('city/'.$ci->CityId.'/'.$ci->Slug.'.html')}}">{{$ci->Name}}</option>
-                              {{-- <a href="{{asset('category/'.$cate->cate_id.'/'.$cate->cate_slug.'.html')}}" title="" style=" color: white;">{{$cate->cate_name}}</a> --}}
+                              <option value="{{ $ci->Slug }}">{{$ci->Name}}</option>
                               @endforeach
                          </select>
                     </div>
@@ -21,8 +20,7 @@
                     <div class="input-group-prepend">
                          <span class="input-group-text"><img src="{{ asset('dist/img/search_icon.png')}}" alt="search"></span>
                     </div>
-                    <input type="hidden" name="type" value="project" id="txttypesearch">
-                    <input type="text" class="form-control" name="k" placeholder="Enter keyword..." id="txtkey" autocomplete="off">
+                    <input type="text" class="form-control" name="tu-khoa" placeholder="Nhập địa điểm muốn tìm kiếm" id="txtkey" autocomplete="off">
                     <div class="input-group-append">
                          <button class="btn btn-orange" type="submit">Tìm Kiếm</button>
                     </div>
@@ -402,3 +400,60 @@
           </div>
      </div>
 </section>
+
+
+<script>
+     let baseUrl = document.getElementById('baseUrl').attributes['data-base-url'].value;
+     let projectSearch = document.getElementById('project');
+     let saleSearch = document.getElementById('sale');
+     let rentSearch = document.getElementById('rent');
+     let searchKey = document.getElementById('txtkey');
+     let selectSearchArea = document.getElementById('select-area');
+
+     let formId = 'frmhomesearch';
+
+     let searchInfo = {
+          type: 'du-an',
+          category: 'bat-dong-san',
+          city: selectSearchArea.selectedOptions[0].value
+     }
+
+     projectSearch.addEventListener('click', () => {
+          searchInfo.type = 'du-an',
+          searchInfo.city = selectSearchArea.selectedOptions[0].value;
+          setActionURLToForm(baseUrl, searchInfo, formId);
+     });
+
+     saleSearch.addEventListener('click', () => {
+          searchInfo.type = 'ban',
+          searchInfo.city = selectSearchArea.selectedOptions[0].value;
+          setActionURLToForm(baseUrl, searchInfo, formId);
+     });
+
+     rentSearch.addEventListener('click', () => {
+          searchInfo.type = 'thue',
+          searchInfo.city = selectSearchArea.selectedOptions[0].value;
+          setActionURLToForm(baseUrl, searchInfo, formId);
+     });
+
+     selectSearchArea.addEventListener('change', () => {
+          searchInfo.city = selectSearchArea.selectedOptions[0].value;
+          setActionURLToForm(baseUrl, searchInfo, formId);
+     });
+
+     function setActionURLToForm(baseUrl, searchInfo, formId) {
+          let form = document.getElementById(formId);
+          let url = '';
+
+          if (searchInfo.type === 'du-an') {
+               url = `${baseUrl}/${searchInfo.type}/${searchInfo.city}`;
+          } else {
+               url = `${baseUrl}/${Object.values(searchInfo).join('/')}`;
+          }
+
+          console.log(url);
+
+          form.action = url;
+     }
+
+</script>
