@@ -10,6 +10,8 @@ use App\Models\District;
 use App\Models\City;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\StreetEditRequest;
+use App\Http\Requests\StreetAddRequest;
 
 class StreetController extends Controller
 {
@@ -45,7 +47,7 @@ class StreetController extends Controller
           ]);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(StreetAddRequest $req)
      {
           $street = new Street();
           $street->Name = $req->Name;
@@ -77,7 +79,7 @@ class StreetController extends Controller
           ]);
      }
 
-     public function putEdit(Request $req, $id)
+     public function putEdit(StreetEditRequest $req, $id)
      {
           // if (!$req->filled(['AreaId', 'Name', 'Status', 'Slug'])) {
           //      return redirect()->route('adminStreetGetEdit', ['id' => $id])->withInput()->with([

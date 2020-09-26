@@ -13,6 +13,7 @@
                <a href="{{route('adminCategory')}}" class="btn btn-danger"><i class="fas fa-window-close"></i> Hủy bỏ</a>
           </div>
           <div class="card-body">
+          @include('errors.note')
                <div class="form-group">
                     <label class="col-sm-2" for="Name" style="padding-top: 7px;">Danh mục cha</label>
                     <div class="w-100">
