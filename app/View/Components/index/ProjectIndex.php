@@ -58,6 +58,17 @@ class ProjectIndex extends Component
                ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                ->first();
 
+          // STRAT: get URL
+          $projectData->url = route(
+               'project',
+               [
+                    $projectData->City->Slug,
+                    $projectData->District->Slug,
+                    $projectData->Slug
+               ]
+          );
+          // END: get URL
+
           $this->data = $projectData;
      }
 

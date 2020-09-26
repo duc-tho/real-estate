@@ -8,12 +8,12 @@
                     <img style="max-height: 230px;" src={{ asset('dist/img/default_bds.jpg') }} alt="{{ $data->Title }}" class="thumb">
                     @endif
                </div>
-               <a href="{{-- route('projectDetail',$data->Slug) --}}" class="linkdetail"></a>
+               <a href="{{ $data->url }}" class="linkdetail"></a>
 
           </div>
           <div class="info col-sm-6 col-md-6 py-2">
                <h2 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" data-toggle="tooltip" data-placement="top" data-original-title="{{ $data->Title }}">
-                    <a href="{{-- route('projectDetail',$data->Slug) --}}" style="text-transform: capitalize;">{{ $data->Title }}</a>
+                    <a href="{{ $data->url }}" style="text-transform: capitalize;">{{ $data->Title }}</a>
                </h2>
                <p class="city" style="overflow: hidden; height: 45px;">
                     <span style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2" title="{{ $data->Location }}">

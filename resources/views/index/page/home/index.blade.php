@@ -68,12 +68,7 @@
                                    <div class="owl-carousel" id="project-city-slides">
                                         @empty(!$data['district_list'])
                                         @foreach ($data['district_list'] as $district)
-                                        <div class="item itemarea">
-                                             <a href="{{-- route('postDistrict',[$district->CitySlug,$district->Slug]) --}}">
-                                                  <img src="{{ asset('dist/img/los-angeles-winter-2016-410x270.jpg')}}" alt="Alhambra">
-                                                  <h4>{{ $district->Name }}</h4>
-                                             </a>
-                                        </div>
+                                        <x-index.district :districtData="$district" />
                                         @endforeach
                                         @endempty
                                    </div>

@@ -101,7 +101,7 @@ class PostController extends Controller
           return view('index.index', [
                'title' => 'Danh sách bất động sản tại ' . $city->Name,
                'page' => 'post.index',
-               'content_title' => $category_type->Name . ' bất động sản',
+               'content_title' => 'Bất động sản đang ' . mb_strtolower($category_type->Name),
                'location' => $city->Name . ($district !== null ? ', ' . $district->Name : '') . ($area !== null ? ', ' . $area->Name : ''),
                'data' => [
                     'post_list' => $post_list
