@@ -58,7 +58,7 @@ class PostController extends Controller
                          if ($area === null) abort(404);
 
                          if ($post_slug === null) return $this->postList($req, $category_type->Slug, $category['Slug'], $city->Slug, $district_slug, $area_slug, $condition);
-                         else return $this->postDetail($post_slug);
+                         else return $this->postDetail($post_slug, $category_type->Slug);
                     }
                }
           };
@@ -109,7 +109,7 @@ class PostController extends Controller
           ]);
      }
 
-     public function postDetail($slug)
+     public function postDetail($slug, $type)
      {
           $postDetail = Post::where('Slug', $slug)->first();
 
@@ -119,14 +119,13 @@ class PostController extends Controller
           $postDetail->Save();
 
           if ($postDetail->ProjectId !== null) {
-               $projectDetail = Project::find($postDetail->ProjectId);
-
-               $postDetail->Street = Street::find($projectDetail->StreetId);
+               $postDetail->Project = Project::find($postDetail->ProjectId);
+               $postDetail->Street = Street::find($postDetail->Project->StreetId);
           } else {
                $postDetail->Street = Street::find($postDetail->StreetId);
           }
 
-          $postDetail->Area = Street::find($postDetail->StreetId)->Area;
+          $postDetail->Area = Street::find($postDetail->Street->StreetId)->Area;
           $postDetail->District = Area::find($postDetail->Area->AreaId)->District;
           $postDetail->City = District::find($postDetail->District->DistrictId)->City;
 
@@ -137,7 +136,6 @@ class PostController extends Controller
                'ProjectId' => $postDetail->ProjectId,
                ['PostId', '!=', $postDetail->PostId]
           ])->paginate(3);
-
 
           if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
                $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
@@ -150,8 +148,11 @@ class PostController extends Controller
           }
 
           return view('index.index', [
-               'title' => 'Chi tiết bất dộng sản',
+               'title' => 'Chi tiết bất động sản',
                'page' => 'post.detail',
+               'pageInfo' => [
+                    'type' => $type
+               ],
                'data' => [
                     'post_detail' => $postDetail,
                     'district_list' => $district_list

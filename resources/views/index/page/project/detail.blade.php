@@ -157,7 +157,7 @@
                                    @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
                                    <x-index.post-horizontal :postData="$post_sale_item" />
                                    @endforeach
-                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'ban']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
                                    <div class="col-sm-12 col-md-12 colm10">
                                         <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang bán!</h6>
@@ -171,7 +171,7 @@
                                    @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
                                    <x-index.post-horizontal :postData="$post_rent_item" />
                                    @endforeach
-                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'thue']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
                                    <div class="col-sm-12 col-md-12 colm10">
                                         <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang cho thuê!</h6>

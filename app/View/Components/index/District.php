@@ -14,16 +14,19 @@ class district extends Component
       *
       * @return void
       */
-     public function __construct($districtData, $pageInfo = ['type' => 'ban', 'category' => 'bat-dong-san', 'city' => 'thanh-pho-ho-chi-minh'])
+     public function __construct($districtData, $pageInfo = null)
      {
+          $defaultInfo = ['page_type' => 'ban', 'category' => 'bat-dong-san', 'city' => 'thanh-pho-ho-chi-minh'];
 
+          if ($pageInfo != null) $pageInfo = array_merge($defaultInfo, $pageInfo);
+          else $pageInfo = $defaultInfo;
 
           $districtData->City = ModelsDistrict::find($districtData->DistrictId)->City;
 
-          if ($pageInfo === 'du-an') {
+          if ($pageInfo['page_type'] === 'du-an') {
                $districtData->url = route('project', [$districtData->City->Slug, $districtData->Slug]);
           } else {
-               $districtData->url = route('post', [$pageInfo['type'], $pageInfo['category'], $districtData->City->Slug, $districtData->Slug]);
+               $districtData->url = route('post', [$pageInfo['page_type'], $pageInfo['category'], $districtData->City->Slug, $districtData->Slug]);
           }
 
           $this->data = $districtData;

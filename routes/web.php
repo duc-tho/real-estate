@@ -222,6 +222,6 @@ Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
 //           ->name('projectDetail');
 // });
 
-Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}', 'Index\ProjectController@index')->name('project');
+Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', 'Index\ProjectController@index')->name('project');
 
 Route::get('/{type}/{category_slug?}/{city_slug?}/{district_slug?}/{area_slug?}/{post_slug?}', 'Index\PostController@index')->name('post');

@@ -22,9 +22,8 @@ class PostProject extends Component
      {
           // STRAT: get Location
           if ($postData->ProjectId !== null) {
-               $projectDetail = Project::find($postData->ProjectId);
-
-               $postData->StreetId = $projectDetail->StreetId;
+               $postData->Project = Project::find($postData->ProjectId);
+               $postData->StreetId = $postData->Project->StreetId;
           }
 
           $postData->Street = Street::find($postData->StreetId);
@@ -44,7 +43,7 @@ class PostProject extends Component
                ['ParentId' => 0]
           )->first();
 
-          $this->data->category_type = $type->Name;
+          $this->data->category_type = $type;
           // END: get Type
 
           // STRAT: get URL

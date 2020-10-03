@@ -5,7 +5,7 @@
                <img data-src="{{ asset(json_decode($data->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" src="{{ asset(json_decode($data->Image, true)[0]['imgList'][0] ?? 'dist/img/default_bds.jpg') }}" alt="{{ $data->Title }}" class="thumb" style="max-height: 125px; height: max-content;">
           </div>
           <a href="{{ $data->url }}" class="linkdetail"></a>
-          <div class="status"><span class="label-success status-label">{{ $data->category_type ?? '-' }}</span></div>
+          <div class="status"><span class="label-success status-label">{{ $data->category_type->Name ?? '-' }}</span></div>
      </div>
      <div class="col-sm-6 col-md-6">
           <p class="city"><i class="fas fa-compass" style="opacity: 0.7;"></i> {{ $data->Direction ?? 'Không xác định' }}</p>
@@ -33,6 +33,6 @@
                     <i class="far fa-heart" style="opacity: .6; margin-right: 3px;"></i>
                </span>
           </p>
-          <a href="#" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
+          <a href="{{ route('project', [$data->City->Slug, $data->District->Slug, $data->Project->Slug, $data->category_type->Slug]) }}" class="viewall">Xem tất cả <i class="icon-arrow-2"></i></a>
      </div>
 </div>

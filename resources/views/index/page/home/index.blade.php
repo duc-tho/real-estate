@@ -142,7 +142,9 @@
                               <div class="row row10">
                                    @empty(!$data['project_list'])
                                    @foreach($data['project_list'] as $project)
-                                   <x-index.project-index :projectData="$project" />
+                                   <div class="col-sm-6 col-md-6 colm10 itemduan">
+                                        <x-index.project-index :projectData="$project" />
+                                   </div>
                                    @endforeach
                                    @endempty
                               </div>

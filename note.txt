@@ -99,9 +99,18 @@
 [X] + Đổ dữ liệu trang Post
 [X] + Xây đựng lại hệ thông url FE
 [X] + tìm kiếm - Lọc
-[ ] + thêm trang danh sách bds thuoc du án
+[X] + thêm trang danh sách bds thuoc du án
+[X] + Lọc project
 [ ] + phân trang
-[ ] + chuyển các trang moi từ server về
+[X] + chuyển các trang moi từ server về
+[ ] + add pageInfo data for all page
+[ ] + boxRight
+[ ] + client add post
+[ ] + loginError
+[ ] + lỗi thêm du an
+[ ] + form Đăng ký tư vấn
+[ ] + dang o trang nao hay dang tim kiem gi thi search box hien thi dung noi dung do
+[ ] + Kiem tra url co khop hay khong neu khong tra ve not found
 
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []}]"
 "[{"id":"all", "name":"Tất cả ảnh", imgList: []},{"id":"GroupItem-1","name":"1asd","imgList":[]},{"id":"GroupItem-2","name":"asd2","imgList":[]}]"

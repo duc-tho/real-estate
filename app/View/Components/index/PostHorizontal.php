@@ -22,9 +22,8 @@ class PostHorizontal extends Component
      {
           // STRAT: get Location
           if ($postData->ProjectId !== null) {
-               $projectDetail = Project::find($postData->ProjectId);
-
-               $postData->StreetId = $projectDetail->StreetId;
+               $postData->Project = Project::find($postData->ProjectId);
+               $postData->StreetId = $postData->Project->StreetId;
           }
 
           $postData->Street = Street::find($postData->StreetId);

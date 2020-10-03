@@ -181,8 +181,8 @@ class PostController extends Controller
           }
 
           $req_category = Category::find($req->CategoryId);
-          $type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
-          $req->merge(['Type' => $type]);
+          $type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first();
+          $req->merge(['Type' => $type->Name]);
 
           $post->update($req->input());
 
