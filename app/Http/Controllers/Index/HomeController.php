@@ -32,6 +32,7 @@ class HomeController extends Controller
                     ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
                     ->where('City.CityId', $default_city->CityId)
                     ->where(['Type' => 'bán'])
+                    ->where('Post.Status', '1')
                     ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                     ->paginate(8);
 
@@ -41,11 +42,12 @@ class HomeController extends Controller
                     ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
                     ->where('City.CityId', $default_city->CityId)
                     ->where(['Type' => 'thuê'])
+                    ->where('Post.Status', '1')
                     ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                     ->paginate(8);
           }
 
-          $post_highlight = Post::orderBy('ViewCount', 'desc')->paginate(15);
+          $post_highlight = Post::orderBy('ViewCount', 'desc')->where('Status', '1')->paginate(15);
 
           return view('index.index', [
                'title' => 'Trang chủ',

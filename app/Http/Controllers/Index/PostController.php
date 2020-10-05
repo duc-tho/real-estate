@@ -58,7 +58,7 @@ class PostController extends Controller
                          if ($area === null) abort(404);
 
                          if ($post_slug === null) return $this->postList($req, $category_type->Slug, $category['Slug'], $city->Slug, $district_slug, $area_slug, $condition);
-                         else return $this->postDetail($post_slug, $category_type->Slug);
+                         else return $this->postDetail($city_slug, $post_slug, $category_type->Slug);
                     }
                }
           };
@@ -88,6 +88,7 @@ class PostController extends Controller
                     ['Category.ParentId', $category_type->CategoryId],
                     $category_slug !== 'bat-dong-san' ? ['Category.Slug', $category['Slug']] : [DB::raw('null')]
                ])
+               ->where(['Post.Status' => '1'])
                ->where('City.Slug', $city_slug)
                ->where([$district_slug !== null ? ['District.Slug', $district_slug] : [DB::raw('null')]])
                ->where($category_slug !== null ? $condition : [DB::raw('null')])
@@ -109,7 +110,7 @@ class PostController extends Controller
           ]);
      }
 
-     public function postDetail($slug, $type)
+     public function postDetail($city_slug, $slug, $type)
      {
           $postDetail = Post::where('Slug', $slug)->first();
 
@@ -137,14 +138,13 @@ class PostController extends Controller
                ['PostId', '!=', $postDetail->PostId]
           ])->paginate(3);
 
-          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
-               $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
 
-               $district_list = $default_city->District;
+          $default_city = City::where('Slug', $city_slug)->first();
 
-               foreach ($district_list as $district) {
-                    $district->CitySlug = $default_city->Slug;
-               }
+          $district_list = $default_city->District;
+
+          foreach ($district_list as $district) {
+               $district->CitySlug = $default_city->Slug;
           }
 
           return view('index.index', [

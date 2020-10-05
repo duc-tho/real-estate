@@ -31,14 +31,14 @@
                                                             @endforeach
                                                        </select>
                                                   </div>
-                                                  <div class="form-group">
+                                                  {{-- <div class="form-group">
                                                        <label>Trạng thái</label>
                                                        <select required name="status" class="form-control">
                                                             <option value="1">1 (Hiện cho người dùng xem)</option>
                                                             <option value="-1">-1 (Không hiện)</option>
                                                             <option value="0">0 (Chờ duyệt)</option>
                                                        </select>
-                                                  </div>
+                                                  </div> --}}
                                                   <div class="tab-pane container" id="imageInfo">
                                                        <div class="card text-center mt-4">
                                                             <div class="card-header bg-info">

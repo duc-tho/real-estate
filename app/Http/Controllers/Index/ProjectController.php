@@ -50,6 +50,7 @@ class ProjectController extends Controller
                ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
                ->join('Project', 'Project.StreetId', '=', 'Street.StreetId')
                ->where('City.Slug', $city_slug)
+               ->where(['Project.Status' => '1'])
                ->where([$district_slug !== null ? ['District.Slug', $district_slug] : [DB::raw('null')]])
                ->select('City.Name as CityName', 'Project.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
                ->get();
@@ -89,8 +90,8 @@ class ProjectController extends Controller
           $projectDetail->Area = Street::find($projectDetail->StreetId)->Area;
           $projectDetail->District = Area::find($projectDetail->Area->AreaId)->District;
           $projectDetail->City = District::find($projectDetail->District->DistrictId)->City;
-          $projectDetail->post_sale_list = Post::where(['Type' => 'bán', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
-          $projectDetail->post_rent_list = Post::where(['Type' => 'thuê', 'ProjectId' => $projectDetail->ProjectId])->paginate(2);
+          $projectDetail->post_sale_list = Post::where(['Type' => 'bán', 'ProjectId' => $projectDetail->ProjectId, 'Status' => '1'])->paginate(2);
+          $projectDetail->post_rent_list = Post::where(['Type' => 'thuê', 'ProjectId' => $projectDetail->ProjectId, 'Status' => '1'])->paginate(2);
 
 
           if (!empty($projectDetail->post_rent_list)) {

@@ -16,12 +16,12 @@
                     @foreach ($data['street_list'] as $item)
                     <tr>
                          <td>{{ $item->StreetId }}</td>
-                        
+
                          @foreach ($data['area_list'] as $area_item)
-                              @if ($item->AreaId === $area_item->AreaId)
-                              <td>{{ $area_item->Name }}</td>
-                              @break
-                              @endif
+                         @if ($item->AreaId === $area_item->AreaId)
+                         <td>{{ $area_item->Name }}</td>
+                         @break
+                         @endif
                          @endforeach
                          <td>{{ $item->Name }}</td>
                          <td>
@@ -37,17 +37,17 @@
                </tbody>
                <tfoot>
                     <tr>
-                          <th>Mã Đường</th>
-                          <th>Mã Phường/Xã</th>
-                          <th>Tên Đường</th>
-                          <th>Tùy Chỉnh </th>
+                         <th>Mã Đường</th>
+                         <th>Mã Phường/Xã</th>
+                         <th>Tên Đường</th>
+                         <th>Tùy Chỉnh </th>
                     </tr>
                </tfoot>
           </table>
      </div>
- </div>
- 
- <script>
+</div>
+
+<script>
      $("#dataTable").DataTable({
           "responsive": true,
           "autoWidth": true,
@@ -58,5 +58,4 @@
                { "width": "20%" }
                ]
      });
- </script>
- 
+</script>

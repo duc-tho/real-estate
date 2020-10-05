@@ -14,7 +14,6 @@ class CreateCityTable extends Migration
                $table->string('Name');
                $table->timestamps();
                $table->tinyInteger('Status')->default('1');
-
           });
      }
 
