@@ -1,4 +1,4 @@
-let convertToSlug = str => {
+let convertToSlug = (str, uniqid = false) => {
      // Chuyển sang dạng unicode tổ hợp
      str = str.normalize("NFD").toLowerCase();
      // Chuyển đ -> d
@@ -13,5 +13,5 @@ let convertToSlug = str => {
      str = str.replace(/\s+/g, '-')
      // Bỏ tất cả dấu - ở đầu và cuối
      str = str.replace(/^-+|-+$/g, '');
-     return `${str}-${Date.now()}`;
+     return `${str}${uniqid ? '-' + Date.now() : ''}`;
 }

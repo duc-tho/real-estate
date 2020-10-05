@@ -36,9 +36,14 @@
                     </li>
                </ul>
 
+
                <div class="tab-content">
+                    @include('errors.note')
+
                     <div class="tab-pane active container" id="basicInfo">
+
                          <div class="form-group">
+
                               <label class="col-sm-2k" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <select class="form-control" name="Status" id="Status">
                                    <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>
@@ -177,7 +182,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Block</label>
                               <div class="w-100">
-                                   <input id="block" class="form-control" type="text" placeholder="Số Block" name="NumberOfBlock" value="{{ $data['project_info']->NumberOfBlock ?? old('NumberOfBlock') }}">
+                                   <input id="block" class="form-control" type="number" placeholder="Số Block" name="NumberOfBlock" value="{{ $data['project_info']->NumberOfBlock ?? old('NumberOfBlock') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
@@ -185,7 +190,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Tầng</label>
                               <div class="w-100">
-                                   <input id="floor" class="form-control" type="text" placeholder="Số Floor" name="NumberOfFloor" value="{{ $data['project_info']->NumberOfFloor ?? old('NumberOfFloor') }}">
+                                   <input id="floor" class="form-control" type="number" placeholder="Số Floor" name="NumberOfFloor" value="{{ $data['project_info']->NumberOfFloor ?? old('NumberOfFloor') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
@@ -194,7 +199,7 @@
                               <label class="col-sm-2" for="name" style="padding-top: 7px;">Số Căn Hộ</label>
 
                               <div class="w-100">
-                                   <input id="apartment" class="form-control" type="text" placeholder="Số Căn Hộ" name="NumberOfApartment" value="{{ $data['project_info']->NumberOfApartment ?? old('NumberOfApartment') }}">
+                                   <input id="apartment" class="form-control" type="number" placeholder="Số Căn Hộ" name="NumberOfApartment" value="{{ $data['project_info']->NumberOfApartment ?? old('NumberOfApartment') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
@@ -202,7 +207,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="city" style="padding-top: 7px;">Diện tích căn hộ</label>
                               <div class="w-100">
-                                   <input id="apartment" class="form-control" type="text" placeholder="Số Căn Hộ" name="AreaApartment" value="{{ $data['project_info']->AreaApartment ?? old('AreaApartment') }}">
+                                   <input id="apartment" class="form-control" type="number" step="0.01" placeholder="Diện tích căn hộ" name="AreaApartment" value="{{ $data['project_info']->AreaApartment ?? old('AreaApartment') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
@@ -210,7 +215,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="name" style="padding-top: 7px.r;">Tổng Diện Tích</label>
                               <div class="w-100">
-                                   <input id="totalarea" class="form-control" type="text" placeholder="Tổng Diện Tích" name="TotalArea" value="{{ $data['project_info']->TotalArea ?? old('TotalArea') }}">
+                                   <input id="totalarea" class="form-control" type="number" step="0.01" placeholder="Tổng Diện Tích" name="TotalArea" value="{{ $data['project_info']->TotalArea ?? old('TotalArea') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>
@@ -218,7 +223,7 @@
                          <div class="form-group">
                               <label class="col-sm-2" for="name" style="padding-top: 1px.r;">Mật độ xây dựng</label>
                               <div class="w-100">
-                                   <input id="density" class="form-control" type="text" placeholder="Mật độ" name="BuildingDensity" value="{{ $data['project_info']->BuildingDensity ?? old('BuildingDensity') }}">
+                                   <input id="density" class="form-control" type="number" step="0.1" placeholder="Mật độ" name="BuildingDensity" value="{{ $data['project_info']->BuildingDensity ?? old('BuildingDensity') }}">
                                    <div class="col-lg-12 messages text-danger"></div>
                               </div>
                          </div>

@@ -13,6 +13,7 @@
                <a href="{{route('adminCategory')}}" class="btn btn-danger"><i class="fas fa-window-close"></i> Hủy bỏ</a>
           </div>
           <div class="card-body">
+          @include('errors.note')
                <div class="form-group">
                     <label class="col-sm-2" for="Name" style="padding-top: 7px;">Danh mục cha</label>
                     <div class="w-100">
@@ -40,7 +41,7 @@
                <div class="form-group">
                     <label class="col-sm-2" for="Slug" style="padding-top: 7px;">Slug</label>
                     <div class="w-100">
-                         <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Slug') }}" readonly>
+                         <input id="Slug" class="form-control" type="text" placeholder="Slug" name="Slug" value="{{ old('Slug') }}">
                     </div>
                     <div class="col-lg-12 messages text-danger"></div>
                </div>

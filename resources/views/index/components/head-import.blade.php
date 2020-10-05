@@ -22,6 +22,8 @@
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/owl.theme.default.css') }}">
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/style.css') }}">
 <link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/project.css') }}">
+<link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/add-post.css') }}">
+<link media="all" type="text/css" rel="stylesheet" href="{{ asset('dist/css/index/main.css') }}">
 
 
 <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700,800" rel="stylesheet" type="text/css">

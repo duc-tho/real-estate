@@ -66,12 +66,12 @@
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{ route('post', ['type' => 'bán']) }}" target="_self">
+                                        <a class="nav-link " href="{{ route('post',['type'=>'ban']) }}" target="_self">
                                              BDS Bán
                                         </a>
                                    </li>
                                    <li class="nav-item ">
-                                        <a class="nav-link " href="{{ route('post', ['type' => 'thuê']) }}" target="_self">
+                                        <a class="nav-link " href="{{ route('post',['type'=>'thue']) }}" target="_self">
                                              BDS Cho Thuê
                                         </a>
                                    </li>
@@ -87,7 +87,7 @@
                                    </li>
                               </ul>
 
-                              <a class="btn btn-primary add-property" href="#">
+                              <a class="btn btn-primary add-property" href="{{ route('addPost') }}">
                                    <i class="fas fa-plus-circle"></i> Gửi BĐS
                               </a>
                          </div>

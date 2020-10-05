@@ -152,24 +152,26 @@
 
 
                     <br>
+                    @if ($data['post_detail']->ProjectId != null)
                     <div class="listban">
                          <h5 class="headifhouse">Các BĐS có cùng dự án</h5>
                          @if (count($data['post_detail']->post_list) > 0)
                          @foreach ($data['post_detail']->post_list as $post_item)
-                         <x-index.post-horizontal :postData="$post_item" :postLocation="(!empty($data['post_detail']->Street->Name) ? $data['post_detail']->Street->Name.', ' : '').(!empty($data['post_detail']->Area->Name) ? $data['post_detail']->Area->Name.', ' : '').(!empty($data['post_detail']->District->Name) ? $data['post_detail']->District->Name.', ' : '').$data['post_detail']->City->Name" />
+                         <x-index.post-horizontal :postData="$post_item" />
                          @endforeach
-                         <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                         <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['post_detail']->City->Slug, $data['post_detail']->District->Slug,$data['post_detail']->Project->Slug, $pageInfo['type']]) }}" style="color: #1d5f6f">Xem tất cả</a>
                          @else
                          <div class="col-sm-12 col-md-12 colm10">
                               <h6 class="text-center py-2 text-secondary">Chưa có BĐS nào khác</h6>
                          </div>
                          @endif
                     </div>
+                    @endif
                </main>
           </div>
           <div class="col-md-4">
-               @include('index.components.search-box')
-               @include('index.components.box-right')
+               <x-index.search-box />
+               {{-- <x-index.box-right :category_id="6" /> --}}
           </div>
      </div>
 </div>

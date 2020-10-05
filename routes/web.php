@@ -16,45 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Index\HomeController@index')->name('home');
 
-Route::group(['prefix' => 'du-an'], function () {
-     Route::get('/', 'Index\ProjectController@index')->name('project');
-
-     Route::get('/{Slug}', 'Index\ProjectController@projectDetail')
-          ->name('projectDetail');
-});
+Route::get('/dang-tin', 'Index\AddPostController@index')->name('addPost');
 
 Route::group(['prefix' => 'user'], function () {
      Route::get('/', 'Index\UserController@index')->name('user');
-});
-
-Route::group(['prefix' => 'bat-dong-san'], function () {
-     /**
-      * /bat-dong-san//mua/nha/hcm/quan-binh-thanh/ban-nha-123
-      * /du-an/hcm/quan-binh-thanh/du-an-123/thue
-      */
-
-     Route::get('/', 'Index\PostController@index')->name('post');
-
-     Route::get('/khu-vuc/{city_slug}', 'Index\PostController@postCity')
-          ->name('postCity');
-
-     Route::get('/khu-vuc/{city_slug}/{district_slug}', 'Index\PostController@postDistrict')
-          ->name('postDistrict');
-
-     Route::get('/khu-vuc/{city_slug}/{district_slug}/{area_slug}', 'Index\PostController@postArea')
-          ->name('postArea');
-
-     Route::get('/khu-vuc/{city_slug}/{district_slug}/{area_slug}/{street_slug}', 'Index\PostController@postStreet')
-          ->name('postStreet');
-
-     Route::get('/danh-muc/{category_slug}', 'Index\PostController@postCategory')
-          ->name('postCategory');
-
-     Route::get('{type}/du-an/{project_slug}', 'Index\PostController@postProject')
-          ->name('postProject');
-
-     Route::get('/{post_slug}', 'Index\PostController@postDetail')
-          ->name('postDetail');
 });
 
 Route::group(['prefix' => 'auth'], function () {
@@ -253,3 +218,14 @@ Route::group(['prefix' => 'register'], function () {
 });
 
 Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
+
+// Route::group(['prefix' => 'du-an'], function () {
+//      Route::get('/', 'Index\ProjectController@index')->name('project');
+
+//      Route::get('/{Slug}', 'Index\ProjectController@projectDetail')
+//           ->name('projectDetail');
+// });
+
+Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', 'Index\ProjectController@index')->name('project');
+
+Route::get('/{type}/{category_slug?}/{city_slug?}/{district_slug?}/{area_slug?}/{post_slug?}', 'Index\PostController@index')->name('post');

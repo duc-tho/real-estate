@@ -47,8 +47,13 @@ class AreaController extends Controller
      public function getEdit($id)
      {
           $data['area'] = Area::find($id);
-          $data['listdis'] = District::all();
+          $data['area']->District = Area::find($id)->District;
+
+          $data['area']->City = District::find($data['area']->District->DistrictId)->City;
+
           $data['listcity'] = City::all();
+          $data['listdis'] = City::find($data['area']->City->CityId)->District;
+
           return view('admin.admin', [
                'page' => 'area.edit',
                'page_title' => 'Chi Tiết Phường / Xã'

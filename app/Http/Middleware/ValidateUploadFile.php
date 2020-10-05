@@ -34,7 +34,7 @@ class ValidateUploadFile
                     }
 
                     // Kiểm tra dung lượng
-                    if ($file->getSize() >=  5000000) return redirect()->back()->withInput()->with([
+                    if ($file->getSize() >=  10000000) return redirect()->back()->withInput()->with([
                          'errMsg' => 'Chỉ chấp nhận các ảnh dưới 5MB'
                     ]);
                }

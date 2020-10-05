@@ -12,6 +12,8 @@ use App\Models\Project;
 use App\Models\Street;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostAddRequest;
+use App\Http\Requests\PostEditRequest;
 
 class PostController extends Controller
 {
@@ -43,6 +45,8 @@ class PostController extends Controller
           $cityList = City::all();
           $categoryList = Category::all();
 
+          foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
+
           return view('admin.admin', [
                'title' => 'Thêm Bất Động Sản',
                'page' => 'post.detail',
@@ -55,13 +59,13 @@ class PostController extends Controller
           ]);
      }
 
-     public function postAdd(Request $req)
+     public function postAdd(PostAddRequest $req)
      {
           if (!$req->filled(
                [
                     'Title', 'Slug',
                     'CategoryId', 'Floor',
-                    'Price', 'Status', 'Type', 'Slug'
+                    'Price', 'Status', 'Slug'
                ]
           )) {
                return redirect()->route('adminPostGetAdd')->withInput();
@@ -99,6 +103,9 @@ class PostController extends Controller
           $imgObjStr = json_encode($imgObj);
           $post->Image = $imgObjStr;
 
+          $req_category = Category::find($req->CategoryId)->ParentId;
+          $post->Type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
+
           $post->save();
 
           return redirect()->route("adminPost");
@@ -114,11 +121,14 @@ class PostController extends Controller
           $postData->DistrictId = Area::find($postData['AreaId'])->District['DistrictId'];
           $postData->CityId = District::find($postData['DistrictId'])->City['CityId'];
           $projectList = Project::all();
-          $categoryList = Category::all();
+          $categoryList = Category::where('ParentId', 0)->get();
           $cityList = City::all();
           $districtList = City::find($postData->CityId)->District;
           $areaList = District::find($postData->DistrictId)->Area;
           $streetList = Area::find($postData->AreaId)->Street;
+
+
+          foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
 
           return view('admin.admin', [
                'title' => 'Sửa Bất Động Sản',
@@ -136,16 +146,16 @@ class PostController extends Controller
           ]);
      }
 
-     public function putEdit(Request $req, $id)
+     public function putEdit(PostEditRequest $req, $id)
      {
           if (!$req->filled(
                [
                     'Title', 'Slug',
                     'CategoryId', 'Floor',
-                    'Price', 'Status', 'Type', 'Slug'
+                    'Price', 'Status', 'Slug'
                ]
           )) {
-               return redirect()->route('adminPostGetAdd')->withInput();
+               return redirect()->route('adminPostGetEdit', [$id])->withInput();
           }
 
           $post = Post::find($id);
@@ -178,9 +188,13 @@ class PostController extends Controller
                $req->merge(['StreetId' => $pj['StreetId']]);
           }
 
+          $req_category = Category::find($req->CategoryId);
+          $type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first();
+          $req->merge(['Type' => $type->Name]);
+
           $post->update($req->input());
 
-          return redirect()->route("adminPost");
+          return redirect()->back();
      }
      
      public function delete($id)

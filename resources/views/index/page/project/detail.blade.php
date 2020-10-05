@@ -155,9 +155,9 @@
                                    <h5 class="headifhouse">Căn hộ đang bán</h5>
                                    @if (count($data['project_detail']->post_sale_list) > 0)
                                    @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
-                                   <x-index.post-horizontal :postData="$post_sale_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   <x-index.post-horizontal :postData="$post_sale_item" />
                                    @endforeach
-                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'ban']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
                                    <div class="col-sm-12 col-md-12 colm10">
                                         <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang bán!</h6>
@@ -169,9 +169,9 @@
                                    <h5 class="headifhouse">Căn hộ cho thuê</h5>
                                    @if (count($data['project_detail']->post_rent_list) > 0)
                                    @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
-                                   <x-index.post-horizontal :postData="$post_rent_item" :postLocation="(!empty($data['project_detail']->Street->Name) ? $data['project_detail']->Street->Name.', ' : '').(!empty($data['project_detail']->Area->Name) ? $data['project_detail']->Area->Name.', ' : '').(!empty($data['project_detail']->District->Name) ? $data['project_detail']->District->Name.', ' : '').$data['project_detail']->City->Name" />
+                                   <x-index.post-horizontal :postData="$post_rent_item" />
                                    @endforeach
-                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="#" style="color: #1d5f6f">Xem tất cả</a>
+                                   <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'thue']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
                                    <div class="col-sm-12 col-md-12 colm10">
                                         <h6 class="text-center py-2 text-secondary">Chưa có căn hộ nào khác đang cho thuê!</h6>
@@ -185,8 +185,8 @@
 
 
           <div class="col-md-4">
-               @include('index.components.search-box')
-               @include('index.components.box-right')
+               <x-index.search-box />
+               {{-- <x-index.box-right :categoryId="6" /> --}}
           </div>
      </div>
 </div>

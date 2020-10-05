@@ -1,15 +1,34 @@
-<footer class="mt-5">
+<footer class="mt-4">
+     <section class="sec-cta group-ef loaded" style="padding:0 15px;">
+          <div class="row grid-space-0">
+               <div class="col-6 efch-3 ef-img-r">
+                    <div class="item">
+                         <div class="img"><img class=" loaded loaded" data-lazy-type="image" data-lazy-src="{{ asset('dist/img/cta-1.svg') }}" alt="Propzy" src="{{ asset('dist/img/cta-1.svg') }}"></div>
+                         <h3 class="title">Đăng Bán và Cho Thuê Miễn Phí</h3>
+                         <p><em>Tiếp cận khách hàng sẵn có, quảng cáo tin đăng miễn phí</em></p> <a href="/dang-tin" class="btn btn-2">Đăng tin ngay</a>
+                    </div>
+               </div>
+               <div class="col-6 efch-3 ef-img-l loaded" data-lazy-type="bg" data-lazy-src="{{ asset('dist/img/img-2.jpg') }}" style="background-image: url(&quot;{{ asset('dist/img/img-2.jpg') }}&quot;);">
+                    <div class="item">
+                         <div class="img svgimg"><img class=" loaded loaded" data-lazy-type="image" data-lazy-src="{{ asset('dist/img/cta-2.svg') }}" alt="Propzy" src="{{ asset('dist/img/cta-2.svg') }}"></div>
+                         <h3 class="title">Tìm Mua và Thuê Như Ý</h3>
+                         <p><em>Tìm kiếm theo tiêu chí, đảm bảo an toàn pháp lý</em></p> <a class="btn btn-3 btnModal" data-modal="contactModal">Liên hệ ngay</a>
+                    </div>
+               </div>
+          </div>
+     </section>
      <br>
      <div class="container-fluid w90">
           <div class="row">
                <div class="col-sm-3">
                     <p>
                          <a href="{{ route('home') }}">
-                              <img src="{{ asset('dist/img/logobds.png') }}" style="max-height: 38px" alt="">
+                              <img src="{{ asset('dist/img/logobds.png') }}" style="max-height: 48px" alt="">
                          </a>
                     </p>
-                    <p><i class="fas fa-map-marker-alt"></i> &nbsp;North Link Building, 10 Admiralty Street, 757695 Singapore</p>
+                    <p><i class="fas fa-map-marker-alt"></i> &nbsp;CÔNG TY TNHH THỊNH VƯỢNG GROUP</p>
                     <p><i class="fas fa-phone-square"></i> Hotline &nbsp;<a href="tel:18006268">18006268</a></p>
+                    <p><i class="fas map-marker-alt"></i>187 Đường 154, Phường Tân Phú, Quận 9, TP Hồ Chí Minh</p>
                     <p><i class="fas fa-envelope"></i> Email &nbsp;<a href="mailto:info@eso.vn">info@eso.vn</a>
                     </p>
                </div>
