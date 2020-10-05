@@ -304,6 +304,10 @@
                                         <figure class="col-md-3 border rounded">
                                              <div class="w-100" style="height: 300px; position: relative;">
                                                   <img alt="picture" src="{{ asset($image) }}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+                                                  
+                                                       <a onclick="return confirm('Bạn có chắc chắn muốn xóa ảnh này !')" href="{{asset('admin/post/edit/deleteimg/'.$item->PostId)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a> 
+                                                  
+                                                 
                                              </div>
                                         </figure>
                                         @endif
