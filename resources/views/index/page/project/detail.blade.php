@@ -155,7 +155,7 @@
                                    <h5 class="headifhouse">Căn hộ đang bán</h5>
                                    @if (count($data['project_detail']->post_sale_list) > 0)
                                    @foreach ($data['project_detail']->post_sale_list as $post_sale_item)
-                                   <x-index.post-horizontal :postData="$post_sale_item" />
+                                   <x-post-horizontal :postData="$post_sale_item" />
                                    @endforeach
                                    <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'ban']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
@@ -169,7 +169,7 @@
                                    <h5 class="headifhouse">Căn hộ cho thuê</h5>
                                    @if (count($data['project_detail']->post_rent_list) > 0)
                                    @foreach ($data['project_detail']->post_rent_list as $post_rent_item)
-                                   <x-index.post-horizontal :postData="$post_rent_item" />
+                                   <x-post-horizontal :postData="$post_rent_item" />
                                    @endforeach
                                    <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['project_detail']->City->Slug, $data['project_detail']->District->Slug, $data['project_detail']->Slug, 'thue']) }}" style="color: #1d5f6f">Xem tất cả</a>
                                    @else
@@ -185,8 +185,8 @@
 
 
           <div class="col-md-4">
-               <x-index.search-box />
-               {{-- <x-index.box-right :categoryId="6" /> --}}
+               <x-search-box />
+               {{-- <x-box-right :categoryId="6" /> --}}
           </div>
      </div>
 </div>

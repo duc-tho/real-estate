@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\Category;
 use App\Models\City;
@@ -43,7 +43,7 @@ class SearchBox extends Component
       */
      public function render()
      {
-          return view('components.index.search-box', [
+          return view('components.search-box', [
                'categoryList' => $this->categoryList,
                'cityList' => $this->cityList
           ]);

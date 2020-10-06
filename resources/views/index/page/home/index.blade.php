@@ -46,7 +46,7 @@
                               <div class="row rowm10">
                                    @foreach ($data['post_highlight'] as $post_item)
                                    <div class="col-6 col-sm-4  col-md-3 colm10">
-                                        <x-index.post-vertical :postData="$post_item" :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" />
+                                        <x-post-vertical :postData="$post_item" :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" />
                                    </div>
                                    @endforeach
                               </div>
@@ -68,7 +68,7 @@
                                    <div class="owl-carousel" id="project-city-slides">
                                         @empty(!$data['district_list'])
                                         @foreach ($data['district_list'] as $district)
-                                        <x-index.district :districtData="$district" />
+                                        <x-district :districtData="$district" />
                                         @endforeach
                                         @endempty
                                    </div>
@@ -93,7 +93,7 @@
                                         @empty(!$data['post_sale_list'])
                                         @foreach ($data['post_sale_list'] as $post_sale)
                                         <div class="col-sm-4 col-md-3 colm10">
-                                             <x-index.post-vertical :postData="$post_sale" />
+                                             <x-post-vertical :postData="$post_sale" />
                                         </div>
                                         @endforeach
                                         @endempty
@@ -119,7 +119,7 @@
                                    @empty(!$data['post_rent_list'])
                                    @foreach ($data['post_rent_list'] as $post_rent)
                                    <div class="col-sm-4 col-md-3 colm10">
-                                        <x-index.post-vertical :postData="$post_rent" />
+                                        <x-post-vertical :postData="$post_rent" />
                                    </div>
                                    @endforeach
                                    @endempty
@@ -143,7 +143,7 @@
                                    @empty(!$data['project_list'])
                                    @foreach($data['project_list'] as $project)
                                    <div class="col-sm-6 col-md-6 colm10 itemduan">
-                                        <x-index.project-index :projectData="$project" />
+                                        <x-project-index :projectData="$project" />
                                    </div>
                                    @endforeach
                                    @endempty

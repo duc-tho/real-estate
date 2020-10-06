@@ -27,7 +27,7 @@
                                    @empty(!$data['post_list'])
                                    @foreach ($data['post_list'] as $post_item)
                                    <div class="col-sm-4 col-md-4 colm10">
-                                        <x-index.post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" />
+                                        <x-post-vertical :postStyle="'background: #fff; box-shadow: 0 0 20px rgba(0,0,0,.25);'" :postData="$post_item" />
                                    </div>
                                    @endforeach
                                    @endempty
@@ -36,8 +36,8 @@
 
                          <!--<property-component type="rent" url="https://flex-home.botble.com/ajax/properties"></property-component>-->
                          <div class="padtop30 col-sm-3 col-md-3">
-                              <x-index.search-box />
-                              {{-- <x-index.box-right :type="thue" :category_id="6" /> --}}
+                              <x-search-box />
+                              {{-- <x-box-right :type="thue" :category_id="6" /> --}}
                          </div>
                     </div>
                </div>

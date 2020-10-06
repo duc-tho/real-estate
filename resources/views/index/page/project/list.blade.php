@@ -25,15 +25,15 @@
                               </div>
                               <div class="row rowm10">
                                    <div class="col-sm-12 col-md-12 colm10 itemduan">
-                                        <x-index.project-post-list :projectData="$data['project_detail']" :type="$pageInfo['type']" />
+                                        <x-project-post-list :projectData="$data['project_detail']" :type="$pageInfo['type']" />
                                    </div>
                               </div>
                          </div>
 
                          <!--<property-component type="rent" url="https://asd/ajax/properties"></property-component>-->
                          <div class="padtop30 col-sm-3 col-md-3">
-                              <x-index.search-box />
-                              {{-- <x-index.box-right :category_id="6" /> --}}
+                              <x-search-box />
+                              {{-- <x-box-right :category_id="6" /> --}}
                          </div>
                     </div>
                </div>
@@ -53,7 +53,7 @@
                                    <div class="owl-carousel" id="project-city-slides">
                                         @empty(!$data['district_list'])
                                         @foreach ($data['district_list'] as $district)
-                                        <x-index.district :districtData="$district" :pageInfo="$pageInfo" />
+                                        <x-district :districtData="$district" :pageInfo="$pageInfo" />
                                         @endforeach
                                         @endempty
                                    </div>

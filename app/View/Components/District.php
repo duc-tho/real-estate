@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\District as ModelsDistrict;
 use Illuminate\View\Component;
@@ -39,7 +39,7 @@ class district extends Component
       */
      public function render()
      {
-          return view('components.index.district', [
+          return view('components.district', [
                'data' => $this->data
           ]);
      }

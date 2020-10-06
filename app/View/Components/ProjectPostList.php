@@ -1,25 +1,24 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\Area;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Post;
-use App\Models\Project;
 use App\Models\Street;
 use Illuminate\View\Component;
 
-class ProjectIndex extends Component
+class ProjectPostList extends Component
 {
-     public $data;
+     public $data, $type;
 
      /**
       * Create a new component instance.
       *
       * @return void
       */
-     public function __construct($projectData)
+     public function __construct($projectData, $type)
      {
           // STRAT: get Location
           $projectData->Street = Street::find($projectData->StreetId);
@@ -40,23 +39,16 @@ class ProjectIndex extends Component
                'Type' => 'thuê',
           ])->count();
 
-          $projectData->post_sale = City::join('District', 'City.CityId', '=', 'District.CityId')
-               ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-               ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-               ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
-               ->where('Post.ProjectId', $projectData->ProjectId)
-               ->where(['Type' => 'bán'])
-               ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
-               ->first();
+          $type = $type == "ban" ? "Bán" : "Thuê";
 
-          $projectData->post_rent = City::join('District', 'City.CityId', '=', 'District.CityId')
+          $projectData->post_list = City::join('District', 'City.CityId', '=', 'District.CityId')
                ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
                ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
                ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
                ->where('Post.ProjectId', $projectData->ProjectId)
-               ->where(['Type' => 'thuê'])
+               ->where(['Type' => $type])
                ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
-               ->first();
+               ->paginate(20);
 
           // STRAT: get URL
           $projectData->url = route(
@@ -79,7 +71,7 @@ class ProjectIndex extends Component
       */
      public function render()
      {
-          return view('components.index.project-index', [
+          return view('components.project-post-list', [
                'data' => $this->data
           ]);
      }

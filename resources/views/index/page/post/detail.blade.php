@@ -157,7 +157,7 @@
                          <h5 class="headifhouse">Các BĐS có cùng dự án</h5>
                          @if (count($data['post_detail']->post_list) > 0)
                          @foreach ($data['post_detail']->post_list as $post_item)
-                         <x-index.post-horizontal :postData="$post_item" />
+                         <x-post-horizontal :postData="$post_item" />
                          @endforeach
                          <a class="btn-light btn w-100 mt-2 font-weight-bold" href="{{ route('project', [$data['post_detail']->City->Slug, $data['post_detail']->District->Slug,$data['post_detail']->Project->Slug, $pageInfo['type']]) }}" style="color: #1d5f6f">Xem tất cả</a>
                          @else
@@ -170,8 +170,8 @@
                </main>
           </div>
           <div class="col-md-4">
-               <x-index.search-box />
-               {{-- <x-index.box-right :category_id="6" /> --}}
+               <x-search-box />
+               {{-- <x-box-right :category_id="6" /> --}}
           </div>
      </div>
 </div>

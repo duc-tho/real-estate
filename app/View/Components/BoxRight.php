@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\Category;
 use App\Models\City;
@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 
 class BoxRight extends Component
 {
-
      public $parent_category;
      public $category_slug;
      public $district_list;
@@ -38,6 +37,6 @@ class BoxRight extends Component
       */
      public function render()
      {
-          return view('components.index.box-right');
+          return view('components.box-right');
      }
 }

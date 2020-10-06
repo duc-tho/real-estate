@@ -1,15 +1,16 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\Area;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Post;
+use App\Models\Project;
 use App\Models\Street;
 use Illuminate\View\Component;
 
-class ProjectPostVertical extends Component
+class ProjectIndex extends Component
 {
      public $data;
 
@@ -39,23 +40,23 @@ class ProjectPostVertical extends Component
                'Type' => 'thuê',
           ])->count();
 
-          $projectData->post_sale_list = City::join('District', 'City.CityId', '=', 'District.CityId')
+          $projectData->post_sale = City::join('District', 'City.CityId', '=', 'District.CityId')
                ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
                ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
                ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
                ->where('Post.ProjectId', $projectData->ProjectId)
                ->where(['Type' => 'bán'])
                ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
-               ->paginate(2);
+               ->first();
 
-          $projectData->post_rent_list = City::join('District', 'City.CityId', '=', 'District.CityId')
+          $projectData->post_rent = City::join('District', 'City.CityId', '=', 'District.CityId')
                ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
                ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
                ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
                ->where('Post.ProjectId', $projectData->ProjectId)
                ->where(['Type' => 'thuê'])
                ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
-               ->paginate(2);
+               ->first();
 
           // STRAT: get URL
           $projectData->url = route(
@@ -78,7 +79,7 @@ class ProjectPostVertical extends Component
       */
      public function render()
      {
-          return view('components.index.project-post-vertical', [
+          return view('components.project-index', [
                'data' => $this->data
           ]);
      }

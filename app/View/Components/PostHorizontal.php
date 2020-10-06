@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\index;
+namespace App\View\Components;
 
 use App\Models\Area;
 use App\Models\Category;
@@ -9,7 +9,7 @@ use App\Models\Project;
 use App\Models\Street;
 use Illuminate\View\Component;
 
-class PostProject extends Component
+class PostHorizontal extends Component
 {
      public $data;
 
@@ -18,7 +18,7 @@ class PostProject extends Component
       *
       * @return void
       */
-     public function __construct($postData)
+     public function __construct($postData, $postStyle = '')
      {
           // STRAT: get Location
           if ($postData->ProjectId !== null) {
@@ -36,17 +36,12 @@ class PostProject extends Component
 
           $this->data = $postData;
 
-          // STRAT: get Type
           $category = Category::where('CategoryId', $postData->CategoryId)->first();
           $type = Category::where(
                ['CategoryId' => $category->ParentId],
                ['ParentId' => 0]
           )->first();
 
-          $this->data->category_type = $type;
-          // END: get Type
-
-          // STRAT: get URL
           $this->data->url = route(
                'post',
                [
@@ -58,7 +53,8 @@ class PostProject extends Component
                     $postData->Slug
                ]
           );
-          // END: get URL
+
+          $this->style = $postStyle;
      }
 
      /**
@@ -68,6 +64,6 @@ class PostProject extends Component
       */
      public function render()
      {
-          return view('components.index.post-project', ['data' => $this->data]);
+          return view('components.post-horizontal', ['data' => $this->data]);
      }
 }
