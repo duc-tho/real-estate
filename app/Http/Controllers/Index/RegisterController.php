@@ -49,7 +49,7 @@ class RegisterController extends Controller
           try {
                $user->save();
           } catch (\Throwable $th) {
-               return redirect()->route('registerView')->withInput()->with(['msg' => 'Email đã tồn tại']);
+               return redirect()->route('registerView')->withInput()->with(['msg' => 'Đã có lỗi xảy ra khi đăng ký!']);
           }
 
           return redirect()->route('login')->with(['msg' => 'Đăng Ký Thành Công!']);

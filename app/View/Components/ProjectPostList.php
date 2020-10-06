@@ -41,13 +41,13 @@ class ProjectPostList extends Component
 
           $type = $type == "ban" ? "Bán" : "Thuê";
 
-          $projectData->post_list = City::join('District', 'City.CityId', '=', 'District.CityId')
-               ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-               ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-               ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
-               ->where('Post.ProjectId', $projectData->ProjectId)
+          $projectData->post_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+               ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+               ->join('street', 'street.AreaId', '=', 'area.AreaId')
+               ->join('post', 'post.StreetId', '=', 'street.StreetId')
+               ->where('post.ProjectId', $projectData->ProjectId)
                ->where(['Type' => $type])
-               ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+               ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
                ->paginate(20);
 
           // STRAT: get URL
