@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-     protected $table = 'Project';
+     protected $table = 'project';
      protected $primaryKey = 'ProjectId';
      protected $guarded = [];
      protected $fillable = [

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-     protected $table = 'City';
+     protected $table = 'city';
      protected $primaryKey = 'CityId';
      protected $guarded = [];
      protected $fillable = [

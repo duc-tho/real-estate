@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-     protected $table = 'Post';
+     protected $table = 'post';
      protected $primaryKey = 'PostId';
      protected $guarded = [];
      protected $fillable = [

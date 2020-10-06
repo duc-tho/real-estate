@@ -20,7 +20,7 @@ class RequireAuth
                return redirect()->route('login');
           } else {
                $access = Auth::user()['RoleId'];
-               if ($access !== 2) {
+               if ($access != 2) {
                     abort(403, 'Bạn không có quyền truy cập vào đường dẫn này!');
                }
           }

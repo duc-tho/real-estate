@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-     protected $table = 'Area';
+     protected $table = 'area';
      protected $primaryKey = 'AreaId';
      protected $guarded = [];
 
@@ -16,7 +16,6 @@ class Area extends Model
           'Name',
           'Status',
           'Slug',
-
      ];
 
      public function Street()

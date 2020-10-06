@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Street extends Model
 {
-     protected $table = 'Street';
+     protected $table = 'street';
      protected $primaryKey = 'StreetId';
      protected $guarded = [];
 
