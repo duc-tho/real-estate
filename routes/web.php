@@ -49,10 +49,14 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
           Route::put('/edit/{id}', 'Admin\PostController@putEdit')
                ->name('adminPostPutEdit')
                ->where(['id' => '[0-9]+']);
-
+             
+          Route::put('/edit/deleteimg/{id}', 'Admin\PostController@putEdit')
+               ->name('adminPostPutEdit')
+               ->where(['id' => '[0-9]+']);
           Route::delete('/delete/{id}', 'Admin\PostController@delete')
                ->name('adminPostDelete')
                ->where(['id' => '[0-9]+']);
+          
      });
 
 

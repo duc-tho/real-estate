@@ -160,6 +160,8 @@ class PostController extends Controller
 
           $post = Post::find($id);
 
+
+          //Code Up Ảnh
           $imgObjStr = '';
           $imgObj = json_decode($post->Image, true);
 
@@ -169,11 +171,17 @@ class PostController extends Controller
                     array_push($imgObj[0]['imgList'], $file_url);
                }
           }
-
           $imgObjStr = json_encode($imgObj);
-
           $req->merge(['Image' => $imgObjStr]);
-
+          //
+          if($imgObj != "")
+          {
+               Post::destroy($id);
+               // Post::remove();
+               return back();
+          }
+       
+          //
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {
                $pj = Project::find($req->ProjectId);
@@ -188,7 +196,7 @@ class PostController extends Controller
 
           return redirect()->back();
      }
-
+     
      public function delete($id)
      {
           Post::destroy($id);
