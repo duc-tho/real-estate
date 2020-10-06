@@ -103,7 +103,7 @@ class PostController extends Controller
           $imgObjStr = json_encode($imgObj);
           $post->Image = $imgObjStr;
 
-          $req_category = Category::find($req->CategoryId)->ParentId;
+          $req_category = Category::find($req->CategoryId);
           $post->Type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
 
           $post->save();
