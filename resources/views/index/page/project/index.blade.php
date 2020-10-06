@@ -53,7 +53,7 @@
                                    </div>
                               </div>
                               <div style="position:relative;">
-                                   <div class="owl-carousel" id="project-city-slides">
+                                   <div class="owl-carousel" id="district-slides">
                                         @empty(!$data['district_list'])
                                         @foreach ($data['district_list'] as $district)
                                         <x-district :districtData="$district" :pageInfo="$pageInfo" />
