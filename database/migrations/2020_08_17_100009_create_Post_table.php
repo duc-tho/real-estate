@@ -8,7 +8,7 @@ class CreatePostTable extends Migration
 {
      public function up()
      {
-          Schema::create('Post', function (Blueprint $table) {
+          Schema::create('post', function (Blueprint $table) {
 
                $table->increments('PostId');
                $table->unsignedInteger('StreetId');
@@ -39,6 +39,6 @@ class CreatePostTable extends Migration
 
      public function down()
      {
-          Schema::dropIfExists('Post');
+          Schema::dropIfExists('post');
      }
 }

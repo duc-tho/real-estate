@@ -8,7 +8,7 @@ class CreateStreetTable extends Migration
 {
      public function up()
      {
-          Schema::create('Street', function (Blueprint $table) {
+          Schema::create('street', function (Blueprint $table) {
 
                $table->increments('StreetId');
                $table->unsignedInteger('AreaId');
@@ -17,12 +17,11 @@ class CreateStreetTable extends Migration
                $table->tinyInteger('Status')->default('1');
 
                $table->foreign('AreaId')->references('AreaId')->on('Area')->onDelete('cascade');
-
           });
      }
 
      public function down()
      {
-               Schema::dropIfExists('Street');
+          Schema::dropIfExists('street');
      }
 }

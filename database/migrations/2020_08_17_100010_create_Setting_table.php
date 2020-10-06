@@ -8,18 +8,17 @@ class CreateSettingTable extends Migration
 {
      public function up()
      {
-          Schema::create('Setting', function (Blueprint $table) {
+          Schema::create('setting', function (Blueprint $table) {
 
                $table->increments('SettingId');
                $table->string('Name');
                $table->timestamps();
                $table->text('Value');
-
           });
      }
 
      public function down()
      {
-          Schema::dropIfExists('Setting');
+          Schema::dropIfExists('setting');
      }
 }

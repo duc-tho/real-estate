@@ -26,24 +26,24 @@ class HomeController extends Controller
                     $district->CitySlug = $default_city->Slug;
                }
 
-               $post_sale_list = City::join('District', 'City.CityId', '=', 'District.CityId')
-                    ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-                    ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-                    ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
-                    ->where('City.CityId', $default_city->CityId)
+               $post_sale_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+                    ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+                    ->join('street', 'street.AreaId', '=', 'area.AreaId')
+                    ->join('post', 'post.StreetId', '=', 'street.StreetId')
+                    ->where('city.CityId', $default_city->CityId)
                     ->where(['Type' => 'bán'])
-                    ->where('Post.Status', '1')
-                    ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+                    ->where('post.Status', '1')
+                    ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
                     ->paginate(8);
 
-               $post_rent_list = City::join('District', 'City.CityId', '=', 'District.CityId')
-                    ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-                    ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-                    ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
-                    ->where('City.CityId', $default_city->CityId)
+               $post_rent_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+                    ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+                    ->join('street', 'street.AreaId', '=', 'area.AreaId')
+                    ->join('post', 'post.StreetId', '=', 'street.StreetId')
+                    ->where('city.CityId', $default_city->CityId)
                     ->where(['Type' => 'thuê'])
-                    ->where('Post.Status', '1')
-                    ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+                    ->where('post.Status', '1')
+                    ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
                     ->paginate(8);
           }
 

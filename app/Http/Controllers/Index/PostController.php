@@ -79,25 +79,25 @@ class PostController extends Controller
                ])->first();
           }
 
-          $post_list = City::join('District', 'City.CityId', '=', 'District.CityId')
-               ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-               ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-               ->join('Post', 'Post.StreetId', '=', 'Street.StreetId')
-               ->join('Category', 'Category.CategoryId', '=', 'Post.CategoryId')
+          $post_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+               ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+               ->join('street', 'street.AreaId', '=', 'area.AreaId')
+               ->join('post', 'post.StreetId', '=', 'street.StreetId')
+               ->join('category', 'category.CategoryId', '=', 'post.CategoryId')
                ->where([
-                    ['Category.ParentId', $category_type->CategoryId],
-                    $category_slug !== 'bat-dong-san' ? ['Category.Slug', $category['Slug']] : [DB::raw('null')]
+                    ['category.ParentId', $category_type->CategoryId],
+                    $category_slug !== 'bat-dong-san' ? ['category.Slug', $category['Slug']] : [DB::raw('null')]
                ])
-               ->where(['Post.Status' => '1'])
-               ->where('City.Slug', $city_slug)
-               ->where([$district_slug !== null ? ['District.Slug', $district_slug] : [DB::raw('null')]])
+               ->where(['post.Status' => '1'])
+               ->where('city.Slug', $city_slug)
+               ->where([$district_slug !== null ? ['district.Slug', $district_slug] : [DB::raw('null')]])
                ->where($category_slug !== null ? $condition : [DB::raw('null')])
-               ->select('City.Name as CityName', 'Post.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+               ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
                ->get();
 
-          $city = City::where('City.Slug', $city_slug)->first();
-          $district = $district_slug !== null ? District::where('District.Slug', $district_slug)->first() : null;
-          $area = $area_slug !== null ? Area::where('Area.Slug', $area_slug)->first() : null;
+          $city = City::where('city.Slug', $city_slug)->first();
+          $district = $district_slug !== null ? District::where('district.Slug', $district_slug)->first() : null;
+          $area = $area_slug !== null ? Area::where('area.Slug', $area_slug)->first() : null;
 
           return view('index.index', [
                'title' => 'Danh sách bất động sản tại ' . $city->Name,

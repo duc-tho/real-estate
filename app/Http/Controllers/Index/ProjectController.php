@@ -45,14 +45,14 @@ class ProjectController extends Controller
 
      public function ProjectList($city_slug, $district_slug)
      {
-          $project_list = City::join('District', 'City.CityId', '=', 'District.CityId')
-               ->join('Area', 'District.DistrictId', '=', 'Area.DistrictId')
-               ->join('Street', 'Street.AreaId', '=', 'Area.AreaId')
-               ->join('Project', 'Project.StreetId', '=', 'Street.StreetId')
-               ->where('City.Slug', $city_slug)
-               ->where(['Project.Status' => '1'])
-               ->where([$district_slug !== null ? ['District.Slug', $district_slug] : [DB::raw('null')]])
-               ->select('City.Name as CityName', 'Project.*', 'District.Name as DistrictName', 'Area.Name as AreaName', 'Street.Name as StreetName')
+          $project_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+               ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+               ->join('street', 'street.AreaId', '=', 'area.AreaId')
+               ->join('project', 'project.StreetId', '=', 'street.StreetId')
+               ->where('city.Slug', $city_slug)
+               ->where(['project.Status' => '1'])
+               ->where([$district_slug !== null ? ['district.Slug', $district_slug] : [DB::raw('null')]])
+               ->select('city.Name as CityName', 'project.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
                ->get();
 
           $district_list = [];

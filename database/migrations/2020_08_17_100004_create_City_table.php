@@ -8,7 +8,7 @@ class CreateCityTable extends Migration
 {
      public function up()
      {
-          Schema::create('City', function (Blueprint $table) {
+          Schema::create('city', function (Blueprint $table) {
 
                $table->increments('CityId');
                $table->string('Name');
@@ -19,6 +19,6 @@ class CreateCityTable extends Migration
 
      public function down()
      {
-          Schema::dropIfExists('City');
+          Schema::dropIfExists('city');
      }
 }

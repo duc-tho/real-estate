@@ -8,7 +8,7 @@ class CreateProjectTable extends Migration
 {
      public function up()
      {
-          Schema::create('Project', function (Blueprint $table) {
+          Schema::create('project', function (Blueprint $table) {
 
                $table->increments('ProjectId');
                $table->string('Title');
@@ -27,12 +27,11 @@ class CreateProjectTable extends Migration
                $table->text('Image');
                $table->timestamps();
                $table->tinyInteger('Status')->default('1');
-
           });
      }
 
      public function down()
      {
-          Schema::dropIfExists('Project');
+          Schema::dropIfExists('project');
      }
 }
