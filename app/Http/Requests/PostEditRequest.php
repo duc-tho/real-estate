@@ -26,9 +26,9 @@ class PostEditRequest extends FormRequest
         return [
             'Title'=>'unique:post,Title',
             'Slug'=>'unique:post,Slug',
-            
-            'Title'=>'unique:post,Title,'.$this->segment(4).',PostId',
-            'Slug'=>'unique:post,Slug,'.$this->segment(4).',PostId'
+
+            'Title'=>'unique:post,Title,'.$this->segment(5).',PostId',
+            'Slug'=>'unique:post,Slug,'.$this->segment(5).',PostId',
         ];
     }
 
