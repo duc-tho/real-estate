@@ -173,7 +173,18 @@ class PostController extends Controller
           }
           $imgObjStr = json_encode($imgObj);
           $req->merge(['Image' => $imgObjStr]);
+<<<<<<< HEAD
        
+=======
+          //
+          if ($imgObj != "") {
+               Post::destroy($id);
+               // Post::remove();
+               return back();
+          }
+
+          //
+>>>>>>> 3c4918af85aa3f3a81b52c40d8b643442800157d
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {
                $pj = Project::find($req->ProjectId);
@@ -188,7 +199,7 @@ class PostController extends Controller
 
           return redirect()->back();
      }
-     
+
      public function delete($id)
      {
           Post::destroy($id);

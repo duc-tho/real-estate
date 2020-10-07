@@ -59,19 +59,54 @@
 {{-- <script src="{{ asset('dist/js/index/components.js') }}"></script> --}}
 
 <script>
-     // $("#project-city-slides").owlCarousel(
-     //      {
-     //           margin: 20,
-     //           dots: false,
-     //           nav: true,
-     //           navText: [$(".am-prev"), $(".am-next")],
-     //           loop: false,
-     //           responsive: {
-     //                0: { items: 1 },
-     //                400: { items: 2 },
-     //                800: { items: 3 },
-     //                1e3: { items: 4 },
-     //                1300: { items: 5 }
-     //           }
-     //      })
+     $("#project-city-slides").owlCarousel(
+          {
+               margin: 20,
+               dots: false,
+               nav: true,
+               navText: [$(".am-prev"), $(".am-next")],
+               loop: false,
+               responsive: {
+                    0: { items: 1 }
+               }
+          })
+
+     $("#listcarousel").owlCarousel({
+          margin: 0,
+          loop: !0,
+          autoplay: !0,
+          lazyLoad: !0,
+          dots: !1,
+          nav: !1,
+          center: !0,
+          responsive: {
+               0 : { items: 1 }
+          }
+        })
+        $("#district-slides").owlCarousel({
+          margin: 0,
+          loop: !0,
+          autoplay: !0,
+          lazyLoad: !0,
+          dots: !1,
+          nav: !1,
+          center: !0,
+          responsive: {
+                0: {
+                      items: 1
+                 },
+                 400: {
+                      items: 2
+                 },
+                 800: {
+                      items: 3
+                 },
+                 1e3: {
+                      items: 4
+                 },
+                 1300: {
+                      items: 5
+                 }
+          }
+        })
 </script>

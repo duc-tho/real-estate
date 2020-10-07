@@ -5,7 +5,26 @@
                     <div class="boxsliderdetail">
                          <div class="slidetop">
                               <div class="owl-carousel" id="listcarousel">
-                                   @foreach(json_decode($data['project_detail']->Image ?? '[ {imgList: []} ]', true)[0]['imgList'] as $key => $image)
+                                   @php
+                                   $groupImage = [];
+                                   $group = json_decode($data['project_detail']->Image ?? '[ {imgList: []} ]', true);
+                                   $allImage = json_decode($data['project_detail']->Image ?? '[ {imgList: []} ]', true)[0]['imgList'];
+
+                                   unset($group[0]);
+
+                                   foreach ($group as $item) {
+                                   $groupImage = array_merge($item['imgList'], $groupImage);
+                                   }
+
+                                   foreach ($groupImage as $groupImgItem) {
+                                   foreach ($allImage as $item) {
+                                   $pos = array_search($groupImgItem, $allImage);
+                                   if ($pos > 0 || $pos === 0) unset($allImage[$pos]);
+                                   }
+                                   }
+                                   @endphp
+
+                                   @foreach($allImage as $key => $image)
                                    @if (!empty($image))
                                    <div class="item"><img src="{{ asset($image) }}" class="showfullimg" rel="{{ $key }}" alt=""></div>
                                    @endif
@@ -15,7 +34,7 @@
                          <div class="slidebot">
                               <div style="max-width: 800px; margin: 0 auto;">
                                    <div class="owl-carousel" id="listcarouselthumb" style="height: 100px;">
-                                        @foreach(json_decode($data['project_detail']->Image ?? '[ {imgList: []} ]', true)[0]['imgList'] as $key => $image)
+                                        @foreach($allImage as $key => $image)
                                         @if (!empty($image))
                                         <div class="item cthumb" rel="6"><img src="{{ asset($image) }}" class="showfullimg" rel="{{ $key }}" alt="The Avila Apartments"></div>
                                         @endif
@@ -35,7 +54,7 @@
                               </div>
                          </div>
                     </div>
-
+                    {{-- {{ dd($allImage, $groupImage) }} --}}
                     <div class="container-fluid padtop30 single-post">
                          <section class="general">
                               <div class="row">
