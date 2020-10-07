@@ -43,7 +43,7 @@ class PostController extends Controller
      {
           $projectList = Project::all();
           $cityList = City::all();
-          $categoryList = Category::all();
+          $categoryList = Category::where('ParentId',0)->get();
 
           foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
 
@@ -103,7 +103,7 @@ class PostController extends Controller
           $imgObjStr = json_encode($imgObj);
           $post->Image = $imgObjStr;
 
-          $req_category = Category::find($req->CategoryId)->ParentId;
+          $req_category = Category::find($req->CategoryId);
           $post->Type = Category::where(['CategoryId' => $req_category->ParentId], ['ParentId' => 0])->first()->Name;
 
           $post->save();
@@ -173,15 +173,7 @@ class PostController extends Controller
           }
           $imgObjStr = json_encode($imgObj);
           $req->merge(['Image' => $imgObjStr]);
-          //
-          if($imgObj != "")
-          {
-               Post::destroy($id);
-               // Post::remove();
-               return back();
-          }
        
-          //
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {
                $pj = Project::find($req->ProjectId);
