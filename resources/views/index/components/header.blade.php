@@ -10,7 +10,7 @@
                                    <a href="https://youtube.com" title="Youtube" class="fab fa-youtube"></a>
                               </div>
                               <span class="line"></span>
-                              <a href="mailto:contact@flex-home.com">contact@eso.vn</a>
+                              <a href="mailto:contact@flex-home.com">infot@thinhvuonggroup.com.vn</a>
                          </div>
                          <div class="topbar-right">
                               <div class="padtop10 mb-2 language">
@@ -53,19 +53,64 @@
                <div class="col-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                          <a class="navbar-brand" href="{{ route('home') }}">
-                              <img src="{{ asset('dist/img/logobds.png') }}" class="logo" height="40" alt="">
+                              <img src="{{ asset('dist/img/thinhvuonggrouplogo.png') }}" class="logo" height="60" alt="">
                          </a>
                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="fas fa-bars"></span>
                          </button>
                          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                               <ul class="navbar-nav justify-content-end">
+	                              <li class="nav-item hassub">
+                                        <a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Mua
+                                        </a>
+                                        <ul>
+	                                        <li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Nhà riêng
+                                        		</a>
+											</li>
+											<li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Căn hộ
+                                        		</a>
+											</li>
+											<li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Đất nền
+                                        		</a>
+											</li>
+											<li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Đất nền dự án
+                                        		</a>
+											</li>
+                                        </ul>
+                                   </li>
+                                   <li class="nav-item hassub">
+                                        <a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Thuê
+                                        </a>
+                                        <ul>
+	                                        <li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Nhà riêng
+                                        		</a>
+											</li>
+											<li class="nav-item ">
+												<a class="nav-link " href="{{ route('project') }}" target="_self">
+                                             Căn hộ
+                                        		</a>
+											</li>
+											
+                                        </ul>
+                                   </li>
                                    <li class="nav-item ">
                                         <a class="nav-link " href="{{ route('project') }}" target="_self">
                                              Dự Án
                                         </a>
                                    </li>
-                                   <li class="nav-item ">
+                                   <!--<li class="nav-item ">
                                         <a class="nav-link " href="{{ route('post',['type'=>'ban']) }}" target="_self">
                                              BDS Bán
                                         </a>
@@ -73,6 +118,11 @@
                                    <li class="nav-item ">
                                         <a class="nav-link " href="{{ route('post',['type'=>'thue']) }}" target="_self">
                                              BDS Cho Thuê
+                                        </a>
+                                   </li>-->
+                                   <li class="nav-item ">
+                                        <a class="nav-link " href="#" target="_self">
+                                             Tuyển dụng
                                         </a>
                                    </li>
                                    <li class="nav-item ">

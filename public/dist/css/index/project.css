@@ -41,9 +41,9 @@
 
 .hourseitem {
      padding-top: 10px;
-     padding-bottom: 10px;
+     
 }
-
+hr {margin-bottom: 0.5rem;}
 .hourseitem h2 {
      font-size: 1.3rem;
 }

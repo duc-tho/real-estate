@@ -1,4 +1,4 @@
-<footer class="mt-4">
+
      <section class="sec-cta group-ef loaded" style="padding:0 15px;">
           <div class="row grid-space-0">
                <div class="col-6 efch-3 ef-img-r">
@@ -17,45 +17,50 @@
                </div>
           </div>
      </section>
-     <br>
+<footer class="">
      <div class="container-fluid w90">
           <div class="row">
-               <div class="col-sm-3">
+               <div class="col-sm-4">
                     <p>
                          <a href="{{ route('home') }}">
-                              <img src="{{ asset('dist/img/logobds.png') }}" style="max-height: 48px" alt="">
+                              <img src="{{ asset('dist/img/thinhvuonggrouplogo.png') }}" style="max-height: 88px" alt="">
                          </a>
                     </p>
-                    <p><i class="fas fa-map-marker-alt"></i> &nbsp;CÔNG TY TNHH THỊNH VƯỢNG GROUP</p>
+                    <p><i class="fas fa-building"></i>CÔNG TY TNHH THỊNH VƯỢNG GROUP</p>
                     <p><i class="fas fa-phone-square"></i> Hotline &nbsp;<a href="tel:18006268">18006268</a></p>
-                    <p><i class="fas map-marker-alt"></i>187 Đường 154, Phường Tân Phú, Quận 9, TP Hồ Chí Minh</p>
-                    <p><i class="fas fa-envelope"></i> Email &nbsp;<a href="mailto:info@eso.vn">info@eso.vn</a>
+                    <p><i class="fas fa-map-marker-alt"></i>187 Đường 154, Phường Tân Phú, Quận 9, TP Hồ Chí Minh</p>
+                    <p><i class="fas fa-envelope"></i> Email &nbsp;<a href="mailto:infot@thinhvuonggroup.com.vn">infot@thinhvuonggroup.com.vn</a>
                     </p>
                </div>
-               <div class="col-sm-9 padtop10">
+               <div class="col-sm-8 padtop10">
                     <div class="row">
                          <div class="col-sm-4">
                               <div class="menufooter">
-                                   <h4>About</h4>
+                                   <h4>Căn hộ cao cấp HCM</h4>
                                    <ul>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/about-us" target="_self">
-                                                  <span>About us</span>
+                                                  <span>Căn hộ Quận 1</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/contact" target="_self">
-                                                  <span>Contact us</span>
+                                                  <span>Căn hộ Quận 2</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/careers" target="_self">
-                                                  <span>Careers</span>
+                                                  <span>Căn hộ Quận 3</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/terms-conditions" target="_self">
-                                                  <span>Terms &amp; Conditions</span>
+                                                  <span>Căn hộ Quận 4</span>
+                                             </a>
+                                        </li>
+                                        <li>
+                                             <a href="https://bdsnew.eso.vn/terms-conditions" target="_self">
+                                                  <span>Căn hộ Quận 7</span>
                                              </a>
                                         </li>
                                    </ul>
@@ -64,26 +69,36 @@
                          </div>
                          <div class="col-sm-4">
                               <div class="menufooter">
-                                   <h4>More information</h4>
+                                   <h4>Dịch vụ của Thịnh Vượng</h4>
                                    <ul>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/projects" target="_self">
-                                                  <span>All projects</span>
+                                                  <span>Gửi BĐS Miễn Phí</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/properties" target="_self">
-                                                  <span>All properties</span>
+                                                  <span>Tìm mua nhà đất</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/properties?type=sale" target="_self">
-                                                  <span>Houses for sale</span>
+                                                  <span>Tư vấn đầu tư</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
-                                                  <span>Houses for rent</span>
+                                                  <span>Thẩm định giá BĐS</span>
+                                             </a>
+                                        </li>
+                                        <li>
+                                             <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
+                                                  <span>Pháp lý BĐS</span>
+                                             </a>
+                                        </li>
+                                        <li>
+                                             <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
+                                                  <span>Thủ tục vay mua nhà</span>
                                              </a>
                                         </li>
                                    </ul>
@@ -92,26 +107,26 @@
                          </div>
                          <div class="col-sm-4">
                               <div class="menufooter">
-                                   <h4>News</h4>
+                                   <h4>Danh mục BĐS</h4>
                                    <ul>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/news" target="_self">
-                                                  <span>Latest news</span>
+                                                  <span>Cho thuê Căn hộ</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/building-materials" target="_self">
-                                                  <span>Building materials</span>
+                                                  <span>Bán Căn hộ</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/house-architecture" target="_self">
-                                                  <span>House architecture</span>
+                                                  <span>Cho thuê nhà riêng</span>
                                              </a>
                                         </li>
                                         <li>
                                              <a href="https://bdsnew.eso.vn/house-design" target="_self">
-                                                  <span>House design</span>
+                                                  <span>Bán nhà riêng</span>
                                              </a>
                                         </li>
                                    </ul>
@@ -133,7 +148,7 @@
           <div class="copyright">
                <div class="col-sm-12">
                     <p class="text-center">
-                         © 2020 Công ty TNHH Công Nghệ ESO
+                         © 2020 CÔNG TY TNHH THỊNH VƯỢNG GROUP
                     </p>
                </div>
           </div>

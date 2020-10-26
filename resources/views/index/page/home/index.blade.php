@@ -1,4 +1,7 @@
 <div class="home_banner" style="background-image: url({{ asset('dist/img/banner.jpg') }})">
+     <div class="texttophome"><h2>Tìm kiếm BẤT ĐỘNG SẢN</h2>
+	     <h3>Chỉ với 1 click chuột</h3>
+	</div>
      <div class="topsearch">
           <form action="{{ route('project', ['thanh-pho-ho-chi-minh']) }}" method="GET" id="frmhomesearch">
                <input id="baseUrl" type="hidden" data-base-url="{{ URL::to('/') }}">
