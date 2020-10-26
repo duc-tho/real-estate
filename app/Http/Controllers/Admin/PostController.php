@@ -43,7 +43,7 @@ class PostController extends Controller
      {
           $projectList = Project::all();
           $cityList = City::all();
-          $categoryList = Category::where('ParentId',0)->get();
+          $categoryList = Category::where('ParentId', 0)->get();
 
           foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
 
@@ -172,7 +172,11 @@ class PostController extends Controller
                }
           }
           $imgObjStr = json_encode($imgObj);
+<<<<<<< HEAD
           $req->merge(['Image' => $imgObjStr]);     
+=======
+          $req->merge(['Image' => $imgObjStr]);
+>>>>>>> origin
 
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {

@@ -290,7 +290,7 @@
                               </div>
                               <div class="card-body">
                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
+                                        <div id="image-group-area" class="custom-file" style=" display: flex; flex-wrap: inherit; height: fit-content;">
                                              <input type="hidden" name="ImageGroup" class="custom-file-input" id="ImageGroup">
                                              <button type="button" class="btn ml-2 btn-info my-auto" id="ImageGroupAddBtn" style="height: max-content;"><i class="far fa-plus-square"></i></button>
                                         </div>
@@ -338,37 +338,39 @@
      /* --- Image Group, Select --- */
 
      let groupList = JSON.parse(`{!! $data['project_info']->Image ?? "[]" !!}`);
+     let imageGroupArea = $("#image-group-area");
 
+     let resetImageGroupArea = () => {
+          let deleteItem = imageGroupArea.find("div.col-md-3");
 
-     let loadGroup = () => {
-          groupList.shift();
-
-          groupList.forEach(item => {
-               let html = `<div class="col-md-3">
-                    <input data="${item.id}" type="text" class="form-control my-2" placeholder="Tên Nhóm" value="${item.name}">
-               </div>`;
-
-               let elemt = $(html);
-
-               elemt.on('input', function () {
-                    let id = this.children[0].attributes.data.value;
-
-                    groupList.forEach(item => {
-                         if (item.id === id) {
-                              item.name = this.children[0].value;
-                         }
-                    });
-
-                    loadGroupListToSelect();
-
-                    $('#ImageGroup').val(JSON.stringify(groupList));
-               });
-
-               elemt.insertBefore('#ImageGroupAddBtn');
+          deleteItem.each(function (index, item) {
+               $(item).remove();
           });
      }
 
-     $("#ImageGroupAddBtn").click(() => {
+     let loadGroup = () => {
+          if (groupList.length) {
+               if (!groupList[0].id.startsWith('GroupItem-')) groupList.shift();
+
+               groupList.forEach(item => {
+                    let html = `<div class="col-md-3">
+                         <div class="input-group">
+                              <input data="${item.id}" type="text" class="form-control my-2" placeholder="Tên Nhóm" value="${item.name}">
+                              <div class="input-group-append my-2">
+                                   <a href="javascript:void(0)" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                              </div>
+                         </div>
+                    </div>`;
+
+                    let elemt = $(html);
+                    setEventForImageGroup(elemt);
+               });
+          } else {
+               loadGroupListToSelect();
+          }
+     }
+
+     $("#ImageGroupAddBtn").click(function () {
           if ($('input[data^="GroupItem-"]').length)
                if (!$('input[data^="GroupItem-"]')[$('input[data^="GroupItem-"]').length - 1].value)
                     return alert('Vui lòng điền tên nhóm trước khi tạo thêm nhóm mới!');
@@ -380,34 +382,65 @@
           });
 
           let html = `<div class="col-md-3">
-               <input data="GroupItem-${++$('input[data^="GroupItem"]').length}" type="text" class="form-control my-2" placeholder="Tên Nhóm">
-          </div>`;
+                    <div class="input-group">
+                         <input data="GroupItem-${++$('input[data^="GroupItem"]').length}" type="text" class="form-control my-2" placeholder="Tên Nhóm">
+                         <div class="input-group-append my-2">
+                              <a href="javascript:void(0)" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                         </div>
+                    </div>
+               </div>`;
 
           let elemt = $(html);
+          setEventForImageGroup(elemt);
+     });
+
+     function setEventForImageGroup(elemt) {
+          // Element is Html like "elemt = $(html)"
+
+          elemt.find("a").on("click", function () {
+               let id = this.parentElement.parentElement.children[0].attributes.data.value;
+
+               groupList = groupList.filter(i => i.id != id);
+
+               groupList.forEach((item, index) => {
+                    item.id = `GroupItem-${++index}`;
+               });
+
+               resetImageGroupArea();
+               loadGroup();
+               loadGroupListToSelect();
+               saveImageGroup();
+          })
 
           elemt.on('input', function () {
-               let id = this.children[0].attributes.data.value;
+               let id = this.children[0].children[0].attributes.data.value;
 
                groupList.forEach(item => {
                     if (item.id === id) {
-                         item.name = this.children[0].value;
+                         item.name = this.children[0].children[0].value;
                     }
                });
 
                loadGroupListToSelect();
-
-               $('#ImageGroup').val(JSON.stringify(groupList));
+               saveImageGroup();
           });
 
           elemt.insertBefore('#ImageGroupAddBtn');
-     });
+          elemt.find("input").focus();
+     }
+
+     // Chuyen doi data groupList thanh JSON r add vao Input de gui ve server
+     function saveImageGroup() {
+          $('#ImageGroup').val(JSON.stringify(groupList));
+     }
+
 
      let loadGroupListToSelect = () => {
           let allSelectBox = $('select[data^="GroupSelect"]');
 
           allSelectBox.each((key, selectBox) => {
                let groupHtml = [
-                    '<option selected>-- Chọn Nhóm --</option>',
+                    '<option selected>-- Slide --</option>',
                     ...groupList.map(group => {
                          return (group.name ? `<option data="${group.id}" ${group.imgList.indexOf(selectBox.attributes['img-url'].value) !== -1 ? 'selected' : ''}>${group.name}</option>` : '')
                     })
@@ -439,34 +472,101 @@
 
      /* --- Utility --- */
 
+     let listUtility = JSON.parse($('#Utility').val());
+     let utilityArea = $('#UtilityList');
+
+     let resetUtilityArea = () => {
+          let deleteItem = utilityArea.find("div.col-md-3");
+
+          deleteItem.each(function (index, item) {
+               $(item).remove();
+          });
+     }
+
      $("#UtilityAddBtn").click(() => {
+
+          if ($('#UtilityList>div').length) {
+               let abort = false;
+
+               $('#UtilityList>div').each(function(index, item) {
+                    if (!$(item).find("input").val()){
+                         alert('Vui lòng điền tiện ích còn trống trước khi tạo thêm tiện ích mới!');
+                         abort = true;
+                         return false;
+                    }
+               });
+
+               if (abort) return;
+          }
+
+
           let html = `<div class="col-md-3">
-               <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()">
+               <div class="input-group">
+                    <input data="UtilityItem" type="text" class="form-control my-2">
+                    <div class="input-group-append my-2">
+                         <a href="javascript:void(0)" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                    </div>
+               </div>
           </div>`;
-          $(html).insertBefore('#UtilityAddBtn');
+
+          elemt = $(html);
+          setEventForUtilityItem(elemt);
      });
 
-     if ($('#Utility').val()) showUtilityItem($('#Utility').val());
+     if (listUtility) showUtilityItem(listUtility);
 
      function showUtilityItem(list) {
           if (list) {
-               JSON.parse(list).forEach(item => {
+               list.forEach(item => {
                     let html = `<div class="col-md-3">
-                         <input data="UtilityItem" type="text" class="form-control my-2" oninput="UtilityItemChange()" value="${item}">
+                         <div class="input-group">
+                              <input data="UtilityItem" type="text" class="form-control my-2" value="${item}">
+                              <div class="input-group-append my-2">
+                                   <a href="javascript:void(0)" class="btn btn-danger"><i class="fas fa-times"></i></a>
+                              </div>
+                         </div>
                     </div>`;
-                    $(html).insertBefore('#UtilityAddBtn');
+
+                    elemt = $(html);
+                    setEventForUtilityItem(elemt);
+
                })
           }
      }
 
-     function UtilityItemChange() {
-          let listItem = [];
+     function setEventForUtilityItem(elemt) {
+          elemt.on("input", function () {
+               let value = this.children[0].children[0].value;
+               let position = $(this).index();
 
-          document.querySelectorAll('input[data="UtilityItem"]').forEach(item => {
-               if (item.value) listItem.push(item.value);
+               if (position != -1) listUtility[position] = value ? value : "";
+
+               SaveUtility();
           });
 
-          $('#Utility').val(JSON.stringify(listItem));
+          elemt.find("a").on("click", function() {
+               // Xóa Theo Value
+               // let value = this.parentElement.parentElement.children[0].value;
+
+               // Xóa theo vị trí
+               let listItem = Array.from(document.getElementById("UtilityList").children);
+               let position = listItem.indexOf(this.parentElement.parentElement.parentElement);
+
+               // Loại bỏ item có vị trí bằng với vị trí đã ấn
+               listUtility = listUtility.filter((item, index) => index != position);
+
+               resetUtilityArea();
+               showUtilityItem(listUtility);
+               SaveUtility();
+
+          });
+
+          elemt.insertBefore('#UtilityAddBtn');
+          elemt.focus();
+     }
+
+     function SaveUtility() {
+          $('#Utility').val(JSON.stringify(listUtility));
      }
 
      /* --- CKEditor --- */
@@ -515,7 +615,7 @@
                               <img alt="picture" src="{!! asset('public') !!}/${imgURL}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
                          </div>
                          <select img-url="${imgURL}" data="GroupSelect" class="form-control mt-1">
-                              <option selected>-- Chọn Nhóm --</option>
+                              <option selected>-- Slide --</option>
                          </select>
                     </figure>`;
                });
