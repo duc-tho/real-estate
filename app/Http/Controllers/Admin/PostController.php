@@ -172,11 +172,9 @@ class PostController extends Controller
                }
           }
           $imgObjStr = json_encode($imgObj);
-<<<<<<< HEAD
+
           $req->merge(['Image' => $imgObjStr]);     
-=======
-          $req->merge(['Image' => $imgObjStr]);
->>>>>>> origin
+
 
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
           else {

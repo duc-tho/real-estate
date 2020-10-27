@@ -38,8 +38,6 @@ class DistrictController extends Controller
           $district->Status = $request->status;
           $district->Slug = str::slug($request->slug);
           $district->CityId = $request->city;
-          
-
           $image = [];
           $imgObjStr = '';
           $imgObj = [

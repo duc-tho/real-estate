@@ -43,7 +43,6 @@
                     <div class="tab-pane active container" id="basicInfo">
 
                          <div class="form-group">
-
                               <label class="col-sm-2k" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                               <select class="form-control" name="Status" id="Status">
                                    <option value="1" {{ ($data['project_info']->Status ?? '') === 1 ? 'selected' : '' }}>

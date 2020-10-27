@@ -16,6 +16,18 @@
                                              </div>
                                              <div class="card-body">
                                                   <div class="form-group">
+                                                       <label class="col-sm-2k" for="Status" style="padding-top: 7px;">Trạng Thái</label>
+                                                       <select class="form-control" name="status" id="status">
+                                                            <option value="1">
+                                                                 Đang hoạt động</option>
+                                                            <option value="-1">
+                                                                 Không hoạt động</option>
+                                                            <option value="0">
+                                                                 Chờ duyệt</option>
+                                                       </select>
+                                                       <div class="col-lg-12 messages text-danger"></div>
+                                                  </div>
+                                                  <div class="form-group">
                                                        <label>Tên Quận/Huyện</label>
                                                        <input id="name" required type="text" name="name" class="form-control ">
                                                   </div>
