@@ -37,7 +37,6 @@ class AreaController extends Controller
      {
           $area = new Area();
           $area->Name = $request->name;
-          $area->Status = $request->status;
           $area->Slug = str::slug($request->slug);
           $area->DistrictId = $request->district;
           $area->save();
@@ -64,7 +63,6 @@ class AreaController extends Controller
      {
           $area = new Area();
           $arr['Name'] = $request->name;
-          $arr['Status'] = $request->status;
           $arr['DistrictId'] = $request->dis;
           $arr['Slug'] = str::slug($request->slug);
           $area::where('AreaId', $id)->update($arr);

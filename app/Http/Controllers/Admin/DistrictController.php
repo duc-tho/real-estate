@@ -35,7 +35,6 @@ class DistrictController extends Controller
      {
           $district = new District();
           $district->Name = $request->name;
-          $district->Status = $request->status;
           $district->Slug = str::slug($request->slug);
           $district->CityId = $request->city;
           $image = [];
@@ -76,7 +75,6 @@ class DistrictController extends Controller
      {
           $district = new District();
           $arr['Name'] = $request->name;
-          $arr['Status'] = $request->status;
           $arr['CityId'] = $request->city;
           $arr['Slug'] = str::slug($request->slug);
 

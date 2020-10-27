@@ -32,14 +32,6 @@
 
                                                        </select>
                                                   </div>
-                                                  {{-- <div class="form-group">
-                                                       <label>Trạng thái</label>
-                                                       <select required name="status" class="form-control">
-                                                            <option value="1" @if($district->Status==1) checked @endif>1 (Hiện cho người dùng xem)</option>
-                                                            <option value="-1" @if($district->Status==-1) checked @endif>-1 (Không hiện)</option>
-                                                            <option value="0" @if($district->Status==0) checked @endif>0 (Chờ duyệt)</option>
-                                                       </select>
-                                                  </div> --}}
                                                   <div class="tab-pane container" id="imageInfo">
                                                        <div class="card text-center mt-4">
                                                             <div class="card-header bg-info">

@@ -15,7 +15,7 @@
                                                   <a href="{{route('adminDistrict')}}" class="btn btn-danger"><i class="fas fa-window-close"></i> Hủy bỏ</a>
                                              </div>
                                              <div class="card-body">
-                                                  <div class="form-group">
+                                                  {{-- <div class="form-group">
                                                        <label class="col-sm-2k" for="Status" style="padding-top: 7px;">Trạng Thái</label>
                                                        <select class="form-control" name="status" id="status">
                                                             <option value="1">
@@ -26,7 +26,7 @@
                                                                  Chờ duyệt</option>
                                                        </select>
                                                        <div class="col-lg-12 messages text-danger"></div>
-                                                  </div>
+                                                  </div> --}}
                                                   <div class="form-group">
                                                        <label>Tên Quận/Huyện</label>
                                                        <input id="name" required type="text" name="name" class="form-control ">

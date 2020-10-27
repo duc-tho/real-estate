@@ -32,7 +32,6 @@ class CityController extends Controller
      {
           $city = new City();
           $city->Name = $request->name;
-          $city->Status = $request->status;
           $city->Slug = str::slug($request->slug);
           $city->save();
           return back();
@@ -51,7 +50,6 @@ class CityController extends Controller
      {
           $city = new City();
           $arr['Name'] = $request->name;
-          $arr['Status'] = $request->status;
           $arr['Slug'] = str::slug($request->slug);
           $city::where('CityId', $id)->update($arr);
           return redirect('admin/city');

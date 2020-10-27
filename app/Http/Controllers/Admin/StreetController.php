@@ -46,7 +46,6 @@ class StreetController extends Controller
      {
           $street = new Street();
           $street->Name = $req->Name;
-          $street->Status = $req->Status;
           $street->Slug = str::slug($req->Slug);
           $street->AreaId = $req->AreaId;
           $street->save();
@@ -87,7 +86,6 @@ class StreetController extends Controller
           $street = Street::find($id);
           $street->AreaId = $req->AreaId;
           $street->Name = $req->Name;
-          $street->Status = $req->Status;
           $street->Slug = $req->Slug;
           $street->save();
           return redirect()->route("adminStreet");
