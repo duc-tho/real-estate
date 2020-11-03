@@ -24,6 +24,28 @@ class HomeController extends Controller
 
                foreach ($district_list as $district) {
                     $district->CitySlug = $default_city->Slug;
+                    $district->post_sale_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+                         ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+                         ->join('street', 'street.AreaId', '=', 'area.AreaId')
+                         ->join('post', 'post.StreetId', '=', 'street.StreetId')
+                         ->where('city.CityId', $default_city->CityId)
+                         ->where(['Type' => 'bán'])
+                         ->where('district.DistrictId', $district->DistrictId)
+                         ->where('post.Status', '1')
+                         ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
+                         ->paginate(24);
+
+
+                    $district->post_rent_list = City::join('district', 'city.CityId', '=', 'district.CityId')
+                         ->join('area', 'district.DistrictId', '=', 'area.DistrictId')
+                         ->join('street', 'street.AreaId', '=', 'area.AreaId')
+                         ->join('post', 'post.StreetId', '=', 'street.StreetId')
+                         ->where('city.CityId', $default_city->CityId)
+                         ->where(['Type' => 'thuê'])
+                         ->where('district.DistrictId', $district->DistrictId)
+                         ->where('post.Status', '1')
+                         ->select('city.Name as CityName', 'post.*', 'district.Name as DistrictName', 'area.Name as AreaName', 'street.Name as StreetName')
+                         ->paginate(24);
                }
 
                $post_sale_list = City::join('district', 'city.CityId', '=', 'district.CityId')

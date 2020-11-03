@@ -1,7 +1,8 @@
 <div class="home_banner" style="background-image: url({{ asset('dist/img/banner.jpg') }})">
-     <div class="texttophome"><h2>Tìm kiếm BẤT ĐỘNG SẢN</h2>
-	     <h3>Chỉ với 1 click chuột</h3>
-	</div>
+     <div class="texttophome">
+          <h2>Tìm kiếm BẤT ĐỘNG SẢN</h2>
+          <h3>Chỉ với 1 click chuột</h3>
+     </div>
      <div class="topsearch">
           <form action="{{ route('project', ['thanh-pho-ho-chi-minh']) }}" method="GET" id="frmhomesearch">
                <input id="baseUrl" type="hidden" data-base-url="{{ URL::to('/') }}">
@@ -93,15 +94,39 @@
                                         </div>
                                    </div>
                                    <div class="row rowm10">
-                                        @empty(!$data['post_sale_list'])
+                                        {{-- @empty(!$data['post_sale_list'])
                                         @foreach ($data['post_sale_list'] as $post_sale)
                                         <div class="col-sm-4 col-md-3 colm10">
                                              <x-post-vertical :postData="$post_sale" />
                                         </div>
                                         @endforeach
-                                        @endempty
+                                        @endempty --}}
+                                        <ul id="tablist" class="nav nav-tabs w-100" role="tablist">
+                                             @empty(!$data['district_list'])
+                                             @foreach ($data['district_list'] as $key => $district)
+                                             @if(count($district->post_sale_list) > 0)
+                                             <li role="presentation"><a class="{{ $key == 0 ? 'active' : '' }}" href="#{{ $district->Slug }}" aria-controls="{{ $district->Slug }}" role="tab" data-toggle="tab">{{ $district->Name }}</a></li>
+                                             @endif
+                                             @endforeach
+                                             @endempty
+                                        </ul>
+
+                                        <div class="tab-content w-100" style="">
+                                             @empty(!$data['district_list'])
+                                             @foreach ($data['district_list'] as $key => $district)
+                                             @if(count($district->post_sale_list) > 0)
+                                             <div role="tabpanel" class="tab-pane  px-2 {{ $key == 0 ? "active" : "" }}" id="{{ $district->Slug }}">
+                                                  <div id="owl-product" class="owl-post-item owl-carousel">
+                                                       @foreach ($district->post_sale_list as $post_sale)
+                                                       <x-post-vertical :postData="$post_sale" />
+                                                       @endforeach
+                                                  </div>
+                                             </div>
+                                             @endif
+                                             @endforeach
+                                             @endempty
+                                        </div>
                                    </div>
-                                   <!--<property-component type="sale" url="http://thinhvuonggroup.com.vnajax/properties"></property-component>-->
                               </div>
                          </div>
                     </div>
@@ -119,13 +144,31 @@
                                    </div>
                               </div>
                               <div class="row rowm10">
-                                   @empty(!$data['post_rent_list'])
-                                   @foreach ($data['post_rent_list'] as $post_rent)
-                                   <div class="col-sm-4 col-md-3 colm10">
-                                        <x-post-vertical :postData="$post_rent" />
+                                   <ul id="tablist" class="nav nav-tabs w-100" role="tablist">
+                                        @empty(!$data['district_list'])
+                                        @foreach ($data['district_list'] as $key => $district)
+                                        @if(count($district->post_rent_list) > 0)
+                                        <li role="presentation"><a class="{{ $key == 0 ? 'active' : '' }}" href="#{{ $district->Slug }}" aria-controls="{{ $district->Slug }}" role="tab" data-toggle="tab">{{ $district->Name }}</a></li>
+                                        @endif
+                                        @endforeach
+                                        @endempty
+                                   </ul>
+
+                                   <div class="tab-content w-100" style="">
+                                        @empty(!$data['district_list'])
+                                        @foreach ($data['district_list'] as $key => $district)
+                                        @if(count($district->post_rent_list) > 0)
+                                        <div role="tabpanel" class="tab-pane  px-2 {{ $key == 0 ? "active" : "" }}" id="{{ $district->Slug }}">
+                                             <div id="owl-product" class="owl-post-item owl-carousel">
+                                                  @foreach ($district->post_rent_list as $post_rent)
+                                                  <x-post-vertical :postData="$post_rent" />
+                                                  @endforeach
+                                             </div>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                        @endempty
                                    </div>
-                                   @endforeach
-                                   @endempty
                               </div>
                          </div>
                     </div>
@@ -455,5 +498,4 @@
 
           form.action = url;
      }
-
 </script>

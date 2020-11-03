@@ -109,4 +109,23 @@
                  }
           }
         })
+
+        $(document).ready(function() {
+
+          $(".owl-post-item").owlCarousel({
+               items:4,
+               loop:false,
+          });
+
+
+          $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+               e.target // newly activated tab
+               e.relatedTarget // previous active tab
+               $(".owl-post-item").trigger('refresh.owl.post.item');
+          });
+   });
+
+   $(document).ready(function() {
+          $('#owl-product > .owl-stage-outer').each((i , item) => { item.classList.add('carousel-product-fix'); });
+     })
 </script>
