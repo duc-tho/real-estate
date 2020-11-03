@@ -471,7 +471,7 @@
 
      /* --- Utility --- */
 
-     let listUtility = JSON.parse($('#Utility').val());
+     let listUtility = JSON.parse($('#Utility').val() || "[]");
      let utilityArea = $('#UtilityList');
 
      let resetUtilityArea = () => {
