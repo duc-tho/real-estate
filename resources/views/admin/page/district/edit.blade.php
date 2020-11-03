@@ -6,7 +6,7 @@
                     {{-- <div class="panel-heading" >Thêm Phường/Xã</div> --}}
                     <div class="panel-body">
                          @include('errors.note')
-                         <form method="post" type="hidden">
+                         <form method="post" type="hidden" enctype="multipart/form-data">
                               <div class="row" style="margin-bottom:40px">
                                    <div class="col-sm-12">
                                         <div class="card">
@@ -40,7 +40,7 @@
                                                             <div class="card-body">
                                                                  <div class="input-group mb-3">
                                                                       <div class="custom-file">
-                                                                           <input multiple type="file" name="Image[]" class="custom-file-input" id="inputImageFile">
+                                                                           <input multiple type="file" name="Image" class="custom-file-input" id="inputImageFile">
                                                                            <label class="custom-file-label" for="inputImageFile" style="white-space: nowrap; overflow: hidden;">Bấm vào để chọn ảnh</label>
                                                                       </div>
                                                                  </div>
@@ -149,21 +149,14 @@
           }
      };
 
-     let loadImage = (imgJsonStr) => {
-          let imgList = JSON.parse(imgJsonStr).slice(0, 1);
+     let loadImage = (img = '') => {
           let html = '';
 
-          if (!imgList) return;
-
-          imgList.forEach(item => {
-               item.imgList.forEach(imgURL => {
-                    html += `<figure class="col-md-3">
-                         <div class="w-100 border rounded" style="height: 200px; position: relative;">
-                              <img alt="picture" src="/${imgURL}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
-                         </div>
-                    </figure>`;
-               });
-          });
+          html += `<figure class="col-md-3">
+               <div class="w-100 border rounded" style="height: 200px; position: relative;">
+                    <img alt="picture" src="/${img}" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; max-height: 100%; max-width: 100%" />
+               </div>
+          </figure>`;
 
           let wrap = `<div class="card text-center mt-4 col-md-12 px-0">
                <div class="card-header bg-secondary col-md-12">
@@ -177,8 +170,7 @@
           </div>`;
 
           $('#imageList').append(wrap);
-
      }
 
-     loadImage('{!! $district->Image ?? "[]" !!}');
+     loadImage('{!! $district->Image ?? "" !!}');
 </script>
