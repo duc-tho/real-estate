@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
      public function index()
      {
+          $defaultCityId = Setting::getValue('default-city');
+          $default_city = City::find($defaultCityId)->first();
           $project_list = Project::paginate(4);
           $post_highlight = [];
           $district_list = [];
           $post_sale_list = [];
           $post_rent_list = [];
 
-          if (!empty(City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first())) {
-               $default_city = City::where(['Name' => 'Thành Phố Hồ Chí Minh'])->first();
-
+          if (!empty($default_city)) {
                $district_list = $default_city->District;
 
                foreach ($district_list as $district) {

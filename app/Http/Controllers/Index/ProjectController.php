@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\District;
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\Street;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,8 @@ class ProjectController extends Controller
 {
      public function index(Request $req, $city_slug = null, $district_slug = null, $project_slug = null, $type = null)
      {
+          $defaultCityId = Setting::getValue('default-city');
+          $default_city = City::find($defaultCityId)->first();
           $category_type = null;
 
           if ($type != null) {
@@ -25,7 +28,7 @@ class ProjectController extends Controller
           }
 
           if ($city_slug === null) {
-               return redirect()->route('project', ['thanh-pho-ho-chi-minh']);
+               return redirect()->route('project', [$default_city->Slug]);
           } else {
                $city = City::where('Slug', $city_slug)->first();
                if ($city === null) abort(404);

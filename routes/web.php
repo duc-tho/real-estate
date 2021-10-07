@@ -30,12 +30,13 @@ Route::group(['prefix' => 'auth'], function () {
      Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 
-Route::prefix('admin')->middleware('requireAuth')->group(function () {
+Route::get('/welcome', 'Admin\WelcomeController@index')->name('welcome');
+Route::post('/welcome', 'Admin\WelcomeController@progress')->name('welcome-progress');
 
+Route::prefix('admin')->middleware(['requireAuth', 'welcome'])->group(function () {
      Route::get('/', 'Admin\MainController@index')->name('admin');
 
      Route::group(['prefix' => 'post'], function () {
-
           Route::get('/', 'Admin\PostController@index')->name('adminPost');
 
           Route::get('/add', 'Admin\PostController@getAdd')->name('adminPostGetAdd');
@@ -49,16 +50,15 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
           Route::put('/edit/{id}', 'Admin\PostController@putEdit')
                ->name('adminPostPutEdit')
                ->where(['id' => '[0-9]+']);
-             
+
           Route::put('/edit/deleteimg/{id}', 'Admin\PostController@putEdit')
                ->name('adminPostPutEdit')
                ->where(['id' => '[0-9]+']);
+
           Route::delete('/delete/{id}', 'Admin\PostController@delete')
                ->name('adminPostDelete')
                ->where(['id' => '[0-9]+']);
-          
      });
-
 
      Route::group(['prefix' => 'project'], function () {
 
@@ -81,7 +81,6 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
                ->where(['id' => '[0-9]+']);
      });
 
-
      Route::group(['prefix' => 'category'], function () {
 
           Route::get('/', 'Admin\CategoryController@index')->name('adminCategory');
@@ -102,7 +101,6 @@ Route::prefix('admin')->middleware('requireAuth')->group(function () {
                ->name('adminCategoryDelete')
                ->where(['id' => '[0-9]+']);
      });
-
 
      Route::group(['prefix' => 'city'], function () {
 
