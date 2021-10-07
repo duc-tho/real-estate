@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Init;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
           'requireAuth' => \App\Http\Middleware\RequireAuth::class,
           'welcome' => \App\Http\Middleware\Welcome::class,
           'validateUploadFile' => \App\Http\Middleware\ValidateUploadFile::class,
+          'init' => Init::class
      ];
 }

@@ -17,9 +17,9 @@ class Welcome
      */
      public function handle($request, Closure $next)
      {
-          $init = Setting::getValue('welcome');
+          $initDefaultSetting = Setting::getValue('welcome');
 
-          if ($init == 0) {
+          if ($initDefaultSetting == 0 || $initDefaultSetting == null) {
                return Redirect::route('welcome');
           }
 

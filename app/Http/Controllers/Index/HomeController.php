@@ -75,6 +75,7 @@ class HomeController extends Controller
           return view('index.index', [
                'title' => 'Trang chủ',
                'page' => 'home',
+               'city' => City::all(),
                'data' => [
                     'project_list' => $project_list,
                     'district_list' => $district_list,
