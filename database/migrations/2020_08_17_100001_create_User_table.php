@@ -26,7 +26,7 @@ class CreateUserTable extends Migration
                $table->rememberToken();
                $table->tinyInteger('Status')->default('1');
 
-               $table->foreign('RoleId')->references('RoleId')->on('Role')->onDelete('cascade');
+               $table->foreign('RoleId')->references('RoleId')->on('role')->onDelete('cascade');
           });
      }
 

@@ -30,10 +30,10 @@ class CreatePostTable extends Migration
                $table->timestamps();
                $table->tinyInteger('Status')->default('1');
 
-               $table->foreign('StreetId')->references('StreetId')->on('Street')->onDelete('cascade');
-               $table->foreign('UserId')->references('UserId')->on('User')->onDelete('cascade');
-               $table->foreign('CategoryId')->references('CategoryId')->on('Category')->onDelete('cascade');
-               $table->foreign('ProjectId')->references('ProjectId')->on('Project')->onDelete('cascade');
+               $table->foreign('StreetId')->references('StreetId')->on('street')->onDelete('cascade');
+               $table->foreign('UserId')->references('UserId')->on('user')->onDelete('cascade');
+               $table->foreign('CategoryId')->references('CategoryId')->on('category')->onDelete('cascade');
+               $table->foreign('ProjectId')->references('ProjectId')->on('project')->onDelete('cascade');
           });
      }
 
