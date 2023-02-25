@@ -14,7 +14,7 @@ class AddForeignForStreetidColumnToProjectTable extends Migration
      public function up()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->foreign('StreetId')->references('StreetId')->on('Street')->onDelete('cascade');
+               $table->foreign('StreetId')->references('StreetId')->on('street')->onDelete('cascade');
           });
      }
 
