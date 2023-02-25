@@ -16,7 +16,7 @@ class CreateDistrictTable extends Migration
                $table->timestamps();
                $table->tinyInteger('Status')->default('1');
 
-               $table->foreign('CityId')->references('CityId')->on('City')->onDelete('cascade');
+               $table->foreign('CityId')->references('CityId')->on('city')->onDelete('cascade');
           });
      }
 

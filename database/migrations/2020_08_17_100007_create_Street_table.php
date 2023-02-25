@@ -16,7 +16,7 @@ class CreateStreetTable extends Migration
                $table->timestamps();
                $table->tinyInteger('Status')->default('1');
 
-               $table->foreign('AreaId')->references('AreaId')->on('Area')->onDelete('cascade');
+               $table->foreign('AreaId')->references('AreaId')->on('area')->onDelete('cascade');
           });
      }
 
