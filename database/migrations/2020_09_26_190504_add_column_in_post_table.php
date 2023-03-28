@@ -14,8 +14,8 @@ class AddColumnInPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->unsignedInteger('ViewCount')->nullable()->default(0);
-               $table->unsignedInteger('Paper')->nullable()->default(null);
+               $table->unsignedInteger('view_count')->nullable()->default(0);
+               $table->unsignedInteger('paper')->nullable()->default(null);
           });
      }
 
@@ -27,8 +27,8 @@ class AddColumnInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->dropColumn('ViewCount');
-               $table->dropColumn('Paper');
+               $table->dropColumn('view_count');
+               $table->dropColumn('paper');
           });
      }
 }

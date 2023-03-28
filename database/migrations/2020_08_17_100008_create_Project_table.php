@@ -9,24 +9,24 @@ class CreateProjectTable extends Migration
      public function up()
      {
           Schema::create('project', function (Blueprint $table) {
-
-               $table->increments('ProjectId');
-               $table->string('Title');
-               $table->string('Slug');
-               $table->text('Location');
-               $table->text('Investor');
-               $table->unsignedInteger('NumberOfBlock');
-               $table->unsignedInteger('NumberOfFloor');
-               $table->unsignedInteger('NumberOfApartment');
-               $table->unsignedDecimal('AreaApartment');
-               $table->unsignedDecimal('TotalArea');
-               $table->unsignedInteger('YearBuilt');
-               $table->unsignedInteger('BuildingDensity');
-               $table->unsignedDecimal('Price')->default('0');
-               $table->text('Description')->nullable()->default('NULL');
-               $table->text('Image');
+               $table->increments('id');
+               $table->string('title');
+               $table->string('slug');
+               $table->text('location');
+               $table->text('investor');
+               $table->unsignedInteger('number_of_block');
+               $table->unsignedInteger('number_of_floor');
+               $table->unsignedInteger('number_of_apartment');
+               $table->unsignedDecimal('area_apartment');
+               $table->unsignedDecimal('total_area');
+               $table->unsignedInteger('year_built');
+               $table->unsignedInteger('building_density');
+               $table->unsignedDecimal('price')->default(0);
+               $table->text('description')->nullable();
+               $table->text('image');
                $table->timestamps();
-               $table->tinyInteger('Status')->default('1');
+               $table->softDeletes();
+               $table->tinyInteger('Status')->default(1);
           });
      }
 

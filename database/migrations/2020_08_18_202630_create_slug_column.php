@@ -13,28 +13,28 @@ class CreateSlugColumn extends Migration
       */
      public function up()
      {
-          Schema::table('area', function (Blueprint $table) {
-               $table->string('Slug');
+          Schema::table('ward', function (Blueprint $table) {
+               $table->string('slug');
           });
 
           Schema::table('category', function (Blueprint $table) {
-               $table->string('Slug');
+               $table->string('slug');
           });
 
           Schema::table('city', function (Blueprint $table) {
-               $table->string('Slug');
+               $table->string('slug');
           });
 
           Schema::table('district', function (Blueprint $table) {
-               $table->string('Slug');
+               $table->string('slug');
           });
 
           Schema::table('street', function (Blueprint $table) {
-               $table->string('Slug');
+               $table->string('slug');
           });
 
           Schema::table('post', function (Blueprint $table) {
-               $table->string('Slug');
+               $table->string('slug');
           });
      }
 
@@ -45,28 +45,28 @@ class CreateSlugColumn extends Migration
       */
      public function down()
      {
-          Schema::table('area', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+          Schema::table('ward', function (Blueprint $table) {
+               $table->dropColumn('slug');
           });
 
           Schema::table('category', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+               $table->dropColumn('slug');
           });
 
           Schema::table('city', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+               $table->dropColumn('slug');
           });
 
           Schema::table('district', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+               $table->dropColumn('slug');
           });
 
           Schema::table('street', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+               $table->dropColumn('slug');
           });
 
           Schema::table('post', function (Blueprint $table) {
-               $table->dropColumn('Slug');
+               $table->dropColumn('slug');
           });
      }
 }

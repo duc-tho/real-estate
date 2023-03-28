@@ -14,10 +14,10 @@ class EditAndAddColumnOnProjectTable extends Migration
      public function up()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->renameColumn('Description', 'InfrastructureLocation');
-               $table->text('GroundDesign')->nullable()->default(null);
-               $table->text('Promotion')->nullable()->default(null);
-               $table->text('Utility')->nullable()->default(null);
+               $table->renameColumn('description', 'infrastructureLocation');
+               $table->text('ground_design')->nullable()->default(null);
+               $table->text('promotion')->nullable()->default(null);
+               $table->text('utility')->nullable()->default(null);
           });
      }
 
@@ -29,10 +29,10 @@ class EditAndAddColumnOnProjectTable extends Migration
      public function down()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->renameColumn('InfrastructureLocation', 'Description');
-               $table->dropColumn('GroundDesign');
-               $table->dropColumn('Promotion');
-               $table->dropColumn('Utility');
+               $table->renameColumn('infrastructureLocation', 'description');
+               $table->dropColumn('ground_design');
+               $table->dropColumn('promotion');
+               $table->dropColumn('utility');
           });
      }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
@@ -33,7 +33,7 @@ class WelcomeController extends Controller
           if($request->filled(['title', 'default-city'])) {
                // set first using init to 1
                $init = Setting::get('welcome');
-               $init->Value = 1;
+               $init->value = 1;
                $init->save();
 
                $defaultCityValue = explode('.', $request->input('default-city'));
@@ -44,11 +44,11 @@ class WelcomeController extends Controller
 
                // init default city
                $defaultCitySetting = Setting::get('default-city');
-               $defaultCitySetting->Value = $defaultCity->CityId;
+               $defaultCitySetting->value = $defaultCity->id;
                $defaultCitySetting->save();
 
                $title = Setting::get('title');
-               $title->Value = $request->input('title');
+               $title->value = $request->input('title');
                $title->save();
           } else {
                return view('admin.welcome');

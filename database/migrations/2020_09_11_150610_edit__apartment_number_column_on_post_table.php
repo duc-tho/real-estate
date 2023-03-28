@@ -14,7 +14,7 @@ class EditApartmentNumberColumnOnPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->string('ApartmentNumber')->nullable()->default(null)->change();
+               $table->string('apartment_number')->nullable()->default(null)->change();
           });
      }
 
@@ -26,7 +26,7 @@ class EditApartmentNumberColumnOnPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->string('ApartmentNumber')->change();
+               $table->string('apartment_number')->change();
           });
      }
 }

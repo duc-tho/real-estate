@@ -7,30 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
      protected $table = 'project';
-     protected $primaryKey = 'ProjectId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
      protected $fillable = [
-          'StreetId',
-          'Title',
-          'Slug',
-          'Location',
-          'Investor',
-          'NumberOfBlock',
-          'NumberOfFloor',
-          'NumberOfApartment',
-          'AreaApartment',
-          'TotalArea',
-          'YearBuilt',
-          'BuildingDensity',
-          'Price',
-          'Description',
-          'Image',
-          'Status',
-          'Slug'
+          'street_id',
+          'title',
+          'slug',
+          'location',
+          'investor',
+          'number_of_block',
+          'number_of_floor',
+          'number_of_apartment',
+          'area_apartment',
+          'total_area',
+          'year_built',
+          'building_density',
+          'price',
+          'description',
+          'image',
+          'status',
+          'slug'
      ];
 
      public function posts()
      {
-          return $this->hasMany('App\Models\Post', 'ProjectId', 'ProjectId');
+          return $this->hasMany(Post::class, 'project_id', 'id');
      }
 }

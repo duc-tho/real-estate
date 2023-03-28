@@ -10,6 +10,11 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 
      <style>
+          * {
+               transition: .2s;
+               scroll-behavior: smooth;
+          }
+
           #particles-js {
                position: absolute;
                width: 100%;
@@ -34,11 +39,14 @@
      <div class="container d-flex justify-content-between align-items-center wrap" style="min-height: 100vh;">
           <div class="col-md-8 bg-light mx-auto py-3 px-4 rounded">
                @csrf
-               <h3 class="text-dark text-center"><i class="fas fa-cog fa-spin"></i>&nbsp;Đang khởi tạo hệ thống!</h3>
-               <p class="text-center w-100">Các cài đặt cơ bản đang được khởi tạo xin hãy chờ trong giây lát!</p>
+               <h3 id="title" class="text-dark text-center"><i class="fas fa-cog fa-spin"></i>&nbsp;Đang khởi tạo hệ thống!</h3>
+               <p id="description" class="text-center w-100">Các cài đặt cơ bản đang được khởi tạo xin hãy chờ trong giây lát!</p>
+               <button id="reload" class="btn btn-info d-none ml-auto mt-2"><i class="fas fa-arrows-rotate"></i>&nbsp;&nbsp;Khởi tạo lại
           </div>
      </div>
+     </div>
      <div id="particles-js"></div>
+
      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -49,9 +57,28 @@
           particlesJS.load('particles-js', '/dist/particlesjs-config.json');
 
           axios.post('/init').then(response => {
-               if (response.data) {
+               if (response.data.status) {
                     window.location = '/admin';
+                    return;
                }
+
+               const titleElement = document.getElementById('title');
+               const descriptionElement = document.getElementById('description');
+               const reloadElement = document.getElementById('reload');
+
+               titleElement.innerText = 'Khởi tạo hệ thống thất bại!';
+               titleElement.classList.remove('text-dark');
+               titleElement.classList.add('text-danger')
+
+               descriptionElement.innerText = response.data.reason;
+               descriptionElement.classList.remove('text-center');
+               descriptionElement.classList.add('text-left');
+
+               reloadElement.classList.remove('d-none');
+               reloadElement.classList.add('d-block', 'fw-bold');
+               reloadElement.addEventListener('click', () => {
+                    window.location.reload();
+               });
           });
      </script>
 </body>

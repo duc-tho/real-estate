@@ -12,30 +12,30 @@ class User extends Authenticatable
      use Notifiable;
 
      protected $table = 'user';
-     protected $primaryKey = 'UserId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
      protected $fillable = [
-          'RoleId',
-          'Email',
-          'PhoneNumber',
-          'FirstName',
-          'LastName',
-          'Gender',
-          'Birthday',
-          'Username',
-          'Password',
-          'ProfileImage',
-          'Status'
+          'role_id',
+          'email',
+          'phone_number',
+          'first_name',
+          'last_name',
+          'gender',
+          'birthday',
+          'username',
+          'password',
+          'profile_image',
+          'status'
      ];
 
      public function posts()
      {
-          return $this->hasMany('App\Models\Post', 'UserId', 'UserId');
+          return $this->hasMany(Post::class, 'user_id', 'id');
      }
 
 
      public function getAuthPassword()
      {
-          return $this->Password;
+          return $this->password;
      }
 }

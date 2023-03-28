@@ -9,31 +9,31 @@ class CreatePostTable extends Migration
      public function up()
      {
           Schema::create('post', function (Blueprint $table) {
-
-               $table->increments('PostId');
-               $table->unsignedInteger('StreetId');
-               $table->unsignedInteger('UserId');
-               $table->unsignedInteger('CategoryId');
-               $table->unsignedInteger('ProjectId')->nullable()->default(null);
-               $table->string('Title');
-               $table->string('ApartmentNumber');
-               $table->text('Street');
-               $table->string('Direction')->nullable()->default(null);
-               $table->unsignedInteger('Bedroom')->nullable()->default(null);
-               $table->unsignedInteger('Bathroom')->nullable()->default(null);
-               $table->unsignedDecimal('Width')->nullable()->default(null);
-               $table->unsignedDecimal('Length')->nullable()->default(null);
-               $table->string('Floor');
-               $table->text('Image');
-               $table->text('Description')->nullable()->default(null);
-               $table->unsignedDecimal('Price')->default('0');
+               $table->increments('id');
+               $table->unsignedInteger('street_id');
+               $table->unsignedInteger('user_id');
+               $table->unsignedInteger('category_id');
+               $table->unsignedInteger('project_id')->nullable()->default(null);
+               $table->string('title');
+               $table->string('apartment_number');
+               $table->text('street');
+               $table->string('direction')->nullable()->default(null);
+               $table->unsignedInteger('bedroom')->nullable()->default(null);
+               $table->unsignedInteger('bathroom')->nullable()->default(null);
+               $table->unsignedDecimal('width')->nullable()->default(null);
+               $table->unsignedDecimal('length')->nullable()->default(null);
+               $table->string('floor');
+               $table->text('image');
+               $table->text('description')->nullable()->default(null);
+               $table->unsignedDecimal('price')->default(0);
                $table->timestamps();
-               $table->tinyInteger('Status')->default('1');
+               $table->softDeletes();
+               $table->tinyInteger('status')->default(1);
 
-               $table->foreign('StreetId')->references('StreetId')->on('street')->onDelete('cascade');
-               $table->foreign('UserId')->references('UserId')->on('user')->onDelete('cascade');
-               $table->foreign('CategoryId')->references('CategoryId')->on('category')->onDelete('cascade');
-               $table->foreign('ProjectId')->references('ProjectId')->on('project')->onDelete('cascade');
+               $table->foreign('street_id')->references('id')->on('street')->onDelete('cascade');
+               $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+               $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+               $table->foreign('project_id')->references('id')->on('project')->onDelete('cascade');
           });
      }
 

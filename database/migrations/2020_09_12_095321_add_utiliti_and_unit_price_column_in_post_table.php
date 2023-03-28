@@ -14,8 +14,8 @@ class AddUtilitiAndUnitPriceColumnInPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->text('Utility')->nullable()->default(null);
-               $table->string('PriceUnit')->nullable()->default('Tỷ');
+               $table->text('utility')->nullable()->default(null);
+               $table->string('price_unit')->nullable()->default('Tỷ');
           });
      }
 
@@ -27,8 +27,8 @@ class AddUtilitiAndUnitPriceColumnInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->dropColumn('Utility');
-               $table->dropColumn('PriceUnit');
+               $table->dropColumn('utility');
+               $table->dropColumn('price_unit');
           });
      }
 }

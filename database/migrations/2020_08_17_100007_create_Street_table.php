@@ -9,14 +9,14 @@ class CreateStreetTable extends Migration
      public function up()
      {
           Schema::create('street', function (Blueprint $table) {
-
-               $table->increments('StreetId');
-               $table->unsignedInteger('AreaId');
-               $table->string('Name');
+               $table->increments('id');
+               $table->unsignedInteger('ward_id');
+               $table->string('name');
                $table->timestamps();
-               $table->tinyInteger('Status')->default('1');
+               $table->tinyInteger('status')->default(1);
+               $table->softDeletes();
 
-               $table->foreign('AreaId')->references('AreaId')->on('area')->onDelete('cascade');
+               $table->foreign('ward_id')->references('id')->on('ward')->onDelete('cascade');
           });
      }
 

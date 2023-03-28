@@ -14,7 +14,7 @@ class AddForeignForStreetidColumnToProjectTable extends Migration
      public function up()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->foreign('StreetId')->references('StreetId')->on('street')->onDelete('cascade');
+               $table->foreign('street_id')->references('id')->on('street')->onDelete('cascade');
           });
      }
 
@@ -26,7 +26,7 @@ class AddForeignForStreetidColumnToProjectTable extends Migration
      public function down()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->dropForeign('project_streetid_foreign');
+               $table->dropForeign('project_street_id_foreign');
           });
      }
 }

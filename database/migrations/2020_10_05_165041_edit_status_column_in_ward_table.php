@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditStatusColumnInAreaTable extends Migration
+class EditStatusColumnInWardTable extends Migration
 {
      /**
       * Run the migrations.
@@ -13,8 +13,8 @@ class EditStatusColumnInAreaTable extends Migration
       */
      public function up()
      {
-          Schema::table('area', function (Blueprint $table) {
-               $table->integer('Status')->default('1')->nullable()->change();
+          Schema::table('ward', function (Blueprint $table) {
+               $table->integer('status')->default(1)->nullable()->change();
           });
      }
 
@@ -25,8 +25,8 @@ class EditStatusColumnInAreaTable extends Migration
       */
      public function down()
      {
-          Schema::table('area', function (Blueprint $table) {
-               $table->integer('Status')->default('1')->change();
+          Schema::table('ward', function (Blueprint $table) {
+               $table->integer('status')->default(1)->change();
           });
      }
 }

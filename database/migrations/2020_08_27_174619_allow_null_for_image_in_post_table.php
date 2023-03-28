@@ -14,7 +14,7 @@ class AllowNullForImageInPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->text('Image')->nullable()->default(null)->change();
+               $table->text('image')->nullable()->default(null)->change();
           });
      }
 
@@ -26,7 +26,7 @@ class AllowNullForImageInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->text('Image')->change();
+               $table->text('image')->change();
           });
      }
 }

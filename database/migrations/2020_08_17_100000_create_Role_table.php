@@ -9,11 +9,11 @@ class CreateRoleTable extends Migration
      public function up()
      {
           Schema::create('role', function (Blueprint $table) {
-
-               $table->increments('RoleId');
-               $table->string('Name');
+               $table->increments('id');
+               $table->string('name');
+               $table->tinyInteger('status')->default(1);
                $table->timestamps();
-               $table->tinyInteger('Status')->default('1');
+               $table->softDeletes();
           });
      }
 
