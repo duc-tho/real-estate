@@ -26,7 +26,7 @@ class DropColumnStreetInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->text('Street');
+               $table->text('street');
           });
      }
 }

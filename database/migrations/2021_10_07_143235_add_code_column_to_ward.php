@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCodeColumnToArea extends Migration
+class AddCodeColumnToWard extends Migration
 {
      /**
       * Run the migrations.
@@ -13,7 +13,7 @@ class AddCodeColumnToArea extends Migration
       */
      public function up()
      {
-          Schema::table('area', function (Blueprint $table) {
+          Schema::table('ward', function (Blueprint $table) {
                $table->integer('code');
           });
      }
@@ -25,7 +25,7 @@ class AddCodeColumnToArea extends Migration
       */
      public function down()
      {
-          Schema::table('area', function (Blueprint $table) {
+          Schema::table('ward', function (Blueprint $table) {
                $table->dropColumn('code');
           });
      }

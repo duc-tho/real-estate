@@ -7,23 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
      protected $table = 'district';
-     protected $primaryKey = 'DistrictId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
      protected $fillable =
      [
-          'CityId',
-          'Name',
-          'Status',
-          'Slug'
+          'city_id',
+          'name',
+          'status',
+          'slug'
      ];
 
      public function Area()
      {
-          return $this->hasMany('App\Models\Area', 'DistrictId', 'DistrictId');
+          return $this->hasMany(Ward::class, 'district_id', 'id');
      }
 
      public function City()
      {
-          return $this->belongsTo('App\Models\City', 'CityId', 'CityId');
+          return $this->belongsTo(City::class, 'city_id', 'id');
      }
 }

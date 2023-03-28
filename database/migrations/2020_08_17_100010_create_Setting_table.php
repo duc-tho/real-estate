@@ -9,11 +9,11 @@ class CreateSettingTable extends Migration
      public function up()
      {
           Schema::create('setting', function (Blueprint $table) {
-
-               $table->increments('SettingId');
-               $table->string('Name');
+               $table->increments('id');
+               $table->string('key');
+               $table->text('value');
                $table->timestamps();
-               $table->text('Value');
+               $table->softDeletes();
           });
      }
 

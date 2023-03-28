@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Street extends Model
 {
      protected $table = 'street';
-     protected $primaryKey = 'StreetId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
 
-     protected $fillable = ['AreaId', 'Name', 'Status', 'Slug'];
+     protected $fillable = ['ward_id', 'name', 'status', 'slug'];
 
      public function posts()
      {
-          return $this->hasMany('App\Models\Post', 'StreetId', 'StreetId');
+          return $this->hasMany(Post::class, 'post_id', 'id');
      }
 
      public function Area()
      {
-          return $this->belongsTo('App\Models\Area', 'AreaId', 'AreaId');
+          return $this->belongsTo(Ward::class, 'ward_id', 'id');
      }
 }

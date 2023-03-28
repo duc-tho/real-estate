@@ -14,7 +14,7 @@ class CreateTypeColumnInPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->string('Type');
+               $table->string('type');
           });
      }
 
@@ -26,7 +26,7 @@ class CreateTypeColumnInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->dropColumn('Type');
+               $table->dropColumn('type');
           });
      }
 }

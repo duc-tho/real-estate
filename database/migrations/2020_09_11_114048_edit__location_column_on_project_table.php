@@ -14,7 +14,7 @@ class EditLocationColumnOnProjectTable extends Migration
      public function up()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->text('Location')->nullable()->default(null)->change();
+               $table->text('location')->nullable()->default(null)->change();
           });
      }
 
@@ -26,7 +26,7 @@ class EditLocationColumnOnProjectTable extends Migration
      public function down()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->text('Location')->change();
+               $table->text('location')->change();
           });
      }
 }

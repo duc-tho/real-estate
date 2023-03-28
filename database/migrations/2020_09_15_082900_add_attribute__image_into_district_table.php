@@ -14,7 +14,7 @@ class AddAttributeImageIntoDistrictTable extends Migration
     public function up()
     {
         Schema::table('district', function (Blueprint $table) {
-            $table->text('Image');
+            $table->text('image');
         });
     }
 
@@ -26,7 +26,7 @@ class AddAttributeImageIntoDistrictTable extends Migration
     public function down()
     {
         Schema::table('district', function (Blueprint $table) {
-            //
+            $table->dropColumn('image');
         });
     }
 }

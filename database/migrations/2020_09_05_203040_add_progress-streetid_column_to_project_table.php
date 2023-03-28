@@ -14,8 +14,8 @@ class AddProgressStreetidColumnToProjectTable extends Migration
      public function up()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->unsignedInteger('Progress')->nullable();
-               $table->unsignedInteger('StreetId')->nullable()->default(null);
+               $table->unsignedInteger('progress')->nullable();
+               $table->unsignedInteger('street_id')->nullable()->default(null);
           });
      }
 
@@ -27,8 +27,8 @@ class AddProgressStreetidColumnToProjectTable extends Migration
      public function down()
      {
           Schema::table('project', function (Blueprint $table) {
-               $table->dropColumn('Progress');
-               $table->dropColumn('StreetId');
+               $table->dropColumn('progress');
+               $table->dropColumn('street_id');
           });
      }
 }

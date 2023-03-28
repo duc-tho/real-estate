@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
      protected $table = 'setting';
-     protected $primaryKey = 'SettingId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
-     protected $fillable = ['Name', 'Value'];
+     protected $fillable = ['key', 'value'];
 
      static function get($key)
      {
-          $setting = Setting::where('Name', $key)->first();
+          $setting = Setting::where('key', $key)->first();
           return $setting;
      }
 
      static function getValue($key)
      {
-          $settingValue = Setting::where('Name', $key)->first()['Value'] ?? null;
+          $settingValue = Setting::where('key', $key)->first()['value'] ?? null;
           return $settingValue;
      }
 }

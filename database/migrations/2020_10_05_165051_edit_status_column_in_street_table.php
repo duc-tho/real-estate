@@ -14,7 +14,7 @@ class EditStatusColumnInStreetTable extends Migration
      public function up()
      {
           Schema::table('street', function (Blueprint $table) {
-               $table->integer('Status')->default('1')->nullable()->change();
+               $table->integer('status')->default(1)->nullable()->change();
           });
      }
 
@@ -26,7 +26,7 @@ class EditStatusColumnInStreetTable extends Migration
      public function down()
      {
           Schema::table('street', function (Blueprint $table) {
-               $table->integer('Status')->default('1')->change();
+               $table->integer('status')->default(1)->change();
           });
      }
 }

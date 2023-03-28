@@ -7,47 +7,47 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
      protected $table = 'post';
-     protected $primaryKey = 'PostId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
      protected $fillable = [
-          'StreetId',
-          'Paper',
-          'ViewCount',
-          'Utility',
-          'PriceUnit',
-          'UserId',
-          'CategoryId',
-          'ProjectId',
-          'Title',
-          'ApartmentNumber',
-          'Street',
-          'Direction',
-          'Bedroom',
-          'Street',
-          'Bathroom',
-          'Width',
-          'Length',
-          'Floor',
-          'Image',
-          'Description',
-          'Price',
-          'Status',
-          'Slug',
-          'Type'
+          'street_id',
+          'paper',
+          'view_count',
+          'utility',
+          'price_unit',
+          'user_id',
+          'category_id',
+          'project_id',
+          'title',
+          'apartment_number',
+          'street',
+          'direction',
+          'bedroom',
+          'street',
+          'bathroom',
+          'width',
+          'length',
+          'floor',
+          'image',
+          'description',
+          'price',
+          'status',
+          'slug',
+          'type'
      ];
 
      public function Category()
      {
-          return $this->belongsTo('App\Models\Category', 'CategoryId', 'CategoryId');
+          return $this->belongsTo(Category::class, 'category_id', 'id');
      }
 
      public function Project()
      {
-          return $this->belongsTo('App\Models\Project', 'ProjectId', 'ProjectId');
+          return $this->belongsTo(Project::class, 'project_id', 'id');
      }
 
      public function User()
      {
-          return $this->belongsTo('App\User', 'UserId', 'UserId');
+          return $this->belongsTo(User::class, 'user_id', 'id');
      }
 }

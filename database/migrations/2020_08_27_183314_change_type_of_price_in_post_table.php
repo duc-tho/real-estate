@@ -14,7 +14,7 @@ class ChangeTypeOfPriceInPostTable extends Migration
      public function up()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->unsignedDecimal('Price', 12, 2)->change();
+               $table->unsignedDecimal('price', 12, 2)->change();
           });
      }
 
@@ -26,7 +26,7 @@ class ChangeTypeOfPriceInPostTable extends Migration
      public function down()
      {
           Schema::table('post', function (Blueprint $table) {
-               $table->unsignedDecimal('Price')->change();
+               $table->unsignedDecimal('price')->change();
           });
      }
 }

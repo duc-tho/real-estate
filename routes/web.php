@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/init', 'InitController@index')->name('init');
 Route::post('/init', 'InitController@process')->name('initProcess');
+Route::get('/welcome', 'WelcomeController@index')->name('welcome');
+Route::post('/welcome', 'WelcomeController@progress')->name('welcome-progress');
 
-Route::middleware('init')->group(function () {
+Route::middleware(['init', 'welcome'])->group(function () {
      Route::get('/', 'Index\HomeController@index')->name('home');
 
      Route::get('/dang-tin', 'Index\AddPostController@index')->name('addPost');
@@ -33,10 +35,7 @@ Route::middleware('init')->group(function () {
           Route::get('/logout', 'AuthController@logout')->name('logout');
      });
 
-     Route::get('/welcome', 'Admin\WelcomeController@index')->name('welcome');
-     Route::post('/welcome', 'Admin\WelcomeController@progress')->name('welcome-progress');
-
-     Route::prefix('admin')->middleware(['requireAuth', 'welcome'])->group(function () {
+     Route::prefix('admin')->middleware(['requireAuth'])->group(function () {
           Route::get('/', 'Admin\MainController@index')->name('admin');
 
           Route::group(['prefix' => 'post'], function () {

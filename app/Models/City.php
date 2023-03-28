@@ -9,17 +9,17 @@ use Throwable;
 class City extends Model
 {
      protected $table = 'city';
-     protected $primaryKey = 'CityId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
      protected $fillable = [
-          'Name',
-          'Status',
-          'Slug'
+          'name',
+          'status',
+          'slug'
      ];
 
      public function District()
      {
-          return $this->hasMany('App\Models\District', 'CityId', 'CityId');
+          return $this->hasMany(District::class, 'city_id', 'id');
      }
 
      /**
@@ -34,9 +34,9 @@ class City extends Model
           }
 
           if (
-               City::where('Name', $cityName)
+               City::where('name', $cityName)
                ->orWhere('code', $code)
-               ->orWhere('Slug', $slug)
+               ->orWhere('slug', $slug)
                ->exists()
           ) {
                return false;

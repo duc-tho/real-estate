@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
      protected $table = 'role';
-     protected $primaryKey = 'RoleId';
+     protected $primaryKey = 'id';
      protected $guarded = [];
-     protected $fillable = ['Name', 'Status'];
+     protected $fillable = ['name', 'status'];
 
      public function users()
      {
-          return $this->hasMany('App\Models\Post', 'RoleId', 'RoleId');
+          return $this->hasMany(Post::class, 'role_id', 'id');
      }
 }
