@@ -46,7 +46,7 @@ class Post extends Model
           return $this->belongsTo(Project::class, 'project_id', 'id');
      }
 
-     public function User()
+     public function Author()
      {
           return $this->belongsTo(User::class, 'user_id', 'id');
      }

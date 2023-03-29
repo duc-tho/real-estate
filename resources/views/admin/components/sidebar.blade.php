@@ -31,25 +31,25 @@
                          </a>
                          <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                   <a href="{{ route('adminCity') }}" class="nav-link">
+                                   <a href="{{ route('admin.City') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Thành Phố</p>
                                    </a>
                               </li>
                               <li class="nav-item">
-                                   <a href="{{ route('adminDistrict') }}" class="nav-link">
+                                   <a href="{{ route('admin.District') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Quận / Huyện</p>
                                    </a>
                               </li>
                               <li class="nav-item">
-                                   <a href="{{ route('adminArea') }}" class="nav-link">
+                                   <a href="{{ route('admin.Area') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Phường / Xã</p>
                                    </a>
                               </li>
                               <li class="nav-item">
-                                   <a href="{{ route('adminStreet') }}" class="nav-link">
+                                   <a href="{{ route('admin.Street') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Đường</p>
                                    </a>
@@ -57,7 +57,7 @@
                          </ul>
                     </li>
                     <li class="nav-item">
-                         <a href="{{ route('adminCategory') }}" class="nav-link">
+                         <a href="{{ route('admin.Category') }}" class="nav-link">
                               <i class="nav-icon fas fa-stream"></i>
                               <p>
                                    Danh mục
@@ -65,7 +65,7 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="{{ route('adminPost') }}" class="nav-link">
+                         <a href="{{ route('admin.post') }}" class="nav-link">
                               <i class="nav-icon fas fa-hotel"></i>
                               <p>
                                    Bất Động Sản
@@ -73,7 +73,7 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="{{ route('adminProject') }}" class="nav-link">
+                         <a href="{{ route('admin.project') }}" class="nav-link">
                               <i class="nav-icon fas fa-project-diagram"></i>
                               <p>
                                    Dự Án
@@ -81,7 +81,7 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                         <a href="{{ route('adminUser') }}" class="nav-link">
+                         <a href="{{ route('admin.User') }}" class="nav-link">
                               <i class="nav-icon fas fa-user-friends"></i>
                               <p>
                                    Người Dùng

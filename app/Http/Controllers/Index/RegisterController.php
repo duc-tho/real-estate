@@ -41,7 +41,7 @@ class RegisterController extends Controller
           }
 
           $user = new User($req->input());
-          $user->Password = Hash::make($req->input('Password'));
+          $user->Password = Hash::make($req->input('password'));
           $user->RoleId = 1;
           $user->Status = 1;
           $user->ProfileImage = 'dist/img/default_profile.png';

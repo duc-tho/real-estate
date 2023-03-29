@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Http\Controllers\Controller;
-use App\Models\Area;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\District;
@@ -14,32 +14,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostAddRequest;
 use App\Http\Requests\PostEditRequest;
+use App\Models\Ward;
+use App\Services\Admin\PostService;
 
 class PostController extends Controller
 {
-     public function index()
-     {
-          $postList = Post::all();
-          $categoryList = Category::all();
-          $projectList = Project::all();
+     private PostService $postService;
 
-          foreach ($postList as $item) {
-               $item->Author = $item->User;
-          }
-
-          return view('admin.admin', [
-               'title' => 'Quản Lý Bất Động Sản',
-               'page' => 'post',
-               'page_title' => 'Quản Lý Bất Động Sản',
-               'data' => [
-                    'post_list' => $postList,
-                    'category_list' => $categoryList,
-                    'project_list' => $projectList
-               ]
-          ]);
+     public function __construct(PostService $postService) {
+          $this->postService = $postService;
      }
 
-     public function getAdd()
+     public function index()
+     {
+          $data = $this->postService->getAll();
+
+          return view('admin.admin', $data);
+     }
+
+     public function create()
      {
           $projectList = Project::all();
           $cityList = City::all();
@@ -59,7 +52,7 @@ class PostController extends Controller
           ]);
      }
 
-     public function postAdd(PostAddRequest $req)
+     public function store(PostAddRequest $req)
      {
           if (!$req->filled(
                [
@@ -111,21 +104,21 @@ class PostController extends Controller
           return redirect()->route("adminPost");
      }
 
-     public function getEdit($id)
+     public function edit($id)
      {
           $postData = Post::find($id);
 
           if ($postData === null) return abort(404);
 
           $postData->AreaId = Street::find($postData['StreetId'])->Area['AreaId'];
-          $postData->DistrictId = Area::find($postData['AreaId'])->District['DistrictId'];
+          $postData->DistrictId = Ward::find($postData['AreaId'])->District['DistrictId'];
           $postData->CityId = District::find($postData['DistrictId'])->City['CityId'];
           $projectList = Project::all();
           $categoryList = Category::where('ParentId', 0)->get();
           $cityList = City::all();
           $districtList = City::find($postData->CityId)->District;
           $areaList = District::find($postData->DistrictId)->Area;
-          $streetList = Area::find($postData->AreaId)->Street;
+          $streetList = Ward::find($postData->AreaId)->Street;
 
 
           foreach ($categoryList as $item) $item->child = Category::where('ParentId', $item->CategoryId)->get();
@@ -146,7 +139,7 @@ class PostController extends Controller
           ]);
      }
 
-     public function putEdit(PostEditRequest $req, $id)
+     public function update(PostEditRequest $req, $id)
      {
           if (!$req->filled(
                [
@@ -173,7 +166,7 @@ class PostController extends Controller
           }
           $imgObjStr = json_encode($imgObj);
 
-          $req->merge(['Image' => $imgObjStr]);     
+          $req->merge(['Image' => $imgObjStr]);
 
 
           if (($req->ProjectId ?? 0) === 0) $req->merge(['ProjectId' => null]);
@@ -191,7 +184,7 @@ class PostController extends Controller
           return redirect()->back();
      }
 
-     public function delete($id)
+     public function destroy($id)
      {
           Post::destroy($id);
           return redirect()->route("adminPost");

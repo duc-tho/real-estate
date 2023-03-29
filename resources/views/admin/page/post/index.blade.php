@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('adminPostGetAdd') }}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Thêm Bất
+        <a href="{{ route('admin.post.create') }}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Thêm Bất
             Động Sản</a>
     </div>
     <div class="card-body">
@@ -19,21 +19,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data['post_list'] as $item)
+                    @foreach ($data['posts'] as $item)
                         <tr>
-                            <td>{{ $item->PostId }}</td>
-                            <td>{{ $item->Title }}</td>
-                            @foreach ($data['category_list'] as $category_item)
-                                @if ($item->CategoryId === $category_item->CategoryId)
-                                    <td>{{ $category_item->Name }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->title }}</td>
+                            @foreach ($data['categories'] as $category_item)
+                                @if ($item->category_id === $category_item->id)
+                                    <td>{{ $category_item->name }}</td>
                                     @break
                                 @endif
                             @endforeach
 
-                            @if ($item->ProjectId !== null)
-                                @foreach ($data['project_list'] as $project_item)
-                                    @if ($item->ProjectId === $project_item->ProjectId)
-                                        <td>{{ $project_item->Title }}</td>
+                            @if ($item->project_id !== null)
+                                @foreach ($data['projects'] as $project_item)
+                                    @if ($item->project_id === $project_item->id)
+                                        <td>{{ $project_item->title }}</td>
                                         @break
                                     @endif
                                 @endforeach
@@ -41,11 +41,11 @@
                                 <td>Không</td>
                             @endif
 
-                            <td>{{ $item->Author->FirstName }}</td>
+                            <td>{{ $item->Author->first_name }}</td>
                             <td>{{ date_format(date_create(date('Y-m-d H:i:s', strtotime($item->created_at))), 'd/m/Y | H:i:s') }}
                             </td>
 
-                            @switch($item->Status)
+                            @switch($item->status)
                                 @case(1)
                                 <td class="text-success">Hoạt động</td>
                                 @break
@@ -59,9 +59,9 @@
                             @endswitch
 
                             <td>
-                                <a href="{{ route('adminPostGetEdit', $item->PostId) }}" class="btn btn-primary"><i
+                                <a href="{{ route('admin.post.edit', $item->id) }}" class="btn btn-primary"><i
                                         class="fas fa-edit"></i> Sửa</a>
-                                <form class="d-inline" action={{ route('adminPostDelete', $item->PostId) }}
+                                <form class="d-inline" action={{ route('admin.post.delete', $item->id) }}
                                     method="post">
                                     @csrf
                                     @method('delete')
