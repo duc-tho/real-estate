@@ -16,10 +16,10 @@
      <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <img height="24px" src="{{ asset(Auth::user()['ProfileImage']) }}" class="img-circle" alt="User Image">
+                    <img height="24px" src="{{ asset(Auth::user()['profile_image']) }}" class="img-circle" alt="User Image">
                </a>
                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">{{ Auth::user()['FirstName'] }}</span>
+                    <span class="dropdown-item dropdown-header">{{ Auth::user()['first_name'] }}</span>
 
                     <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">
                          <i class="fas fa-sign-out-alt mr-2"></i>
