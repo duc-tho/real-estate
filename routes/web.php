@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,10 @@ Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
 //      Route::get('/{Slug}', 'Index\ProjectController@projectDetail')
 //           ->name('projectDetail');
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', 'Index\ProjectController@index')
      ->name('project');
