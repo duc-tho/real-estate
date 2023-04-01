@@ -1,0 +1,104 @@
+$auth-primary: $color-pink;
+$auth-secondary: $color-pink;
+$auth-font-family: $font-montserrat, sans-serif;
+$auth-text-primary: $color-gray-light;
+$auth-text-secondary: $color-gray-dark;
+
+.auth-page {
+     font-family: $auth-font-family;
+     color: $auth-text-primary;
+     font-weight: 300;
+     overflow: hidden;
+     position: relative;
+     height: 100vh;
+
+     h1, h2, h3, h4, h5, h6 {
+          color: $auth-text-secondary;
+     }
+
+     .subtitle {
+          color: $auth-text-primary;
+          line-height: 24px;
+     }
+
+     a {
+          text-decoration: none;
+     }
+
+     .btn-danger-gradiant {
+          background: $auth-primary;
+          background: -webkit-linear-gradient(legacy-direction(to right), $auth-primary 0%, $auth-secondary 100%);
+          background: -webkit-gradient(linear, left top, right top, from($auth-primary), to($auth-secondary));
+          background: -webkit-linear-gradient(left, $auth-primary 0%, $auth-secondary 100%);
+          background: -o-linear-gradient(left, $auth-primary 0%, $auth-secondary 100%);
+          background: linear-gradient(to right, $auth-primary 0%, $auth-secondary 100%);
+     }
+
+     .btn-danger-gradiant:hover {
+          background: $auth-secondary;
+          background: -webkit-linear-gradient(legacy-direction(to right), $auth-secondary 0%, $auth-primary 100%);
+          background: -webkit-gradient(linear, left top, right top, from($auth-secondary), to($auth-primary));
+          background: -webkit-linear-gradient(left, $auth-secondary 0%, $auth-primary 100%);
+          background: -o-linear-gradient(left, $auth-secondary 0%, $auth-primary 100%);
+          background: linear-gradient(to right, $auth-secondary 0%, $auth-primary 100%);
+     }
+
+     .btn-md {
+          padding: 15px 45px;
+          font-size: 16px;
+     }
+
+     .bg-facebook {
+          background-color: $blue;
+     }
+
+     .bg-twitter {
+          background-color: $cyan;
+     }
+
+     .text-danger {
+          color: $auth-primary !important;
+     }
+
+     .right-image {
+          background-position: center bottom;
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          top: 0;
+     }
+
+     .left-image {
+          background-position: center bottom;
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          top: 0;
+     }
+
+     @media (max-width: 1023px) {
+          .contact-form {
+               padding-left: 0;
+               padding-right: 0;
+          }
+     }
+
+     @media (max-width: 767px) {
+          .contact-form {
+               padding-left: 15px;
+               padding-right: 15px;
+          }
+     }
+
+     @media (max-width: 1023px) {
+          .right-image {
+               position: relative;
+               bottom: -95px;
+          }
+     }
+
+}

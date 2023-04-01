@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Schema;
 
-class Init
+class Initialize
 {
      /**
       * Handle an incoming request.
@@ -20,6 +20,10 @@ class Init
      {
           if (!Schema::hasTable('setting')) {
                return Redirect::route('init');
+          }
+
+          if (Setting::getValue('installed') === 'false') {
+               return Redirect::route('welcome');
           }
 
           return $next($request);

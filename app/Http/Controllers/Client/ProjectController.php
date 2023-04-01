@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Index;
+namespace App\Http\Controllers\Client;
 
 use App\Models\Project;
 use App\Http\Controllers\Controller;

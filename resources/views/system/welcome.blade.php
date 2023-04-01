@@ -41,12 +41,6 @@
                          <label for="title"><i class="fas fa-feather"></i>&nbsp;Tiêu đề trang quản trị</label>
                          <input type="text" class="form-control" name="title" id="title" placeholder="Tiêu đề" required>
                     </div>
-                    <div class="form-group col-md-6">
-                         <label for="default-city"><i class="fas fa-globe-americas"></i>&nbsp;Khu vực mặc định</label>
-                         <select class="form-control" name="default-city" id="default-city" required>
-                              <option value="">Chọn khu vực</option>
-                         </select>
-                    </div>
                </div>
                <hr>
                <div class="row">
@@ -62,24 +56,6 @@
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
      <script ipt src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-     <script>
-          let provinces = [];
-          let provinceSelectElement = $('#default-city');
-
-          // init particlesjs
-          particlesJS.load('particles-js', '/dist/particlesjs-config.json');
-
-          axios.get('https://vapi.vnappmob.com/api/province/').then(response => {
-               provinces = response.data.results ?? [];
-
-               provinces.map(province => {
-                    let option = document.createElement('option');
-                    option.value = `${province.province_id}.${province.province_name}`;
-                    option.innerHTML = province.province_name;
-                    provinceSelectElement.append(option);
-               });
-          });
-     </script>
 </body>
 
 </html>

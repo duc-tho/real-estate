@@ -1,27 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\System;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Role;
 use App\Models\Setting;
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
-class InitController extends Controller
+class InitialController extends Controller
 {
      public function index()
      {
-          return view('init');
+          return view('system.initial');
      }
 
-     public function process()
+     public function handle()
      {
           try {
                // Init Database
@@ -30,9 +32,16 @@ class InitController extends Controller
                DB::beginTransaction();
                // init Role
                $defaultRole = new Role();
+               $defaultRole->id = 1;
                $defaultRole->name = 'Admin';
                $defaultRole->status = 1;
                $defaultRole->save();
+
+               $guestRole = new Role();
+               $guestRole->id = 2;
+               $guestRole->name = 'Guest';
+               $guestRole->status = 1;
+               $guestRole->save();
 
                // Init User
                $user = new User();
@@ -98,14 +107,9 @@ class InitController extends Controller
                $titleSetting->save();
 
                $welcomeSetting = new Setting();
-               $welcomeSetting->key = 'welcome';
-               $welcomeSetting->value = '0';
+               $welcomeSetting->key = 'installed';
+               $welcomeSetting->value = 'false';
                $welcomeSetting->save();
-
-               $defaultCitySetting = new Setting();
-               $defaultCitySetting->key = 'default-city';
-               $defaultCitySetting->value = '-1';
-               $defaultCitySetting->save();
 
                DB::commit();
                return new JsonResponse([ 'status' => true ]);
@@ -114,5 +118,36 @@ class InitController extends Controller
                DB::rollBack();
                return new JsonResponse([ 'status' => false, 'reason' =>  $th->getMessage()]);
           }
+     }
+
+     public function setting()
+     {
+          if (Setting::getValue('installed') === 'true') {
+               return Redirect::route('home');
+          }
+
+          return view('system.welcome');
+     }
+
+     public function settingHandle(Request $request)
+     {
+          if (Setting::getValue('installed') === 'true') {
+               return Redirect::route('home');
+          }
+
+          if($request->filled(['title'])) {
+               // set first using init to 1
+               $init = Setting::get('installed');
+               $init->value = 'true';
+               $init->save();
+
+               $title = Setting::get('title');
+               $title->value = $request->input('title');
+               $title->save();
+          } else {
+               return view('system.welcome');
+          };
+
+          return Redirect::route('home');
      }
 }

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/**
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Montserrat);/**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
  * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
@@ -191,6 +191,101 @@
   height: 100%;
   width: 100%; }
 @charset "UTF-8";
+
+.auth-page {
+  font-family: "Montserrat", sans-serif;
+  color: #8d97ad;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+.auth-page h1,
+.auth-page h2,
+.auth-page h3,
+.auth-page h4,
+.auth-page h5,
+.auth-page h6 {
+  color: #3e4555;
+}
+
+.auth-page .subtitle {
+  color: #8d97ad;
+  line-height: 24px;
+}
+
+.auth-page a {
+  text-decoration: none;
+}
+
+.auth-page .btn-danger-gradiant {
+  background: #ff4d7e;
+  background: linear-gradient(to right, #ff4d7e 0%, #ff4d7e 100%);
+}
+
+.auth-page .btn-danger-gradiant:hover {
+  background: #ff4d7e;
+  background: linear-gradient(to right, #ff4d7e 0%, #ff4d7e 100%);
+}
+
+.auth-page .btn-md {
+  padding: 15px 45px;
+  font-size: 16px;
+}
+
+.auth-page .bg-facebook {
+  background-color: #3490dc;
+}
+
+.auth-page .bg-twitter {
+  background-color: #6cb2eb;
+}
+
+.auth-page .text-danger {
+  color: #ff4d7e !important;
+}
+
+.auth-page .right-image {
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.auth-page .left-image {
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}
+
+@media (max-width: 1023px) {
+  .auth-page .contact-form {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .auth-page .contact-form {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .auth-page .right-image {
+    position: relative;
+    bottom: -95px;
+  }
+}
 
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
