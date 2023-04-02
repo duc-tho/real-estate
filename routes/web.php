@@ -37,8 +37,6 @@ Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', [ProjectController::class, 'index'])
      ->name('project');
 

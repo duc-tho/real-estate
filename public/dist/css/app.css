@@ -201,6 +201,25 @@
   height: 100vh;
 }
 
+.auth-page .auth-content {
+  max-height: 100vh;
+  overflow: inherit;
+  overflow-x: hidden;
+}
+
+.auth-page .auth-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.auth-page .auth-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.auth-page .auth-content::-webkit-scrollbar-thumb {
+  background: #00000030;
+  border-radius: 5px;
+}
+
 .auth-page h1,
 .auth-page h2,
 .auth-page h3,

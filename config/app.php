@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Setting;
+use Doctrine\DBAL\Schema\Schema;
+
 return [
 
     /*

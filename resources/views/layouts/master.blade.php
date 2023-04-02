@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     <link rel="canonical" href="{{ env('APP_URL') }}">
     <link rel="shortcut icon" href="{{ asset('dist/img/favicon.png') }}" type="image/x-icon">
 
-    <title>{{ config('app.name', 'Real Estate') }} - @yield('title')</title>
+    <title>{{ request()->get('appName') ?? config('app.name', 'Real Estate') }} - @yield('title')</title>
 
      <!-- Scripts -->
      <script src="{{ asset('dist/js/app.js') }}" defer></script>
