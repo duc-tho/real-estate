@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Setting;
 use Closure;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,7 +19,7 @@ class Initialize
      */
     public function handle($request, Closure $next)
     {
-        if (!Schema::hasTable('setting')) {
+        if (!Cache::get('setting-installed') && !Schema::hasTable('setting')) {
             return Redirect::route('init');
         }
 
