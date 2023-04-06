@@ -2,26 +2,21 @@
 @section('title', 'Quên mật khẩu')
 @section('form-action', route('password.email'))
 
-@section('fields')
-    <div class="form-group row">
-        <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail') }}</label>
-
-        <div class="col-md-6">
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
-@endsection
+@section('fields', json_encode(
+    [
+        [
+            'label' => 'E-Mail',
+            'name' => 'email',
+            'required' => true,
+            'type' => 'email',
+            'autoFocus' => true,
+        ],
+    ]
+))
 
 @section('actions')
-    <div class="col-md-6 offset-md-3">
-        <button type="submit" class="btn btn-danger-gradiant text-light">
+    <div class="col-6 mx-auto">
+        <button type="submit" class="btn btn-danger-gradiant text-light text-nowrap w-100">
             {{ __('Gửi liên kết đặt lại mật khẩu') }}
         </button>
     </div>

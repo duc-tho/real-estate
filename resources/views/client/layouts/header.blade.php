@@ -37,11 +37,13 @@
                                         <span class="font-weight-bold">&nbsp; {{ Auth::user()['FirstName'] }}</span>
                                     </span>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a href="{{ route('logout') }}"
-                                            class="dropdown-item dropdown-footer text-danger">
-                                            <i class="fas fa-sign-out-alt mr-2"></i>
-                                            Đăng Xuất
-                                        </a>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button class="dropdown-item dropdown-footer text-danger">
+                                                <i class="fas fa-sign-out-alt mr-2"></i>
+                                                Đăng Xuất
+                                            </a>
+                                        </form>
                                     </div>
                                 </li>
                             @endif
