@@ -3,7 +3,12 @@ node_modules
 vendor
 
 # Ignore public resource
-public/*
+public/dist
+public/fonts
+public/images
+public/storage
+public/resources
+
 storage/*.key
 
 # Ignore env
