@@ -14,10 +14,10 @@
     <title>{{ request()->get('appName') ?? config('app.name', 'Real Estate') }} - @yield('title')</title>
 
      <!-- Scripts -->
-     <script src="{{ asset('dist/js/app.js') }}" defer></script>
+     <script src="{{ asset('resources/app.js') }}" defer></script>
 
      <!-- Styles -->
-     <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
+     <link href="{{ asset('resources/app.css') }}" rel="stylesheet">
 </head>
 
 <body>

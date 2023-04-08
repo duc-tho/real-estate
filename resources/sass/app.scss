@@ -4,8 +4,9 @@
 
 // Variables
 @import 'variables';
+@import 'auth';
 @import 'client/index';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~owl.carousel/dist/assets/owl.carousel.css';
+@import '~@fortawesome/fontawesome-free/css/all.css';

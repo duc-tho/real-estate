@@ -1,14 +1,22 @@
-/node_modules
-/public/hot
-/public/storage
-/public/plugins
-/public/dist/img/upload
-/storage/*.key
-/vendor
+# Ignore depndencies
+node_modules
+vendor
+
+# Ignore public resource
+public/dist
+public/fonts
+public/images
+public/storage
+public/resources
+
+storage/*.key
+
+# Ignore env
 .env
 .env.backup
+
+# Orther
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
 npm-debug.log
+package-lock.json
 yarn-error.log
