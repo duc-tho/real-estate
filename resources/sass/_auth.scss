@@ -13,7 +13,7 @@ $auth-text-secondary: $color-gray-dark;
     height: 100vh;
 
     .auth-background {
-        background-image: url('../images/auth-background.jpg');
+        background-image: url('/storage/assets/images/auth-background.jpg')
     }
 
     .auth-content {

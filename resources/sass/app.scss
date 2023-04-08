@@ -2,11 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 // Variables
 @import 'variables';
 @import 'auth';
 @import 'client/index';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/css/all.css';

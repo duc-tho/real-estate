@@ -1,9 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-    @include('client.layouts.header')
+    <header>
+        @include('client.components.header')
+    </header>
 
-    @yield('page')
+    <main class="my-5">
+        @yield('page')
+    </main>
 
-    @include('client.layouts.footer')
+    <footer>
+        @include('client.components.footer')
+    </footer>
 @endsection

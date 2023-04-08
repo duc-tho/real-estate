@@ -1,0 +1,18 @@
+.re-navbar {
+    height: 100px;
+
+    .re-navbar-action {
+        @include media-breakpoint-down(md) {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0 1rem 1rem rgba($black, .1);
+        }
+
+        @include media-breakpoint-up(md) {
+            position: initial;
+            box-shadow: none;
+        }
+    }
+}
