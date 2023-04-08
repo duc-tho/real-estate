@@ -13,6 +13,7 @@
 @section('actions')
     <div class="col-12 d-md-flex justify-content-between flex-md-row-reverse">
         <button type="submit" class="col-md-6 mx-md-4 btn-danger-gradiant text-light btn">
+            <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>
             {{ __('Đăng nhập') }}
         </button>
 

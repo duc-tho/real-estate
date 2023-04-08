@@ -12,6 +12,10 @@ $auth-text-secondary: $color-gray-dark;
     position: relative;
     height: 100vh;
 
+    .auth-background {
+        background-image: url('../images/auth-background.jpg');
+    }
+
     .auth-content {
         max-height: 100vh;
         overflow: inherit;
@@ -50,16 +54,17 @@ $auth-text-secondary: $color-gray-dark;
     }
 
     .btn-danger-gradiant {
-        background: $auth-primary;
+        // background: $auth-primary;
         background: -webkit-linear-gradient(legacy-direction(to right), $auth-primary 0%, $auth-secondary 100%);
         background: -webkit-gradient(linear, left top, right top, from($auth-primary), to($auth-secondary));
         background: -webkit-linear-gradient(left, $auth-primary 0%, $auth-secondary 100%);
         background: -o-linear-gradient(left, $auth-primary 0%, $auth-secondary 100%);
         background: linear-gradient(to right, $auth-primary 0%, $auth-secondary 100%);
+        transition: .2s;
     }
 
     .btn-danger-gradiant:hover {
-        background: $auth-secondary;
+        // background: $auth-secondary;
         background: -webkit-linear-gradient(legacy-direction(to right), $auth-secondary 0%, $auth-primary 100%);
         background: -webkit-gradient(linear, left top, right top, from($auth-secondary), to($auth-primary));
         background: -webkit-linear-gradient(left, $auth-secondary 0%, $auth-primary 100%);

@@ -57,8 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 right-image pl-3 d-none d-md-block " style="background-image: url({{ asset('dist/img/login-bg.jpg') }});">
-                </div>
+                <div class="col-lg-4 right-image pl-3 d-none d-md-block auth-background"></div>
             </div>
         </div>
     </div>
