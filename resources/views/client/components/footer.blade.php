@@ -1,174 +1,81 @@
-<section class="sec-cta group-ef loaded" style="padding:0 15px;">
-    <div class="row grid-space-0">
-        <div class="col-6 efch-3 ef-img-r">
-            <div class="item">
-                <div class="img"><img class=" loaded loaded" data-lazy-type="image"
-                        data-lazy-src="{{ asset('dist/img/cta-1.svg') }}" alt="Propzy"
-                        src="{{ asset('dist/img/cta-1.svg') }}"></div>
-                <h3 class="title">Đăng Bán và Cho Thuê Miễn Phí</h3>
-                <p><em>Tiếp cận khách hàng sẵn có, quảng cáo tin đăng miễn phí</em></p> <a href="/dang-tin"
-                    class="btn btn-2">Đăng tin ngay</a>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <a href="#">
+                <img src="{{ asset('storage/assets/images/re-logo-light.png') }}" alt="Logo" height="90">
+            </a>
+
+            <p class="re-footer-text-muted pr-5">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam laborum iure! Fugit labore debitis vel
+                sint nulla est! Consectetur at cumque, omnis nobis adipisci reprehenderit corporis sunt quis explicabo.
+            </p>
+
+            <div>
+                <a href="#" class="text-light btn-sm text-decoration-none">
+                    <i class="fa-brands fa-facebook fa-2x"></i>
+                </a>
+                <a href="#" class="text-light btn-sm text-decoration-none mr-2">
+                    <i class="fa-brands fa-instagram fa-2x"></i>
+                </a>
+                <a href="#" class="text-light btn-sm text-decoration-none mr-2">
+                    <i class="fa-brands fa-twitter fa-2x"></i>
+                </a>
             </div>
         </div>
-        <div class="col-6 efch-3 ef-img-l loaded" data-lazy-type="bg" data-lazy-src="{{ asset('dist/img/img-2.jpg') }}"
-            style="background-image: url(&quot;{{ asset('dist/img/img-2.jpg') }}&quot;);">
-            <div class="item">
-                <div class="img svgimg"><img class=" loaded loaded" data-lazy-type="image"
-                        data-lazy-src="{{ asset('dist/img/cta-2.svg') }}" alt="Propzy"
-                        src="{{ asset('dist/img/cta-2.svg') }}"></div>
-                <h3 class="title">Tìm Mua và Thuê Như Ý</h3>
-                <p><em>Tìm kiếm theo tiêu chí, đảm bảo an toàn pháp lý</em></p> <a class="btn btn-3 btnModal"
-                    data-modal="contactModal">Liên hệ ngay</a>
+        <div class="col-3 pt-4">
+            <h3 class="mt-3 mb-2 font-weight-bold">Dich vu</h3>
+
+            <div class="py-2">
+                <a href="#" class="text-light">Mua BDS</a>
+            </div>
+            <div class="py-2">
+                <a href="#" class="text-light">Thue BDS</a>
+            </div>
+            <div class="py-2">
+                <a href="#" class="text-light">Du an</a>
+            </div>
+            <div class="py-2">
+                <a href="#" class="text-light">BDS theo Khu vuc</a>
             </div>
         </div>
-    </div>
-</section>
-<footer class="">
-    <div class="container-fluid w90">
-        <div class="row">
-            <div class="col-sm-4">
-                <p>
-                    <a href="{{ route('home') }}">
-                        <img src="{{ asset('dist/img/thinhvuonggrouplogo.png') }}" style="max-height: 88px"
-                            alt="">
-                    </a>
-                </p>
-                <p><i class="fas fa-building"></i>CÔNG TY TNHH THỊNH VƯỢNG GROUP</p>
-                <p><i class="fas fa-phone-square"></i> Hotline &nbsp;<a href="tel:18006268">18006268</a></p>
-                <p><i class="fas fa-map-marker-alt"></i>187 Đường 154, Phường Tân Phú, Quận 9, TP Hồ Chí Minh</p>
-                <p><i class="fas fa-envelope"></i> Email &nbsp;<a
-                        href="mailto:infot@thinhvuonggroup.com.vn">infot@thinhvuonggroup.com.vn</a>
-                </p>
-            </div>
-            <div class="col-sm-8 padtop10">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="menufooter">
-                            <h4>Căn hộ cao cấp HCM</h4>
-                            <ul>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/about-us" target="_self">
-                                        <span>Căn hộ Quận 1</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/contact" target="_self">
-                                        <span>Căn hộ Quận 2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/careers" target="_self">
-                                        <span>Căn hộ Quận 3</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/terms-conditions" target="_self">
-                                        <span>Căn hộ Quận 4</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/terms-conditions" target="_self">
-                                        <span>Căn hộ Quận 7</span>
-                                    </a>
-                                </li>
-                            </ul>
+        <div class="col-3 pt-4">
+            <h3 class="my-3 font-weight-bold">Lien He</h3>
 
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="menufooter">
-                            <h4>Dịch vụ của Thịnh Vượng</h4>
-                            <ul>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/projects" target="_self">
-                                        <span>Gửi BĐS Miễn Phí</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/properties" target="_self">
-                                        <span>Tìm mua nhà đất</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/properties?type=sale" target="_self">
-                                        <span>Tư vấn đầu tư</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
-                                        <span>Thẩm định giá BĐS</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
-                                        <span>Pháp lý BĐS</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/properties?type=rent" target="_self">
-                                        <span>Thủ tục vay mua nhà</span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="menufooter">
-                            <h4>Danh mục BĐS</h4>
-                            <ul>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/news" target="_self">
-                                        <span>Cho thuê Căn hộ</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/building-materials" target="_self">
-                                        <span>Bán Căn hộ</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/house-architecture" target="_self">
-                                        <span>Cho thuê nhà riêng</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://bdsnew.eso.vn/house-design" target="_self">
-                                        <span>Bán nhà riêng</span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="padtop10 mb-2 language">
-
-                </div>
-
-            </div>
-        </div>
-        <div class="copyright">
-            <div class="col-sm-12">
-                <p class="text-center">
-                    © 2020 CÔNG TY TNHH THỊNH VƯỢNG GROUP
-                </p>
-            </div>
+            <p>
+                <b>Dien thoai:</b>
+                <span class="re-footer-text-muted">
+                    +84 58 834 3618
+                </span>
+            </p>
+            <p>
+                <b>Email:</b>
+                <span class="re-footer-text-muted">
+                    contact@re.vn
+                </span>
+            </p>
+            <p>
+                <b>Dia chi:</b>
+                <span class="re-footer-text-muted">
+                    QPWF+F7W, Trần Trọng Kim, Phường 22, Bình Thạnh, Thành phố Hồ Chí Minh
+                </span>
+            </p>
         </div>
     </div>
-</footer>
 
-<div class="action_footer">
-    <a href="#" class="cd-top"><i class="fas fa-arrow-up"></i></a>
-    <a href="tel:18006268" style="color: white;font-size: 17px;"><i class="fas fa-phone"></i> <span>
-            &nbsp;18006268</span></a>
-</div>
-<div id="loading">
-    <div class="lds-hourglass">
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col-6 re-footer-text-muted">
+            2023 © Ban quyen thuoc ve
+            <a href="#" class="text-primary font-weight-bold">
+                {{ request()->get('appName') ?? config('app.name', 'Real Estate') }}
+            </a>
+        </div>
+
+        <div class="col-6 text-right re-footer-text-muted">
+            <a href="#" class="text-info font-weight-bold">Dieu khoan</a>
+            va
+            <a href="#" class="text-info font-weight-bold">Chinh sach</a>
+        </div>
     </div>
 </div>

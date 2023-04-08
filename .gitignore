@@ -6,10 +6,10 @@ vendor
 public/dist
 public/fonts
 public/images
-public/storage
 public/resources
 
 storage/*.key
+!storage/app/public/assets
 
 # Ignore env
 .env

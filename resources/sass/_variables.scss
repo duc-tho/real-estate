@@ -2,7 +2,7 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Montserrat', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -21,6 +21,11 @@ $cyan: #6cb2eb;
 // Auth
 $font-montserrat: "Montserrat";
 $color-gray-light: #8d97ad;
+$color-gray-smoke: #DDDDDD;
 $color-gray-dark: #3e4555;
 $color-orange: #ff6a5b;
 $color-pink: #ff4d7e;
+$color-blue-light: #96abbf;
+
+$primary: $color-pink;
+$navbar-light-active-color: $primary;

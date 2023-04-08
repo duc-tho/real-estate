@@ -1,0 +1,10 @@
+// Adjust font awsome positon
+i[class^=fa] {
+    vertical-align: middle;
+}
+
+// Set selection color
+::selection {
+    color: white;
+    background-color: $color-blue-light;
+}

@@ -9,7 +9,7 @@
         @yield('page')
     </main>
 
-    <footer>
+    <footer class="text-light p-4">
         @include('client.components.footer')
     </footer>
 @endsection

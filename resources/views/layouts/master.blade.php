@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="canonical" href="{{ env('APP_URL') }}">
-    <link rel="shortcut icon" href="{{ asset('dist/img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/assets/images/favicon.png') }}" type="image/x-icon">
 
     <title>{{ request()->get('appName') ?? config('app.name', 'Real Estate') }} - @yield('title')</title>
 
