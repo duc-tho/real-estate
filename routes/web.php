@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Client\PostController;
+use App\Http\Controllers\Client\ProjectController;
+use App\Http\Controllers\Client\UserController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,33 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/init', 'InitController@index')->name('init');
-Route::post('/init', 'InitController@process')->name('initProcess');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/welcome', 'WelcomeController@index')->name('welcome');
-Route::post('/welcome', 'WelcomeController@progress')->name('welcome-progress');
-
-
-Route::get('/', 'Index\HomeController@index')->name('home');
-
-Route::get('/dang-tin', 'Index\AddPostController@index')->name('addPost');
+Route::get('/dang-tin-bat-dong-san', 'Client\AddPostController@index')->name('addPost');
 
 Route::group(['prefix' => 'user'], function () {
-     Route::get('/', 'Index\UserController@index')->name('user');
-});
-
-Route::group(['prefix' => 'auth'], function () {
-     Route::get('/login', 'AuthController@login')->name('login');
-
-     Route::post('/authenticate', 'AuthController@authenticate')->name('auth');
-
-     Route::get('/logout', 'AuthController@logout')->name('logout');
-});
-
-Route::group(['prefix' => 'register'], function () {
-     Route::get('/', 'Index\RegisterController@index')->name('registerView');
-
-     Route::post('/', 'Index\RegisterController@register')->name('register');
+     Route::get('/', [UserController::class, 'index'])->name('user');
 });
 
 Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
@@ -51,8 +35,10 @@ Route::post('/uploadcke', 'UploadCKEController@index')->name('uploadCKEditor');
 //           ->name('projectDetail');
 // });
 
-Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', 'Index\ProjectController@index')
+Auth::routes(['verify' => true]);
+
+Route::get('/du-an/{city_slug?}/{district_slug?}/{project_slug?}/{type?}', [ProjectController::class, 'index'])
      ->name('project');
 
-Route::get('/{type}/{category_slug?}/{city_slug?}/{district_slug?}/{area_slug?}/{post_slug?}', 'Index\PostController@index')
+Route::get('/{type}/{category_slug?}/{city_slug?}/{district_slug?}/{area_slug?}/{post_slug?}', [PostController::class, 'index'])
      ->name('post');

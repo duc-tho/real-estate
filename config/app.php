@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Setting;
+use Doctrine\DBAL\Schema\Schema;
+
 return [
 
     /*
@@ -13,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'BDS'),
+    'name' => env('APP_NAME', 'Real Estate'),
 
     /*
     |--------------------------------------------------------------------------
