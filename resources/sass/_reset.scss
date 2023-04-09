@@ -8,3 +8,15 @@ i[class^=fa] {
     color: white;
     background-color: $color-blue-light;
 }
+
+
+// Bootstrap select option width
+.bootstrap-select {
+    .dropdown-menu {
+        .inner {
+            &.show {
+                width: 100%;
+            }
+        }
+    }
+}

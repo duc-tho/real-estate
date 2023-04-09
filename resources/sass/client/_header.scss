@@ -1,5 +1,5 @@
 .re-navbar {
-    height: 100px;
+    height: $header-height;
 
     .re-navbar-action {
         @include media-breakpoint-down(md) {

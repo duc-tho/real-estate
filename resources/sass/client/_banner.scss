@@ -1,0 +1,38 @@
+.re-banner-wrapper {
+    background: $color-gray-dark;
+
+    .re-banner {
+        height: calc(100vh - #{$header-height});
+
+        &.re-banner-image-wraper {
+            top: 0;
+        }
+
+        .re-banner-info {
+            padding-right: 70px;
+            padding-top: 70px;
+
+            .re-banner-description {
+                color: $color-blue-light;
+                padding-left: 1rem;
+                border-left: solid 2px $color-orange;
+            }
+        }
+
+        .re-banner-search {
+            height: 100px;
+            width: 769px;
+            z-index: 2;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+        }
+
+        .re-banner-image {
+            min-height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

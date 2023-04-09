@@ -3,6 +3,7 @@
 @section('content')
     <header>
         @include('client.components.header')
+        @include('client.components.banner')
     </header>
 
     <main class="my-5">
