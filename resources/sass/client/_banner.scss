@@ -2,7 +2,7 @@
     background: $color-gray-dark;
 
     .re-banner {
-        height: calc(100vh - #{$header-height});
+        height: 500px;
 
         &.re-banner-image-wraper {
             top: 0;
@@ -20,7 +20,7 @@
         }
 
         .re-banner-search {
-            height: 100px;
+            gap: 10px;
             width: 769px;
             z-index: 2;
             border-radius: 15px;
