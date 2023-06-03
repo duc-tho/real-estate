@@ -1,0 +1,23 @@
+version: '3.9'
+
+name: real-estate
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: WS.Dockerfile
+    volumes:
+      - ../:/workspaces/real-estate
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+        - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+        - ../:/workspaces/real-estate
+  php:
+    build:
+      context: .
+      dockerfile: PHP.Dockerfile
+    volumes:
+        - ../:/workspaces/real-estate

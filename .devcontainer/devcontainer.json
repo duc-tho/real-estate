@@ -1,0 +1,10 @@
+{
+     "name": "Real Estate Dev Container",
+     "dockerComposeFile": "./docker-compose.yaml",
+     "service": "workspace",
+     "workspaceFolder": "/workspaces/real-estate",
+     // "settings": {},
+     "postCreateCommand": "",
+     "shutdownAction": "stopCompose",
+     "extensions": []
+}
