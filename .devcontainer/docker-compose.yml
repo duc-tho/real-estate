@@ -1,0 +1,14 @@
+version: '3.8'
+
+name: real-estate
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3250:3250"
+    volumes:
+      - ..:/workspaces/real-estate
+      - ./real-estate.local.conf:/etc/nginx/conf.d/real-estate.local.conf
+    command: sleep infinity

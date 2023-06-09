@@ -15,8 +15,9 @@ storage/*.key
 .env
 .env.backup
 
-# Orther
+# Other
 .phpunit.result.cache
 npm-debug.log
 package-lock.json
 yarn-error.log
+composer-lock.json
