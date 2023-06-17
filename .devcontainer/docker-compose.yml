@@ -11,4 +11,5 @@ services:
     volumes:
       - ..:/workspaces/real-estate
       - ./real-estate.local.conf:/etc/nginx/conf.d/real-estate.local.conf
+      - ./xdebug.ini:/etc/php/7.2/mods-available/xdebug.ini
     command: sleep infinity
