@@ -1,13 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
 
 // Variables
 @import 'variables';
 
+@import "keyframe/wave";
+
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~bootstrap-select/sass/bootstrap-select.scss';
+@import "custom/bootstrap-select";
+
+@import "component/checkbox";
 
 @import 'auth';
 @import 'reset';

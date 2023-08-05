@@ -2,7 +2,7 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Montserrat', sans-serif;
+$font-family-sans-serif: 'Quicksand', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -19,14 +19,15 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
 // Auth
-$font-montserrat: "Montserrat";
+$font-montserrat: 'Quicksand';
 $color-gray-light: #8d97ad;
 $color-gray-smoke: #DDDDDD;
 $color-gray-dark: #3e4555;
 $color-orange: #ff6a5b;
 $color-pink: #ff4d7e;
+$color-blue-dark: #35455d;
 $color-blue-light: #96abbf;
 
-$primary: $color-pink;
+$primary: $color-blue-dark;
 $navbar-light-active-color: $primary;
 $header-height: 100px;

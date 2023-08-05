@@ -1,0 +1,16 @@
+.bootstrap-select {
+    .dropdown-toggle {
+        &:focus {
+            outline: none !important;
+        }
+    }
+
+    &:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        min-width: 160px;
+        width: auto;
+    }
+
+    .filter-option-inner {
+        padding-right: 1rem;
+    }
+}

@@ -34,15 +34,19 @@
                                 @csrf
 
                                 @foreach ($fields as $field)
-                                    <x-form.input
-                                        :label="$field['label'] ?? ''"
-                                        :name="$field['name']"
-                                        :required="$field['required'] ?? false"
-                                        :autoFocus="$field['autoFocus'] ?? false"
-                                        :type="$field['type'] ?? 'text'"
-                                        :selectOptions="$field['selectOptions'] ?? []"
-                                        :value="$field['value'] ?? null"
-                                    />
+                                    @if (isset($field['type']) && $field['type'] === 'checkbox')
+                                        <x-form.checkbox :label="$field['label'] ?? ''" />
+                                    @else
+                                        <x-form.input
+                                            :label="$field['label'] ?? ''"
+                                            :name="$field['name']"
+                                            :required="$field['required'] ?? false"
+                                            :autoFocus="$field['autoFocus'] ?? false"
+                                            :type="$field['type'] ?? 'text'"
+                                            :selectOptions="$field['selectOptions'] ?? []"
+                                            :value="$field['value'] ?? null"
+                                        />
+                                    @endif
                                 @endforeach
 
                                 <hr class="mt-4 mb-3" />

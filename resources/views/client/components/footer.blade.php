@@ -14,10 +14,10 @@
                 <a href="#" class="text-light btn-sm text-decoration-none">
                     <i class="fa-brands fa-facebook fa-2x"></i>
                 </a>
-                <a href="#" class="text-light btn-sm text-decoration-none mr-2">
+                <a href="#" class="text-light btn-sm text-decoration-none">
                     <i class="fa-brands fa-instagram fa-2x"></i>
                 </a>
-                <a href="#" class="text-light btn-sm text-decoration-none mr-2">
+                <a href="#" class="text-light btn-sm text-decoration-none">
                     <i class="fa-brands fa-twitter fa-2x"></i>
                 </a>
             </div>
