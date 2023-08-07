@@ -1,23 +1,24 @@
-@extends('layouts.auth')
-@section('title', 'Xác minh email')
+@extends('layouts.app')
 
-@section('messages')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('Một liên kết xác minh mới đã đuợc gửi đến E-Mail của bạn!') }}
+                            {{ __('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @endif
 
-                    {{ __('Trước khi tiếp tục bạn cần phải xác minhn email của mình.') }}
-                    {{ __('Nếu bạn chưa nhận được email xác minh') }},
+                    {{ __('Before proceeding, please check your email for a verification link.') }}
+                    {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline text-danger">{{ __('hãy nhấn vào đây để gửi lại') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
                     </form>
                 </div>
             </div>

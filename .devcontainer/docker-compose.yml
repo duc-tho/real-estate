@@ -12,10 +12,10 @@ services:
     volumes:
       - ..:/workspaces/real-estate:cached
       - ./real-estate.local.conf:/etc/nginx/conf.d/real-estate.local.conf
-      - ./xdebug.ini:/etc/php/7.2/mods-available/xdebug.ini
+      - ./xdebug.ini:/etc/php/8.2/mods-available/xdebug.ini
     command: sleep infinity
   redis:
     image: redis:6-alpine
     ports:
-      - 6379:6379
+      - 16379:6379
 

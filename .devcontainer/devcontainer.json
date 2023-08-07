@@ -5,5 +5,6 @@
     "workspaceFolder": "/workspaces/real-estate",
     "forwardPorts": [3250],
     "shutdownAction": "stopCompose",
-    "postCreateCommand": "bash -i .devcontainer/scripts/post-create.sh"
+    "postCreateCommand": "bash -i .devcontainer/scripts/post-create.sh",
+    "postStartCommand": "bash -i .devcontainer/scripts/post-start.sh"
 }

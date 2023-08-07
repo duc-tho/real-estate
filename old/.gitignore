@@ -1,0 +1,23 @@
+# Ignore depndencies
+node_modules
+vendor
+
+# Ignore public resource
+public/dist
+public/fonts
+public/images
+public/resources
+
+storage/*.key
+!storage/app/public/assets
+
+# Ignore env
+.env
+.env.backup
+
+# Other
+.phpunit.result.cache
+npm-debug.log
+package-lock.json
+yarn-error.log
+composer-lock.json
