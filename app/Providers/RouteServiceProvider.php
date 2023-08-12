@@ -24,6 +24,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (TRUE === config('app.is_codespace')) {
+            $appUrl = $this->app['url'];
+    
+            // Force the application URL
+            $appUrl->forceRootUrl(config('app.url'));
+        }
+
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
