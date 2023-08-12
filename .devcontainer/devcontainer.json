@@ -3,7 +3,7 @@
     "dockerComposeFile": "./docker-compose.yml",
     "service": "workspace",
     "workspaceFolder": "/workspaces/real-estate",
-    "forwardPorts": [3250, 7700, 3306],
+    "forwardPorts": [3250, 7700, 3307],
     "shutdownAction": "stopCompose",
     "postCreateCommand": "bash -i .devcontainer/scripts/post-create.sh",
 	"postStartCommand": "bash -i .devcontainer/scripts/post-start.sh",
@@ -25,7 +25,9 @@
 				"shufo.vscode-blade-formatter",
 				"ryannaddy.laravel-artisan",
 				"EditorConfig.EditorConfig",
-				"mikestead.dotenv"
+				"mikestead.dotenv",
+				"cweijan.vscode-mysql-client2",
+				"bmewburn.vscode-intelephense-client"
 			]
 		}
 	}
