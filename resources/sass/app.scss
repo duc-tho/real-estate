@@ -1,8 +1,24 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand');
 
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "keyframe/wave";
+
+@import '../../node_modules/bootstrap';
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import '../../node_modules/select2/dist/css/select2.min.css';
+@import '../../node_modules/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css';
+@import '../../node_modules/vanillajs-datepicker/sass/datepicker-bs5.scss';
+@import "../../node_modules/@fancyapps/ui/dist/carousel/carousel.css";
+@import "../../node_modules/@fancyapps/ui/dist/fancybox/fancybox.css";
+@import "../../node_modules/@fancyapps/ui/dist/carousel/carousel.thumbs.css";
+
+@import "component/checkbox";
+
+@import "custom/select2";
+
+@import 'auth';
+@import 'reset';
+@import 'client/index';

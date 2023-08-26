@@ -1,0 +1,89 @@
+.re-navbar {
+    height: $header-height;
+    position: relative;
+    z-index: 2;
+
+    .re-navbar-action {
+        @include media-breakpoint-down(md) {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0 1rem 1rem rgba($black, .1);
+        }
+
+        @include media-breakpoint-up(md) {
+            position: initial;
+            box-shadow: none;
+        }
+    }
+
+    .re-navbar-item {
+        position: relative;
+        transition: color .2s, border-color .2s;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+            border-bottom-color: $primary;
+
+            .re-navbar-item-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        &.active {
+            color: $primary;
+        }
+
+        .re-navbar-item-menu {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: 115%;
+            min-width: 150px;
+            z-index: 1;
+            border: solid 1px $color-gray-light;
+            transition: opacity .2s, visibility .2s;
+
+            &:hover {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            a {
+                color: $color-gray-dark;
+                text-decoration: none;
+
+                li {
+                    list-style: none;
+                    position: relative;
+
+                    &:hover {
+                        background-color: $color-gray-smoke;
+                        transition: background-color .2s;
+
+                        &::before {
+                            background-color: $primary;
+                        }
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 10px;
+                        border-radius: 5px;
+                        transform: translateY(-50%);
+                        height: 19px;
+                        width: 5px;
+                        background-color: $color-gray-light;
+                        transition: background-color .2s;
+                    }
+                }
+            }
+        }
+    }
+}

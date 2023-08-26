@@ -1,15 +1,58 @@
+// // This file is used to include JS dependencies into the application
+
 import 'bootstrap';
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
+import jQuery from 'jquery';
+import select2 from 'select2/dist/js/select2';
 import axios from 'axios';
-window.axios = axios;
+import { Datepicker } from 'vanillajs-datepicker';
+import vi from '../../node_modules/vanillajs-datepicker/js/i18n/locales/vi';
+import { Fancybox, Carousel } from "@fancyapps/ui";
+import { Thumbs } from "@fancyapps/ui/dist/carousel/carousel.thumbs.esm.js";
 
+// init jquery
+window.$ = jQuery;
+
+// init axios
+window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+// init date picker
+window.Datepicker = Datepicker;
+Object.assign(Datepicker.locales, vi);
+
+$('.date-picker').each((index, element) => {
+    const datePickerDefaultOptions = {
+        autohide: true,
+        format: 'dd/mm/yyyy',
+        language: 'vi',
+        nextArrow: '>',
+        prevArrow: '<',
+        todayButton: true,
+        buttonClass: 'btn'
+    };
+
+    new Datepicker(element, datePickerDefaultOptions);
+});
+
+
+// init fancybox
+Fancybox.bind("[data-fancybox]");
+
+// init carousel
+const options = {
+    Thumbs: {
+        type: "modern",
+    },
+};
+
+$('.f-carousel').each((index, element) => {
+    new Carousel(element, options, { Thumbs });
+});
+
+// init select2
+select2();
+
+$('.form-select').select2({ theme: 'bootstrap-5' });
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

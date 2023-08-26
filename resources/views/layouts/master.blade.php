@@ -13,11 +13,7 @@
 
     <title>{{ request()->get('appName') ?? config('app.name', 'Real Estate') }} - @yield('title')</title>
 
-     <!-- Scripts -->
-     <script src="{{ asset('resources/app.js') }}" defer></script>
-
-     <!-- Styles -->
-     <link href="{{ asset('resources/app.css') }}" rel="stylesheet">
+    @vite(['resources/js/app.js'])
 </head>
 
 <body>
