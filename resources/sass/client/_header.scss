@@ -1,7 +1,24 @@
 .re-navbar {
     height: $header-height;
-    position: relative;
     z-index: 2;
+    transition: height .25s;
+
+    .re-navbar-logo {
+        img {
+            height: 70px;
+            transition: height .25s;
+        }
+    }
+
+    &.re-navbar-sm {
+        height: 70px;
+
+        .re-navbar-logo {
+            img {
+                height: 50px;
+            }
+        }
+    }
 
     .re-navbar-action {
         @include media-breakpoint-down(md) {

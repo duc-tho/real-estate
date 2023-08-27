@@ -2,8 +2,8 @@
 
 @section('content')
     <header>
-        @include('client.components.header')
-        @include('client.components.banner')
+        @include('client.section.header')
+        @include('client.section.banner')
     </header>
 
     <main class="my-5">
@@ -11,6 +11,6 @@
     </main>
 
     <footer class="text-light p-4">
-        @include('client.components.footer')
+        @include('client.section.footer')
     </footer>
 @endsection

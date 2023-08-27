@@ -22,7 +22,7 @@
 
             span {
                 &:first-child {
-                    border-color: #07f;
+                    border-color: $secondary;
                 }
             }
         }
@@ -79,8 +79,8 @@
             &+.label {
                 span {
                     &:first-child {
-                        background: #07f;
-                        border-color: #07f;
+                        background: $secondary;
+                        border-color: $secondary;
                         animation: wave 0.4s ease;
 
                         svg {
@@ -100,5 +100,3 @@
         user-select: none;
     }
 }
-
-

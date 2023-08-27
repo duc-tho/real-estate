@@ -1,12 +1,22 @@
 .re-banner-wrapper {
-    background: $color-gray-dark;
+    padding-top: $header-height;
+
+    .re-banner-image-wrapper {
+        position: relative;
+        height: 500px;
+        border-radius: 2rem;
+
+        .re-banner-image {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+    }
 
     .re-banner {
-        height: 500px;
 
-        &.re-banner-image-wraper {
-            top: 0;
-        }
+
 
         .re-banner-info {
             padding-right: 70px;
