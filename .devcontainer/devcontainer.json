@@ -1,0 +1,34 @@
+{
+    "name": "Real estate dev container",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "workspace",
+    "workspaceFolder": "/workspaces/real-estate",
+    "forwardPorts": [3250, 7700, 3307],
+    "shutdownAction": "stopCompose",
+    "postCreateCommand": "bash -i .devcontainer/scripts/post-create.sh",
+	"postStartCommand": "bash -i .devcontainer/scripts/post-start.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"zobo.php-intellisense",
+				"xdebug.php-pack",
+				"xdebug.php-debug",
+				"pgl.laravel-jump-controller",
+				"naoray.laravel-goto-components",
+				"onecentlin.laravel5-snippets",
+				"codingyu.laravel-goto-view",
+				"amiralizadeh9480.laravel-extra-intellisense",
+				"onecentlin.laravel-extension-pack",
+				"glitchbl.laravel-create-view",
+				"IHunte.laravel-blade-wrapper",
+				"onecentlin.laravel-blade",
+				"shufo.vscode-blade-formatter",
+				"ryannaddy.laravel-artisan",
+				"EditorConfig.EditorConfig",
+				"mikestead.dotenv",
+				"cweijan.vscode-mysql-client2",
+				"bmewburn.vscode-intelephense-client"
+			]
+		}
+	}
+}

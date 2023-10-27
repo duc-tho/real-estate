@@ -1,0 +1,66 @@
+version: "3.3"
+
+services:
+    workspace:
+        container_name: real-estate-workspace
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 3250:3250
+        tty: true
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        volumes:
+            - ..:/workspaces/real-estate:cached
+            - ./real-estate.local.conf:/etc/nginx/conf.d/real-estate.local.conf
+            - ./xdebug.ini:/etc/php/7.4/mods-available/xdebug.ini
+        command: sleep infinity
+        networks:
+            - re
+        depends_on:
+            - redis
+            - meilisearch
+            - mysql
+    redis:
+        image: redis:alpine
+        ports:
+            - 6379:6379
+        volumes:
+            - re-redis:/data
+        networks:
+            - re
+    meilisearch:
+        image: getmeili/meilisearch:latest
+        ports:
+            - 7700:7700
+        volumes:
+            - re-meilisearch:/meili_data
+        networks:
+            - re
+    mysql:
+        image: mysql:latest
+        ports:
+            - 3307:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: 'root'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: 're'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'root'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - re-mysql:/var/lib/mysql
+        networks:
+            - re
+volumes:
+    re-mysql:
+        driver: local
+    re-redis:
+        driver: local
+    re-meilisearch:
+        driver: local
+networks:
+    re:
+        driver: bridge
+
