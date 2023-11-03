@@ -32,7 +32,6 @@
     <meta name="robots" content="@yield('meta-robots', 'index, follow')"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-
     <link rel="canonical" href="{{ env('APP_URL') }}">
     <link rel="shortcut icon" href="{{ asset('storage/assets/images/favicon.png') }}" type="image/x-icon">
     @vite(['resources/js/app.js'])

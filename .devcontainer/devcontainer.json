@@ -3,7 +3,7 @@
     "dockerComposeFile": "./docker-compose.yml",
     "service": "workspace",
     "workspaceFolder": "/workspaces/real-estate",
-    "forwardPorts": [3250, 7700, 3307],
+    "forwardPorts": [3250, 7700, 3306],
     "shutdownAction": "stopCompose",
     "postCreateCommand": "bash -i .devcontainer/scripts/post-create.sh",
 	"postStartCommand": "bash -i .devcontainer/scripts/post-start.sh",
