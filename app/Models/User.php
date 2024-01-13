@@ -2,25 +2,45 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Trait\ModelActivityLogable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableInterface;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailInterface;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordInterface;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableInterface;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Arr;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Model implements MustVerifyEmailInterface,
+    AuthenticatableInterface,
+    AuthorizableInterface,
+    CanResetPasswordInterface
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        Authenticatable,
+        Authorizable,
+        CanResetPassword,
+        MustVerifyEmail,
+        ModelActivityLogable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected array $customGuareded = [
+        'remember_token',
+    ];
+
+    protected array $rules = [
+        'email' => 'email|required'
+    ];
+
+    protected array $messages = [
+        'email' => 'Sai định dang email',
+        'email.required' => 'Chưa điền email',
     ];
 
     /**

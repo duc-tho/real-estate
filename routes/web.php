@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Client\HomeController;
+use App\Models\User;
+use App\Repositories\RepositoryDataFilter;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

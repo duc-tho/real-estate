@@ -49,7 +49,6 @@ class RegisterController extends Controller
           try {
                $user->save();
           } catch (\Throwable $th) {
-               dd($th);
                return redirect()->route('registerView')->withInput()->with(['msg' => 'Đã có lỗi xảy ra khi đăng ký!']);
           }
 

@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         if (TRUE === config('app.is_codespace')) {
             $appUrl = $this->app['url'];
-    
+
             // Force the application URL
             $appUrl->forceRootUrl(config('app.url'));
         }
